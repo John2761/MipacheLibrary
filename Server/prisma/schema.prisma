@@ -1,4 +1,3 @@
-
 generator client {
   provider = "prisma-client-js"
   output   = "../generated/prisma"
@@ -11,63 +10,130 @@ datasource db {
 
 //modelos
 model Usuario {
-id Int @id @default(autoincrement())
-Nombre String
+id                   Int          @id @default(autoincrement())
+Nombre               String
+correo               String       @unique
+role                 Role         @default(USER)
+password             String
+ultimoLogin          DateTime
+//Relaciones
+pedidos              Pedido[]
+reseñas              Reseña[]
+historial            HistorialPedidos[]
 }
 
 model Producto {
-id Int @id @default(autoincrement())
-
+id                   Int          @id @default(autoincrement())
+nombre               String
+descripcion          String
+precio               Decimal      @db.Decimal(10, 2)
+imagen               String       @default("image-not-found.jpg")
+fechaCreacion        DateTime     @default(now())
+fechaActualizacion   DateTime     @default(now()) @updatedAt
+//Relaciones
+categorias           Categoria[]
+etiquetas            Etiqueta[]
+pedidos              PedidoProducto[]
+promocion            Promocion[]
 }
 
+//Intermedia implicita
 model Categoria {
-id Int @id @default(autoincrement())
-
+id          Int                   @id @default(autoincrement())
+descripcion String
+//Relaciones
+productos Producto[]
 }
 
 //Intermedia Implicita ProductoEtiqueta
 model Etiqueta {
-id Int @id @default(autoincrement())
-
+id          Int                   @id @default(autoincrement())
+descripcion String
+//Relaciones
+productos Producto[]
 }
 
 model Pedido {
-id Int @id @default(autoincrement())
-
+id          Int                   @id @default(autoincrement())
+fechaPedido DateTime              @default(now())
+usuarioId   Int
+//Relaciones
+usuario        Usuario            @relation(fields: [usuarioId], references: [id])
+estado         Estado             @default(CARRITO)
+productos      PedidoProducto[]
+detalles       PedidoDetalle[]
+personalizado  ProductoPersonalizado[]
+historial      HistorialPedidos[]
 }
 
 model PedidoDetalle {
-id Int @id @default(autoincrement())
-
+id            Int                 @id @default(autoincrement())
+subtotal      Decimal
+impuestos     Decimal
+total         Decimal
+//Relaciones
+pedidos       Pedido[]
 }
 
 //Intermedia Explicita
 model PedidoProducto {
-id Int @id @default(autoincrement())
-
+//Pedido
+pedidoId       Int
+pedido         Pedido             @relation(fields: [pedidoId], references: [id])
+//Producto
+productoId     Int
+producto       Producto           @relation(fields: [productoId], references: [id])
+cantidad       Int
+//Llave primaria compuesta
+@@id([pedidoId, productoId])
 }
 
 model ProductoPersonalizado {
-id Int @id @default(autoincrement())
-
+id             Int                @id @default(autoincrement())
+nombre         String
+descripcion    String
+color          String
+material       String
+tamanno        Int                //1-Libro, 2-Libros, 3-Libros
+//Relaciones
+pedidos Pedido[]
 }
 
 model Reseña {
-id Int @id @default(autoincrement())
-
+id             Int                @id @default(autoincrement())
+calificacion   Int                //1 a 5 estrellas
+comentario     String
+//Relaciones
+usuario Usuario[]
 }
 
 model Promocion {
-id Int @id @default(autoincrement())
-
+id             Int                @id @default(autoincrement())
+descuento      Decimal
+fechaPromo     DateTime
+//Relaciones
+producto       Producto[]
 }
 
 model HistorialPedidos {
-id Int @id @default(autoincrement())
-
+//Pedido
+pedidoId       Int
+pedido         Pedido             @relation(fields: [pedidoId], references: [id])
+//Usuario
+usuarioId      Int
+usuario        Usuario            @relation(fields: [usuarioId], references: [id])
+//Llave primaria compuesta
+@@id([pedidoId, usuarioId])
 }
 
 enum Role {
 USER
 ADMIN
+}
+
+enum Estado {
+CARRITO
+EN_PROCESO
+EN_CAMINO
+COMPLETADO
 }
