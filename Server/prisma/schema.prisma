@@ -1,0 +1,73 @@
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+//modelos
+model Usuario {
+id Int @id @default(autoincrement())
+Nombre String
+}
+
+model Producto {
+id Int @id @default(autoincrement())
+
+}
+
+model Categoria {
+id Int @id @default(autoincrement())
+
+}
+
+//Intermedia Implicita ProductoEtiqueta
+model Etiqueta {
+id Int @id @default(autoincrement())
+
+}
+
+model Pedido {
+id Int @id @default(autoincrement())
+
+}
+
+model PedidoDetalle {
+id Int @id @default(autoincrement())
+
+}
+
+//Intermedia Explicita
+model PedidoProducto {
+id Int @id @default(autoincrement())
+
+}
+
+model ProductoPersonalizado {
+id Int @id @default(autoincrement())
+
+}
+
+model Reseña {
+id Int @id @default(autoincrement())
+
+}
+
+model Promocion {
+id Int @id @default(autoincrement())
+
+}
+
+model HistorialPedidos {
+id Int @id @default(autoincrement())
+
+}
+
+enum Role {
+USER
+ADMIN
+}
