@@ -10,130 +10,163 @@ datasource db {
 
 //modelos
 model Usuario {
-id                   Int          @id @default(autoincrement())
-Nombre               String
-correo               String       @unique
-role                 Role         @default(USER)
-password             String
-ultimoLogin          DateTime
-//Relaciones
-pedidos              Pedido[]
-reseñas              Reseña[]
-historial            HistorialPedidos[]
+  id                 Int                @id @default(autoincrement())
+  nombre             String
+  correo             String             @unique
+  role               Role               @default(USER)
+  password           String
+  ultimoLogin        DateTime           @default(now())
+  //Relaciones
+  pedidos            Pedido[]
+  reseñas            Reseña[]
+  historial          HistorialPedidos[]
 }
 
 model Producto {
-id                   Int          @id @default(autoincrement())
-nombre               String
-descripcion          String
-precio               Decimal      @db.Decimal(10, 2)
-imagen               String       @default("image-not-found.jpg")
-fechaCreacion        DateTime     @default(now())
-fechaActualizacion   DateTime     @default(now()) @updatedAt
-//Relaciones
-categorias           Categoria[]
-etiquetas            Etiqueta[]
-pedidos              PedidoProducto[]
-promocion            Promocion[]
+  id                 Int                 @id @default(autoincrement())
+  nombre             String
+  descripcion        String
+  precio             Decimal             @db.Decimal(10, 2)
+  cantidad           Int                 //En stock
+  imagen             String              @default("image-not-found.jpg")
+  fechaCreacion      DateTime            @default(now())
+  fechaActualizacion DateTime            @default(now()) @updatedAt
+  //Relaciones
+  categorias         ProductoCategoria[]
+  etiquetas          ProductoEtiqueta[]
+  pedidos            PedidoProducto[]
+  promocionId        Int
+  promocion          Promocion           @relation(fields: [promocionId], references: [id])
 }
 
-//Intermedia implicita
 model Categoria {
-id          Int                   @id @default(autoincrement())
-descripcion String
-//Relaciones
-productos Producto[]
+  id                Int                  @id @default(autoincrement())
+  descripcion       String
+  //Relaciones
+  productos   ProductoCategoria[]
 }
 
-//Intermedia Implicita ProductoEtiqueta
+//Intermedia explicita
+model ProductoCategoria {
+  productoId        Int
+  categoriaId       Int
+
+  producto          Producto             @relation(fields: [productoId], references: [id])
+  categoria         Categoria            @relation(fields: [categoriaId], references: [id])
+
+  @@id([productoId, categoriaId])
+}
+
+//Intermedia explicita
 model Etiqueta {
-id          Int                   @id @default(autoincrement())
-descripcion String
-//Relaciones
-productos Producto[]
+  id                Int                  @id @default(autoincrement())
+  descripcion       String
+  //Relaciones
+  productos   ProductoEtiqueta[]
+}
+
+//Intermedia Explicita
+model ProductoEtiqueta {
+  productoId        Int
+  etiquetaId        Int
+
+  producto          Producto            @relation(fields: [productoId], references: [id])
+  etiqueta          Etiqueta            @relation(fields: [etiquetaId], references: [id])
+
+  @@id([productoId, etiquetaId])
 }
 
 model Pedido {
-id          Int                   @id @default(autoincrement())
-fechaPedido DateTime              @default(now())
-usuarioId   Int
-//Relaciones
-usuario        Usuario            @relation(fields: [usuarioId], references: [id])
-estado         Estado             @default(CARRITO)
-productos      PedidoProducto[]
-detalles       PedidoDetalle[]
-personalizado  ProductoPersonalizado[]
-historial      HistorialPedidos[]
+  id                Int                  @id @default(autoincrement())
+  fechaPedido       DateTime             @default(now())
+  //Relaciones
+  usuarioId         Int
+  usuario           Usuario              @relation(fields: [usuarioId], references: [id])
+  estado            Estado               @default(CARRITO)
+  productos         PedidoProducto[]
+  detalles          PedidoDetalle[]
+  personalizado     ProductoPersonalizado[]
+  historial         HistorialPedidos[]
 }
 
 model PedidoDetalle {
-id            Int                 @id @default(autoincrement())
-subtotal      Decimal
-impuestos     Decimal
-total         Decimal
-//Relaciones
-pedidos       Pedido[]
+  id                Int                 @id @default(autoincrement())
+  cantidad          Int
+  subtotal          Decimal
+  impuestos         Decimal
+  total             Decimal
+  //Relaciones
+  pedidoId          Int                 @unique
+  pedido            Pedido              @relation(fields: [pedidoId], references: [id])
 }
 
 //Intermedia Explicita
 model PedidoProducto {
-//Pedido
-pedidoId       Int
-pedido         Pedido             @relation(fields: [pedidoId], references: [id])
-//Producto
-productoId     Int
-producto       Producto           @relation(fields: [productoId], references: [id])
-cantidad       Int
-//Llave primaria compuesta
-@@id([pedidoId, productoId])
+  //Pedido
+  pedidoId          Int
+  pedido            Pedido              @relation(fields: [pedidoId], references: [id])
+  //Producto
+  productoId        Int
+  producto          Producto            @relation(fields: [productoId], references: [id])
+  cantidad          Int
+
+  //Llave primaria compuesta
+  @@id([pedidoId, productoId])
 }
 
 model ProductoPersonalizado {
-id             Int                @id @default(autoincrement())
-nombre         String
-descripcion    String
-color          String
-material       String
-tamanno        Int                //1-Libro, 2-Libros, 3-Libros
-//Relaciones
-pedidos Pedido[]
+  id                Int                 @id @default(autoincrement())
+  nombre            String
+  descripcion       String
+  color             String
+  material          String
+  tamanno           Int                 //1-Libro, 2-Libros, 3-Libros
+  //Relaciones
+  pedidoId          Int
+  pedido            Pedido              @relation(fields: [pedidoId], references: [id])
+
 }
 
 model Reseña {
-id             Int                @id @default(autoincrement())
-calificacion   Int                //1 a 5 estrellas
-comentario     String
-//Relaciones
-usuario Usuario[]
+  id                Int                 @id @default(autoincrement())
+  calificacion      Int                 //1 a 5 estrellas
+  comentario        String
+  //Relaciones
+  usuarioId         Int
+  usuario           Usuario             @relation(fields: [usuarioId], references: [id])
 }
 
+//Revisar si pueden haber varias promos para el mismo producto?
 model Promocion {
-id             Int                @id @default(autoincrement())
-descuento      Decimal
-fechaPromo     DateTime
-//Relaciones
-producto       Producto[]
+  id                Int                 @id @default(autoincrement())
+  descuento         Decimal             //20% - 30% ....
+  fechaInicio       DateTime            //Rango de fechas
+  fechaFin          DateTime            //para las promociones
+  //Relaciones
+  productos   Producto[]
 }
 
+//REVISAR HISTORIAL PEDIDOS, A VER SI PUEDE SER 1:M O N:M
 model HistorialPedidos {
-//Pedido
-pedidoId       Int
-pedido         Pedido             @relation(fields: [pedidoId], references: [id])
-//Usuario
-usuarioId      Int
-usuario        Usuario            @relation(fields: [usuarioId], references: [id])
-//Llave primaria compuesta
-@@id([pedidoId, usuarioId])
+  //Pedido
+  pedidoId          Int
+  pedido            Pedido              @relation(fields: [pedidoId], references: [id])
+  //Usuario
+  usuarioId         Int
+  usuario           Usuario             @relation(fields: [usuarioId], references: [id])
+
+  //Llave primaria compuesta
+  @@id([pedidoId, usuarioId])
 }
 
 enum Role {
-USER
-ADMIN
+  USER        //Por defecto
+  ADMIN
 }
 
 enum Estado {
-CARRITO
-EN_PROCESO
-EN_CAMINO
-COMPLETADO
+  CARRITO     //Por defecto
+  EN_PROCESO
+  EN_CAMINO
+  COMPLETADO
 }
