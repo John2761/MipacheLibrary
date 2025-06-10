@@ -122,53 +122,96 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 
 exports.Prisma.UsuarioScalarFieldEnum = {
   id: 'id',
-  email: 'email',
   nombre: 'nombre',
+  correo: 'correo',
   role: 'role',
-  password: 'password'
+  password: 'password',
+  ultimoLogin: 'ultimoLogin'
 };
 
-exports.Prisma.VideojuegoScalarFieldEnum = {
+exports.Prisma.ProductoScalarFieldEnum = {
   id: 'id',
   nombre: 'nombre',
   descripcion: 'descripcion',
-  publicar: 'publicar',
   precio: 'precio',
+  stock: 'stock',
   imagen: 'imagen',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  fechaCreacion: 'fechaCreacion',
+  fechaActualizacion: 'fechaActualizacion',
+  promocionId: 'promocionId'
 };
 
-exports.Prisma.GeneroScalarFieldEnum = {
+exports.Prisma.CategoriaScalarFieldEnum = {
   id: 'id',
-  nombre: 'nombre',
-  updatedAt: 'updatedAt'
+  descripcion: 'descripcion'
 };
 
-exports.Prisma.PlataformaScalarFieldEnum = {
+exports.Prisma.ProductoCategoriaScalarFieldEnum = {
+  productoId: 'productoId',
+  categoriaId: 'categoriaId'
+};
+
+exports.Prisma.EtiquetaScalarFieldEnum = {
   id: 'id',
-  nombre: 'nombre',
-  updatedAt: 'updatedAt'
+  descripcion: 'descripcion'
 };
 
-exports.Prisma.PlataformaVideojuegoScalarFieldEnum = {
-  plataformaId: 'plataformaId',
-  videojuegoId: 'videojuegoId',
-  anno_lanzamiento: 'anno_lanzamiento',
-  updatedAt: 'updatedAt'
+exports.Prisma.ProductoEtiquetaScalarFieldEnum = {
+  productoId: 'productoId',
+  etiquetaId: 'etiquetaId'
 };
 
-exports.Prisma.OrdenScalarFieldEnum = {
+exports.Prisma.PedidoScalarFieldEnum = {
   id: 'id',
-  fechaOrden: 'fechaOrden',
-  usuarioId: 'usuarioId'
+  fechaPedido: 'fechaPedido',
+  usuarioId: 'usuarioId',
+  estado: 'estado'
 };
 
-exports.Prisma.OrdenVideojuegoScalarFieldEnum = {
-  ordenId: 'ordenId',
-  videojuegoId: 'videojuegoId',
+exports.Prisma.PedidoProductoScalarFieldEnum = {
   cantidad: 'cantidad',
-  updatedAt: 'updatedAt'
+  precioUnitario: 'precioUnitario',
+  subtotal: 'subtotal',
+  impuestos: 'impuestos',
+  total: 'total',
+  pedidoId: 'pedidoId',
+  productoId: 'productoId'
+};
+
+exports.Prisma.ProductoPersonalizadoScalarFieldEnum = {
+  id: 'id',
+  nombre: 'nombre',
+  descripcion: 'descripcion',
+  color: 'color',
+  material: 'material',
+  tamanno: 'tamanno',
+  logo: 'logo',
+  productoId: 'productoId',
+  pedidoId: 'pedidoId'
+};
+
+exports.Prisma.ReseñaScalarFieldEnum = {
+  id: 'id',
+  valoracion: 'valoracion',
+  comentario: 'comentario',
+  fecha: 'fecha',
+  moderada: 'moderada',
+  observacion: 'observacion',
+  usuarioId: 'usuarioId',
+  productoId: 'productoId'
+};
+
+exports.Prisma.PromocionScalarFieldEnum = {
+  id: 'id',
+  nombre: 'nombre',
+  descuento: 'descuento',
+  fechaInicio: 'fechaInicio',
+  fechaFin: 'fechaFin'
+};
+
+exports.Prisma.HistorialPedidosScalarFieldEnum = {
+  pedidoId: 'pedidoId',
+  usuarioId: 'usuarioId'
 };
 
 exports.Prisma.SortOrder = {
@@ -176,28 +219,44 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
-exports.Prisma.NullsOrder = {
-  first: 'first',
-  last: 'last'
-};
-
 exports.Prisma.UsuarioOrderByRelevanceFieldEnum = {
-  email: 'email',
   nombre: 'nombre',
+  correo: 'correo',
   password: 'password'
 };
 
-exports.Prisma.VideojuegoOrderByRelevanceFieldEnum = {
+exports.Prisma.ProductoOrderByRelevanceFieldEnum = {
   nombre: 'nombre',
   descripcion: 'descripcion',
   imagen: 'imagen'
 };
 
-exports.Prisma.GeneroOrderByRelevanceFieldEnum = {
-  nombre: 'nombre'
+exports.Prisma.CategoriaOrderByRelevanceFieldEnum = {
+  descripcion: 'descripcion'
 };
 
-exports.Prisma.PlataformaOrderByRelevanceFieldEnum = {
+exports.Prisma.EtiquetaOrderByRelevanceFieldEnum = {
+  descripcion: 'descripcion'
+};
+
+exports.Prisma.ProductoPersonalizadoOrderByRelevanceFieldEnum = {
+  nombre: 'nombre',
+  descripcion: 'descripcion',
+  color: 'color',
+  material: 'material'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
+exports.Prisma.ReseñaOrderByRelevanceFieldEnum = {
+  comentario: 'comentario',
+  observacion: 'observacion'
+};
+
+exports.Prisma.PromocionOrderByRelevanceFieldEnum = {
   nombre: 'nombre'
 };
 exports.Role = exports.$Enums.Role = {
@@ -205,14 +264,26 @@ exports.Role = exports.$Enums.Role = {
   ADMIN: 'ADMIN'
 };
 
+exports.Estado = exports.$Enums.Estado = {
+  CARRITO: 'CARRITO',
+  EN_PROCESO: 'EN_PROCESO',
+  EN_CAMINO: 'EN_CAMINO',
+  COMPLETADO: 'COMPLETADO'
+};
+
 exports.Prisma.ModelName = {
   Usuario: 'Usuario',
-  Videojuego: 'Videojuego',
-  Genero: 'Genero',
-  Plataforma: 'Plataforma',
-  PlataformaVideojuego: 'PlataformaVideojuego',
-  Orden: 'Orden',
-  OrdenVideojuego: 'OrdenVideojuego'
+  Producto: 'Producto',
+  Categoria: 'Categoria',
+  ProductoCategoria: 'ProductoCategoria',
+  Etiqueta: 'Etiqueta',
+  ProductoEtiqueta: 'ProductoEtiqueta',
+  Pedido: 'Pedido',
+  PedidoProducto: 'PedidoProducto',
+  ProductoPersonalizado: 'ProductoPersonalizado',
+  Reseña: 'Reseña',
+  Promocion: 'Promocion',
+  HistorialPedidos: 'HistorialPedidos'
 };
 
 /**

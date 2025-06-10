@@ -9,3 +9,164 @@ datasource db {
 }
 
 //modelos
+model Usuario {
+  id          Int                @id @default(autoincrement())
+  nombre      String
+  correo      String             @unique
+  role        Role               @default(USER)
+  password    String
+  ultimoLogin DateTime           @default(now())
+  //Relaciones 
+  pedidos     Pedido[]
+  reseñas    Reseña[]
+  historial   HistorialPedidos[]
+}
+
+model Producto {
+  id                 Int                     @id @default(autoincrement())
+  nombre             String
+  descripcion        String
+  precio             Decimal                 @db.Decimal(10, 2)
+  stock              Int //En stock
+  imagen             String                  @default("image-not-found.jpg")
+  fechaCreacion      DateTime                @default(now())
+  fechaActualizacion DateTime                @default(now()) @updatedAt
+  //Relaciones
+  personalizado      ProductoPersonalizado[]
+  categorias         ProductoCategoria[]
+  etiquetas          ProductoEtiqueta[]
+  pedidos            PedidoProducto[]
+  reseñas           Reseña[]
+  promocionId        Int
+  promocion          Promocion               @relation(fields: [promocionId], references: [id])
+}
+
+model Categoria {
+  id          Int                 @id @default(autoincrement())
+  descripcion String
+  //Relaciones 
+  productos   ProductoCategoria[]
+}
+
+//Intermedia explicita
+model ProductoCategoria {
+  productoId  Int
+  categoriaId Int
+  //Relaciones 
+  producto    Producto  @relation(fields: [productoId], references: [id])
+  categoria   Categoria @relation(fields: [categoriaId], references: [id])
+
+  @@id([productoId, categoriaId])
+}
+
+//Intermedia explicita
+model Etiqueta {
+  id          Int                @id @default(autoincrement())
+  descripcion String
+  //Relaciones 
+  productos   ProductoEtiqueta[]
+}
+
+//Intermedia Explicita
+model ProductoEtiqueta {
+  productoId Int
+  etiquetaId Int
+  //Relaciones 
+  producto   Producto @relation(fields: [productoId], references: [id])
+  etiqueta   Etiqueta @relation(fields: [etiquetaId], references: [id])
+
+  @@id([productoId, etiquetaId])
+}
+
+model Pedido {
+  id            Int                     @id @default(autoincrement())
+  fechaPedido   DateTime                @default(now())
+  //Relaciones 
+  usuarioId     Int
+  usuario       Usuario                 @relation(fields: [usuarioId], references: [id])
+  estado        Estado                  @default(CARRITO)
+  productos     PedidoProducto[]
+  personalizado ProductoPersonalizado[]
+  historial     HistorialPedidos[]
+}
+
+//Intermedia Explicita
+model PedidoProducto {
+  cantidad       Int
+  precioUnitario Decimal  @db.Decimal(10, 2)
+  subtotal       Decimal  @db.Decimal(10, 2)
+  impuestos      Decimal  @db.Decimal(10, 2)
+  total          Decimal  @db.Decimal(10, 2)
+  //Relaciones
+  pedidoId       Int
+  pedido         Pedido   @relation(fields: [pedidoId], references: [id])
+  productoId     Int
+  producto       Producto @relation(fields: [productoId], references: [id])
+
+  @@id([pedidoId, productoId])
+}
+
+model ProductoPersonalizado {
+  id          Int      @id @default(autoincrement())
+  nombre      String
+  descripcion String
+  color       String
+  material    String
+  tamanno     Int //1-Libro, 2-Libros, 3-Libros
+  logo        Boolean //0-A color, 1-B/N
+  //Relaciones
+  productoId  Int
+  producto    Producto @relation(fields: [productoId], references: [id])
+  pedidoId    Int
+  pedido      Pedido   @relation(fields: [pedidoId], references: [id])
+}
+
+model Reseña {
+  id          Int      @id @default(autoincrement())
+  valoracion  Int //1 a 5 estrellas
+  comentario  String?
+  fecha       DateTime @default(now())
+  moderada    Boolean //1-Ocultar 0-Visible
+  observacion String? //Motivo de la censura
+  //Relaciones 
+  usuarioId   Int
+  usuario     Usuario  @relation(fields: [usuarioId], references: [id])
+  productoId  Int
+  producto    Producto @relation(fields: [productoId], references: [id])
+}
+
+//Revisar si pueden haber varias promos para el mismo producto?
+model Promocion {
+  id          Int        @id @default(autoincrement())
+  nombre      String
+  descuento   Decimal    @db.Decimal(10, 2) //20% - 30% ....
+  fechaInicio DateTime //Rango de fechas
+  fechaFin    DateTime //para las promociones
+  //Relaciones 
+  productos   Producto[]
+}
+
+//REVISAR HISTORIAL PEDIDOS, A VER SI PUEDE SER 1:M O N:M
+model HistorialPedidos {
+  //Pedido
+  pedidoId  Int
+  pedido    Pedido  @relation(fields: [pedidoId], references: [id])
+  //Usuario
+  usuarioId Int
+  usuario   Usuario @relation(fields: [usuarioId], references: [id])
+
+  //Llave primaria compuesta
+  @@id([pedidoId, usuarioId])
+}
+
+enum Role {
+  USER //Por defecto
+  ADMIN
+}
+
+enum Estado {
+  CARRITO //Por defecto
+  EN_PROCESO
+  EN_CAMINO
+  COMPLETADO
+}
