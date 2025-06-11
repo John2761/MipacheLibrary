@@ -219,6 +219,11 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 exports.Prisma.UsuarioOrderByRelevanceFieldEnum = {
   nombre: 'nombre',
   correo: 'correo',
@@ -244,11 +249,6 @@ exports.Prisma.ProductoPersonalizadoOrderByRelevanceFieldEnum = {
   descripcion: 'descripcion',
   color: 'color',
   material: 'material'
-};
-
-exports.Prisma.NullsOrder = {
-  first: 'first',
-  last: 'last'
 };
 
 exports.Prisma.ReseñaOrderByRelevanceFieldEnum = {

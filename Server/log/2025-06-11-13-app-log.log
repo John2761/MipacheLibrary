@@ -1,0 +1,18 @@
+2025-06-11 13:12:22.632 error: 	John--Se produjo un error interno del servidor 
+Invalid `this.prisma.producto.findMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:10:50
+
+   7 //Get All
+   8 get = async (request: Request, response: Response, next: NextFunction) => {
+   9   try {
+→ 10     const listado = await this.prisma.producto.findMany(
+The table `producto` does not exist in the current database.
+2025-06-11 13:13:12.339 error: 	John--Se produjo un error interno del servidor 
+Invalid `this.prisma.producto.findMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:10:50
+
+   7 //Get All
+   8 get = async (request: Request, response: Response, next: NextFunction) => {
+   9   try {
+→ 10     const listado = await this.prisma.producto.findMany(
+The table `producto` does not exist in the current database.

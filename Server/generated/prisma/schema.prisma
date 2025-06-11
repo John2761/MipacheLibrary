@@ -15,7 +15,7 @@ model Usuario {
   correo      String             @unique
   role        Role               @default(USER)
   password    String
-  ultimoLogin DateTime           @default(now())
+  ultimoLogin DateTime?          @default(now())
   //Relaciones 
   pedidos     Pedido[]
   reseñas    Reseña[]
@@ -25,20 +25,20 @@ model Usuario {
 model Producto {
   id                 Int                     @id @default(autoincrement())
   nombre             String
-  descripcion        String
+  descripcion        String                  @db.VarChar(500)
   precio             Decimal                 @db.Decimal(10, 2)
-  stock              Int //En stock
+  stock              Int                     @default(0) //En stock
   imagen             String                  @default("image-not-found.jpg")
   fechaCreacion      DateTime                @default(now())
-  fechaActualizacion DateTime                @default(now()) @updatedAt
+  fechaActualizacion DateTime?               @default(now()) @updatedAt
   //Relaciones
   personalizado      ProductoPersonalizado[]
   categorias         ProductoCategoria[]
   etiquetas          ProductoEtiqueta[]
   pedidos            PedidoProducto[]
   reseñas           Reseña[]
-  promocionId        Int
-  promocion          Promocion               @relation(fields: [promocionId], references: [id])
+  promocionId        Int?
+  promocion          Promocion?              @relation(fields: [promocionId], references: [id])
 }
 
 model Categoria {
@@ -117,8 +117,8 @@ model ProductoPersonalizado {
   //Relaciones
   productoId  Int
   producto    Producto @relation(fields: [productoId], references: [id])
-  pedidoId    Int
-  pedido      Pedido   @relation(fields: [pedidoId], references: [id])
+  pedidoId    Int?
+  pedido      Pedido?  @relation(fields: [pedidoId], references: [id])
 }
 
 model Reseña {
@@ -126,7 +126,7 @@ model Reseña {
   valoracion  Int //1 a 5 estrellas
   comentario  String?
   fecha       DateTime @default(now())
-  moderada    Boolean //1-Ocultar 0-Visible
+  moderada    Boolean  @default(false) //T-Ocultar F-Visible
   observacion String? //Motivo de la censura
   //Relaciones 
   usuarioId   Int
