@@ -1,0 +1,39 @@
+.hero {
+  padding: 60px 20px;
+  text-align: center;
+  background-color: #f6e7c8;
+  width: 100%;
+}
+
+.hero h2 {
+  font-family: "Merriweather", serif;
+  font-size: 36px;
+  color: #6f7a53;
+}
+
+.hero p {
+  font-size: 18px;
+  max-width: 600px;
+  margin: 20px auto;
+  color: #6f7a53;
+}
+
+.hero button {
+  background-color: #c89267;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.hero button:hover {
+  background-color: #6f7a53;
+}
+
+img{
+  height: 772px;
+  width: 775px;
+  border-radius: 35%;
+}

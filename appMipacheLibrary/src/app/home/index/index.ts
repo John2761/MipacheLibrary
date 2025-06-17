@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {MatCardModule} from '@angular/material/card';
 
 @Component({
   selector: 'app-index',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './index.css'
 })
 export class Index {
-
+  
 }

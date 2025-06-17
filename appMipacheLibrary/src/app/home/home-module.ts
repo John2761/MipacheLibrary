@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HomeRoutingModule } from './home-routing-module';
 import { Index } from './index/index';
 import { AcercaDe } from './acerca-de/acerca-de';
-
+import { MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -12,7 +12,8 @@ import { AcercaDe } from './acerca-de/acerca-de';
   ],
   imports: [
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    MatCardModule
   ]
 })
 export class HomeModule { }

@@ -1,15 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PageNotFound } from './page-not-found/page-not-found';
-
-
+import { MatGridListModule} from '@angular/material/grid-list';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
-  declarations: [
-    PageNotFound
-  ],
+  declarations: [ PageNotFound ],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    MatButtonModule,
+    MatGridListModule
+  ],
+  exports: [PageNotFound],
 })
-export class ShareModule { }
+export class ShareModule { 
+
+}
