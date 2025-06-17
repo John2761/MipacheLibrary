@@ -27,8 +27,9 @@ model Producto {
   nombre             String
   descripcion        String                  @db.VarChar(500)
   precio             Decimal                 @db.Decimal(10, 2)
-  stock              Int                     @default(0) //En stock
+  stock              Int                     @default(0) //En inventario
   imagen             String                  @default("image-not-found.jpg")
+  autor              String?
   fechaCreacion      DateTime                @default(now())
   fechaActualizacion DateTime?               @default(now()) @updatedAt
   //Relaciones

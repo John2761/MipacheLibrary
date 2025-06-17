@@ -22,10 +22,12 @@ const main = async () => {
       data: {
         nombre: 'Erase una vez un corazón roto',
         descripcion:
-          'Libro de Stephanie Garber, Evangeline Fox se crio en la tienda de curiosidades de su amado padre, donde creció con leyendas sobre inmortales, como el trágico Príncipe de Corazones.',
+          'Evangeline Fox se crio en la tienda de curiosidades de su amado padre, '+
+          'donde creció con leyendas sobre inmortales, como el trágico Príncipe de Corazones.',
         precio: 11200.00,
         stock: 10,
         imagen: 'Erase-una-vez-un-corazon-roto.jpg',
+        autor: 'Stephanie Garber',
         fechaCreacion: new Date("2021-09-28"),
         categorias: {
           create: [
@@ -41,10 +43,12 @@ const main = async () => {
       data: {
         nombre: 'La balada de nunca jamás',
         descripcion:
-          'Libro de Stephanie Garber, Haciendo estragos en la vida de Evangeline, en lugar de un hechizo de amor, hay un encantamiento mortal. Para romperlo, Evangeline y Jacks tendrán que batallar con viejos amigos.',
+          'Haciendo estragos en la vida de Evangeline, en lugar de un hechizo de amor, '+
+          'hay un encantamiento mortal. Para romperlo, Evangeline y Jacks tendrán que batallar con viejos amigos.',
         precio: 11350.00,
         stock: 10,
         imagen: 'Balada-de-nunca-jamas.jpg',
+        autor: 'Stephanie Garber',
         fechaCreacion: new Date("2022-09-28"),
         categorias: {
           create: [
@@ -59,10 +63,12 @@ const main = async () => {
       data: {
         nombre: 'La maldición del amor verdadero',
         descripcion:
-          'Libro de Stephanie Garber, una chica y una batalla mortal para conseguir un final feliz.Evangeline Fox viajó al Glorioso Norte buscando su «felices para siempre» ',
+          'Una chica y una batalla mortal para conseguir un final feliz.Evangeline Fox'+
+          'viajó al Glorioso Norte buscando su «felices para siempre» ',
         precio: 14800.00,
         stock: 10,
         imagen: 'La-maldición-del-amor-verdadero.jpg',
+        autor: 'Stephanie Garber',
         fechaCreacion: new Date("2024-02-06"),
         categorias: {
           create: [
@@ -78,10 +84,12 @@ const main = async () => {
       data: {
         nombre: 'Una corte de rosas y espinas',
         descripcion:
-          'Sarah J. Maas, Cuando la cazadora de diecinueve años llamada Feyre mata a un lobo en el bosque, una criatura misteriosa parecida a una bestia llega para cobrar su recompensa',
+          'Cuando la cazadora de diecinueve años llamada Feyre mata a un lobo en el bosque '+
+           'una criatura misteriosa parecida a una bestia llega para cobrar su recompensa',
         precio: 14800.00,
         stock: 10,
         imagen: 'Una-corte-de-rosas-y-espinas.jpg',
+        autor: 'Sarah J. Maas',
         fechaCreacion: new Date("2015-05-05"),
         categorias: {
           create: [
@@ -98,10 +106,12 @@ const main = async () => {
       data: {
         nombre: 'De Sangre y cenizas',
         descripcion:
-          'Libro de Jennifer L. Armentrout, La historia sigue a Poppy, una joven que ha sido elegida para ser la Doncella, una figura sagrada que debe sacrificarse para mantener a salvo a su reino',
+          'La historia sigue a Poppy, una joven que ha sido elegida para ser la Doncella, '+
+          'una figura sagrada que debe sacrificarse para mantener a salvo a su reino',
         precio: 16800.00,
         stock: 10,
         imagen: 'De-Sangre-y-cenizas.jpg',
+        autor: 'Jennifer L. Armentrout',
         fechaCreacion: new Date("2021-10-05"),
         categorias: {
           create: [
@@ -117,10 +127,12 @@ const main = async () => {
       data: {
         nombre: 'Powerless',
         descripcion:
-          "Libro de  Lauren Roberts, cuando el rey decreta que todos los vulgares serán eliminados para preservar su sociedad de elite, carecer de poder se vuelve un crimen.",
+          'Cuando el rey decreta que todos los vulgares serán eliminados para preservar su '+
+          'sociedad de elite, carecer de poder se vuelve un crimen.',
         precio: 18000.00,
         stock: 10,
         imagen: 'Powerless.jpg',
+        autor: 'Lauren Roberts',
         fechaCreacion: new Date("2024-02-08"),
         categorias: {
           create: [

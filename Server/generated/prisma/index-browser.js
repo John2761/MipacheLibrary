@@ -136,6 +136,7 @@ exports.Prisma.ProductoScalarFieldEnum = {
   precio: 'precio',
   stock: 'stock',
   imagen: 'imagen',
+  autor: 'autor',
   fechaCreacion: 'fechaCreacion',
   fechaActualizacion: 'fechaActualizacion',
   promocionId: 'promocionId'
@@ -233,7 +234,8 @@ exports.Prisma.UsuarioOrderByRelevanceFieldEnum = {
 exports.Prisma.ProductoOrderByRelevanceFieldEnum = {
   nombre: 'nombre',
   descripcion: 'descripcion',
-  imagen: 'imagen'
+  imagen: 'imagen',
+  autor: 'autor'
 };
 
 exports.Prisma.CategoriaOrderByRelevanceFieldEnum = {
