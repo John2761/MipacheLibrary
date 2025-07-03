@@ -8,12 +8,12 @@ import { HomeModule } from './home/home-module';
 import { UsuarioModule } from './usuario/usuario-module';
 import { ProductosModule } from './productos/productos-module';
 import { PedidoModule } from './pedido/pedido-module';
-import { provideHttpClient } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient } from '@angular/common/http';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { HttpErrorInterceptorService } from './share/http-error-interceptor.service';
 
 @NgModule({
-  declarations: [
-    App
-  ],
+  declarations: [App],
   imports: [
     BrowserModule,
     CoreModule,
@@ -22,12 +22,20 @@ import { provideHttpClient } from '@angular/common/http';
     UsuarioModule,
     ProductosModule,
     PedidoModule,
+
+    //Siempre de ultimo
     AppRoutingModule,
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideHttpClient()
+    provideHttpClient(),
+    provideAnimations(),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptorService,
+      multi: true,
+    },
   ],
-  bootstrap: [App]
+  bootstrap: [App],
 })
-export class AppModule { }
+export class AppModule {}

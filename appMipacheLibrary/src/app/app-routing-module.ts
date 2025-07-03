@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { Index } from './home/index';
+import { inicio } from './home/inicio/inicio';
 import { PageNotFound } from './share/page-not-found/page-not-found';
 
 const routes: Routes = [
-  { path:'index',component: Index},
-  { path:'', redirectTo:'/index' ,pathMatch:'full'},
+  { path:'inicio',component: inicio},
+  { path:'', redirectTo:'/inicio' ,pathMatch:'full'},
   { path:'**', component: PageNotFound}
 ];
 

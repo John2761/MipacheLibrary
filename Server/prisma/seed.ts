@@ -1,5 +1,7 @@
+import { connect } from "http2";
 import { PrismaClient } from "../generated/prisma";
 import { categorias } from "./seeds/categorias";
+import { imagenes } from "./seeds/imagenes";
 import { usuarios } from "./seeds/usuarios";
 
 const prisma = new PrismaClient();
@@ -9,12 +11,12 @@ const main = async () => {
     await prisma.categoria.createMany({
       data:categorias
     })
+    
     //Usuarios - no tiene relaciones
     await prisma.usuario.createMany({
       data:usuarios
     })
-    //Plataforma - no tiene relaciones
-    
+
     //Productos - con relaciones incluidas
     //Productos
     await prisma.producto.create({
@@ -26,7 +28,9 @@ const main = async () => {
           'donde creció con leyendas sobre inmortales, como el trágico Príncipe de Corazones.',
         precio: 11200.00,
         stock: 10,
-        imagen: 'Erase-una-vez-un-corazon-roto.jpg',
+        imagenes: {
+            create: { ruta: 'Erase-una-vez-un-corazon-roto.jpg'}
+        },
         autor: 'Stephanie Garber',
         fechaCreacion: new Date("2021-09-28"),
         categorias: {
@@ -47,7 +51,9 @@ const main = async () => {
           'hay un encantamiento mortal. Para romperlo, Evangeline y Jacks tendrán que batallar con viejos amigos.',
         precio: 11350.00,
         stock: 10,
-        imagen: 'Balada-de-nunca-jamas.jpg',
+        imagenes: {
+            create: { ruta: 'Balada-de-nunca-jamas.jpg'},
+        },
         autor: 'Stephanie Garber',
         fechaCreacion: new Date("2022-09-28"),
         categorias: {
@@ -67,7 +73,9 @@ const main = async () => {
           'viajó al Glorioso Norte buscando su «felices para siempre» ',
         precio: 14800.00,
         stock: 10,
-        imagen: 'La-maldición-del-amor-verdadero.jpg',
+        imagenes: {
+            create: { ruta: 'La-maldición-del-amor-verdadero.jpg'}
+        },
         autor: 'Stephanie Garber',
         fechaCreacion: new Date("2024-02-06"),
         categorias: {
@@ -88,7 +96,9 @@ const main = async () => {
            'una criatura misteriosa parecida a una bestia llega para cobrar su recompensa',
         precio: 14800.00,
         stock: 10,
-        imagen: 'Una-corte-de-rosas-y-espinas.jpg',
+        imagenes: {
+            create: { ruta: 'Una-corte-de-rosas-y-espinas.jpg'}
+        }, 
         autor: 'Sarah J. Maas',
         fechaCreacion: new Date("2015-05-05"),
         categorias: {
@@ -110,7 +120,9 @@ const main = async () => {
           'una figura sagrada que debe sacrificarse para mantener a salvo a su reino',
         precio: 16800.00,
         stock: 10,
-        imagen: 'De-Sangre-y-cenizas.jpg',
+        imagenes: {
+            create: { ruta: 'De-Sangre-y-cenizas.jpg'} 
+        }, 
         autor: 'Jennifer L. Armentrout',
         fechaCreacion: new Date("2021-10-05"),
         categorias: {
@@ -131,7 +143,9 @@ const main = async () => {
           'sociedad de elite, carecer de poder se vuelve un crimen.',
         precio: 18000.00,
         stock: 10,
-        imagen: 'Powerless.jpg',
+        imagenes: {
+            create: { ruta: 'Powerless.jpg'}
+        },
         autor: 'Lauren Roberts',
         fechaCreacion: new Date("2024-02-08"),
         categorias: {

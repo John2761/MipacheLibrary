@@ -129,13 +129,18 @@ exports.Prisma.UsuarioScalarFieldEnum = {
   ultimoLogin: 'ultimoLogin'
 };
 
+exports.Prisma.ImagenScalarFieldEnum = {
+  id: 'id',
+  ruta: 'ruta',
+  productoId: 'productoId'
+};
+
 exports.Prisma.ProductoScalarFieldEnum = {
   id: 'id',
   nombre: 'nombre',
   descripcion: 'descripcion',
   precio: 'precio',
   stock: 'stock',
-  imagen: 'imagen',
   autor: 'autor',
   fechaCreacion: 'fechaCreacion',
   fechaActualizacion: 'fechaActualizacion',
@@ -144,7 +149,8 @@ exports.Prisma.ProductoScalarFieldEnum = {
 
 exports.Prisma.CategoriaScalarFieldEnum = {
   id: 'id',
-  descripcion: 'descripcion'
+  descripcion: 'descripcion',
+  promocionId: 'promocionId'
 };
 
 exports.Prisma.ProductoCategoriaScalarFieldEnum = {
@@ -176,19 +182,38 @@ exports.Prisma.PedidoProductoScalarFieldEnum = {
   impuestos: 'impuestos',
   total: 'total',
   pedidoId: 'pedidoId',
-  productoId: 'productoId'
+  productoId: 'productoId',
+  personalizadoId: 'personalizadoId'
 };
 
 exports.Prisma.ProductoPersonalizadoScalarFieldEnum = {
   id: 'id',
-  nombre: 'nombre',
-  descripcion: 'descripcion',
-  color: 'color',
-  material: 'material',
-  tamanno: 'tamanno',
   logo: 'logo',
+  precioTotal: 'precioTotal',
+  colorId: 'colorId',
+  materialId: 'materialId',
+  tamannoId: 'tamannoId',
   productoId: 'productoId',
   pedidoId: 'pedidoId'
+};
+
+exports.Prisma.PrecioMaterialScalarFieldEnum = {
+  id: 'id',
+  nombre: 'nombre',
+  precio: 'precio'
+};
+
+exports.Prisma.PrecioTamannoScalarFieldEnum = {
+  id: 'id',
+  nombre: 'nombre',
+  precio: 'precio'
+};
+
+exports.Prisma.PrecioColorScalarFieldEnum = {
+  id: 'id',
+  hexa: 'hexa',
+  nombre: 'nombre',
+  precio: 'precio'
 };
 
 exports.Prisma.ReseñaScalarFieldEnum = {
@@ -202,6 +227,13 @@ exports.Prisma.ReseñaScalarFieldEnum = {
   productoId: 'productoId'
 };
 
+exports.Prisma.ReporteScalarFieldEnum = {
+  id: 'id',
+  reportadaPor: 'reportadaPor',
+  motivo: 'motivo',
+  reseñaId: 'reseñaId'
+};
+
 exports.Prisma.PromocionScalarFieldEnum = {
   id: 'id',
   nombre: 'nombre',
@@ -211,8 +243,11 @@ exports.Prisma.PromocionScalarFieldEnum = {
 };
 
 exports.Prisma.HistorialPedidosScalarFieldEnum = {
-  pedidoId: 'pedidoId',
-  usuarioId: 'usuarioId'
+  id: 'id',
+  estado: 'estado',
+  fecha: 'fecha',
+  actualizadoPorId: 'actualizadoPorId',
+  pedidoId: 'pedidoId'
 };
 
 exports.Prisma.SortOrder = {
@@ -231,10 +266,13 @@ exports.Prisma.UsuarioOrderByRelevanceFieldEnum = {
   password: 'password'
 };
 
+exports.Prisma.ImagenOrderByRelevanceFieldEnum = {
+  ruta: 'ruta'
+};
+
 exports.Prisma.ProductoOrderByRelevanceFieldEnum = {
   nombre: 'nombre',
   descripcion: 'descripcion',
-  imagen: 'imagen',
   autor: 'autor'
 };
 
@@ -246,16 +284,27 @@ exports.Prisma.EtiquetaOrderByRelevanceFieldEnum = {
   descripcion: 'descripcion'
 };
 
-exports.Prisma.ProductoPersonalizadoOrderByRelevanceFieldEnum = {
-  nombre: 'nombre',
-  descripcion: 'descripcion',
-  color: 'color',
-  material: 'material'
+exports.Prisma.PrecioMaterialOrderByRelevanceFieldEnum = {
+  nombre: 'nombre'
+};
+
+exports.Prisma.PrecioTamannoOrderByRelevanceFieldEnum = {
+  nombre: 'nombre'
+};
+
+exports.Prisma.PrecioColorOrderByRelevanceFieldEnum = {
+  hexa: 'hexa',
+  nombre: 'nombre'
 };
 
 exports.Prisma.ReseñaOrderByRelevanceFieldEnum = {
   comentario: 'comentario',
   observacion: 'observacion'
+};
+
+exports.Prisma.ReporteOrderByRelevanceFieldEnum = {
+  reportadaPor: 'reportadaPor',
+  motivo: 'motivo'
 };
 
 exports.Prisma.PromocionOrderByRelevanceFieldEnum = {
@@ -267,14 +316,15 @@ exports.Role = exports.$Enums.Role = {
 };
 
 exports.Estado = exports.$Enums.Estado = {
-  CARRITO: 'CARRITO',
-  EN_PROCESO: 'EN_PROCESO',
-  EN_CAMINO: 'EN_CAMINO',
+  EN_CARRITO: 'EN_CARRITO',
+  PAGADO: 'PAGADO',
+  EN_ENTREGA: 'EN_ENTREGA',
   COMPLETADO: 'COMPLETADO'
 };
 
 exports.Prisma.ModelName = {
   Usuario: 'Usuario',
+  Imagen: 'Imagen',
   Producto: 'Producto',
   Categoria: 'Categoria',
   ProductoCategoria: 'ProductoCategoria',
@@ -283,7 +333,11 @@ exports.Prisma.ModelName = {
   Pedido: 'Pedido',
   PedidoProducto: 'PedidoProducto',
   ProductoPersonalizado: 'ProductoPersonalizado',
+  PrecioMaterial: 'PrecioMaterial',
+  PrecioTamanno: 'PrecioTamanno',
+  PrecioColor: 'PrecioColor',
   Reseña: 'Reseña',
+  Reporte: 'Reporte',
   Promocion: 'Promocion',
   HistorialPedidos: 'HistorialPedidos'
 };

@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
 
 @Component({
-  selector: 'app-index',
+  selector: 'app-inicio',
   standalone: false,
-  templateUrl: './index.html',
-  styleUrl: './index.css'
+  templateUrl: './inicio.html',
+  styleUrl: './inicio.css'
 })
-export class Index {
+
+export class inicio {
   
 }
