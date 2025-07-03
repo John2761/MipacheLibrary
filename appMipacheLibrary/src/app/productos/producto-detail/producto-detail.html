@@ -1,0 +1,31 @@
+<mat-card class="home-card" appearance="outlined">
+  <mat-card-header class="card-header-secondary">
+    <mat-card-title-group>
+      <mat-card-title></mat-card-title>
+    </mat-card-title-group>
+  </mat-card-header>
+  <mat-card-content class="home-card-content">
+    <img mat-card-image [src]="'http://localhost:3000/images/'" [alt]="" />
+    <div class="producto-details-info">
+      <div>
+        <p></p>
+      </div>
+      <div>
+        <p class="price"></p>
+      </div>
+      <div>
+        <p class="title">Categorias:</p>
+        <mat-chip-listbox aria-label="Generos">
+          <mat-chip-option class="chip-tertiary"> </mat-chip-option>
+        </mat-chip-listbox>
+      </div>
+      <div></div>
+    </div>
+  </mat-card-content>
+  <mat-card-content class="home-card-content">
+    <p class="mat-body text">Producto no encontrado</p>
+  </mat-card-content>
+  <mat-card-actions class="detail-actions">
+    <button mat-button class="bg-primary">Regresar</button>
+  </mat-card-actions>
+</mat-card>
