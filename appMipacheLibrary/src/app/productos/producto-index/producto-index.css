@@ -5,9 +5,11 @@
   gap: 16px;
   padding: 16px;
 }
+
 .filter {
   width: 90%;
 }
+
 .full-width {
   width: 100%;
 }
@@ -29,13 +31,14 @@
   flex-direction: column;
   justify-content: space-between;
   height: auto;
-
+}
   mat-card {
     display: flex;
     flex-direction: column;
     height: 100%;
     width: 100%;
     border-radius: 10px;
+    background-color:  #c89267; 
   }
 
   mat-card-header.title {
@@ -54,7 +57,7 @@
     padding-top: 0;
     padding-left: 16px;
     padding-right: 16px;
-
+    
     .price {
       font-size: 1.2em;
       font-weight: bold;
@@ -74,9 +77,8 @@
   img {
     width: 100%;
     object-fit: cover;
-    width: 100%;
   }
-}
+  
 @media (min-width: 600px) and (max-width: 959px) {
   .product-list {
     grid-template-columns: repeat(

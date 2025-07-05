@@ -5,11 +5,11 @@ export const imagenes = [
   },
   //2
   {
-    ruta: "Balada-de-nunca-jamas.jpg",
+    ruta: "La-balada-de-nunca-jamas.jpg",
   },
   //3
   {
-    ruta: "La-maldición-del-amor-verdadero.jpg",
+    ruta: "La-maldicion-del-amor-verdadero.jpg",
   },
   //4
   {

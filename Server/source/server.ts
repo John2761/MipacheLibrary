@@ -35,7 +35,7 @@ app.use(ErrorMiddleware.handleError);
 
 //Acceso a las imágenes
 app.use('/images', express.static(
-        path.join(__dirname, 'assets/images')));
+        path.resolve(__dirname, '../assets/images')));
 
 app.listen(port, () => {
   console.log(`http://localhost:${port}`);

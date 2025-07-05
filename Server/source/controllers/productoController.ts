@@ -5,26 +5,49 @@ export class ProductoController {
   prisma = new PrismaClient();
 
   //Get All
-  get = async (request: Request, response: Response, next: NextFunction) => {
-    try {
-      const listado = await this.prisma.producto.findMany({
-        orderBy: {
-          nombre: "asc",
-        },
-        include: {
-          categorias: {
-            include: {
-              categoria: true,
-            },
+get = async (request: Request, response: Response, next: NextFunction) => {
+  try {
+    const productos = await this.prisma.producto.findMany({
+      orderBy: {
+        nombre: "asc",
+      },
+      include: {
+        imagenes: true,
+        categorias: {
+          include: {
+            categoria: true,
           },
         },
-      });
-      //Respuesta
-      response.json(listado);
-    } catch (error) {
-      next(error);
+      },
+    });
+
+    // 🧠 Función para convertir nombre → nombre-de-archivo
+    function normalizarNombre(nombre: string): string {
+      return nombre
+        .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // quita tildes
+        .replace(/\s+/g, "-")                             // espacios a guiones
+        .replace(/[^a-zA-Z0-9\-]/g, "")                   // solo letras, números, guiones
+        + ".jpg";
     }
-  };
+
+    const productosConImagenPrincipal = productos.map((producto) => {
+      const nombreEsperado = normalizarNombre(producto.nombre);
+      console.log(`→ Producto: ${producto.nombre} → Esperado: ${nombreEsperado}`);
+      const imagenPrincipal = producto.imagenes.find(
+        (img) => img.ruta === nombreEsperado
+      );
+
+      return {
+        ...producto,
+        imagenPrincipal: imagenPrincipal?.ruta ?? "image-not-found.jpg",
+      };
+    });
+
+    response.json(productosConImagenPrincipal);
+  } catch (error) {
+    next(error);
+  }
+};
 
   //Obtener por Id
   getById = async (
