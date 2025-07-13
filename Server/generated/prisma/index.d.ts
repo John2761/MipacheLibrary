@@ -4693,6 +4693,7 @@ export namespace Prisma {
     descripcion: string | null
     precio: Decimal | null
     stock: number | null
+    imagenPrincipal: string | null
     autor: string | null
     fechaCreacion: Date | null
     fechaActualizacion: Date | null
@@ -4705,6 +4706,7 @@ export namespace Prisma {
     descripcion: string | null
     precio: Decimal | null
     stock: number | null
+    imagenPrincipal: string | null
     autor: string | null
     fechaCreacion: Date | null
     fechaActualizacion: Date | null
@@ -4717,6 +4719,7 @@ export namespace Prisma {
     descripcion: number
     precio: number
     stock: number
+    imagenPrincipal: number
     autor: number
     fechaCreacion: number
     fechaActualizacion: number
@@ -4745,6 +4748,7 @@ export namespace Prisma {
     descripcion?: true
     precio?: true
     stock?: true
+    imagenPrincipal?: true
     autor?: true
     fechaCreacion?: true
     fechaActualizacion?: true
@@ -4757,6 +4761,7 @@ export namespace Prisma {
     descripcion?: true
     precio?: true
     stock?: true
+    imagenPrincipal?: true
     autor?: true
     fechaCreacion?: true
     fechaActualizacion?: true
@@ -4769,6 +4774,7 @@ export namespace Prisma {
     descripcion?: true
     precio?: true
     stock?: true
+    imagenPrincipal?: true
     autor?: true
     fechaCreacion?: true
     fechaActualizacion?: true
@@ -4868,6 +4874,7 @@ export namespace Prisma {
     descripcion: string
     precio: Decimal
     stock: number
+    imagenPrincipal: string
     autor: string | null
     fechaCreacion: Date
     fechaActualizacion: Date | null
@@ -4899,6 +4906,7 @@ export namespace Prisma {
     descripcion?: boolean
     precio?: boolean
     stock?: boolean
+    imagenPrincipal?: boolean
     autor?: boolean
     fechaCreacion?: boolean
     fechaActualizacion?: boolean
@@ -4921,13 +4929,14 @@ export namespace Prisma {
     descripcion?: boolean
     precio?: boolean
     stock?: boolean
+    imagenPrincipal?: boolean
     autor?: boolean
     fechaCreacion?: boolean
     fechaActualizacion?: boolean
     promocionId?: boolean
   }
 
-  export type ProductoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nombre" | "descripcion" | "precio" | "stock" | "autor" | "fechaCreacion" | "fechaActualizacion" | "promocionId", ExtArgs["result"]["producto"]>
+  export type ProductoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nombre" | "descripcion" | "precio" | "stock" | "imagenPrincipal" | "autor" | "fechaCreacion" | "fechaActualizacion" | "promocionId", ExtArgs["result"]["producto"]>
   export type ProductoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     imagenes?: boolean | Producto$imagenesArgs<ExtArgs>
     personalizado?: boolean | Producto$personalizadoArgs<ExtArgs>
@@ -4956,6 +4965,7 @@ export namespace Prisma {
       descripcion: string
       precio: Prisma.Decimal
       stock: number
+      imagenPrincipal: string
       autor: string | null
       fechaCreacion: Date
       fechaActualizacion: Date | null
@@ -5341,6 +5351,7 @@ export namespace Prisma {
     readonly descripcion: FieldRef<"Producto", 'String'>
     readonly precio: FieldRef<"Producto", 'Decimal'>
     readonly stock: FieldRef<"Producto", 'Int'>
+    readonly imagenPrincipal: FieldRef<"Producto", 'String'>
     readonly autor: FieldRef<"Producto", 'String'>
     readonly fechaCreacion: FieldRef<"Producto", 'DateTime'>
     readonly fechaActualizacion: FieldRef<"Producto", 'DateTime'>
@@ -19781,6 +19792,7 @@ export namespace Prisma {
     descripcion: 'descripcion',
     precio: 'precio',
     stock: 'stock',
+    imagenPrincipal: 'imagenPrincipal',
     autor: 'autor',
     fechaCreacion: 'fechaCreacion',
     fechaActualizacion: 'fechaActualizacion',
@@ -19970,6 +19982,7 @@ export namespace Prisma {
   export const ProductoOrderByRelevanceFieldEnum: {
     nombre: 'nombre',
     descripcion: 'descripcion',
+    imagenPrincipal: 'imagenPrincipal',
     autor: 'autor'
   };
 
@@ -20225,6 +20238,7 @@ export namespace Prisma {
     descripcion?: StringFilter<"Producto"> | string
     precio?: DecimalFilter<"Producto"> | Decimal | DecimalJsLike | number | string
     stock?: IntFilter<"Producto"> | number
+    imagenPrincipal?: StringFilter<"Producto"> | string
     autor?: StringNullableFilter<"Producto"> | string | null
     fechaCreacion?: DateTimeFilter<"Producto"> | Date | string
     fechaActualizacion?: DateTimeNullableFilter<"Producto"> | Date | string | null
@@ -20244,6 +20258,7 @@ export namespace Prisma {
     descripcion?: SortOrder
     precio?: SortOrder
     stock?: SortOrder
+    imagenPrincipal?: SortOrder
     autor?: SortOrderInput | SortOrder
     fechaCreacion?: SortOrder
     fechaActualizacion?: SortOrderInput | SortOrder
@@ -20267,6 +20282,7 @@ export namespace Prisma {
     descripcion?: StringFilter<"Producto"> | string
     precio?: DecimalFilter<"Producto"> | Decimal | DecimalJsLike | number | string
     stock?: IntFilter<"Producto"> | number
+    imagenPrincipal?: StringFilter<"Producto"> | string
     autor?: StringNullableFilter<"Producto"> | string | null
     fechaCreacion?: DateTimeFilter<"Producto"> | Date | string
     fechaActualizacion?: DateTimeNullableFilter<"Producto"> | Date | string | null
@@ -20286,6 +20302,7 @@ export namespace Prisma {
     descripcion?: SortOrder
     precio?: SortOrder
     stock?: SortOrder
+    imagenPrincipal?: SortOrder
     autor?: SortOrderInput | SortOrder
     fechaCreacion?: SortOrder
     fechaActualizacion?: SortOrderInput | SortOrder
@@ -20306,6 +20323,7 @@ export namespace Prisma {
     descripcion?: StringWithAggregatesFilter<"Producto"> | string
     precio?: DecimalWithAggregatesFilter<"Producto"> | Decimal | DecimalJsLike | number | string
     stock?: IntWithAggregatesFilter<"Producto"> | number
+    imagenPrincipal?: StringWithAggregatesFilter<"Producto"> | string
     autor?: StringNullableWithAggregatesFilter<"Producto"> | string | null
     fechaCreacion?: DateTimeWithAggregatesFilter<"Producto"> | Date | string
     fechaActualizacion?: DateTimeNullableWithAggregatesFilter<"Producto"> | Date | string | null
@@ -21236,6 +21254,7 @@ export namespace Prisma {
     descripcion: string
     precio: Decimal | DecimalJsLike | number | string
     stock?: number
+    imagenPrincipal?: string
     autor?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
@@ -21254,6 +21273,7 @@ export namespace Prisma {
     descripcion: string
     precio: Decimal | DecimalJsLike | number | string
     stock?: number
+    imagenPrincipal?: string
     autor?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
@@ -21271,6 +21291,7 @@ export namespace Prisma {
     descripcion?: StringFieldUpdateOperationsInput | string
     precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     stock?: IntFieldUpdateOperationsInput | number
+    imagenPrincipal?: StringFieldUpdateOperationsInput | string
     autor?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -21289,6 +21310,7 @@ export namespace Prisma {
     descripcion?: StringFieldUpdateOperationsInput | string
     precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     stock?: IntFieldUpdateOperationsInput | number
+    imagenPrincipal?: StringFieldUpdateOperationsInput | string
     autor?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -21307,6 +21329,7 @@ export namespace Prisma {
     descripcion: string
     precio: Decimal | DecimalJsLike | number | string
     stock?: number
+    imagenPrincipal?: string
     autor?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
@@ -21318,6 +21341,7 @@ export namespace Prisma {
     descripcion?: StringFieldUpdateOperationsInput | string
     precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     stock?: IntFieldUpdateOperationsInput | number
+    imagenPrincipal?: StringFieldUpdateOperationsInput | string
     autor?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -21329,6 +21353,7 @@ export namespace Prisma {
     descripcion?: StringFieldUpdateOperationsInput | string
     precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     stock?: IntFieldUpdateOperationsInput | number
+    imagenPrincipal?: StringFieldUpdateOperationsInput | string
     autor?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -22399,6 +22424,7 @@ export namespace Prisma {
     descripcion?: SortOrder
     precio?: SortOrder
     stock?: SortOrder
+    imagenPrincipal?: SortOrder
     autor?: SortOrder
     fechaCreacion?: SortOrder
     fechaActualizacion?: SortOrder
@@ -22418,6 +22444,7 @@ export namespace Prisma {
     descripcion?: SortOrder
     precio?: SortOrder
     stock?: SortOrder
+    imagenPrincipal?: SortOrder
     autor?: SortOrder
     fechaCreacion?: SortOrder
     fechaActualizacion?: SortOrder
@@ -22430,6 +22457,7 @@ export namespace Prisma {
     descripcion?: SortOrder
     precio?: SortOrder
     stock?: SortOrder
+    imagenPrincipal?: SortOrder
     autor?: SortOrder
     fechaCreacion?: SortOrder
     fechaActualizacion?: SortOrder
@@ -24803,6 +24831,7 @@ export namespace Prisma {
     descripcion: string
     precio: Decimal | DecimalJsLike | number | string
     stock?: number
+    imagenPrincipal?: string
     autor?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
@@ -24820,6 +24849,7 @@ export namespace Prisma {
     descripcion: string
     precio: Decimal | DecimalJsLike | number | string
     stock?: number
+    imagenPrincipal?: string
     autor?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
@@ -24852,6 +24882,7 @@ export namespace Prisma {
     descripcion?: StringFieldUpdateOperationsInput | string
     precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     stock?: IntFieldUpdateOperationsInput | number
+    imagenPrincipal?: StringFieldUpdateOperationsInput | string
     autor?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -24869,6 +24900,7 @@ export namespace Prisma {
     descripcion?: StringFieldUpdateOperationsInput | string
     precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     stock?: IntFieldUpdateOperationsInput | number
+    imagenPrincipal?: StringFieldUpdateOperationsInput | string
     autor?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -25315,6 +25347,7 @@ export namespace Prisma {
     descripcion: string
     precio: Decimal | DecimalJsLike | number | string
     stock?: number
+    imagenPrincipal?: string
     autor?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
@@ -25332,6 +25365,7 @@ export namespace Prisma {
     descripcion: string
     precio: Decimal | DecimalJsLike | number | string
     stock?: number
+    imagenPrincipal?: string
     autor?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
@@ -25380,6 +25414,7 @@ export namespace Prisma {
     descripcion?: StringFieldUpdateOperationsInput | string
     precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     stock?: IntFieldUpdateOperationsInput | number
+    imagenPrincipal?: StringFieldUpdateOperationsInput | string
     autor?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -25397,6 +25432,7 @@ export namespace Prisma {
     descripcion?: StringFieldUpdateOperationsInput | string
     precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     stock?: IntFieldUpdateOperationsInput | number
+    imagenPrincipal?: StringFieldUpdateOperationsInput | string
     autor?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -25469,6 +25505,7 @@ export namespace Prisma {
     descripcion: string
     precio: Decimal | DecimalJsLike | number | string
     stock?: number
+    imagenPrincipal?: string
     autor?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
@@ -25486,6 +25523,7 @@ export namespace Prisma {
     descripcion: string
     precio: Decimal | DecimalJsLike | number | string
     stock?: number
+    imagenPrincipal?: string
     autor?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
@@ -25532,6 +25570,7 @@ export namespace Prisma {
     descripcion?: StringFieldUpdateOperationsInput | string
     precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     stock?: IntFieldUpdateOperationsInput | number
+    imagenPrincipal?: StringFieldUpdateOperationsInput | string
     autor?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -25549,6 +25588,7 @@ export namespace Prisma {
     descripcion?: StringFieldUpdateOperationsInput | string
     precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     stock?: IntFieldUpdateOperationsInput | number
+    imagenPrincipal?: StringFieldUpdateOperationsInput | string
     autor?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -25750,6 +25790,7 @@ export namespace Prisma {
     descripcion: string
     precio: Decimal | DecimalJsLike | number | string
     stock?: number
+    imagenPrincipal?: string
     autor?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
@@ -25767,6 +25808,7 @@ export namespace Prisma {
     descripcion: string
     precio: Decimal | DecimalJsLike | number | string
     stock?: number
+    imagenPrincipal?: string
     autor?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
@@ -25853,6 +25895,7 @@ export namespace Prisma {
     descripcion?: StringFieldUpdateOperationsInput | string
     precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     stock?: IntFieldUpdateOperationsInput | number
+    imagenPrincipal?: StringFieldUpdateOperationsInput | string
     autor?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -25870,6 +25913,7 @@ export namespace Prisma {
     descripcion?: StringFieldUpdateOperationsInput | string
     precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     stock?: IntFieldUpdateOperationsInput | number
+    imagenPrincipal?: StringFieldUpdateOperationsInput | string
     autor?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -25952,6 +25996,7 @@ export namespace Prisma {
     descripcion: string
     precio: Decimal | DecimalJsLike | number | string
     stock?: number
+    imagenPrincipal?: string
     autor?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
@@ -25969,6 +26014,7 @@ export namespace Prisma {
     descripcion: string
     precio: Decimal | DecimalJsLike | number | string
     stock?: number
+    imagenPrincipal?: string
     autor?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
@@ -26096,6 +26142,7 @@ export namespace Prisma {
     descripcion?: StringFieldUpdateOperationsInput | string
     precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     stock?: IntFieldUpdateOperationsInput | number
+    imagenPrincipal?: StringFieldUpdateOperationsInput | string
     autor?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -26113,6 +26160,7 @@ export namespace Prisma {
     descripcion?: StringFieldUpdateOperationsInput | string
     precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     stock?: IntFieldUpdateOperationsInput | number
+    imagenPrincipal?: StringFieldUpdateOperationsInput | string
     autor?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -26323,6 +26371,7 @@ export namespace Prisma {
     descripcion: string
     precio: Decimal | DecimalJsLike | number | string
     stock?: number
+    imagenPrincipal?: string
     autor?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
@@ -26340,6 +26389,7 @@ export namespace Prisma {
     descripcion: string
     precio: Decimal | DecimalJsLike | number | string
     stock?: number
+    imagenPrincipal?: string
     autor?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
@@ -26425,6 +26475,7 @@ export namespace Prisma {
     descripcion?: StringFieldUpdateOperationsInput | string
     precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     stock?: IntFieldUpdateOperationsInput | number
+    imagenPrincipal?: StringFieldUpdateOperationsInput | string
     autor?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -26442,6 +26493,7 @@ export namespace Prisma {
     descripcion?: StringFieldUpdateOperationsInput | string
     precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     stock?: IntFieldUpdateOperationsInput | number
+    imagenPrincipal?: StringFieldUpdateOperationsInput | string
     autor?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -26542,6 +26594,7 @@ export namespace Prisma {
     descripcion: string
     precio: Decimal | DecimalJsLike | number | string
     stock?: number
+    imagenPrincipal?: string
     autor?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
@@ -26559,6 +26612,7 @@ export namespace Prisma {
     descripcion: string
     precio: Decimal | DecimalJsLike | number | string
     stock?: number
+    imagenPrincipal?: string
     autor?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
@@ -26626,6 +26680,7 @@ export namespace Prisma {
     descripcion?: StringFilter<"Producto"> | string
     precio?: DecimalFilter<"Producto"> | Decimal | DecimalJsLike | number | string
     stock?: IntFilter<"Producto"> | number
+    imagenPrincipal?: StringFilter<"Producto"> | string
     autor?: StringNullableFilter<"Producto"> | string | null
     fechaCreacion?: DateTimeFilter<"Producto"> | Date | string
     fechaActualizacion?: DateTimeNullableFilter<"Producto"> | Date | string | null
@@ -27312,6 +27367,7 @@ export namespace Prisma {
     descripcion: string
     precio: Decimal | DecimalJsLike | number | string
     stock?: number
+    imagenPrincipal?: string
     autor?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
@@ -27327,6 +27383,7 @@ export namespace Prisma {
     descripcion?: StringFieldUpdateOperationsInput | string
     precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     stock?: IntFieldUpdateOperationsInput | number
+    imagenPrincipal?: StringFieldUpdateOperationsInput | string
     autor?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -27344,6 +27401,7 @@ export namespace Prisma {
     descripcion?: StringFieldUpdateOperationsInput | string
     precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     stock?: IntFieldUpdateOperationsInput | number
+    imagenPrincipal?: StringFieldUpdateOperationsInput | string
     autor?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -27361,6 +27419,7 @@ export namespace Prisma {
     descripcion?: StringFieldUpdateOperationsInput | string
     precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     stock?: IntFieldUpdateOperationsInput | number
+    imagenPrincipal?: StringFieldUpdateOperationsInput | string
     autor?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null

@@ -66,18 +66,6 @@ html {
     padding-bottom: 0.5em;
   }
 
-  .bg-primary {
-    background-color: #{map.get(theme.$primary-palette, 50)};
-  }
-
-  .bg-secondary {
-    background-color: #{map.get(theme.$secondary-palette, 50)};
-  }
-
-  .bg-tertiary {
-    background-color: #{map.get(theme.$tertiary-palette, 50)};
-  }
-
   .primary-title {
     background-color: #{map.get(theme.$primary-palette, 60)};
     font-weight: bold;
@@ -93,4 +81,47 @@ html {
     font-weight: bold;
   }
 
+}
+
+body {
+  background-color: #fdf6e3; // Beige claro agradable
+  color: #212121; // Texto oscuro
+  font-family: Open-Sans, Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* Títulos */
+h1, h2, h3, .mat-card-title, .mat-h1 {
+  color: #2c2c2c;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* Inputs */
+.mat-form-field-label,
+.mat-label {
+  color: #333 !important;
+}
+
+/* Texto en inputs */
+.mat-input-element {
+  color: #212121;
+}
+
+/* Cards */
+mat-card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+/* Imagen en cards */
+mat-card mat-card-image {
+  object-fit: cover;
+  height: 180px;
+}
+
+/* Botones icono */
+button[mat-icon-button] mat-icon {
+  color: #1a237e;
 }

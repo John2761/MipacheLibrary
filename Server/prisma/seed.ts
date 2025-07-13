@@ -52,7 +52,7 @@ const main = async () => {
         precio: 11350.00,
         stock: 10,
         imagenes: {
-            create: { ruta: 'Balada-de-nunca-jamas.jpg'},
+            create: { ruta: 'La-balada-de-nunca-jamas.jpg'},
         },
         autor: 'Stephanie Garber',
         fechaCreacion: new Date("2022-09-28"),
@@ -74,7 +74,7 @@ const main = async () => {
         precio: 14800.00,
         stock: 10,
         imagenes: {
-            create: { ruta: 'La-maldición-del-amor-verdadero.jpg'}
+            create: { ruta: 'La-maldicion-del-amor-verdadero.jpg'}
         },
         autor: 'Stephanie Garber',
         fechaCreacion: new Date("2024-02-06"),

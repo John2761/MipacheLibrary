@@ -27,6 +27,7 @@ CREATE TABLE `Producto` (
     `descripcion` VARCHAR(500) NOT NULL,
     `precio` DECIMAL(10, 2) NOT NULL,
     `stock` INTEGER NOT NULL DEFAULT 0,
+    `imagenPrincipal` VARCHAR(191) NOT NULL DEFAULT '',
     `autor` VARCHAR(191) NULL,
     `fechaCreacion` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `fechaActualizacion` DATETIME(3) NULL DEFAULT CURRENT_TIMESTAMP(3),
