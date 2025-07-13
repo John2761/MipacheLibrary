@@ -32,3 +32,45 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-mdc-snack-bar-container.warning .mat-mdc-button-base {
   color: black !important;
 }
+
+/* Fondo general claro */
+body {
+  background-color: #fdf6e3; /* Beige claro amigable */
+  color: #212121; /* Texto oscuro por defecto */
+}
+
+/* Títulos y encabezados */
+h1, h2, .mat-card-title, .mat-h1 {
+  color: #2c2c2c !important;
+  font-weight: 600;
+}
+
+/* Labels y textos de formularios */
+.mat-form-field-label,
+.mat-label,
+.mat-form-field-wrapper {
+  color: #5d4037 !important;
+}
+
+.mat-form-field-infix input,
+.mat-input-element {
+  color: #212121;
+  background-color: white;
+}
+
+/* Bordes y campos */
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #a1887f;
+}
+
+/* Estilo para el botón de búsqueda */
+button[mat-icon-button] mat-icon {
+  color: #6d4c41; /* azul oscuro */
+}
+
+/* Cards visualmente agradables */
+mat-card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}

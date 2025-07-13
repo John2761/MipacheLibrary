@@ -6,7 +6,7 @@ export interface ProductoModel {
     nombre: string;
     descripcion: string;
     precio: number; // Puede usarse number en lugar de Decimal
-    imagen: string;
+    imagenPrincipal: string;
     autor: string,
     createdAt: Date;
     updatedAt: Date;

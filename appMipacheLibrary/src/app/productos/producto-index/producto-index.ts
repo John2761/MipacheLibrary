@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { ProductoService } from '../../share/services/producto.service';
 import { NotificationService } from '../../share/notification-service';
 import { Router } from '@angular/router';
@@ -8,11 +9,13 @@ import { ProductoModel } from '../../share/models/ProductoModel';
   selector: 'app-producto-index',
   standalone: false,
   templateUrl: './producto-index.html',
-  styleUrl: './producto-index.css',
+  styleUrls: ['./producto-index.css'],
 })
 export class ProductoIndex {
-  //Respuesta del API
-  datos: any;
+  datos: ProductoModel[] = [];
+  datosOriginales: ProductoModel[] = [];
+
+  filtroNombre = new FormControl('');
 
   constructor(
     private pdService: ProductoService,
@@ -25,17 +28,35 @@ export class ProductoIndex {
   //Listar todos los Productos del API
   listProductos() {
   //localhost:3000/Producto
+
+  this.listProductos() {
     this.pdService.get().subscribe((respuesta: ProductoModel[]) => {
-      console.log(respuesta);
       this.datos = respuesta;
+
+      this.datosOriginales = respuesta;
     });
   }
 
-  detalle(id:Number){
-    this.router.navigate(['/producto',id])
+  this.buscarPorNombre() {
+    const valor = this.filtroNombre.value?.trim().toLowerCase();
+    if (!valor) {
+      this.datos = this.datosOriginales;
+    } else {
+      this.datos = this.datosOriginales.filter(p =>
+        p.nombre.toLowerCase().includes(valor)
+      );
+    }
   }
 
-  comprar(producto:ProductoModel){
-    this.noti.success('Compra','Producto comprado: '+producto.nombre,5000)
+  detalle(id: number) {
+    this.router.navigate(['/producto', id]);
+  }
+
+  comprar(producto: ProductoModel) {
+    this.noti.success('Compra', 'Producto comprado: ' + producto.nombre, 5000);
+  }
+
+  trackById(index: number, item: ProductoModel): number {
+    return item.id;
   }
 }

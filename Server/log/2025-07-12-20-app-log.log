@@ -1,0 +1,47 @@
+2025-07-12 20:31:22.858 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.producto.findMany()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\productoController.ts:10:50
+
+   7   //Get All
+   8 get = async (request: Request, response: Response, next: NextFunction) => {
+   9   try {
+→ 10     const productos = await this.prisma.producto.findMany(
+Can't reach database server at `localhost:3306`
+
+Please make sure your database server is running at `localhost:3306`.
+2025-07-12 20:36:29.286 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.producto.findMany()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\productoController.ts:10:50
+
+   7   //Get All
+   8 get = async (request: Request, response: Response, next: NextFunction) => {
+   9   try {
+→ 10     const productos = await this.prisma.producto.findMany(
+The table `producto` does not exist in the current database.
+2025-07-12 20:37:15.263 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.producto.findMany()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\productoController.ts:10:50
+
+   7   //Get All
+   8 get = async (request: Request, response: Response, next: NextFunction) => {
+   9   try {
+→ 10     const productos = await this.prisma.producto.findMany(
+The table `producto` does not exist in the current database.
+2025-07-12 20:46:15.432 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.producto.findMany()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\productoController.ts:10:50
+
+   7   //Get All
+   8 get = async (request: Request, response: Response, next: NextFunction) => {
+   9   try {
+→ 10     const productos = await this.prisma.producto.findMany(
+The table `producto` does not exist in the current database.
+2025-07-12 20:46:34.591 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.producto.findMany()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\productoController.ts:10:50
+
+   7   //Get All
+   8 get = async (request: Request, response: Response, next: NextFunction) => {
+   9   try {
+→ 10     const productos = await this.prisma.producto.findMany(
+The table `producto` does not exist in the current database.
