@@ -1,8 +1,7 @@
-import { connect } from "http2";
 import { PrismaClient } from "../generated/prisma";
 import { categorias } from "./seeds/categorias";
-import { imagenes } from "./seeds/imagenes";
 import { usuarios } from "./seeds/usuarios";
+import { promociones } from "./seeds/promociones";
 
 const prisma = new PrismaClient();
 const main = async () => {
@@ -15,6 +14,11 @@ const main = async () => {
     //Usuarios - no tiene relaciones
     await prisma.usuario.createMany({
       data:usuarios
+    })
+
+    //Promociones - no tiene relaciones
+    await prisma.promocion.createMany({
+      data:promociones
     })
 
     //Productos - con relaciones incluidas
@@ -52,7 +56,7 @@ const main = async () => {
         precio: 11350.00,
         stock: 10,
         imagenes: {
-            create: { ruta: 'Balada-de-nunca-jamas.jpg'},
+            create: { ruta: 'La-balada-de-nunca-jamas.jpg'},
         },
         autor: 'Stephanie Garber',
         fechaCreacion: new Date("2022-09-28"),
@@ -74,10 +78,11 @@ const main = async () => {
         precio: 14800.00,
         stock: 10,
         imagenes: {
-            create: { ruta: 'La-maldición-del-amor-verdadero.jpg'}
+            create: { ruta: 'La-maldicion-del-amor-verdadero.jpg'}
         },
         autor: 'Stephanie Garber',
         fechaCreacion: new Date("2024-02-06"),
+        promocionId: 1,
         categorias: {
           create: [
                 { categoria: { connect: { id: 4 } } },

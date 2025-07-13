@@ -1,0 +1,39 @@
+:host {
+  display: block;
+  padding: 1.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+
+strong {
+  color: #34495e;
+}
+
+.valor-descuento {
+  font-weight: bold;
+  color: #e74c3c;
+}
+
+.tipo-promocion {
+  text-transform: capitalize;
+}
+
+.resaltado {
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border-left: 5px solid #3498db;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}

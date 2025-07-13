@@ -12,6 +12,7 @@ import { HTTP_INTERCEPTORS, provideHttpClient } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { HttpErrorInterceptorService } from './share/http-error-interceptor.service';
 import { ProductosModule } from './productos/productos-module';
+import { PromocionModule } from './promocion/promocion-module';
 
 @NgModule({
   declarations: [App],
@@ -24,6 +25,7 @@ import { ProductosModule } from './productos/productos-module';
     UsuarioModule,
     PedidoModule,
     ProductosModule,
+    PromocionModule,
     //Siempre de ultimo
     AppRoutingModule,
   ],

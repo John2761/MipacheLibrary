@@ -22,13 +22,12 @@ export class ProductoIndex {
     this.listProductos();
   }
 
-      //Listar todos los Productos del API
+  //Listar todos los Productos del API
   listProductos() {
-    //localhost:3000/Producto
+  //localhost:3000/Producto
     this.pdService.get().subscribe((respuesta: ProductoModel[]) => {
       console.log(respuesta);
       this.datos = respuesta;
-      
     });
   }
 
