@@ -19,6 +19,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { ProductoIndex } from './producto-index/producto-index';
 import { ProductoDetail } from './producto-detail/producto-detail';
 import { ProductoAdmin } from './producto-admin/producto-admin';
@@ -30,9 +31,8 @@ import { ProductoDiag } from './producto-diag/producto-diag';
     ProductoIndex,
     ProductoDetail,
     ProductoAdmin,
-    ProductoDetail,
-    ProductoDiag,
-    ProductoAdmin
+    ProductoDiag
+    
   ],
   imports: [
     MatCardModule,
@@ -51,6 +51,7 @@ import { ProductoDiag } from './producto-diag/producto-diag';
     MatMenuModule,
     MatInputModule,
     MatSelectModule,
+    MatFormFieldModule,
     CommonModule,
     ProductosRoutingModule,
     ReactiveFormsModule

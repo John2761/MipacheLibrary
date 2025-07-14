@@ -58,23 +58,58 @@ get = async (request: Request, response: Response, next: NextFunction) => {
     try {
       let idProducto = parseInt(request.params.id);
       if (isNaN(idProducto)) {
-        next(AppError.badRequest("El ID no es válido"));
+        return next(AppError.badRequest("El ID no es válido"));
       }
-      const objProducto = await this.prisma.producto.findFirst({
+      const objProducto = await this.prisma.producto.findUnique({
         where: { id: idProducto },
         include: {
-          categorias: true,
-        },
+          imagenes: true,
+          categorias: {
+            include: {
+              categoria: true
+            }
+          },
+          etiquetas: {
+            include: {
+              etiqueta: true
+            }
+          },
+          resenas: {
+            include: {
+              usuario: true
+            }
+          }
+        }
       });
-      if (objProducto) {
-        response.status(200).json(objProducto);
-      } else {
-        next(AppError.notFound("No existe el Producto"));
-      }
-    } catch (error: any) {
-      next(error);
-    }
-  };
+      if (!objProducto) {
+        return next(AppError.notFound("No existe el producto"));
+      } 
+
+      // Buscar imagen principal
+    const nombreEsperado = objProducto.nombre
+      .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+      .replace(/\s+/g, "-")
+      .replace(/[^a-zA-Z0-9\-]/g, "") + ".jpg";
+
+    const imagenPrincipal = objProducto.imagenes.find(
+      (img) => img.ruta === nombreEsperado
+    )?.ruta ?? "image-not-found.jpg";
+
+    // Calcular promedio de valoraciones
+    const promedioValoracion = objProducto.resenas.length > 0
+      ? objProducto.resenas.reduce((sum, r) => sum + r.valoracion, 0) / objProducto.resenas.length
+      : null;
+
+    // Enviar respuesta estructurada
+    response.status(200).json({
+      ...objProducto,
+      imagenPrincipal,
+      promedioValoracion
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 
   search = async (request: Request, response: Response, next: NextFunction) => {
     try {

@@ -136,7 +136,7 @@ CREATE TABLE `PrecioColor` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `Reseña` (
+CREATE TABLE `Resena` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `valoracion` INTEGER NOT NULL,
     `comentario` VARCHAR(191) NULL,
@@ -227,13 +227,13 @@ ALTER TABLE `ProductoPersonalizado` ADD CONSTRAINT `ProductoPersonalizado_produc
 ALTER TABLE `ProductoPersonalizado` ADD CONSTRAINT `ProductoPersonalizado_pedidoId_productoId_fkey` FOREIGN KEY (`pedidoId`, `productoId`) REFERENCES `PedidoProducto`(`pedidoId`, `productoId`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Reseña` ADD CONSTRAINT `Reseña_usuarioId_fkey` FOREIGN KEY (`usuarioId`) REFERENCES `Usuario`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `Resena` ADD CONSTRAINT `Resena_usuarioId_fkey` FOREIGN KEY (`usuarioId`) REFERENCES `Usuario`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Reseña` ADD CONSTRAINT `Reseña_productoId_fkey` FOREIGN KEY (`productoId`) REFERENCES `Producto`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `Resena` ADD CONSTRAINT `Resena_productoId_fkey` FOREIGN KEY (`productoId`) REFERENCES `Producto`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Reporte` ADD CONSTRAINT `Reporte_reseñaId_fkey` FOREIGN KEY (`reseñaId`) REFERENCES `Reseña`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `Reporte` ADD CONSTRAINT `Reporte_reseñaId_fkey` FOREIGN KEY (`reseñaId`) REFERENCES `Resena`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `HistorialPedidos` ADD CONSTRAINT `HistorialPedidos_actualizadoPorId_fkey` FOREIGN KEY (`actualizadoPorId`) REFERENCES `Usuario`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;

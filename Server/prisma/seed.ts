@@ -9,152 +9,159 @@ const main = async () => {
   try {
     //categorias - no tiene relaciones
     await prisma.categoria.createMany({
-      data:categorias
-    })
-    
+      data: categorias,
+    });
+
     //Usuarios - no tiene relaciones
     await prisma.usuario.createMany({
-      data:usuarios
-    })
+      data: usuarios,
+    });
 
     //Productos - con relaciones incluidas
     //Productos
     await prisma.producto.create({
       //Instancia de producto 1
       data: {
-        nombre: 'Erase una vez un corazón roto',
+        nombre: "Erase una vez un corazón roto",
         descripcion:
-          'Evangeline Fox se crio en la tienda de curiosidades de su amado padre, '+
-          'donde creció con leyendas sobre inmortales, como el trágico Príncipe de Corazones.',
-        precio: 11200.00,
+          "Evangeline Fox se crio en la tienda de curiosidades de su amado padre, " +
+          "donde creció con leyendas sobre inmortales, como el trágico Príncipe de Corazones.",
+        precio: 11200.0,
         stock: 10,
         imagenes: {
-            create: { ruta: 'Erase-una-vez-un-corazon-roto.jpg'}
+          create: { ruta: "Erase-una-vez-un-corazon-roto.jpg" },
         },
-        autor: 'Stephanie Garber',
+        autor: "Stephanie Garber",
         fechaCreacion: new Date("2021-09-28"),
         categorias: {
           create: [
-                { categoria: { connect: { id: 4 } } },
-                { categoria: { connect: { id: 5 } } }
-          ]
+            { categoria: { connect: { id: 4 } } },
+            { categoria: { connect: { id: 5 } } },
+          ],
         },
-        },
-      });
+      },
+    });
 
     //Instancia de producto 2
     await prisma.producto.create({
       data: {
-        nombre: 'La balada de nunca jamás',
+        nombre: "La balada de nunca jamás",
         descripcion:
-          'Haciendo estragos en la vida de Evangeline, en lugar de un hechizo de amor, '+
-          'hay un encantamiento mortal. Para romperlo, Evangeline y Jacks tendrán que batallar con viejos amigos.',
-        precio: 11350.00,
+          "Haciendo estragos en la vida de Evangeline, en lugar de un hechizo de amor, " +
+          "hay un encantamiento mortal. Para romperlo, Evangeline y Jacks tendrán que batallar con viejos amigos.",
+        precio: 11350.0,
         stock: 10,
         imagenes: {
-            create: { ruta: 'La-balada-de-nunca-jamas.jpg'},
+          create: { ruta: "La-balada-de-nunca-jamas.jpg" },
         },
-        autor: 'Stephanie Garber',
+        autor: "Stephanie Garber",
         fechaCreacion: new Date("2022-09-28"),
         categorias: {
-          create: [
-                { categoria: { connect: { id: 4 } } }
-          ]
-        }
+          create: [{ categoria: { connect: { id: 4 } } }],
+        },
       },
-  });
+    });
 
     //Instancia de producto 3
     await prisma.producto.create({
       data: {
-        nombre: 'La maldición del amor verdadero',
+        nombre: "La maldición del amor verdadero",
         descripcion:
-          'Una chica y una batalla mortal para conseguir un final feliz.Evangeline Fox'+
-          'viajó al Glorioso Norte buscando su «felices para siempre» ',
-        precio: 14800.00,
+          "Una chica y una batalla mortal para conseguir un final feliz.Evangeline Fox" +
+          "viajó al Glorioso Norte buscando su «felices para siempre» ",
+        precio: 14800.0,
         stock: 10,
         imagenes: {
-            create: { ruta: 'La-maldicion-del-amor-verdadero.jpg'}
+          create: { ruta: "La-maldicion-del-amor-verdadero.jpg" },
         },
-        autor: 'Stephanie Garber',
+        autor: "Stephanie Garber",
         fechaCreacion: new Date("2024-02-06"),
         categorias: {
           create: [
-                { categoria: { connect: { id: 4 } } },
-                { categoria: { connect: { id: 5 } } }
-          ]
-        }
+            { categoria: { connect: { id: 4 } } },
+            { categoria: { connect: { id: 5 } } },
+          ],
+        },
       },
     });
 
     //Instancia de producto 4
     await prisma.producto.create({
       data: {
-        nombre: 'Una corte de rosas y espinas',
+        nombre: "Una corte de rosas y espinas",
         descripcion:
-          'Cuando la cazadora de diecinueve años llamada Feyre mata a un lobo en el bosque '+
-           'una criatura misteriosa parecida a una bestia llega para cobrar su recompensa',
-        precio: 14800.00,
+          "Cuando la cazadora de diecinueve años llamada Feyre mata a un lobo en el bosque " +
+          "una criatura misteriosa parecida a una bestia llega para cobrar su recompensa",
+        precio: 14800.0,
         stock: 10,
+        imagenPrincipal: "Una-corte-de-rosas-y-espinas.jpg",
         imagenes: {
-            create: { ruta: 'Una-corte-de-rosas-y-espinas.jpg'}
-        }, 
-        autor: 'Sarah J. Maas',
+          create: [
+            { ruta: "Una-corte-de-rosas-y-espinas.jpg" },
+            { ruta: "Una-corte-1.jpg" },
+            { ruta: "Una-corte-2.jpg" },
+          ],
+        },
+        autor: "Sarah J. Maas",
         fechaCreacion: new Date("2015-05-05"),
         categorias: {
           create: [
-                { categoria: { connect: { id: 4 } } },
-                { categoria: { connect: { id: 5 } } },
-                { categoria: { connect: { id: 8 } } },
-                { categoria: { connect: { id: 9 } } }
-          ]
-        }
+            { categoria: { connect: { id: 4 } } },
+            { categoria: { connect: { id: 5 } } },
+            { categoria: { connect: { id: 8 } } },
+            { categoria: { connect: { id: 9 } } },
+          ],
+        },
       },
     });
     //Instancia de producto 5
     await prisma.producto.create({
       data: {
-        nombre: 'De Sangre y cenizas',
+        nombre: "De Sangre y cenizas",
         descripcion:
-          'La historia sigue a Poppy, una joven que ha sido elegida para ser la Doncella, '+
-          'una figura sagrada que debe sacrificarse para mantener a salvo a su reino',
-        precio: 16800.00,
+          "La historia sigue a Poppy, una joven que ha sido elegida para ser la Doncella, " +
+          "una figura sagrada que debe sacrificarse para mantener a salvo a su reino",
+        precio: 16800.0,
         stock: 10,
+        imagenPrincipal: "De-sangre-y-cenizas.jpg",
         imagenes: {
-            create: { ruta: 'De-Sangre-y-cenizas.jpg'} 
-        }, 
-        autor: 'Jennifer L. Armentrout',
+          create: [
+            { ruta: "De-sangre-y-cenizas.jpg" },
+            { ruta: "De-sangre-1.jpg" },
+          ],
+        },
+        autor: "Jennifer L. Armentrout",
         fechaCreacion: new Date("2021-10-05"),
         categorias: {
           create: [
-                { categoria: { connect: { id: 2 } } },
-                { categoria: { connect: { id: 4 } } },
-                { categoria: { connect: { id: 9 } } }
-          ]
-        }
+            { categoria: { connect: { id: 2 } } },
+            { categoria: { connect: { id: 4 } } },
+            { categoria: { connect: { id: 9 } } },
+          ],
+        },
       },
     });
     //Instancia de producto 6
     await prisma.producto.create({
       data: {
-        nombre: 'Powerless',
+        nombre: "Powerless",
         descripcion:
-          'Cuando el rey decreta que todos los vulgares serán eliminados para preservar su '+
-          'sociedad de elite, carecer de poder se vuelve un crimen.',
-        precio: 18000.00,
+          "Cuando el rey decreta que todos los vulgares serán eliminados para preservar su " +
+          "sociedad de elite, carecer de poder se vuelve un crimen.",
+        precio: 18000.0,
         stock: 10,
         imagenes: {
-            create: { ruta: 'Powerless.jpg'}
+          create: { ruta: "Powerless.jpg" },
         },
-        autor: 'Lauren Roberts',
+        autor: "Lauren Roberts",
         fechaCreacion: new Date("2024-02-08"),
         categorias: {
           create: [
-                { categoria: { connect: { id: 2 } } },
-                { categoria: { connect: { id: 4 } } },
-                { categoria: { connect: { id: 9 } } }
-          ]
-        }
+            { categoria: { connect: { id: 2 } } },
+            { categoria: { connect: { id: 4 } } },
+            { categoria: { connect: { id: 9 } } },
+          ],
+        },
       },
     });
 
@@ -272,11 +279,10 @@ const main = async () => {
       },
     });
     */
-
   } catch (error) {
     throw error;
   }
 };
 main().catch((err) => {
-  console.warn('Error al ejecutar el seeder:\n', err);
+  console.warn("Error al ejecutar el seeder:\n", err);
 });

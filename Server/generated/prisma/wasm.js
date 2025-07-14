@@ -217,7 +217,7 @@ exports.Prisma.PrecioColorScalarFieldEnum = {
   precio: 'precio'
 };
 
-exports.Prisma.ReseñaScalarFieldEnum = {
+exports.Prisma.ResenaScalarFieldEnum = {
   id: 'id',
   valoracion: 'valoracion',
   comentario: 'comentario',
@@ -299,7 +299,7 @@ exports.Prisma.PrecioColorOrderByRelevanceFieldEnum = {
   nombre: 'nombre'
 };
 
-exports.Prisma.ReseñaOrderByRelevanceFieldEnum = {
+exports.Prisma.ResenaOrderByRelevanceFieldEnum = {
   comentario: 'comentario',
   observacion: 'observacion'
 };
@@ -338,7 +338,7 @@ exports.Prisma.ModelName = {
   PrecioMaterial: 'PrecioMaterial',
   PrecioTamanno: 'PrecioTamanno',
   PrecioColor: 'PrecioColor',
-  Reseña: 'Reseña',
+  Resena: 'Resena',
   Reporte: 'Reporte',
   Promocion: 'Promocion',
   HistorialPedidos: 'HistorialPedidos'

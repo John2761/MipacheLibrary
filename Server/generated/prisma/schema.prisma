@@ -18,7 +18,7 @@ model Usuario {
   ultimoLogin DateTime?          @default(now())
   //Relaciones 
   pedidos     Pedido[]
-  reseñas    Reseña[]
+  resenas     Resena[]
   historial   HistorialPedidos[]
 }
 
@@ -36,6 +36,7 @@ model Producto {
   descripcion        String                  @db.VarChar(500)
   precio             Decimal                 @db.Decimal(10, 2)
   stock              Int                     @default(0) //En inventario
+  imagenPrincipal    String                  @default("")
   autor              String?
   fechaCreacion      DateTime                @default(now())
   fechaActualizacion DateTime?               @default(now()) @updatedAt
@@ -45,7 +46,7 @@ model Producto {
   categorias         ProductoCategoria[]
   etiquetas          ProductoEtiqueta[]
   pedidos            PedidoProducto[]
-  reseñas           Reseña[]
+  resenas            Resena[]
   promocionId        Int?
   promocion          Promocion?              @relation(fields: [promocionId], references: [id])
 }
@@ -160,7 +161,7 @@ model PrecioColor {
   personalizado ProductoPersonalizado[]
 }
 
-model Reseña {
+model Resena {
   id          Int       @id @default(autoincrement())
   valoracion  Int //1 a 5 estrellas
   comentario  String?
@@ -176,12 +177,12 @@ model Reseña {
 }
 
 model Reporte {
-  id           Int     @id @default(autoincrement())
-  reportadaPor String  @default("Anonimo")
-  motivo       String  @db.VarChar(500)
+  id           Int    @id @default(autoincrement())
+  reportadaPor String @default("Anonimo")
+  motivo       String @db.VarChar(500)
   //Relaciones
   reseñaId    Int
-  reseña      Reseña @relation(fields: [reseñaId], references: [id])
+  resena       Resena @relation(fields: [reseñaId], references: [id])
 }
 
 //Revisar si pueden haber varias promos para el mismo producto?

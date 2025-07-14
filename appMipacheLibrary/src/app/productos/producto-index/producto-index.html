@@ -27,6 +27,8 @@
       <mat-card
         class="product-card"
         *ngFor="let item of datos; trackBy: trackById"
+        [routerLink]="['/producto', item.id]"
+        style="cursor: pointer"
       >
         
           <img
@@ -36,7 +38,7 @@
             (error)="item.imagenPrincipal = 'image-not-found.jpg'"
             
           /> <!-- hacer que funcione el clic de detalle -->
-        
+       
         <mat-card-content>
           <h3 class="card-title">{{ item.nombre }}</h3>
           <p class="card-author">{{ item.autor }}</p>

@@ -1,31 +1,116 @@
-<mat-card class="home-card" appearance="outlined">
-  <mat-card-header class="card-header-secondary">
-    <mat-card-title-group>
-      <mat-card-title></mat-card-title>
-    </mat-card-title-group>
-  </mat-card-header>
-  <mat-card-content class="home-card-content">
-    <img mat-card-image [src]="'http://localhost:3000/images/'" [alt]="" />
-    <div class="producto-details-info">
-      <div>
-        <p></p>
+<div class="detalle-container" *ngIf="datos">
+  <!-- Galeria de imagenes -->
+  <div class="detalle-header">
+    <div class="galeria">
+      <img class="imagen-principal" [src]="getImgUrl(imagenSeleccionada)" alt="Imagen principal" />
+      <div class="miniaturas" *ngIf="datos.imagenes?.length > 1">
+        <img
+          *ngFor="let img of datos.imagenes"
+          [src]="getImgUrl(img.ruta)"
+          [class.seleccionada]="img.ruta === imagenSeleccionada"
+          (click)="cambiarImagen(img.ruta)"
+        />
       </div>
-      <div>
-        <p class="price"></p>
-      </div>
-      <div>
-        <p class="title">Categorias:</p>
-        <mat-chip-listbox aria-label="Categorias">
-          <mat-chip-option class="chip-tertiary"> </mat-chip-option>
-        </mat-chip-listbox>
-      </div>
-      <div></div>
     </div>
-  </mat-card-content>
-  <mat-card-content class="home-card-content">
-    <p class="mat-body text">Producto no encontrado</p>
-  </mat-card-content>
-  <mat-card-actions class="detail-actions">
-    <button mat-button class="bg-primary">Regresar</button>
-  </mat-card-actions>
-</mat-card>
+
+    <!-- Informacion principal -->
+    <div class="info-producto">
+      <h1>{{ datos.nombre }}</h1>
+      <p class="autor"><strong>Autor:</strong> {{ datos.autor }}</p>
+      <p class="stock"  *ngIf="datos.stock > 0">Stock disponible</p>
+      <p class="precio">₡{{ datos.precio | number: '1.0-0' }}</p>
+      <p class="valoracion">
+        Valoración: 
+        <ng-container *ngIf="datos.promedioValoracion; else sinValoracion">
+          <span *ngFor="let star of [1,2,3,4,5]">
+            <mat-icon color="warn">{{ star <= datos.promedioValoracion ? 'star' : 'star_border' }}</mat-icon>
+          </span>
+          ({{ datos.promedioValoracion | number: '1.1-1' }})
+        </ng-container>
+        <ng-template #sinValoracion>
+          <span class="text-muted">Sin valoraciones</span>
+        </ng-template>
+      </p>
+      <button mat-raised-button color="primary" (click)="comprar()" class="boton-compra">Agregar a la bolsa</button>
+    </div>
+  </div>
+
+  <!-- Descripción -->
+  <section class="descripcion">
+    <h2>Descripción</h2>
+    <p>{{ datos.descripcion || 'No disponible' }}</p>
+  </section>
+
+  <!-- Ficha técnica -->
+<section class="ficha">
+  <h3>Ficha técnica</h3>
+  <div class="ficha-grid">
+    <div><strong>Editorial:</strong> {{ datos.editorial || 'N/A' }}</div>
+    <div><strong>Año:</strong> {{ datos.anio || 'N/A' }}</div>
+    <div><strong>Formato:</strong> {{ datos.formato || 'N/A' }}</div>
+    <div><strong>Páginas:</strong> {{ datos.paginas || 'N/A' }}</div>
+    <div><strong>Idioma:</strong> {{ datos.idioma || 'N/A' }}</div>
+  </div>
+</section>
+
+  <!-- Categorías -->
+<section class="categorias">
+  <h3>Categorías</h3>
+  <div class="categoria-list">
+    <span class="categoria" *ngFor="let cat of datos.categorias">
+      {{ cat.categoria.descripcion }}
+    </span>
+  </div>
+</section>
+
+  <!-- Reseñas -->
+  <section class="reseñas">
+    <h3>Reseñas</h3>
+    <ng-container *ngIf="datos.resenas.length > 0; else sinResenas">
+      <mat-card *ngFor="let r of datos.resenas" class="reseña-card">
+        <mat-card-title>{{ r.usuario?.nombre ?? 'Anónimo' }}</mat-card-title>
+        <mat-card-subtitle>{{ r.fecha | date: 'longDate' }}</mat-card-subtitle>
+        <mat-card-content>
+          <p>{{ r.comentario }}</p>
+          <p>
+            <span *ngFor="let star of [1,2,3,4,5]">
+              <mat-icon color="accent">{{ star <= r.valoracion ? 'star' : 'star_border' }}</mat-icon>
+            </span>
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+    <ng-template #sinResenas>
+      <p class="text-muted">Este libro aún no tiene reseñas.</p>
+    </ng-template>
+      <!-- Valoración por estrellas -->
+    <div class="valoracion-estrellas">
+      <mat-label>Valoración</mat-label>
+      <div class="estrellas">
+        <mat-icon *ngFor="let star of [1, 2, 3, 4, 5]" 
+                  color="warn" 
+                  (click)="setValoracion(star)"
+                  [class.selected]="star <= valoracion">
+          {{ star <= valoracion ? 'star' : 'star_border' }}
+        </mat-icon>
+      </div>
+    </div>
+  </section>
+
+<!-- Comentario -->
+<section class="comentario">
+  <h3>Dejá tu comentario</h3>
+  <form [formGroup]="formComentario" (ngSubmit)="enviarComentario()">
+    <mat-form-field class="full-width">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="nombre" />
+    </mat-form-field>
+    
+    <mat-form-field class="full-width">
+      <mat-label>Comentario</mat-label>
+      <textarea matInput formControlName="comentario" rows="1"></textarea>
+    </mat-form-field>
+    <button mat-raised-button color="accent" type="submit" class="boton-enviar">Enviar</button>
+  </form>
+</section>
+

@@ -79,10 +79,10 @@ export type PrecioTamanno = $Result.DefaultSelection<Prisma.$PrecioTamannoPayloa
  */
 export type PrecioColor = $Result.DefaultSelection<Prisma.$PrecioColorPayload>
 /**
- * Model Reseña
+ * Model Resena
  * 
  */
-export type Reseña = $Result.DefaultSelection<Prisma.$ReseñaPayload>
+export type Resena = $Result.DefaultSelection<Prisma.$ResenaPayload>
 /**
  * Model Reporte
  * 
@@ -386,14 +386,14 @@ export class PrismaClient<
   get precioColor(): Prisma.PrecioColorDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.reseña`: Exposes CRUD operations for the **Reseña** model.
+   * `prisma.resena`: Exposes CRUD operations for the **Resena** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Reseñas
-    * const reseñas = await prisma.reseña.findMany()
+    * // Fetch zero or more Resenas
+    * const resenas = await prisma.resena.findMany()
     * ```
     */
-  get reseña(): Prisma.ReseñaDelegate<ExtArgs, ClientOptions>;
+  get resena(): Prisma.ResenaDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.reporte`: Exposes CRUD operations for the **Reporte** model.
@@ -877,7 +877,7 @@ export namespace Prisma {
     PrecioMaterial: 'PrecioMaterial',
     PrecioTamanno: 'PrecioTamanno',
     PrecioColor: 'PrecioColor',
-    Reseña: 'Reseña',
+    Resena: 'Resena',
     Reporte: 'Reporte',
     Promocion: 'Promocion',
     HistorialPedidos: 'HistorialPedidos'
@@ -899,7 +899,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "usuario" | "imagen" | "producto" | "categoria" | "productoCategoria" | "etiqueta" | "productoEtiqueta" | "pedido" | "pedidoProducto" | "productoPersonalizado" | "precioMaterial" | "precioTamanno" | "precioColor" | "reseña" | "reporte" | "promocion" | "historialPedidos"
+      modelProps: "usuario" | "imagen" | "producto" | "categoria" | "productoCategoria" | "etiqueta" | "productoEtiqueta" | "pedido" | "pedidoProducto" | "productoPersonalizado" | "precioMaterial" | "precioTamanno" | "precioColor" | "resena" | "reporte" | "promocion" | "historialPedidos"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1761,69 +1761,69 @@ export namespace Prisma {
           }
         }
       }
-      Reseña: {
-        payload: Prisma.$ReseñaPayload<ExtArgs>
-        fields: Prisma.ReseñaFieldRefs
+      Resena: {
+        payload: Prisma.$ResenaPayload<ExtArgs>
+        fields: Prisma.ResenaFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.ReseñaFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ReseñaPayload> | null
+            args: Prisma.ResenaFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResenaPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.ReseñaFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ReseñaPayload>
+            args: Prisma.ResenaFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResenaPayload>
           }
           findFirst: {
-            args: Prisma.ReseñaFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ReseñaPayload> | null
+            args: Prisma.ResenaFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResenaPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.ReseñaFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ReseñaPayload>
+            args: Prisma.ResenaFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResenaPayload>
           }
           findMany: {
-            args: Prisma.ReseñaFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ReseñaPayload>[]
+            args: Prisma.ResenaFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResenaPayload>[]
           }
           create: {
-            args: Prisma.ReseñaCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ReseñaPayload>
+            args: Prisma.ResenaCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResenaPayload>
           }
           createMany: {
-            args: Prisma.ReseñaCreateManyArgs<ExtArgs>
+            args: Prisma.ResenaCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           delete: {
-            args: Prisma.ReseñaDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ReseñaPayload>
+            args: Prisma.ResenaDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResenaPayload>
           }
           update: {
-            args: Prisma.ReseñaUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ReseñaPayload>
+            args: Prisma.ResenaUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResenaPayload>
           }
           deleteMany: {
-            args: Prisma.ReseñaDeleteManyArgs<ExtArgs>
+            args: Prisma.ResenaDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.ReseñaUpdateManyArgs<ExtArgs>
+            args: Prisma.ResenaUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           upsert: {
-            args: Prisma.ReseñaUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ReseñaPayload>
+            args: Prisma.ResenaUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResenaPayload>
           }
           aggregate: {
-            args: Prisma.ReseñaAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateReseña>
+            args: Prisma.ResenaAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateResena>
           }
           groupBy: {
-            args: Prisma.ReseñaGroupByArgs<ExtArgs>
-            result: $Utils.Optional<ReseñaGroupByOutputType>[]
+            args: Prisma.ResenaGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ResenaGroupByOutputType>[]
           }
           count: {
-            args: Prisma.ReseñaCountArgs<ExtArgs>
-            result: $Utils.Optional<ReseñaCountAggregateOutputType> | number
+            args: Prisma.ResenaCountArgs<ExtArgs>
+            result: $Utils.Optional<ResenaCountAggregateOutputType> | number
           }
         }
       }
@@ -2122,7 +2122,7 @@ export namespace Prisma {
     precioMaterial?: PrecioMaterialOmit
     precioTamanno?: PrecioTamannoOmit
     precioColor?: PrecioColorOmit
-    reseña?: ReseñaOmit
+    resena?: ResenaOmit
     reporte?: ReporteOmit
     promocion?: PromocionOmit
     historialPedidos?: HistorialPedidosOmit
@@ -2221,13 +2221,13 @@ export namespace Prisma {
 
   export type UsuarioCountOutputType = {
     pedidos: number
-    reseñas: number
+    resenas: number
     historial: number
   }
 
   export type UsuarioCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     pedidos?: boolean | UsuarioCountOutputTypeCountPedidosArgs
-    reseñas?: boolean | UsuarioCountOutputTypeCountReseñasArgs
+    resenas?: boolean | UsuarioCountOutputTypeCountResenasArgs
     historial?: boolean | UsuarioCountOutputTypeCountHistorialArgs
   }
 
@@ -2252,8 +2252,8 @@ export namespace Prisma {
   /**
    * UsuarioCountOutputType without action
    */
-  export type UsuarioCountOutputTypeCountReseñasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ReseñaWhereInput
+  export type UsuarioCountOutputTypeCountResenasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ResenaWhereInput
   }
 
   /**
@@ -2274,7 +2274,7 @@ export namespace Prisma {
     categorias: number
     etiquetas: number
     pedidos: number
-    reseñas: number
+    resenas: number
   }
 
   export type ProductoCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2283,7 +2283,7 @@ export namespace Prisma {
     categorias?: boolean | ProductoCountOutputTypeCountCategoriasArgs
     etiquetas?: boolean | ProductoCountOutputTypeCountEtiquetasArgs
     pedidos?: boolean | ProductoCountOutputTypeCountPedidosArgs
-    reseñas?: boolean | ProductoCountOutputTypeCountReseñasArgs
+    resenas?: boolean | ProductoCountOutputTypeCountResenasArgs
   }
 
   // Custom InputTypes
@@ -2335,8 +2335,8 @@ export namespace Prisma {
   /**
    * ProductoCountOutputType without action
    */
-  export type ProductoCountOutputTypeCountReseñasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ReseñaWhereInput
+  export type ProductoCountOutputTypeCountResenasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ResenaWhereInput
   }
 
 
@@ -2567,32 +2567,32 @@ export namespace Prisma {
 
 
   /**
-   * Count Type ReseñaCountOutputType
+   * Count Type ResenaCountOutputType
    */
 
-  export type ReseñaCountOutputType = {
+  export type ResenaCountOutputType = {
     reportes: number
   }
 
-  export type ReseñaCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    reportes?: boolean | ReseñaCountOutputTypeCountReportesArgs
+  export type ResenaCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    reportes?: boolean | ResenaCountOutputTypeCountReportesArgs
   }
 
   // Custom InputTypes
   /**
-   * ReseñaCountOutputType without action
+   * ResenaCountOutputType without action
    */
-  export type ReseñaCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ResenaCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ReseñaCountOutputType
+     * Select specific fields to fetch from the ResenaCountOutputType
      */
-    select?: ReseñaCountOutputTypeSelect<ExtArgs> | null
+    select?: ResenaCountOutputTypeSelect<ExtArgs> | null
   }
 
   /**
-   * ReseñaCountOutputType without action
+   * ResenaCountOutputType without action
    */
-  export type ReseñaCountOutputTypeCountReportesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ResenaCountOutputTypeCountReportesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ReporteWhereInput
   }
 
@@ -2848,7 +2848,7 @@ export namespace Prisma {
     password?: boolean
     ultimoLogin?: boolean
     pedidos?: boolean | Usuario$pedidosArgs<ExtArgs>
-    reseñas?: boolean | Usuario$reseñasArgs<ExtArgs>
+    resenas?: boolean | Usuario$resenasArgs<ExtArgs>
     historial?: boolean | Usuario$historialArgs<ExtArgs>
     _count?: boolean | UsuarioCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["usuario"]>
@@ -2867,7 +2867,7 @@ export namespace Prisma {
   export type UsuarioOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nombre" | "correo" | "role" | "password" | "ultimoLogin", ExtArgs["result"]["usuario"]>
   export type UsuarioInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     pedidos?: boolean | Usuario$pedidosArgs<ExtArgs>
-    reseñas?: boolean | Usuario$reseñasArgs<ExtArgs>
+    resenas?: boolean | Usuario$resenasArgs<ExtArgs>
     historial?: boolean | Usuario$historialArgs<ExtArgs>
     _count?: boolean | UsuarioCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -2876,7 +2876,7 @@ export namespace Prisma {
     name: "Usuario"
     objects: {
       pedidos: Prisma.$PedidoPayload<ExtArgs>[]
-      reseñas: Prisma.$ReseñaPayload<ExtArgs>[]
+      resenas: Prisma.$ResenaPayload<ExtArgs>[]
       historial: Prisma.$HistorialPedidosPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -3227,7 +3227,7 @@ export namespace Prisma {
   export interface Prisma__UsuarioClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     pedidos<T extends Usuario$pedidosArgs<ExtArgs> = {}>(args?: Subset<T, Usuario$pedidosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PedidoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    reseñas<T extends Usuario$reseñasArgs<ExtArgs> = {}>(args?: Subset<T, Usuario$reseñasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReseñaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    resenas<T extends Usuario$resenasArgs<ExtArgs> = {}>(args?: Subset<T, Usuario$resenasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ResenaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     historial<T extends Usuario$historialArgs<ExtArgs> = {}>(args?: Subset<T, Usuario$historialArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HistorialPedidosPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -3631,27 +3631,27 @@ export namespace Prisma {
   }
 
   /**
-   * Usuario.reseñas
+   * Usuario.resenas
    */
-  export type Usuario$reseñasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Usuario$resenasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Reseña
+     * Select specific fields to fetch from the Resena
      */
-    select?: ReseñaSelect<ExtArgs> | null
+    select?: ResenaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Reseña
+     * Omit specific fields from the Resena
      */
-    omit?: ReseñaOmit<ExtArgs> | null
+    omit?: ResenaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ReseñaInclude<ExtArgs> | null
-    where?: ReseñaWhereInput
-    orderBy?: ReseñaOrderByWithRelationInput | ReseñaOrderByWithRelationInput[]
-    cursor?: ReseñaWhereUniqueInput
+    include?: ResenaInclude<ExtArgs> | null
+    where?: ResenaWhereInput
+    orderBy?: ResenaOrderByWithRelationInput | ResenaOrderByWithRelationInput[]
+    cursor?: ResenaWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: ReseñaScalarFieldEnum | ReseñaScalarFieldEnum[]
+    distinct?: ResenaScalarFieldEnum | ResenaScalarFieldEnum[]
   }
 
   /**
@@ -4916,7 +4916,7 @@ export namespace Prisma {
     categorias?: boolean | Producto$categoriasArgs<ExtArgs>
     etiquetas?: boolean | Producto$etiquetasArgs<ExtArgs>
     pedidos?: boolean | Producto$pedidosArgs<ExtArgs>
-    reseñas?: boolean | Producto$reseñasArgs<ExtArgs>
+    resenas?: boolean | Producto$resenasArgs<ExtArgs>
     promocion?: boolean | Producto$promocionArgs<ExtArgs>
     _count?: boolean | ProductoCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["producto"]>
@@ -4943,7 +4943,7 @@ export namespace Prisma {
     categorias?: boolean | Producto$categoriasArgs<ExtArgs>
     etiquetas?: boolean | Producto$etiquetasArgs<ExtArgs>
     pedidos?: boolean | Producto$pedidosArgs<ExtArgs>
-    reseñas?: boolean | Producto$reseñasArgs<ExtArgs>
+    resenas?: boolean | Producto$resenasArgs<ExtArgs>
     promocion?: boolean | Producto$promocionArgs<ExtArgs>
     _count?: boolean | ProductoCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -4956,7 +4956,7 @@ export namespace Prisma {
       categorias: Prisma.$ProductoCategoriaPayload<ExtArgs>[]
       etiquetas: Prisma.$ProductoEtiquetaPayload<ExtArgs>[]
       pedidos: Prisma.$PedidoProductoPayload<ExtArgs>[]
-      reseñas: Prisma.$ReseñaPayload<ExtArgs>[]
+      resenas: Prisma.$ResenaPayload<ExtArgs>[]
       promocion: Prisma.$PromocionPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -5315,7 +5315,7 @@ export namespace Prisma {
     categorias<T extends Producto$categoriasArgs<ExtArgs> = {}>(args?: Subset<T, Producto$categoriasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductoCategoriaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     etiquetas<T extends Producto$etiquetasArgs<ExtArgs> = {}>(args?: Subset<T, Producto$etiquetasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductoEtiquetaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     pedidos<T extends Producto$pedidosArgs<ExtArgs> = {}>(args?: Subset<T, Producto$pedidosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PedidoProductoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    reseñas<T extends Producto$reseñasArgs<ExtArgs> = {}>(args?: Subset<T, Producto$reseñasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReseñaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    resenas<T extends Producto$resenasArgs<ExtArgs> = {}>(args?: Subset<T, Producto$resenasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ResenaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     promocion<T extends Producto$promocionArgs<ExtArgs> = {}>(args?: Subset<T, Producto$promocionArgs<ExtArgs>>): Prisma__PromocionClient<$Result.GetResult<Prisma.$PromocionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -5819,27 +5819,27 @@ export namespace Prisma {
   }
 
   /**
-   * Producto.reseñas
+   * Producto.resenas
    */
-  export type Producto$reseñasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Producto$resenasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Reseña
+     * Select specific fields to fetch from the Resena
      */
-    select?: ReseñaSelect<ExtArgs> | null
+    select?: ResenaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Reseña
+     * Omit specific fields from the Resena
      */
-    omit?: ReseñaOmit<ExtArgs> | null
+    omit?: ResenaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ReseñaInclude<ExtArgs> | null
-    where?: ReseñaWhereInput
-    orderBy?: ReseñaOrderByWithRelationInput | ReseñaOrderByWithRelationInput[]
-    cursor?: ReseñaWhereUniqueInput
+    include?: ResenaInclude<ExtArgs> | null
+    where?: ResenaWhereInput
+    orderBy?: ResenaOrderByWithRelationInput | ResenaOrderByWithRelationInput[]
+    cursor?: ResenaWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: ReseñaScalarFieldEnum | ReseñaScalarFieldEnum[]
+    distinct?: ResenaScalarFieldEnum | ResenaScalarFieldEnum[]
   }
 
   /**
@@ -15758,43 +15758,32 @@ export namespace Prisma {
 
 
   /**
-   * Model Reseña
+   * Model Resena
    */
 
-  export type AggregateReseña = {
-    _count: ReseñaCountAggregateOutputType | null
-    _avg: ReseñaAvgAggregateOutputType | null
-    _sum: ReseñaSumAggregateOutputType | null
-    _min: ReseñaMinAggregateOutputType | null
-    _max: ReseñaMaxAggregateOutputType | null
+  export type AggregateResena = {
+    _count: ResenaCountAggregateOutputType | null
+    _avg: ResenaAvgAggregateOutputType | null
+    _sum: ResenaSumAggregateOutputType | null
+    _min: ResenaMinAggregateOutputType | null
+    _max: ResenaMaxAggregateOutputType | null
   }
 
-  export type ReseñaAvgAggregateOutputType = {
+  export type ResenaAvgAggregateOutputType = {
     id: number | null
     valoracion: number | null
     usuarioId: number | null
     productoId: number | null
   }
 
-  export type ReseñaSumAggregateOutputType = {
+  export type ResenaSumAggregateOutputType = {
     id: number | null
     valoracion: number | null
     usuarioId: number | null
     productoId: number | null
   }
 
-  export type ReseñaMinAggregateOutputType = {
-    id: number | null
-    valoracion: number | null
-    comentario: string | null
-    fecha: Date | null
-    moderada: boolean | null
-    observacion: string | null
-    usuarioId: number | null
-    productoId: number | null
-  }
-
-  export type ReseñaMaxAggregateOutputType = {
+  export type ResenaMinAggregateOutputType = {
     id: number | null
     valoracion: number | null
     comentario: string | null
@@ -15805,7 +15794,18 @@ export namespace Prisma {
     productoId: number | null
   }
 
-  export type ReseñaCountAggregateOutputType = {
+  export type ResenaMaxAggregateOutputType = {
+    id: number | null
+    valoracion: number | null
+    comentario: string | null
+    fecha: Date | null
+    moderada: boolean | null
+    observacion: string | null
+    usuarioId: number | null
+    productoId: number | null
+  }
+
+  export type ResenaCountAggregateOutputType = {
     id: number
     valoracion: number
     comentario: number
@@ -15818,32 +15818,21 @@ export namespace Prisma {
   }
 
 
-  export type ReseñaAvgAggregateInputType = {
+  export type ResenaAvgAggregateInputType = {
     id?: true
     valoracion?: true
     usuarioId?: true
     productoId?: true
   }
 
-  export type ReseñaSumAggregateInputType = {
+  export type ResenaSumAggregateInputType = {
     id?: true
     valoracion?: true
     usuarioId?: true
     productoId?: true
   }
 
-  export type ReseñaMinAggregateInputType = {
-    id?: true
-    valoracion?: true
-    comentario?: true
-    fecha?: true
-    moderada?: true
-    observacion?: true
-    usuarioId?: true
-    productoId?: true
-  }
-
-  export type ReseñaMaxAggregateInputType = {
+  export type ResenaMinAggregateInputType = {
     id?: true
     valoracion?: true
     comentario?: true
@@ -15854,7 +15843,18 @@ export namespace Prisma {
     productoId?: true
   }
 
-  export type ReseñaCountAggregateInputType = {
+  export type ResenaMaxAggregateInputType = {
+    id?: true
+    valoracion?: true
+    comentario?: true
+    fecha?: true
+    moderada?: true
+    observacion?: true
+    usuarioId?: true
+    productoId?: true
+  }
+
+  export type ResenaCountAggregateInputType = {
     id?: true
     valoracion?: true
     comentario?: true
@@ -15866,93 +15866,93 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type ReseñaAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ResenaAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Reseña to aggregate.
+     * Filter which Resena to aggregate.
      */
-    where?: ReseñaWhereInput
+    where?: ResenaWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Reseñas to fetch.
+     * Determine the order of Resenas to fetch.
      */
-    orderBy?: ReseñaOrderByWithRelationInput | ReseñaOrderByWithRelationInput[]
+    orderBy?: ResenaOrderByWithRelationInput | ResenaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: ReseñaWhereUniqueInput
+    cursor?: ResenaWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Reseñas from the position of the cursor.
+     * Take `±n` Resenas from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Reseñas.
+     * Skip the first `n` Resenas.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Reseñas
+     * Count returned Resenas
     **/
-    _count?: true | ReseñaCountAggregateInputType
+    _count?: true | ResenaCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: ReseñaAvgAggregateInputType
+    _avg?: ResenaAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: ReseñaSumAggregateInputType
+    _sum?: ResenaSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: ReseñaMinAggregateInputType
+    _min?: ResenaMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: ReseñaMaxAggregateInputType
+    _max?: ResenaMaxAggregateInputType
   }
 
-  export type GetReseñaAggregateType<T extends ReseñaAggregateArgs> = {
-        [P in keyof T & keyof AggregateReseña]: P extends '_count' | 'count'
+  export type GetResenaAggregateType<T extends ResenaAggregateArgs> = {
+        [P in keyof T & keyof AggregateResena]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateReseña[P]>
-      : GetScalarType<T[P], AggregateReseña[P]>
+        : GetScalarType<T[P], AggregateResena[P]>
+      : GetScalarType<T[P], AggregateResena[P]>
   }
 
 
 
 
-  export type ReseñaGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ReseñaWhereInput
-    orderBy?: ReseñaOrderByWithAggregationInput | ReseñaOrderByWithAggregationInput[]
-    by: ReseñaScalarFieldEnum[] | ReseñaScalarFieldEnum
-    having?: ReseñaScalarWhereWithAggregatesInput
+  export type ResenaGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ResenaWhereInput
+    orderBy?: ResenaOrderByWithAggregationInput | ResenaOrderByWithAggregationInput[]
+    by: ResenaScalarFieldEnum[] | ResenaScalarFieldEnum
+    having?: ResenaScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: ReseñaCountAggregateInputType | true
-    _avg?: ReseñaAvgAggregateInputType
-    _sum?: ReseñaSumAggregateInputType
-    _min?: ReseñaMinAggregateInputType
-    _max?: ReseñaMaxAggregateInputType
+    _count?: ResenaCountAggregateInputType | true
+    _avg?: ResenaAvgAggregateInputType
+    _sum?: ResenaSumAggregateInputType
+    _min?: ResenaMinAggregateInputType
+    _max?: ResenaMaxAggregateInputType
   }
 
-  export type ReseñaGroupByOutputType = {
+  export type ResenaGroupByOutputType = {
     id: number
     valoracion: number
     comentario: string | null
@@ -15961,28 +15961,28 @@ export namespace Prisma {
     observacion: string | null
     usuarioId: number
     productoId: number
-    _count: ReseñaCountAggregateOutputType | null
-    _avg: ReseñaAvgAggregateOutputType | null
-    _sum: ReseñaSumAggregateOutputType | null
-    _min: ReseñaMinAggregateOutputType | null
-    _max: ReseñaMaxAggregateOutputType | null
+    _count: ResenaCountAggregateOutputType | null
+    _avg: ResenaAvgAggregateOutputType | null
+    _sum: ResenaSumAggregateOutputType | null
+    _min: ResenaMinAggregateOutputType | null
+    _max: ResenaMaxAggregateOutputType | null
   }
 
-  type GetReseñaGroupByPayload<T extends ReseñaGroupByArgs> = Prisma.PrismaPromise<
+  type GetResenaGroupByPayload<T extends ResenaGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<ReseñaGroupByOutputType, T['by']> &
+      PickEnumerable<ResenaGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof ReseñaGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof ResenaGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], ReseñaGroupByOutputType[P]>
-            : GetScalarType<T[P], ReseñaGroupByOutputType[P]>
+              : GetScalarType<T[P], ResenaGroupByOutputType[P]>
+            : GetScalarType<T[P], ResenaGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type ReseñaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ResenaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     valoracion?: boolean
     comentario?: boolean
@@ -15993,13 +15993,13 @@ export namespace Prisma {
     productoId?: boolean
     usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
     producto?: boolean | ProductoDefaultArgs<ExtArgs>
-    reportes?: boolean | Reseña$reportesArgs<ExtArgs>
-    _count?: boolean | ReseñaCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["reseña"]>
+    reportes?: boolean | Resena$reportesArgs<ExtArgs>
+    _count?: boolean | ResenaCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["resena"]>
 
 
 
-  export type ReseñaSelectScalar = {
+  export type ResenaSelectScalar = {
     id?: boolean
     valoracion?: boolean
     comentario?: boolean
@@ -16010,16 +16010,16 @@ export namespace Prisma {
     productoId?: boolean
   }
 
-  export type ReseñaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "valoracion" | "comentario" | "fecha" | "moderada" | "observacion" | "usuarioId" | "productoId", ExtArgs["result"]["reseña"]>
-  export type ReseñaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ResenaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "valoracion" | "comentario" | "fecha" | "moderada" | "observacion" | "usuarioId" | "productoId", ExtArgs["result"]["resena"]>
+  export type ResenaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
     producto?: boolean | ProductoDefaultArgs<ExtArgs>
-    reportes?: boolean | Reseña$reportesArgs<ExtArgs>
-    _count?: boolean | ReseñaCountOutputTypeDefaultArgs<ExtArgs>
+    reportes?: boolean | Resena$reportesArgs<ExtArgs>
+    _count?: boolean | ResenaCountOutputTypeDefaultArgs<ExtArgs>
   }
 
-  export type $ReseñaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Reseña"
+  export type $ResenaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Resena"
     objects: {
       usuario: Prisma.$UsuarioPayload<ExtArgs>
       producto: Prisma.$ProductoPayload<ExtArgs>
@@ -16034,143 +16034,143 @@ export namespace Prisma {
       observacion: string | null
       usuarioId: number
       productoId: number
-    }, ExtArgs["result"]["reseña"]>
+    }, ExtArgs["result"]["resena"]>
     composites: {}
   }
 
-  type ReseñaGetPayload<S extends boolean | null | undefined | ReseñaDefaultArgs> = $Result.GetResult<Prisma.$ReseñaPayload, S>
+  type ResenaGetPayload<S extends boolean | null | undefined | ResenaDefaultArgs> = $Result.GetResult<Prisma.$ResenaPayload, S>
 
-  type ReseñaCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<ReseñaFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: ReseñaCountAggregateInputType | true
+  type ResenaCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ResenaFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ResenaCountAggregateInputType | true
     }
 
-  export interface ReseñaDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Reseña'], meta: { name: 'Reseña' } }
+  export interface ResenaDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Resena'], meta: { name: 'Resena' } }
     /**
-     * Find zero or one Reseña that matches the filter.
-     * @param {ReseñaFindUniqueArgs} args - Arguments to find a Reseña
+     * Find zero or one Resena that matches the filter.
+     * @param {ResenaFindUniqueArgs} args - Arguments to find a Resena
      * @example
-     * // Get one Reseña
-     * const reseña = await prisma.reseña.findUnique({
+     * // Get one Resena
+     * const resena = await prisma.resena.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends ReseñaFindUniqueArgs>(args: SelectSubset<T, ReseñaFindUniqueArgs<ExtArgs>>): Prisma__ReseñaClient<$Result.GetResult<Prisma.$ReseñaPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends ResenaFindUniqueArgs>(args: SelectSubset<T, ResenaFindUniqueArgs<ExtArgs>>): Prisma__ResenaClient<$Result.GetResult<Prisma.$ResenaPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Reseña that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Resena that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {ReseñaFindUniqueOrThrowArgs} args - Arguments to find a Reseña
+     * @param {ResenaFindUniqueOrThrowArgs} args - Arguments to find a Resena
      * @example
-     * // Get one Reseña
-     * const reseña = await prisma.reseña.findUniqueOrThrow({
+     * // Get one Resena
+     * const resena = await prisma.resena.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends ReseñaFindUniqueOrThrowArgs>(args: SelectSubset<T, ReseñaFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ReseñaClient<$Result.GetResult<Prisma.$ReseñaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends ResenaFindUniqueOrThrowArgs>(args: SelectSubset<T, ResenaFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ResenaClient<$Result.GetResult<Prisma.$ResenaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Reseña that matches the filter.
+     * Find the first Resena that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ReseñaFindFirstArgs} args - Arguments to find a Reseña
+     * @param {ResenaFindFirstArgs} args - Arguments to find a Resena
      * @example
-     * // Get one Reseña
-     * const reseña = await prisma.reseña.findFirst({
+     * // Get one Resena
+     * const resena = await prisma.resena.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends ReseñaFindFirstArgs>(args?: SelectSubset<T, ReseñaFindFirstArgs<ExtArgs>>): Prisma__ReseñaClient<$Result.GetResult<Prisma.$ReseñaPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends ResenaFindFirstArgs>(args?: SelectSubset<T, ResenaFindFirstArgs<ExtArgs>>): Prisma__ResenaClient<$Result.GetResult<Prisma.$ResenaPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Reseña that matches the filter or
+     * Find the first Resena that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ReseñaFindFirstOrThrowArgs} args - Arguments to find a Reseña
+     * @param {ResenaFindFirstOrThrowArgs} args - Arguments to find a Resena
      * @example
-     * // Get one Reseña
-     * const reseña = await prisma.reseña.findFirstOrThrow({
+     * // Get one Resena
+     * const resena = await prisma.resena.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends ReseñaFindFirstOrThrowArgs>(args?: SelectSubset<T, ReseñaFindFirstOrThrowArgs<ExtArgs>>): Prisma__ReseñaClient<$Result.GetResult<Prisma.$ReseñaPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends ResenaFindFirstOrThrowArgs>(args?: SelectSubset<T, ResenaFindFirstOrThrowArgs<ExtArgs>>): Prisma__ResenaClient<$Result.GetResult<Prisma.$ResenaPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Reseñas that matches the filter.
+     * Find zero or more Resenas that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ReseñaFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {ResenaFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Reseñas
-     * const reseñas = await prisma.reseña.findMany()
+     * // Get all Resenas
+     * const resenas = await prisma.resena.findMany()
      * 
-     * // Get first 10 Reseñas
-     * const reseñas = await prisma.reseña.findMany({ take: 10 })
+     * // Get first 10 Resenas
+     * const resenas = await prisma.resena.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const reseñaWithIdOnly = await prisma.reseña.findMany({ select: { id: true } })
+     * const resenaWithIdOnly = await prisma.resena.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends ReseñaFindManyArgs>(args?: SelectSubset<T, ReseñaFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReseñaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends ResenaFindManyArgs>(args?: SelectSubset<T, ResenaFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ResenaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Reseña.
-     * @param {ReseñaCreateArgs} args - Arguments to create a Reseña.
+     * Create a Resena.
+     * @param {ResenaCreateArgs} args - Arguments to create a Resena.
      * @example
-     * // Create one Reseña
-     * const Reseña = await prisma.reseña.create({
+     * // Create one Resena
+     * const Resena = await prisma.resena.create({
      *   data: {
-     *     // ... data to create a Reseña
+     *     // ... data to create a Resena
      *   }
      * })
      * 
      */
-    create<T extends ReseñaCreateArgs>(args: SelectSubset<T, ReseñaCreateArgs<ExtArgs>>): Prisma__ReseñaClient<$Result.GetResult<Prisma.$ReseñaPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends ResenaCreateArgs>(args: SelectSubset<T, ResenaCreateArgs<ExtArgs>>): Prisma__ResenaClient<$Result.GetResult<Prisma.$ResenaPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Reseñas.
-     * @param {ReseñaCreateManyArgs} args - Arguments to create many Reseñas.
+     * Create many Resenas.
+     * @param {ResenaCreateManyArgs} args - Arguments to create many Resenas.
      * @example
-     * // Create many Reseñas
-     * const reseña = await prisma.reseña.createMany({
+     * // Create many Resenas
+     * const resena = await prisma.resena.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends ReseñaCreateManyArgs>(args?: SelectSubset<T, ReseñaCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends ResenaCreateManyArgs>(args?: SelectSubset<T, ResenaCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Delete a Reseña.
-     * @param {ReseñaDeleteArgs} args - Arguments to delete one Reseña.
+     * Delete a Resena.
+     * @param {ResenaDeleteArgs} args - Arguments to delete one Resena.
      * @example
-     * // Delete one Reseña
-     * const Reseña = await prisma.reseña.delete({
+     * // Delete one Resena
+     * const Resena = await prisma.resena.delete({
      *   where: {
-     *     // ... filter to delete one Reseña
+     *     // ... filter to delete one Resena
      *   }
      * })
      * 
      */
-    delete<T extends ReseñaDeleteArgs>(args: SelectSubset<T, ReseñaDeleteArgs<ExtArgs>>): Prisma__ReseñaClient<$Result.GetResult<Prisma.$ReseñaPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends ResenaDeleteArgs>(args: SelectSubset<T, ResenaDeleteArgs<ExtArgs>>): Prisma__ResenaClient<$Result.GetResult<Prisma.$ResenaPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Reseña.
-     * @param {ReseñaUpdateArgs} args - Arguments to update one Reseña.
+     * Update one Resena.
+     * @param {ResenaUpdateArgs} args - Arguments to update one Resena.
      * @example
-     * // Update one Reseña
-     * const reseña = await prisma.reseña.update({
+     * // Update one Resena
+     * const resena = await prisma.resena.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -16180,30 +16180,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends ReseñaUpdateArgs>(args: SelectSubset<T, ReseñaUpdateArgs<ExtArgs>>): Prisma__ReseñaClient<$Result.GetResult<Prisma.$ReseñaPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends ResenaUpdateArgs>(args: SelectSubset<T, ResenaUpdateArgs<ExtArgs>>): Prisma__ResenaClient<$Result.GetResult<Prisma.$ResenaPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Reseñas.
-     * @param {ReseñaDeleteManyArgs} args - Arguments to filter Reseñas to delete.
+     * Delete zero or more Resenas.
+     * @param {ResenaDeleteManyArgs} args - Arguments to filter Resenas to delete.
      * @example
-     * // Delete a few Reseñas
-     * const { count } = await prisma.reseña.deleteMany({
+     * // Delete a few Resenas
+     * const { count } = await prisma.resena.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends ReseñaDeleteManyArgs>(args?: SelectSubset<T, ReseñaDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends ResenaDeleteManyArgs>(args?: SelectSubset<T, ResenaDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Reseñas.
+     * Update zero or more Resenas.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ReseñaUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {ResenaUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Reseñas
-     * const reseña = await prisma.reseña.updateMany({
+     * // Update many Resenas
+     * const resena = await prisma.resena.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -16213,56 +16213,56 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends ReseñaUpdateManyArgs>(args: SelectSubset<T, ReseñaUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends ResenaUpdateManyArgs>(args: SelectSubset<T, ResenaUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one Reseña.
-     * @param {ReseñaUpsertArgs} args - Arguments to update or create a Reseña.
+     * Create or update one Resena.
+     * @param {ResenaUpsertArgs} args - Arguments to update or create a Resena.
      * @example
-     * // Update or create a Reseña
-     * const reseña = await prisma.reseña.upsert({
+     * // Update or create a Resena
+     * const resena = await prisma.resena.upsert({
      *   create: {
-     *     // ... data to create a Reseña
+     *     // ... data to create a Resena
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Reseña we want to update
+     *     // ... the filter for the Resena we want to update
      *   }
      * })
      */
-    upsert<T extends ReseñaUpsertArgs>(args: SelectSubset<T, ReseñaUpsertArgs<ExtArgs>>): Prisma__ReseñaClient<$Result.GetResult<Prisma.$ReseñaPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends ResenaUpsertArgs>(args: SelectSubset<T, ResenaUpsertArgs<ExtArgs>>): Prisma__ResenaClient<$Result.GetResult<Prisma.$ResenaPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Reseñas.
+     * Count the number of Resenas.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ReseñaCountArgs} args - Arguments to filter Reseñas to count.
+     * @param {ResenaCountArgs} args - Arguments to filter Resenas to count.
      * @example
-     * // Count the number of Reseñas
-     * const count = await prisma.reseña.count({
+     * // Count the number of Resenas
+     * const count = await prisma.resena.count({
      *   where: {
-     *     // ... the filter for the Reseñas we want to count
+     *     // ... the filter for the Resenas we want to count
      *   }
      * })
     **/
-    count<T extends ReseñaCountArgs>(
-      args?: Subset<T, ReseñaCountArgs>,
+    count<T extends ResenaCountArgs>(
+      args?: Subset<T, ResenaCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], ReseñaCountAggregateOutputType>
+          : GetScalarType<T['select'], ResenaCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Reseña.
+     * Allows you to perform aggregations operations on a Resena.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ReseñaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {ResenaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -16282,13 +16282,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends ReseñaAggregateArgs>(args: Subset<T, ReseñaAggregateArgs>): Prisma.PrismaPromise<GetReseñaAggregateType<T>>
+    aggregate<T extends ResenaAggregateArgs>(args: Subset<T, ResenaAggregateArgs>): Prisma.PrismaPromise<GetResenaAggregateType<T>>
 
     /**
-     * Group by Reseña.
+     * Group by Resena.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ReseñaGroupByArgs} args - Group by arguments.
+     * @param {ResenaGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -16303,14 +16303,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends ReseñaGroupByArgs,
+      T extends ResenaGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: ReseñaGroupByArgs['orderBy'] }
-        : { orderBy?: ReseñaGroupByArgs['orderBy'] },
+        ? { orderBy: ResenaGroupByArgs['orderBy'] }
+        : { orderBy?: ResenaGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -16359,24 +16359,24 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, ReseñaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetReseñaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, ResenaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetResenaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Reseña model
+   * Fields of the Resena model
    */
-  readonly fields: ReseñaFieldRefs;
+  readonly fields: ResenaFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Reseña.
+   * The delegate class that acts as a "Promise-like" for Resena.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__ReseñaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__ResenaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     usuario<T extends UsuarioDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsuarioDefaultArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     producto<T extends ProductoDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProductoDefaultArgs<ExtArgs>>): Prisma__ProductoClient<$Result.GetResult<Prisma.$ProductoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    reportes<T extends Reseña$reportesArgs<ExtArgs> = {}>(args?: Subset<T, Reseña$reportesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReportePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    reportes<T extends Resena$reportesArgs<ExtArgs> = {}>(args?: Subset<T, Resena$reportesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReportePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -16403,363 +16403,363 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Reseña model
+   * Fields of the Resena model
    */
-  interface ReseñaFieldRefs {
-    readonly id: FieldRef<"Reseña", 'Int'>
-    readonly valoracion: FieldRef<"Reseña", 'Int'>
-    readonly comentario: FieldRef<"Reseña", 'String'>
-    readonly fecha: FieldRef<"Reseña", 'DateTime'>
-    readonly moderada: FieldRef<"Reseña", 'Boolean'>
-    readonly observacion: FieldRef<"Reseña", 'String'>
-    readonly usuarioId: FieldRef<"Reseña", 'Int'>
-    readonly productoId: FieldRef<"Reseña", 'Int'>
+  interface ResenaFieldRefs {
+    readonly id: FieldRef<"Resena", 'Int'>
+    readonly valoracion: FieldRef<"Resena", 'Int'>
+    readonly comentario: FieldRef<"Resena", 'String'>
+    readonly fecha: FieldRef<"Resena", 'DateTime'>
+    readonly moderada: FieldRef<"Resena", 'Boolean'>
+    readonly observacion: FieldRef<"Resena", 'String'>
+    readonly usuarioId: FieldRef<"Resena", 'Int'>
+    readonly productoId: FieldRef<"Resena", 'Int'>
   }
     
 
   // Custom InputTypes
   /**
-   * Reseña findUnique
+   * Resena findUnique
    */
-  export type ReseñaFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ResenaFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Reseña
+     * Select specific fields to fetch from the Resena
      */
-    select?: ReseñaSelect<ExtArgs> | null
+    select?: ResenaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Reseña
+     * Omit specific fields from the Resena
      */
-    omit?: ReseñaOmit<ExtArgs> | null
+    omit?: ResenaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ReseñaInclude<ExtArgs> | null
+    include?: ResenaInclude<ExtArgs> | null
     /**
-     * Filter, which Reseña to fetch.
+     * Filter, which Resena to fetch.
      */
-    where: ReseñaWhereUniqueInput
+    where: ResenaWhereUniqueInput
   }
 
   /**
-   * Reseña findUniqueOrThrow
+   * Resena findUniqueOrThrow
    */
-  export type ReseñaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ResenaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Reseña
+     * Select specific fields to fetch from the Resena
      */
-    select?: ReseñaSelect<ExtArgs> | null
+    select?: ResenaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Reseña
+     * Omit specific fields from the Resena
      */
-    omit?: ReseñaOmit<ExtArgs> | null
+    omit?: ResenaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ReseñaInclude<ExtArgs> | null
+    include?: ResenaInclude<ExtArgs> | null
     /**
-     * Filter, which Reseña to fetch.
+     * Filter, which Resena to fetch.
      */
-    where: ReseñaWhereUniqueInput
+    where: ResenaWhereUniqueInput
   }
 
   /**
-   * Reseña findFirst
+   * Resena findFirst
    */
-  export type ReseñaFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ResenaFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Reseña
+     * Select specific fields to fetch from the Resena
      */
-    select?: ReseñaSelect<ExtArgs> | null
+    select?: ResenaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Reseña
+     * Omit specific fields from the Resena
      */
-    omit?: ReseñaOmit<ExtArgs> | null
+    omit?: ResenaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ReseñaInclude<ExtArgs> | null
+    include?: ResenaInclude<ExtArgs> | null
     /**
-     * Filter, which Reseña to fetch.
+     * Filter, which Resena to fetch.
      */
-    where?: ReseñaWhereInput
+    where?: ResenaWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Reseñas to fetch.
+     * Determine the order of Resenas to fetch.
      */
-    orderBy?: ReseñaOrderByWithRelationInput | ReseñaOrderByWithRelationInput[]
+    orderBy?: ResenaOrderByWithRelationInput | ResenaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Reseñas.
+     * Sets the position for searching for Resenas.
      */
-    cursor?: ReseñaWhereUniqueInput
+    cursor?: ResenaWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Reseñas from the position of the cursor.
+     * Take `±n` Resenas from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Reseñas.
+     * Skip the first `n` Resenas.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Reseñas.
+     * Filter by unique combinations of Resenas.
      */
-    distinct?: ReseñaScalarFieldEnum | ReseñaScalarFieldEnum[]
+    distinct?: ResenaScalarFieldEnum | ResenaScalarFieldEnum[]
   }
 
   /**
-   * Reseña findFirstOrThrow
+   * Resena findFirstOrThrow
    */
-  export type ReseñaFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ResenaFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Reseña
+     * Select specific fields to fetch from the Resena
      */
-    select?: ReseñaSelect<ExtArgs> | null
+    select?: ResenaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Reseña
+     * Omit specific fields from the Resena
      */
-    omit?: ReseñaOmit<ExtArgs> | null
+    omit?: ResenaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ReseñaInclude<ExtArgs> | null
+    include?: ResenaInclude<ExtArgs> | null
     /**
-     * Filter, which Reseña to fetch.
+     * Filter, which Resena to fetch.
      */
-    where?: ReseñaWhereInput
+    where?: ResenaWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Reseñas to fetch.
+     * Determine the order of Resenas to fetch.
      */
-    orderBy?: ReseñaOrderByWithRelationInput | ReseñaOrderByWithRelationInput[]
+    orderBy?: ResenaOrderByWithRelationInput | ResenaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Reseñas.
+     * Sets the position for searching for Resenas.
      */
-    cursor?: ReseñaWhereUniqueInput
+    cursor?: ResenaWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Reseñas from the position of the cursor.
+     * Take `±n` Resenas from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Reseñas.
+     * Skip the first `n` Resenas.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Reseñas.
+     * Filter by unique combinations of Resenas.
      */
-    distinct?: ReseñaScalarFieldEnum | ReseñaScalarFieldEnum[]
+    distinct?: ResenaScalarFieldEnum | ResenaScalarFieldEnum[]
   }
 
   /**
-   * Reseña findMany
+   * Resena findMany
    */
-  export type ReseñaFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ResenaFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Reseña
+     * Select specific fields to fetch from the Resena
      */
-    select?: ReseñaSelect<ExtArgs> | null
+    select?: ResenaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Reseña
+     * Omit specific fields from the Resena
      */
-    omit?: ReseñaOmit<ExtArgs> | null
+    omit?: ResenaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ReseñaInclude<ExtArgs> | null
+    include?: ResenaInclude<ExtArgs> | null
     /**
-     * Filter, which Reseñas to fetch.
+     * Filter, which Resenas to fetch.
      */
-    where?: ReseñaWhereInput
+    where?: ResenaWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Reseñas to fetch.
+     * Determine the order of Resenas to fetch.
      */
-    orderBy?: ReseñaOrderByWithRelationInput | ReseñaOrderByWithRelationInput[]
+    orderBy?: ResenaOrderByWithRelationInput | ResenaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Reseñas.
+     * Sets the position for listing Resenas.
      */
-    cursor?: ReseñaWhereUniqueInput
+    cursor?: ResenaWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Reseñas from the position of the cursor.
+     * Take `±n` Resenas from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Reseñas.
+     * Skip the first `n` Resenas.
      */
     skip?: number
-    distinct?: ReseñaScalarFieldEnum | ReseñaScalarFieldEnum[]
+    distinct?: ResenaScalarFieldEnum | ResenaScalarFieldEnum[]
   }
 
   /**
-   * Reseña create
+   * Resena create
    */
-  export type ReseñaCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ResenaCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Reseña
+     * Select specific fields to fetch from the Resena
      */
-    select?: ReseñaSelect<ExtArgs> | null
+    select?: ResenaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Reseña
+     * Omit specific fields from the Resena
      */
-    omit?: ReseñaOmit<ExtArgs> | null
+    omit?: ResenaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ReseñaInclude<ExtArgs> | null
+    include?: ResenaInclude<ExtArgs> | null
     /**
-     * The data needed to create a Reseña.
+     * The data needed to create a Resena.
      */
-    data: XOR<ReseñaCreateInput, ReseñaUncheckedCreateInput>
+    data: XOR<ResenaCreateInput, ResenaUncheckedCreateInput>
   }
 
   /**
-   * Reseña createMany
+   * Resena createMany
    */
-  export type ReseñaCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ResenaCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Reseñas.
+     * The data used to create many Resenas.
      */
-    data: ReseñaCreateManyInput | ReseñaCreateManyInput[]
+    data: ResenaCreateManyInput | ResenaCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Reseña update
+   * Resena update
    */
-  export type ReseñaUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ResenaUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Reseña
+     * Select specific fields to fetch from the Resena
      */
-    select?: ReseñaSelect<ExtArgs> | null
+    select?: ResenaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Reseña
+     * Omit specific fields from the Resena
      */
-    omit?: ReseñaOmit<ExtArgs> | null
+    omit?: ResenaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ReseñaInclude<ExtArgs> | null
+    include?: ResenaInclude<ExtArgs> | null
     /**
-     * The data needed to update a Reseña.
+     * The data needed to update a Resena.
      */
-    data: XOR<ReseñaUpdateInput, ReseñaUncheckedUpdateInput>
+    data: XOR<ResenaUpdateInput, ResenaUncheckedUpdateInput>
     /**
-     * Choose, which Reseña to update.
+     * Choose, which Resena to update.
      */
-    where: ReseñaWhereUniqueInput
+    where: ResenaWhereUniqueInput
   }
 
   /**
-   * Reseña updateMany
+   * Resena updateMany
    */
-  export type ReseñaUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ResenaUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Reseñas.
+     * The data used to update Resenas.
      */
-    data: XOR<ReseñaUpdateManyMutationInput, ReseñaUncheckedUpdateManyInput>
+    data: XOR<ResenaUpdateManyMutationInput, ResenaUncheckedUpdateManyInput>
     /**
-     * Filter which Reseñas to update
+     * Filter which Resenas to update
      */
-    where?: ReseñaWhereInput
+    where?: ResenaWhereInput
     /**
-     * Limit how many Reseñas to update.
+     * Limit how many Resenas to update.
      */
     limit?: number
   }
 
   /**
-   * Reseña upsert
+   * Resena upsert
    */
-  export type ReseñaUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ResenaUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Reseña
+     * Select specific fields to fetch from the Resena
      */
-    select?: ReseñaSelect<ExtArgs> | null
+    select?: ResenaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Reseña
+     * Omit specific fields from the Resena
      */
-    omit?: ReseñaOmit<ExtArgs> | null
+    omit?: ResenaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ReseñaInclude<ExtArgs> | null
+    include?: ResenaInclude<ExtArgs> | null
     /**
-     * The filter to search for the Reseña to update in case it exists.
+     * The filter to search for the Resena to update in case it exists.
      */
-    where: ReseñaWhereUniqueInput
+    where: ResenaWhereUniqueInput
     /**
-     * In case the Reseña found by the `where` argument doesn't exist, create a new Reseña with this data.
+     * In case the Resena found by the `where` argument doesn't exist, create a new Resena with this data.
      */
-    create: XOR<ReseñaCreateInput, ReseñaUncheckedCreateInput>
+    create: XOR<ResenaCreateInput, ResenaUncheckedCreateInput>
     /**
-     * In case the Reseña was found with the provided `where` argument, update it with this data.
+     * In case the Resena was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<ReseñaUpdateInput, ReseñaUncheckedUpdateInput>
+    update: XOR<ResenaUpdateInput, ResenaUncheckedUpdateInput>
   }
 
   /**
-   * Reseña delete
+   * Resena delete
    */
-  export type ReseñaDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ResenaDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Reseña
+     * Select specific fields to fetch from the Resena
      */
-    select?: ReseñaSelect<ExtArgs> | null
+    select?: ResenaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Reseña
+     * Omit specific fields from the Resena
      */
-    omit?: ReseñaOmit<ExtArgs> | null
+    omit?: ResenaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ReseñaInclude<ExtArgs> | null
+    include?: ResenaInclude<ExtArgs> | null
     /**
-     * Filter which Reseña to delete.
+     * Filter which Resena to delete.
      */
-    where: ReseñaWhereUniqueInput
+    where: ResenaWhereUniqueInput
   }
 
   /**
-   * Reseña deleteMany
+   * Resena deleteMany
    */
-  export type ReseñaDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ResenaDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Reseñas to delete
+     * Filter which Resenas to delete
      */
-    where?: ReseñaWhereInput
+    where?: ResenaWhereInput
     /**
-     * Limit how many Reseñas to delete.
+     * Limit how many Resenas to delete.
      */
     limit?: number
   }
 
   /**
-   * Reseña.reportes
+   * Resena.reportes
    */
-  export type Reseña$reportesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Resena$reportesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Reporte
      */
@@ -16781,21 +16781,21 @@ export namespace Prisma {
   }
 
   /**
-   * Reseña without action
+   * Resena without action
    */
-  export type ReseñaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ResenaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Reseña
+     * Select specific fields to fetch from the Resena
      */
-    select?: ReseñaSelect<ExtArgs> | null
+    select?: ResenaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Reseña
+     * Omit specific fields from the Resena
      */
-    omit?: ReseñaOmit<ExtArgs> | null
+    omit?: ResenaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ReseñaInclude<ExtArgs> | null
+    include?: ResenaInclude<ExtArgs> | null
   }
 
 
@@ -16993,7 +16993,7 @@ export namespace Prisma {
     reportadaPor?: boolean
     motivo?: boolean
     reseñaId?: boolean
-    reseña?: boolean | ReseñaDefaultArgs<ExtArgs>
+    resena?: boolean | ResenaDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["reporte"]>
 
 
@@ -17007,13 +17007,13 @@ export namespace Prisma {
 
   export type ReporteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "reportadaPor" | "motivo" | "reseñaId", ExtArgs["result"]["reporte"]>
   export type ReporteInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    reseña?: boolean | ReseñaDefaultArgs<ExtArgs>
+    resena?: boolean | ResenaDefaultArgs<ExtArgs>
   }
 
   export type $ReportePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Reporte"
     objects: {
-      reseña: Prisma.$ReseñaPayload<ExtArgs>
+      resena: Prisma.$ResenaPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -17360,7 +17360,7 @@ export namespace Prisma {
    */
   export interface Prisma__ReporteClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    reseña<T extends ReseñaDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ReseñaDefaultArgs<ExtArgs>>): Prisma__ReseñaClient<$Result.GetResult<Prisma.$ReseñaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    resena<T extends ResenaDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ResenaDefaultArgs<ExtArgs>>): Prisma__ResenaClient<$Result.GetResult<Prisma.$ResenaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -19901,7 +19901,7 @@ export namespace Prisma {
   export type PrecioColorScalarFieldEnum = (typeof PrecioColorScalarFieldEnum)[keyof typeof PrecioColorScalarFieldEnum]
 
 
-  export const ReseñaScalarFieldEnum: {
+  export const ResenaScalarFieldEnum: {
     id: 'id',
     valoracion: 'valoracion',
     comentario: 'comentario',
@@ -19912,7 +19912,7 @@ export namespace Prisma {
     productoId: 'productoId'
   };
 
-  export type ReseñaScalarFieldEnum = (typeof ReseñaScalarFieldEnum)[keyof typeof ReseñaScalarFieldEnum]
+  export type ResenaScalarFieldEnum = (typeof ResenaScalarFieldEnum)[keyof typeof ResenaScalarFieldEnum]
 
 
   export const ReporteScalarFieldEnum: {
@@ -20025,12 +20025,12 @@ export namespace Prisma {
   export type PrecioColorOrderByRelevanceFieldEnum = (typeof PrecioColorOrderByRelevanceFieldEnum)[keyof typeof PrecioColorOrderByRelevanceFieldEnum]
 
 
-  export const ReseñaOrderByRelevanceFieldEnum: {
+  export const ResenaOrderByRelevanceFieldEnum: {
     comentario: 'comentario',
     observacion: 'observacion'
   };
 
-  export type ReseñaOrderByRelevanceFieldEnum = (typeof ReseñaOrderByRelevanceFieldEnum)[keyof typeof ReseñaOrderByRelevanceFieldEnum]
+  export type ResenaOrderByRelevanceFieldEnum = (typeof ResenaOrderByRelevanceFieldEnum)[keyof typeof ResenaOrderByRelevanceFieldEnum]
 
 
   export const ReporteOrderByRelevanceFieldEnum: {
@@ -20123,7 +20123,7 @@ export namespace Prisma {
     password?: StringFilter<"Usuario"> | string
     ultimoLogin?: DateTimeNullableFilter<"Usuario"> | Date | string | null
     pedidos?: PedidoListRelationFilter
-    reseñas?: ReseñaListRelationFilter
+    resenas?: ResenaListRelationFilter
     historial?: HistorialPedidosListRelationFilter
   }
 
@@ -20135,7 +20135,7 @@ export namespace Prisma {
     password?: SortOrder
     ultimoLogin?: SortOrderInput | SortOrder
     pedidos?: PedidoOrderByRelationAggregateInput
-    reseñas?: ReseñaOrderByRelationAggregateInput
+    resenas?: ResenaOrderByRelationAggregateInput
     historial?: HistorialPedidosOrderByRelationAggregateInput
     _relevance?: UsuarioOrderByRelevanceInput
   }
@@ -20151,7 +20151,7 @@ export namespace Prisma {
     password?: StringFilter<"Usuario"> | string
     ultimoLogin?: DateTimeNullableFilter<"Usuario"> | Date | string | null
     pedidos?: PedidoListRelationFilter
-    reseñas?: ReseñaListRelationFilter
+    resenas?: ResenaListRelationFilter
     historial?: HistorialPedidosListRelationFilter
   }, "id" | "correo">
 
@@ -20248,7 +20248,7 @@ export namespace Prisma {
     categorias?: ProductoCategoriaListRelationFilter
     etiquetas?: ProductoEtiquetaListRelationFilter
     pedidos?: PedidoProductoListRelationFilter
-    reseñas?: ReseñaListRelationFilter
+    resenas?: ResenaListRelationFilter
     promocion?: XOR<PromocionNullableScalarRelationFilter, PromocionWhereInput> | null
   }
 
@@ -20268,7 +20268,7 @@ export namespace Prisma {
     categorias?: ProductoCategoriaOrderByRelationAggregateInput
     etiquetas?: ProductoEtiquetaOrderByRelationAggregateInput
     pedidos?: PedidoProductoOrderByRelationAggregateInput
-    reseñas?: ReseñaOrderByRelationAggregateInput
+    resenas?: ResenaOrderByRelationAggregateInput
     promocion?: PromocionOrderByWithRelationInput
     _relevance?: ProductoOrderByRelevanceInput
   }
@@ -20292,7 +20292,7 @@ export namespace Prisma {
     categorias?: ProductoCategoriaListRelationFilter
     etiquetas?: ProductoEtiquetaListRelationFilter
     pedidos?: PedidoProductoListRelationFilter
-    reseñas?: ReseñaListRelationFilter
+    resenas?: ResenaListRelationFilter
     promocion?: XOR<PromocionNullableScalarRelationFilter, PromocionWhereInput> | null
   }, "id">
 
@@ -20886,24 +20886,24 @@ export namespace Prisma {
     precio?: DecimalWithAggregatesFilter<"PrecioColor"> | Decimal | DecimalJsLike | number | string
   }
 
-  export type ReseñaWhereInput = {
-    AND?: ReseñaWhereInput | ReseñaWhereInput[]
-    OR?: ReseñaWhereInput[]
-    NOT?: ReseñaWhereInput | ReseñaWhereInput[]
-    id?: IntFilter<"Reseña"> | number
-    valoracion?: IntFilter<"Reseña"> | number
-    comentario?: StringNullableFilter<"Reseña"> | string | null
-    fecha?: DateTimeFilter<"Reseña"> | Date | string
-    moderada?: BoolFilter<"Reseña"> | boolean
-    observacion?: StringNullableFilter<"Reseña"> | string | null
-    usuarioId?: IntFilter<"Reseña"> | number
-    productoId?: IntFilter<"Reseña"> | number
+  export type ResenaWhereInput = {
+    AND?: ResenaWhereInput | ResenaWhereInput[]
+    OR?: ResenaWhereInput[]
+    NOT?: ResenaWhereInput | ResenaWhereInput[]
+    id?: IntFilter<"Resena"> | number
+    valoracion?: IntFilter<"Resena"> | number
+    comentario?: StringNullableFilter<"Resena"> | string | null
+    fecha?: DateTimeFilter<"Resena"> | Date | string
+    moderada?: BoolFilter<"Resena"> | boolean
+    observacion?: StringNullableFilter<"Resena"> | string | null
+    usuarioId?: IntFilter<"Resena"> | number
+    productoId?: IntFilter<"Resena"> | number
     usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
     producto?: XOR<ProductoScalarRelationFilter, ProductoWhereInput>
     reportes?: ReporteListRelationFilter
   }
 
-  export type ReseñaOrderByWithRelationInput = {
+  export type ResenaOrderByWithRelationInput = {
     id?: SortOrder
     valoracion?: SortOrder
     comentario?: SortOrderInput | SortOrder
@@ -20915,27 +20915,27 @@ export namespace Prisma {
     usuario?: UsuarioOrderByWithRelationInput
     producto?: ProductoOrderByWithRelationInput
     reportes?: ReporteOrderByRelationAggregateInput
-    _relevance?: ReseñaOrderByRelevanceInput
+    _relevance?: ResenaOrderByRelevanceInput
   }
 
-  export type ReseñaWhereUniqueInput = Prisma.AtLeast<{
+  export type ResenaWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    AND?: ReseñaWhereInput | ReseñaWhereInput[]
-    OR?: ReseñaWhereInput[]
-    NOT?: ReseñaWhereInput | ReseñaWhereInput[]
-    valoracion?: IntFilter<"Reseña"> | number
-    comentario?: StringNullableFilter<"Reseña"> | string | null
-    fecha?: DateTimeFilter<"Reseña"> | Date | string
-    moderada?: BoolFilter<"Reseña"> | boolean
-    observacion?: StringNullableFilter<"Reseña"> | string | null
-    usuarioId?: IntFilter<"Reseña"> | number
-    productoId?: IntFilter<"Reseña"> | number
+    AND?: ResenaWhereInput | ResenaWhereInput[]
+    OR?: ResenaWhereInput[]
+    NOT?: ResenaWhereInput | ResenaWhereInput[]
+    valoracion?: IntFilter<"Resena"> | number
+    comentario?: StringNullableFilter<"Resena"> | string | null
+    fecha?: DateTimeFilter<"Resena"> | Date | string
+    moderada?: BoolFilter<"Resena"> | boolean
+    observacion?: StringNullableFilter<"Resena"> | string | null
+    usuarioId?: IntFilter<"Resena"> | number
+    productoId?: IntFilter<"Resena"> | number
     usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
     producto?: XOR<ProductoScalarRelationFilter, ProductoWhereInput>
     reportes?: ReporteListRelationFilter
   }, "id">
 
-  export type ReseñaOrderByWithAggregationInput = {
+  export type ResenaOrderByWithAggregationInput = {
     id?: SortOrder
     valoracion?: SortOrder
     comentario?: SortOrderInput | SortOrder
@@ -20944,25 +20944,25 @@ export namespace Prisma {
     observacion?: SortOrderInput | SortOrder
     usuarioId?: SortOrder
     productoId?: SortOrder
-    _count?: ReseñaCountOrderByAggregateInput
-    _avg?: ReseñaAvgOrderByAggregateInput
-    _max?: ReseñaMaxOrderByAggregateInput
-    _min?: ReseñaMinOrderByAggregateInput
-    _sum?: ReseñaSumOrderByAggregateInput
+    _count?: ResenaCountOrderByAggregateInput
+    _avg?: ResenaAvgOrderByAggregateInput
+    _max?: ResenaMaxOrderByAggregateInput
+    _min?: ResenaMinOrderByAggregateInput
+    _sum?: ResenaSumOrderByAggregateInput
   }
 
-  export type ReseñaScalarWhereWithAggregatesInput = {
-    AND?: ReseñaScalarWhereWithAggregatesInput | ReseñaScalarWhereWithAggregatesInput[]
-    OR?: ReseñaScalarWhereWithAggregatesInput[]
-    NOT?: ReseñaScalarWhereWithAggregatesInput | ReseñaScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Reseña"> | number
-    valoracion?: IntWithAggregatesFilter<"Reseña"> | number
-    comentario?: StringNullableWithAggregatesFilter<"Reseña"> | string | null
-    fecha?: DateTimeWithAggregatesFilter<"Reseña"> | Date | string
-    moderada?: BoolWithAggregatesFilter<"Reseña"> | boolean
-    observacion?: StringNullableWithAggregatesFilter<"Reseña"> | string | null
-    usuarioId?: IntWithAggregatesFilter<"Reseña"> | number
-    productoId?: IntWithAggregatesFilter<"Reseña"> | number
+  export type ResenaScalarWhereWithAggregatesInput = {
+    AND?: ResenaScalarWhereWithAggregatesInput | ResenaScalarWhereWithAggregatesInput[]
+    OR?: ResenaScalarWhereWithAggregatesInput[]
+    NOT?: ResenaScalarWhereWithAggregatesInput | ResenaScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Resena"> | number
+    valoracion?: IntWithAggregatesFilter<"Resena"> | number
+    comentario?: StringNullableWithAggregatesFilter<"Resena"> | string | null
+    fecha?: DateTimeWithAggregatesFilter<"Resena"> | Date | string
+    moderada?: BoolWithAggregatesFilter<"Resena"> | boolean
+    observacion?: StringNullableWithAggregatesFilter<"Resena"> | string | null
+    usuarioId?: IntWithAggregatesFilter<"Resena"> | number
+    productoId?: IntWithAggregatesFilter<"Resena"> | number
   }
 
   export type ReporteWhereInput = {
@@ -20973,7 +20973,7 @@ export namespace Prisma {
     reportadaPor?: StringFilter<"Reporte"> | string
     motivo?: StringFilter<"Reporte"> | string
     reseñaId?: IntFilter<"Reporte"> | number
-    reseña?: XOR<ReseñaScalarRelationFilter, ReseñaWhereInput>
+    resena?: XOR<ResenaScalarRelationFilter, ResenaWhereInput>
   }
 
   export type ReporteOrderByWithRelationInput = {
@@ -20981,7 +20981,7 @@ export namespace Prisma {
     reportadaPor?: SortOrder
     motivo?: SortOrder
     reseñaId?: SortOrder
-    reseña?: ReseñaOrderByWithRelationInput
+    resena?: ResenaOrderByWithRelationInput
     _relevance?: ReporteOrderByRelevanceInput
   }
 
@@ -20993,7 +20993,7 @@ export namespace Prisma {
     reportadaPor?: StringFilter<"Reporte"> | string
     motivo?: StringFilter<"Reporte"> | string
     reseñaId?: IntFilter<"Reporte"> | number
-    reseña?: XOR<ReseñaScalarRelationFilter, ReseñaWhereInput>
+    resena?: XOR<ResenaScalarRelationFilter, ResenaWhereInput>
   }, "id">
 
   export type ReporteOrderByWithAggregationInput = {
@@ -21146,7 +21146,7 @@ export namespace Prisma {
     password: string
     ultimoLogin?: Date | string | null
     pedidos?: PedidoCreateNestedManyWithoutUsuarioInput
-    reseñas?: ReseñaCreateNestedManyWithoutUsuarioInput
+    resenas?: ResenaCreateNestedManyWithoutUsuarioInput
     historial?: HistorialPedidosCreateNestedManyWithoutActualizadoPorInput
   }
 
@@ -21158,7 +21158,7 @@ export namespace Prisma {
     password: string
     ultimoLogin?: Date | string | null
     pedidos?: PedidoUncheckedCreateNestedManyWithoutUsuarioInput
-    reseñas?: ReseñaUncheckedCreateNestedManyWithoutUsuarioInput
+    resenas?: ResenaUncheckedCreateNestedManyWithoutUsuarioInput
     historial?: HistorialPedidosUncheckedCreateNestedManyWithoutActualizadoPorInput
   }
 
@@ -21169,7 +21169,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     ultimoLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     pedidos?: PedidoUpdateManyWithoutUsuarioNestedInput
-    reseñas?: ReseñaUpdateManyWithoutUsuarioNestedInput
+    resenas?: ResenaUpdateManyWithoutUsuarioNestedInput
     historial?: HistorialPedidosUpdateManyWithoutActualizadoPorNestedInput
   }
 
@@ -21181,7 +21181,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     ultimoLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     pedidos?: PedidoUncheckedUpdateManyWithoutUsuarioNestedInput
-    reseñas?: ReseñaUncheckedUpdateManyWithoutUsuarioNestedInput
+    resenas?: ResenaUncheckedUpdateManyWithoutUsuarioNestedInput
     historial?: HistorialPedidosUncheckedUpdateManyWithoutActualizadoPorNestedInput
   }
 
@@ -21263,7 +21263,7 @@ export namespace Prisma {
     categorias?: ProductoCategoriaCreateNestedManyWithoutProductoInput
     etiquetas?: ProductoEtiquetaCreateNestedManyWithoutProductoInput
     pedidos?: PedidoProductoCreateNestedManyWithoutProductoInput
-    reseñas?: ReseñaCreateNestedManyWithoutProductoInput
+    resenas?: ResenaCreateNestedManyWithoutProductoInput
     promocion?: PromocionCreateNestedOneWithoutProductosInput
   }
 
@@ -21283,7 +21283,7 @@ export namespace Prisma {
     categorias?: ProductoCategoriaUncheckedCreateNestedManyWithoutProductoInput
     etiquetas?: ProductoEtiquetaUncheckedCreateNestedManyWithoutProductoInput
     pedidos?: PedidoProductoUncheckedCreateNestedManyWithoutProductoInput
-    reseñas?: ReseñaUncheckedCreateNestedManyWithoutProductoInput
+    resenas?: ResenaUncheckedCreateNestedManyWithoutProductoInput
   }
 
   export type ProductoUpdateInput = {
@@ -21300,7 +21300,7 @@ export namespace Prisma {
     categorias?: ProductoCategoriaUpdateManyWithoutProductoNestedInput
     etiquetas?: ProductoEtiquetaUpdateManyWithoutProductoNestedInput
     pedidos?: PedidoProductoUpdateManyWithoutProductoNestedInput
-    reseñas?: ReseñaUpdateManyWithoutProductoNestedInput
+    resenas?: ResenaUpdateManyWithoutProductoNestedInput
     promocion?: PromocionUpdateOneWithoutProductosNestedInput
   }
 
@@ -21320,7 +21320,7 @@ export namespace Prisma {
     categorias?: ProductoCategoriaUncheckedUpdateManyWithoutProductoNestedInput
     etiquetas?: ProductoEtiquetaUncheckedUpdateManyWithoutProductoNestedInput
     pedidos?: PedidoProductoUncheckedUpdateManyWithoutProductoNestedInput
-    reseñas?: ReseñaUncheckedUpdateManyWithoutProductoNestedInput
+    resenas?: ResenaUncheckedUpdateManyWithoutProductoNestedInput
   }
 
   export type ProductoCreateManyInput = {
@@ -21843,18 +21843,18 @@ export namespace Prisma {
     precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
   }
 
-  export type ReseñaCreateInput = {
+  export type ResenaCreateInput = {
     valoracion: number
     comentario?: string | null
     fecha?: Date | string
     moderada?: boolean
     observacion?: string | null
-    usuario: UsuarioCreateNestedOneWithoutReseñasInput
-    producto: ProductoCreateNestedOneWithoutReseñasInput
-    reportes?: ReporteCreateNestedManyWithoutReseñaInput
+    usuario: UsuarioCreateNestedOneWithoutResenasInput
+    producto: ProductoCreateNestedOneWithoutResenasInput
+    reportes?: ReporteCreateNestedManyWithoutResenaInput
   }
 
-  export type ReseñaUncheckedCreateInput = {
+  export type ResenaUncheckedCreateInput = {
     id?: number
     valoracion: number
     comentario?: string | null
@@ -21863,21 +21863,21 @@ export namespace Prisma {
     observacion?: string | null
     usuarioId: number
     productoId: number
-    reportes?: ReporteUncheckedCreateNestedManyWithoutReseñaInput
+    reportes?: ReporteUncheckedCreateNestedManyWithoutResenaInput
   }
 
-  export type ReseñaUpdateInput = {
+  export type ResenaUpdateInput = {
     valoracion?: IntFieldUpdateOperationsInput | number
     comentario?: NullableStringFieldUpdateOperationsInput | string | null
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     moderada?: BoolFieldUpdateOperationsInput | boolean
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
-    usuario?: UsuarioUpdateOneRequiredWithoutReseñasNestedInput
-    producto?: ProductoUpdateOneRequiredWithoutReseñasNestedInput
-    reportes?: ReporteUpdateManyWithoutReseñaNestedInput
+    usuario?: UsuarioUpdateOneRequiredWithoutResenasNestedInput
+    producto?: ProductoUpdateOneRequiredWithoutResenasNestedInput
+    reportes?: ReporteUpdateManyWithoutResenaNestedInput
   }
 
-  export type ReseñaUncheckedUpdateInput = {
+  export type ResenaUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     valoracion?: IntFieldUpdateOperationsInput | number
     comentario?: NullableStringFieldUpdateOperationsInput | string | null
@@ -21886,10 +21886,10 @@ export namespace Prisma {
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
     usuarioId?: IntFieldUpdateOperationsInput | number
     productoId?: IntFieldUpdateOperationsInput | number
-    reportes?: ReporteUncheckedUpdateManyWithoutReseñaNestedInput
+    reportes?: ReporteUncheckedUpdateManyWithoutResenaNestedInput
   }
 
-  export type ReseñaCreateManyInput = {
+  export type ResenaCreateManyInput = {
     id?: number
     valoracion: number
     comentario?: string | null
@@ -21900,7 +21900,7 @@ export namespace Prisma {
     productoId: number
   }
 
-  export type ReseñaUpdateManyMutationInput = {
+  export type ResenaUpdateManyMutationInput = {
     valoracion?: IntFieldUpdateOperationsInput | number
     comentario?: NullableStringFieldUpdateOperationsInput | string | null
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21908,7 +21908,7 @@ export namespace Prisma {
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type ReseñaUncheckedUpdateManyInput = {
+  export type ResenaUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     valoracion?: IntFieldUpdateOperationsInput | number
     comentario?: NullableStringFieldUpdateOperationsInput | string | null
@@ -21922,7 +21922,7 @@ export namespace Prisma {
   export type ReporteCreateInput = {
     reportadaPor?: string
     motivo: string
-    reseña: ReseñaCreateNestedOneWithoutReportesInput
+    resena: ResenaCreateNestedOneWithoutReportesInput
   }
 
   export type ReporteUncheckedCreateInput = {
@@ -21935,7 +21935,7 @@ export namespace Prisma {
   export type ReporteUpdateInput = {
     reportadaPor?: StringFieldUpdateOperationsInput | string
     motivo?: StringFieldUpdateOperationsInput | string
-    reseña?: ReseñaUpdateOneRequiredWithoutReportesNestedInput
+    resena?: ResenaUpdateOneRequiredWithoutReportesNestedInput
   }
 
   export type ReporteUncheckedUpdateInput = {
@@ -22126,10 +22126,10 @@ export namespace Prisma {
     none?: PedidoWhereInput
   }
 
-  export type ReseñaListRelationFilter = {
-    every?: ReseñaWhereInput
-    some?: ReseñaWhereInput
-    none?: ReseñaWhereInput
+  export type ResenaListRelationFilter = {
+    every?: ResenaWhereInput
+    some?: ResenaWhereInput
+    none?: ResenaWhereInput
   }
 
   export type HistorialPedidosListRelationFilter = {
@@ -22147,7 +22147,7 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type ReseñaOrderByRelationAggregateInput = {
+  export type ResenaOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -23003,13 +23003,13 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type ReseñaOrderByRelevanceInput = {
-    fields: ReseñaOrderByRelevanceFieldEnum | ReseñaOrderByRelevanceFieldEnum[]
+  export type ResenaOrderByRelevanceInput = {
+    fields: ResenaOrderByRelevanceFieldEnum | ResenaOrderByRelevanceFieldEnum[]
     sort: SortOrder
     search: string
   }
 
-  export type ReseñaCountOrderByAggregateInput = {
+  export type ResenaCountOrderByAggregateInput = {
     id?: SortOrder
     valoracion?: SortOrder
     comentario?: SortOrder
@@ -23020,25 +23020,14 @@ export namespace Prisma {
     productoId?: SortOrder
   }
 
-  export type ReseñaAvgOrderByAggregateInput = {
+  export type ResenaAvgOrderByAggregateInput = {
     id?: SortOrder
     valoracion?: SortOrder
     usuarioId?: SortOrder
     productoId?: SortOrder
   }
 
-  export type ReseñaMaxOrderByAggregateInput = {
-    id?: SortOrder
-    valoracion?: SortOrder
-    comentario?: SortOrder
-    fecha?: SortOrder
-    moderada?: SortOrder
-    observacion?: SortOrder
-    usuarioId?: SortOrder
-    productoId?: SortOrder
-  }
-
-  export type ReseñaMinOrderByAggregateInput = {
+  export type ResenaMaxOrderByAggregateInput = {
     id?: SortOrder
     valoracion?: SortOrder
     comentario?: SortOrder
@@ -23049,16 +23038,27 @@ export namespace Prisma {
     productoId?: SortOrder
   }
 
-  export type ReseñaSumOrderByAggregateInput = {
+  export type ResenaMinOrderByAggregateInput = {
+    id?: SortOrder
+    valoracion?: SortOrder
+    comentario?: SortOrder
+    fecha?: SortOrder
+    moderada?: SortOrder
+    observacion?: SortOrder
+    usuarioId?: SortOrder
+    productoId?: SortOrder
+  }
+
+  export type ResenaSumOrderByAggregateInput = {
     id?: SortOrder
     valoracion?: SortOrder
     usuarioId?: SortOrder
     productoId?: SortOrder
   }
 
-  export type ReseñaScalarRelationFilter = {
-    is?: ReseñaWhereInput
-    isNot?: ReseñaWhereInput
+  export type ResenaScalarRelationFilter = {
+    is?: ResenaWhereInput
+    isNot?: ResenaWhereInput
   }
 
   export type ReporteOrderByRelevanceInput = {
@@ -23201,11 +23201,11 @@ export namespace Prisma {
     connect?: PedidoWhereUniqueInput | PedidoWhereUniqueInput[]
   }
 
-  export type ReseñaCreateNestedManyWithoutUsuarioInput = {
-    create?: XOR<ReseñaCreateWithoutUsuarioInput, ReseñaUncheckedCreateWithoutUsuarioInput> | ReseñaCreateWithoutUsuarioInput[] | ReseñaUncheckedCreateWithoutUsuarioInput[]
-    connectOrCreate?: ReseñaCreateOrConnectWithoutUsuarioInput | ReseñaCreateOrConnectWithoutUsuarioInput[]
-    createMany?: ReseñaCreateManyUsuarioInputEnvelope
-    connect?: ReseñaWhereUniqueInput | ReseñaWhereUniqueInput[]
+  export type ResenaCreateNestedManyWithoutUsuarioInput = {
+    create?: XOR<ResenaCreateWithoutUsuarioInput, ResenaUncheckedCreateWithoutUsuarioInput> | ResenaCreateWithoutUsuarioInput[] | ResenaUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: ResenaCreateOrConnectWithoutUsuarioInput | ResenaCreateOrConnectWithoutUsuarioInput[]
+    createMany?: ResenaCreateManyUsuarioInputEnvelope
+    connect?: ResenaWhereUniqueInput | ResenaWhereUniqueInput[]
   }
 
   export type HistorialPedidosCreateNestedManyWithoutActualizadoPorInput = {
@@ -23222,11 +23222,11 @@ export namespace Prisma {
     connect?: PedidoWhereUniqueInput | PedidoWhereUniqueInput[]
   }
 
-  export type ReseñaUncheckedCreateNestedManyWithoutUsuarioInput = {
-    create?: XOR<ReseñaCreateWithoutUsuarioInput, ReseñaUncheckedCreateWithoutUsuarioInput> | ReseñaCreateWithoutUsuarioInput[] | ReseñaUncheckedCreateWithoutUsuarioInput[]
-    connectOrCreate?: ReseñaCreateOrConnectWithoutUsuarioInput | ReseñaCreateOrConnectWithoutUsuarioInput[]
-    createMany?: ReseñaCreateManyUsuarioInputEnvelope
-    connect?: ReseñaWhereUniqueInput | ReseñaWhereUniqueInput[]
+  export type ResenaUncheckedCreateNestedManyWithoutUsuarioInput = {
+    create?: XOR<ResenaCreateWithoutUsuarioInput, ResenaUncheckedCreateWithoutUsuarioInput> | ResenaCreateWithoutUsuarioInput[] | ResenaUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: ResenaCreateOrConnectWithoutUsuarioInput | ResenaCreateOrConnectWithoutUsuarioInput[]
+    createMany?: ResenaCreateManyUsuarioInputEnvelope
+    connect?: ResenaWhereUniqueInput | ResenaWhereUniqueInput[]
   }
 
   export type HistorialPedidosUncheckedCreateNestedManyWithoutActualizadoPorInput = {
@@ -23262,18 +23262,18 @@ export namespace Prisma {
     deleteMany?: PedidoScalarWhereInput | PedidoScalarWhereInput[]
   }
 
-  export type ReseñaUpdateManyWithoutUsuarioNestedInput = {
-    create?: XOR<ReseñaCreateWithoutUsuarioInput, ReseñaUncheckedCreateWithoutUsuarioInput> | ReseñaCreateWithoutUsuarioInput[] | ReseñaUncheckedCreateWithoutUsuarioInput[]
-    connectOrCreate?: ReseñaCreateOrConnectWithoutUsuarioInput | ReseñaCreateOrConnectWithoutUsuarioInput[]
-    upsert?: ReseñaUpsertWithWhereUniqueWithoutUsuarioInput | ReseñaUpsertWithWhereUniqueWithoutUsuarioInput[]
-    createMany?: ReseñaCreateManyUsuarioInputEnvelope
-    set?: ReseñaWhereUniqueInput | ReseñaWhereUniqueInput[]
-    disconnect?: ReseñaWhereUniqueInput | ReseñaWhereUniqueInput[]
-    delete?: ReseñaWhereUniqueInput | ReseñaWhereUniqueInput[]
-    connect?: ReseñaWhereUniqueInput | ReseñaWhereUniqueInput[]
-    update?: ReseñaUpdateWithWhereUniqueWithoutUsuarioInput | ReseñaUpdateWithWhereUniqueWithoutUsuarioInput[]
-    updateMany?: ReseñaUpdateManyWithWhereWithoutUsuarioInput | ReseñaUpdateManyWithWhereWithoutUsuarioInput[]
-    deleteMany?: ReseñaScalarWhereInput | ReseñaScalarWhereInput[]
+  export type ResenaUpdateManyWithoutUsuarioNestedInput = {
+    create?: XOR<ResenaCreateWithoutUsuarioInput, ResenaUncheckedCreateWithoutUsuarioInput> | ResenaCreateWithoutUsuarioInput[] | ResenaUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: ResenaCreateOrConnectWithoutUsuarioInput | ResenaCreateOrConnectWithoutUsuarioInput[]
+    upsert?: ResenaUpsertWithWhereUniqueWithoutUsuarioInput | ResenaUpsertWithWhereUniqueWithoutUsuarioInput[]
+    createMany?: ResenaCreateManyUsuarioInputEnvelope
+    set?: ResenaWhereUniqueInput | ResenaWhereUniqueInput[]
+    disconnect?: ResenaWhereUniqueInput | ResenaWhereUniqueInput[]
+    delete?: ResenaWhereUniqueInput | ResenaWhereUniqueInput[]
+    connect?: ResenaWhereUniqueInput | ResenaWhereUniqueInput[]
+    update?: ResenaUpdateWithWhereUniqueWithoutUsuarioInput | ResenaUpdateWithWhereUniqueWithoutUsuarioInput[]
+    updateMany?: ResenaUpdateManyWithWhereWithoutUsuarioInput | ResenaUpdateManyWithWhereWithoutUsuarioInput[]
+    deleteMany?: ResenaScalarWhereInput | ResenaScalarWhereInput[]
   }
 
   export type HistorialPedidosUpdateManyWithoutActualizadoPorNestedInput = {
@@ -23312,18 +23312,18 @@ export namespace Prisma {
     deleteMany?: PedidoScalarWhereInput | PedidoScalarWhereInput[]
   }
 
-  export type ReseñaUncheckedUpdateManyWithoutUsuarioNestedInput = {
-    create?: XOR<ReseñaCreateWithoutUsuarioInput, ReseñaUncheckedCreateWithoutUsuarioInput> | ReseñaCreateWithoutUsuarioInput[] | ReseñaUncheckedCreateWithoutUsuarioInput[]
-    connectOrCreate?: ReseñaCreateOrConnectWithoutUsuarioInput | ReseñaCreateOrConnectWithoutUsuarioInput[]
-    upsert?: ReseñaUpsertWithWhereUniqueWithoutUsuarioInput | ReseñaUpsertWithWhereUniqueWithoutUsuarioInput[]
-    createMany?: ReseñaCreateManyUsuarioInputEnvelope
-    set?: ReseñaWhereUniqueInput | ReseñaWhereUniqueInput[]
-    disconnect?: ReseñaWhereUniqueInput | ReseñaWhereUniqueInput[]
-    delete?: ReseñaWhereUniqueInput | ReseñaWhereUniqueInput[]
-    connect?: ReseñaWhereUniqueInput | ReseñaWhereUniqueInput[]
-    update?: ReseñaUpdateWithWhereUniqueWithoutUsuarioInput | ReseñaUpdateWithWhereUniqueWithoutUsuarioInput[]
-    updateMany?: ReseñaUpdateManyWithWhereWithoutUsuarioInput | ReseñaUpdateManyWithWhereWithoutUsuarioInput[]
-    deleteMany?: ReseñaScalarWhereInput | ReseñaScalarWhereInput[]
+  export type ResenaUncheckedUpdateManyWithoutUsuarioNestedInput = {
+    create?: XOR<ResenaCreateWithoutUsuarioInput, ResenaUncheckedCreateWithoutUsuarioInput> | ResenaCreateWithoutUsuarioInput[] | ResenaUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: ResenaCreateOrConnectWithoutUsuarioInput | ResenaCreateOrConnectWithoutUsuarioInput[]
+    upsert?: ResenaUpsertWithWhereUniqueWithoutUsuarioInput | ResenaUpsertWithWhereUniqueWithoutUsuarioInput[]
+    createMany?: ResenaCreateManyUsuarioInputEnvelope
+    set?: ResenaWhereUniqueInput | ResenaWhereUniqueInput[]
+    disconnect?: ResenaWhereUniqueInput | ResenaWhereUniqueInput[]
+    delete?: ResenaWhereUniqueInput | ResenaWhereUniqueInput[]
+    connect?: ResenaWhereUniqueInput | ResenaWhereUniqueInput[]
+    update?: ResenaUpdateWithWhereUniqueWithoutUsuarioInput | ResenaUpdateWithWhereUniqueWithoutUsuarioInput[]
+    updateMany?: ResenaUpdateManyWithWhereWithoutUsuarioInput | ResenaUpdateManyWithWhereWithoutUsuarioInput[]
+    deleteMany?: ResenaScalarWhereInput | ResenaScalarWhereInput[]
   }
 
   export type HistorialPedidosUncheckedUpdateManyWithoutActualizadoPorNestedInput = {
@@ -23399,11 +23399,11 @@ export namespace Prisma {
     connect?: PedidoProductoWhereUniqueInput | PedidoProductoWhereUniqueInput[]
   }
 
-  export type ReseñaCreateNestedManyWithoutProductoInput = {
-    create?: XOR<ReseñaCreateWithoutProductoInput, ReseñaUncheckedCreateWithoutProductoInput> | ReseñaCreateWithoutProductoInput[] | ReseñaUncheckedCreateWithoutProductoInput[]
-    connectOrCreate?: ReseñaCreateOrConnectWithoutProductoInput | ReseñaCreateOrConnectWithoutProductoInput[]
-    createMany?: ReseñaCreateManyProductoInputEnvelope
-    connect?: ReseñaWhereUniqueInput | ReseñaWhereUniqueInput[]
+  export type ResenaCreateNestedManyWithoutProductoInput = {
+    create?: XOR<ResenaCreateWithoutProductoInput, ResenaUncheckedCreateWithoutProductoInput> | ResenaCreateWithoutProductoInput[] | ResenaUncheckedCreateWithoutProductoInput[]
+    connectOrCreate?: ResenaCreateOrConnectWithoutProductoInput | ResenaCreateOrConnectWithoutProductoInput[]
+    createMany?: ResenaCreateManyProductoInputEnvelope
+    connect?: ResenaWhereUniqueInput | ResenaWhereUniqueInput[]
   }
 
   export type PromocionCreateNestedOneWithoutProductosInput = {
@@ -23447,11 +23447,11 @@ export namespace Prisma {
     connect?: PedidoProductoWhereUniqueInput | PedidoProductoWhereUniqueInput[]
   }
 
-  export type ReseñaUncheckedCreateNestedManyWithoutProductoInput = {
-    create?: XOR<ReseñaCreateWithoutProductoInput, ReseñaUncheckedCreateWithoutProductoInput> | ReseñaCreateWithoutProductoInput[] | ReseñaUncheckedCreateWithoutProductoInput[]
-    connectOrCreate?: ReseñaCreateOrConnectWithoutProductoInput | ReseñaCreateOrConnectWithoutProductoInput[]
-    createMany?: ReseñaCreateManyProductoInputEnvelope
-    connect?: ReseñaWhereUniqueInput | ReseñaWhereUniqueInput[]
+  export type ResenaUncheckedCreateNestedManyWithoutProductoInput = {
+    create?: XOR<ResenaCreateWithoutProductoInput, ResenaUncheckedCreateWithoutProductoInput> | ResenaCreateWithoutProductoInput[] | ResenaUncheckedCreateWithoutProductoInput[]
+    connectOrCreate?: ResenaCreateOrConnectWithoutProductoInput | ResenaCreateOrConnectWithoutProductoInput[]
+    createMany?: ResenaCreateManyProductoInputEnvelope
+    connect?: ResenaWhereUniqueInput | ResenaWhereUniqueInput[]
   }
 
   export type DecimalFieldUpdateOperationsInput = {
@@ -23540,18 +23540,18 @@ export namespace Prisma {
     deleteMany?: PedidoProductoScalarWhereInput | PedidoProductoScalarWhereInput[]
   }
 
-  export type ReseñaUpdateManyWithoutProductoNestedInput = {
-    create?: XOR<ReseñaCreateWithoutProductoInput, ReseñaUncheckedCreateWithoutProductoInput> | ReseñaCreateWithoutProductoInput[] | ReseñaUncheckedCreateWithoutProductoInput[]
-    connectOrCreate?: ReseñaCreateOrConnectWithoutProductoInput | ReseñaCreateOrConnectWithoutProductoInput[]
-    upsert?: ReseñaUpsertWithWhereUniqueWithoutProductoInput | ReseñaUpsertWithWhereUniqueWithoutProductoInput[]
-    createMany?: ReseñaCreateManyProductoInputEnvelope
-    set?: ReseñaWhereUniqueInput | ReseñaWhereUniqueInput[]
-    disconnect?: ReseñaWhereUniqueInput | ReseñaWhereUniqueInput[]
-    delete?: ReseñaWhereUniqueInput | ReseñaWhereUniqueInput[]
-    connect?: ReseñaWhereUniqueInput | ReseñaWhereUniqueInput[]
-    update?: ReseñaUpdateWithWhereUniqueWithoutProductoInput | ReseñaUpdateWithWhereUniqueWithoutProductoInput[]
-    updateMany?: ReseñaUpdateManyWithWhereWithoutProductoInput | ReseñaUpdateManyWithWhereWithoutProductoInput[]
-    deleteMany?: ReseñaScalarWhereInput | ReseñaScalarWhereInput[]
+  export type ResenaUpdateManyWithoutProductoNestedInput = {
+    create?: XOR<ResenaCreateWithoutProductoInput, ResenaUncheckedCreateWithoutProductoInput> | ResenaCreateWithoutProductoInput[] | ResenaUncheckedCreateWithoutProductoInput[]
+    connectOrCreate?: ResenaCreateOrConnectWithoutProductoInput | ResenaCreateOrConnectWithoutProductoInput[]
+    upsert?: ResenaUpsertWithWhereUniqueWithoutProductoInput | ResenaUpsertWithWhereUniqueWithoutProductoInput[]
+    createMany?: ResenaCreateManyProductoInputEnvelope
+    set?: ResenaWhereUniqueInput | ResenaWhereUniqueInput[]
+    disconnect?: ResenaWhereUniqueInput | ResenaWhereUniqueInput[]
+    delete?: ResenaWhereUniqueInput | ResenaWhereUniqueInput[]
+    connect?: ResenaWhereUniqueInput | ResenaWhereUniqueInput[]
+    update?: ResenaUpdateWithWhereUniqueWithoutProductoInput | ResenaUpdateWithWhereUniqueWithoutProductoInput[]
+    updateMany?: ResenaUpdateManyWithWhereWithoutProductoInput | ResenaUpdateManyWithWhereWithoutProductoInput[]
+    deleteMany?: ResenaScalarWhereInput | ResenaScalarWhereInput[]
   }
 
   export type PromocionUpdateOneWithoutProductosNestedInput = {
@@ -23634,18 +23634,18 @@ export namespace Prisma {
     deleteMany?: PedidoProductoScalarWhereInput | PedidoProductoScalarWhereInput[]
   }
 
-  export type ReseñaUncheckedUpdateManyWithoutProductoNestedInput = {
-    create?: XOR<ReseñaCreateWithoutProductoInput, ReseñaUncheckedCreateWithoutProductoInput> | ReseñaCreateWithoutProductoInput[] | ReseñaUncheckedCreateWithoutProductoInput[]
-    connectOrCreate?: ReseñaCreateOrConnectWithoutProductoInput | ReseñaCreateOrConnectWithoutProductoInput[]
-    upsert?: ReseñaUpsertWithWhereUniqueWithoutProductoInput | ReseñaUpsertWithWhereUniqueWithoutProductoInput[]
-    createMany?: ReseñaCreateManyProductoInputEnvelope
-    set?: ReseñaWhereUniqueInput | ReseñaWhereUniqueInput[]
-    disconnect?: ReseñaWhereUniqueInput | ReseñaWhereUniqueInput[]
-    delete?: ReseñaWhereUniqueInput | ReseñaWhereUniqueInput[]
-    connect?: ReseñaWhereUniqueInput | ReseñaWhereUniqueInput[]
-    update?: ReseñaUpdateWithWhereUniqueWithoutProductoInput | ReseñaUpdateWithWhereUniqueWithoutProductoInput[]
-    updateMany?: ReseñaUpdateManyWithWhereWithoutProductoInput | ReseñaUpdateManyWithWhereWithoutProductoInput[]
-    deleteMany?: ReseñaScalarWhereInput | ReseñaScalarWhereInput[]
+  export type ResenaUncheckedUpdateManyWithoutProductoNestedInput = {
+    create?: XOR<ResenaCreateWithoutProductoInput, ResenaUncheckedCreateWithoutProductoInput> | ResenaCreateWithoutProductoInput[] | ResenaUncheckedCreateWithoutProductoInput[]
+    connectOrCreate?: ResenaCreateOrConnectWithoutProductoInput | ResenaCreateOrConnectWithoutProductoInput[]
+    upsert?: ResenaUpsertWithWhereUniqueWithoutProductoInput | ResenaUpsertWithWhereUniqueWithoutProductoInput[]
+    createMany?: ResenaCreateManyProductoInputEnvelope
+    set?: ResenaWhereUniqueInput | ResenaWhereUniqueInput[]
+    disconnect?: ResenaWhereUniqueInput | ResenaWhereUniqueInput[]
+    delete?: ResenaWhereUniqueInput | ResenaWhereUniqueInput[]
+    connect?: ResenaWhereUniqueInput | ResenaWhereUniqueInput[]
+    update?: ResenaUpdateWithWhereUniqueWithoutProductoInput | ResenaUpdateWithWhereUniqueWithoutProductoInput[]
+    updateMany?: ResenaUpdateManyWithWhereWithoutProductoInput | ResenaUpdateManyWithWhereWithoutProductoInput[]
+    deleteMany?: ResenaScalarWhereInput | ResenaScalarWhereInput[]
   }
 
   export type ProductoCategoriaCreateNestedManyWithoutCategoriaInput = {
@@ -24186,88 +24186,88 @@ export namespace Prisma {
     deleteMany?: ProductoPersonalizadoScalarWhereInput | ProductoPersonalizadoScalarWhereInput[]
   }
 
-  export type UsuarioCreateNestedOneWithoutReseñasInput = {
-    create?: XOR<UsuarioCreateWithoutReseñasInput, UsuarioUncheckedCreateWithoutReseñasInput>
-    connectOrCreate?: UsuarioCreateOrConnectWithoutReseñasInput
+  export type UsuarioCreateNestedOneWithoutResenasInput = {
+    create?: XOR<UsuarioCreateWithoutResenasInput, UsuarioUncheckedCreateWithoutResenasInput>
+    connectOrCreate?: UsuarioCreateOrConnectWithoutResenasInput
     connect?: UsuarioWhereUniqueInput
   }
 
-  export type ProductoCreateNestedOneWithoutReseñasInput = {
-    create?: XOR<ProductoCreateWithoutReseñasInput, ProductoUncheckedCreateWithoutReseñasInput>
-    connectOrCreate?: ProductoCreateOrConnectWithoutReseñasInput
+  export type ProductoCreateNestedOneWithoutResenasInput = {
+    create?: XOR<ProductoCreateWithoutResenasInput, ProductoUncheckedCreateWithoutResenasInput>
+    connectOrCreate?: ProductoCreateOrConnectWithoutResenasInput
     connect?: ProductoWhereUniqueInput
   }
 
-  export type ReporteCreateNestedManyWithoutReseñaInput = {
-    create?: XOR<ReporteCreateWithoutReseñaInput, ReporteUncheckedCreateWithoutReseñaInput> | ReporteCreateWithoutReseñaInput[] | ReporteUncheckedCreateWithoutReseñaInput[]
-    connectOrCreate?: ReporteCreateOrConnectWithoutReseñaInput | ReporteCreateOrConnectWithoutReseñaInput[]
-    createMany?: ReporteCreateManyReseñaInputEnvelope
+  export type ReporteCreateNestedManyWithoutResenaInput = {
+    create?: XOR<ReporteCreateWithoutResenaInput, ReporteUncheckedCreateWithoutResenaInput> | ReporteCreateWithoutResenaInput[] | ReporteUncheckedCreateWithoutResenaInput[]
+    connectOrCreate?: ReporteCreateOrConnectWithoutResenaInput | ReporteCreateOrConnectWithoutResenaInput[]
+    createMany?: ReporteCreateManyResenaInputEnvelope
     connect?: ReporteWhereUniqueInput | ReporteWhereUniqueInput[]
   }
 
-  export type ReporteUncheckedCreateNestedManyWithoutReseñaInput = {
-    create?: XOR<ReporteCreateWithoutReseñaInput, ReporteUncheckedCreateWithoutReseñaInput> | ReporteCreateWithoutReseñaInput[] | ReporteUncheckedCreateWithoutReseñaInput[]
-    connectOrCreate?: ReporteCreateOrConnectWithoutReseñaInput | ReporteCreateOrConnectWithoutReseñaInput[]
-    createMany?: ReporteCreateManyReseñaInputEnvelope
+  export type ReporteUncheckedCreateNestedManyWithoutResenaInput = {
+    create?: XOR<ReporteCreateWithoutResenaInput, ReporteUncheckedCreateWithoutResenaInput> | ReporteCreateWithoutResenaInput[] | ReporteUncheckedCreateWithoutResenaInput[]
+    connectOrCreate?: ReporteCreateOrConnectWithoutResenaInput | ReporteCreateOrConnectWithoutResenaInput[]
+    createMany?: ReporteCreateManyResenaInputEnvelope
     connect?: ReporteWhereUniqueInput | ReporteWhereUniqueInput[]
   }
 
-  export type UsuarioUpdateOneRequiredWithoutReseñasNestedInput = {
-    create?: XOR<UsuarioCreateWithoutReseñasInput, UsuarioUncheckedCreateWithoutReseñasInput>
-    connectOrCreate?: UsuarioCreateOrConnectWithoutReseñasInput
-    upsert?: UsuarioUpsertWithoutReseñasInput
+  export type UsuarioUpdateOneRequiredWithoutResenasNestedInput = {
+    create?: XOR<UsuarioCreateWithoutResenasInput, UsuarioUncheckedCreateWithoutResenasInput>
+    connectOrCreate?: UsuarioCreateOrConnectWithoutResenasInput
+    upsert?: UsuarioUpsertWithoutResenasInput
     connect?: UsuarioWhereUniqueInput
-    update?: XOR<XOR<UsuarioUpdateToOneWithWhereWithoutReseñasInput, UsuarioUpdateWithoutReseñasInput>, UsuarioUncheckedUpdateWithoutReseñasInput>
+    update?: XOR<XOR<UsuarioUpdateToOneWithWhereWithoutResenasInput, UsuarioUpdateWithoutResenasInput>, UsuarioUncheckedUpdateWithoutResenasInput>
   }
 
-  export type ProductoUpdateOneRequiredWithoutReseñasNestedInput = {
-    create?: XOR<ProductoCreateWithoutReseñasInput, ProductoUncheckedCreateWithoutReseñasInput>
-    connectOrCreate?: ProductoCreateOrConnectWithoutReseñasInput
-    upsert?: ProductoUpsertWithoutReseñasInput
+  export type ProductoUpdateOneRequiredWithoutResenasNestedInput = {
+    create?: XOR<ProductoCreateWithoutResenasInput, ProductoUncheckedCreateWithoutResenasInput>
+    connectOrCreate?: ProductoCreateOrConnectWithoutResenasInput
+    upsert?: ProductoUpsertWithoutResenasInput
     connect?: ProductoWhereUniqueInput
-    update?: XOR<XOR<ProductoUpdateToOneWithWhereWithoutReseñasInput, ProductoUpdateWithoutReseñasInput>, ProductoUncheckedUpdateWithoutReseñasInput>
+    update?: XOR<XOR<ProductoUpdateToOneWithWhereWithoutResenasInput, ProductoUpdateWithoutResenasInput>, ProductoUncheckedUpdateWithoutResenasInput>
   }
 
-  export type ReporteUpdateManyWithoutReseñaNestedInput = {
-    create?: XOR<ReporteCreateWithoutReseñaInput, ReporteUncheckedCreateWithoutReseñaInput> | ReporteCreateWithoutReseñaInput[] | ReporteUncheckedCreateWithoutReseñaInput[]
-    connectOrCreate?: ReporteCreateOrConnectWithoutReseñaInput | ReporteCreateOrConnectWithoutReseñaInput[]
-    upsert?: ReporteUpsertWithWhereUniqueWithoutReseñaInput | ReporteUpsertWithWhereUniqueWithoutReseñaInput[]
-    createMany?: ReporteCreateManyReseñaInputEnvelope
+  export type ReporteUpdateManyWithoutResenaNestedInput = {
+    create?: XOR<ReporteCreateWithoutResenaInput, ReporteUncheckedCreateWithoutResenaInput> | ReporteCreateWithoutResenaInput[] | ReporteUncheckedCreateWithoutResenaInput[]
+    connectOrCreate?: ReporteCreateOrConnectWithoutResenaInput | ReporteCreateOrConnectWithoutResenaInput[]
+    upsert?: ReporteUpsertWithWhereUniqueWithoutResenaInput | ReporteUpsertWithWhereUniqueWithoutResenaInput[]
+    createMany?: ReporteCreateManyResenaInputEnvelope
     set?: ReporteWhereUniqueInput | ReporteWhereUniqueInput[]
     disconnect?: ReporteWhereUniqueInput | ReporteWhereUniqueInput[]
     delete?: ReporteWhereUniqueInput | ReporteWhereUniqueInput[]
     connect?: ReporteWhereUniqueInput | ReporteWhereUniqueInput[]
-    update?: ReporteUpdateWithWhereUniqueWithoutReseñaInput | ReporteUpdateWithWhereUniqueWithoutReseñaInput[]
-    updateMany?: ReporteUpdateManyWithWhereWithoutReseñaInput | ReporteUpdateManyWithWhereWithoutReseñaInput[]
+    update?: ReporteUpdateWithWhereUniqueWithoutResenaInput | ReporteUpdateWithWhereUniqueWithoutResenaInput[]
+    updateMany?: ReporteUpdateManyWithWhereWithoutResenaInput | ReporteUpdateManyWithWhereWithoutResenaInput[]
     deleteMany?: ReporteScalarWhereInput | ReporteScalarWhereInput[]
   }
 
-  export type ReporteUncheckedUpdateManyWithoutReseñaNestedInput = {
-    create?: XOR<ReporteCreateWithoutReseñaInput, ReporteUncheckedCreateWithoutReseñaInput> | ReporteCreateWithoutReseñaInput[] | ReporteUncheckedCreateWithoutReseñaInput[]
-    connectOrCreate?: ReporteCreateOrConnectWithoutReseñaInput | ReporteCreateOrConnectWithoutReseñaInput[]
-    upsert?: ReporteUpsertWithWhereUniqueWithoutReseñaInput | ReporteUpsertWithWhereUniqueWithoutReseñaInput[]
-    createMany?: ReporteCreateManyReseñaInputEnvelope
+  export type ReporteUncheckedUpdateManyWithoutResenaNestedInput = {
+    create?: XOR<ReporteCreateWithoutResenaInput, ReporteUncheckedCreateWithoutResenaInput> | ReporteCreateWithoutResenaInput[] | ReporteUncheckedCreateWithoutResenaInput[]
+    connectOrCreate?: ReporteCreateOrConnectWithoutResenaInput | ReporteCreateOrConnectWithoutResenaInput[]
+    upsert?: ReporteUpsertWithWhereUniqueWithoutResenaInput | ReporteUpsertWithWhereUniqueWithoutResenaInput[]
+    createMany?: ReporteCreateManyResenaInputEnvelope
     set?: ReporteWhereUniqueInput | ReporteWhereUniqueInput[]
     disconnect?: ReporteWhereUniqueInput | ReporteWhereUniqueInput[]
     delete?: ReporteWhereUniqueInput | ReporteWhereUniqueInput[]
     connect?: ReporteWhereUniqueInput | ReporteWhereUniqueInput[]
-    update?: ReporteUpdateWithWhereUniqueWithoutReseñaInput | ReporteUpdateWithWhereUniqueWithoutReseñaInput[]
-    updateMany?: ReporteUpdateManyWithWhereWithoutReseñaInput | ReporteUpdateManyWithWhereWithoutReseñaInput[]
+    update?: ReporteUpdateWithWhereUniqueWithoutResenaInput | ReporteUpdateWithWhereUniqueWithoutResenaInput[]
+    updateMany?: ReporteUpdateManyWithWhereWithoutResenaInput | ReporteUpdateManyWithWhereWithoutResenaInput[]
     deleteMany?: ReporteScalarWhereInput | ReporteScalarWhereInput[]
   }
 
-  export type ReseñaCreateNestedOneWithoutReportesInput = {
-    create?: XOR<ReseñaCreateWithoutReportesInput, ReseñaUncheckedCreateWithoutReportesInput>
-    connectOrCreate?: ReseñaCreateOrConnectWithoutReportesInput
-    connect?: ReseñaWhereUniqueInput
+  export type ResenaCreateNestedOneWithoutReportesInput = {
+    create?: XOR<ResenaCreateWithoutReportesInput, ResenaUncheckedCreateWithoutReportesInput>
+    connectOrCreate?: ResenaCreateOrConnectWithoutReportesInput
+    connect?: ResenaWhereUniqueInput
   }
 
-  export type ReseñaUpdateOneRequiredWithoutReportesNestedInput = {
-    create?: XOR<ReseñaCreateWithoutReportesInput, ReseñaUncheckedCreateWithoutReportesInput>
-    connectOrCreate?: ReseñaCreateOrConnectWithoutReportesInput
-    upsert?: ReseñaUpsertWithoutReportesInput
-    connect?: ReseñaWhereUniqueInput
-    update?: XOR<XOR<ReseñaUpdateToOneWithWhereWithoutReportesInput, ReseñaUpdateWithoutReportesInput>, ReseñaUncheckedUpdateWithoutReportesInput>
+  export type ResenaUpdateOneRequiredWithoutReportesNestedInput = {
+    create?: XOR<ResenaCreateWithoutReportesInput, ResenaUncheckedCreateWithoutReportesInput>
+    connectOrCreate?: ResenaCreateOrConnectWithoutReportesInput
+    upsert?: ResenaUpsertWithoutReportesInput
+    connect?: ResenaWhereUniqueInput
+    update?: XOR<XOR<ResenaUpdateToOneWithWhereWithoutReportesInput, ResenaUpdateWithoutReportesInput>, ResenaUncheckedUpdateWithoutReportesInput>
   }
 
   export type ProductoCreateNestedManyWithoutPromocionInput = {
@@ -24689,17 +24689,17 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type ReseñaCreateWithoutUsuarioInput = {
+  export type ResenaCreateWithoutUsuarioInput = {
     valoracion: number
     comentario?: string | null
     fecha?: Date | string
     moderada?: boolean
     observacion?: string | null
-    producto: ProductoCreateNestedOneWithoutReseñasInput
-    reportes?: ReporteCreateNestedManyWithoutReseñaInput
+    producto: ProductoCreateNestedOneWithoutResenasInput
+    reportes?: ReporteCreateNestedManyWithoutResenaInput
   }
 
-  export type ReseñaUncheckedCreateWithoutUsuarioInput = {
+  export type ResenaUncheckedCreateWithoutUsuarioInput = {
     id?: number
     valoracion: number
     comentario?: string | null
@@ -24707,16 +24707,16 @@ export namespace Prisma {
     moderada?: boolean
     observacion?: string | null
     productoId: number
-    reportes?: ReporteUncheckedCreateNestedManyWithoutReseñaInput
+    reportes?: ReporteUncheckedCreateNestedManyWithoutResenaInput
   }
 
-  export type ReseñaCreateOrConnectWithoutUsuarioInput = {
-    where: ReseñaWhereUniqueInput
-    create: XOR<ReseñaCreateWithoutUsuarioInput, ReseñaUncheckedCreateWithoutUsuarioInput>
+  export type ResenaCreateOrConnectWithoutUsuarioInput = {
+    where: ResenaWhereUniqueInput
+    create: XOR<ResenaCreateWithoutUsuarioInput, ResenaUncheckedCreateWithoutUsuarioInput>
   }
 
-  export type ReseñaCreateManyUsuarioInputEnvelope = {
-    data: ReseñaCreateManyUsuarioInput | ReseñaCreateManyUsuarioInput[]
+  export type ResenaCreateManyUsuarioInputEnvelope = {
+    data: ResenaCreateManyUsuarioInput | ResenaCreateManyUsuarioInput[]
     skipDuplicates?: boolean
   }
 
@@ -24769,34 +24769,34 @@ export namespace Prisma {
     estado?: EnumEstadoFilter<"Pedido"> | $Enums.Estado
   }
 
-  export type ReseñaUpsertWithWhereUniqueWithoutUsuarioInput = {
-    where: ReseñaWhereUniqueInput
-    update: XOR<ReseñaUpdateWithoutUsuarioInput, ReseñaUncheckedUpdateWithoutUsuarioInput>
-    create: XOR<ReseñaCreateWithoutUsuarioInput, ReseñaUncheckedCreateWithoutUsuarioInput>
+  export type ResenaUpsertWithWhereUniqueWithoutUsuarioInput = {
+    where: ResenaWhereUniqueInput
+    update: XOR<ResenaUpdateWithoutUsuarioInput, ResenaUncheckedUpdateWithoutUsuarioInput>
+    create: XOR<ResenaCreateWithoutUsuarioInput, ResenaUncheckedCreateWithoutUsuarioInput>
   }
 
-  export type ReseñaUpdateWithWhereUniqueWithoutUsuarioInput = {
-    where: ReseñaWhereUniqueInput
-    data: XOR<ReseñaUpdateWithoutUsuarioInput, ReseñaUncheckedUpdateWithoutUsuarioInput>
+  export type ResenaUpdateWithWhereUniqueWithoutUsuarioInput = {
+    where: ResenaWhereUniqueInput
+    data: XOR<ResenaUpdateWithoutUsuarioInput, ResenaUncheckedUpdateWithoutUsuarioInput>
   }
 
-  export type ReseñaUpdateManyWithWhereWithoutUsuarioInput = {
-    where: ReseñaScalarWhereInput
-    data: XOR<ReseñaUpdateManyMutationInput, ReseñaUncheckedUpdateManyWithoutUsuarioInput>
+  export type ResenaUpdateManyWithWhereWithoutUsuarioInput = {
+    where: ResenaScalarWhereInput
+    data: XOR<ResenaUpdateManyMutationInput, ResenaUncheckedUpdateManyWithoutUsuarioInput>
   }
 
-  export type ReseñaScalarWhereInput = {
-    AND?: ReseñaScalarWhereInput | ReseñaScalarWhereInput[]
-    OR?: ReseñaScalarWhereInput[]
-    NOT?: ReseñaScalarWhereInput | ReseñaScalarWhereInput[]
-    id?: IntFilter<"Reseña"> | number
-    valoracion?: IntFilter<"Reseña"> | number
-    comentario?: StringNullableFilter<"Reseña"> | string | null
-    fecha?: DateTimeFilter<"Reseña"> | Date | string
-    moderada?: BoolFilter<"Reseña"> | boolean
-    observacion?: StringNullableFilter<"Reseña"> | string | null
-    usuarioId?: IntFilter<"Reseña"> | number
-    productoId?: IntFilter<"Reseña"> | number
+  export type ResenaScalarWhereInput = {
+    AND?: ResenaScalarWhereInput | ResenaScalarWhereInput[]
+    OR?: ResenaScalarWhereInput[]
+    NOT?: ResenaScalarWhereInput | ResenaScalarWhereInput[]
+    id?: IntFilter<"Resena"> | number
+    valoracion?: IntFilter<"Resena"> | number
+    comentario?: StringNullableFilter<"Resena"> | string | null
+    fecha?: DateTimeFilter<"Resena"> | Date | string
+    moderada?: BoolFilter<"Resena"> | boolean
+    observacion?: StringNullableFilter<"Resena"> | string | null
+    usuarioId?: IntFilter<"Resena"> | number
+    productoId?: IntFilter<"Resena"> | number
   }
 
   export type HistorialPedidosUpsertWithWhereUniqueWithoutActualizadoPorInput = {
@@ -24839,7 +24839,7 @@ export namespace Prisma {
     categorias?: ProductoCategoriaCreateNestedManyWithoutProductoInput
     etiquetas?: ProductoEtiquetaCreateNestedManyWithoutProductoInput
     pedidos?: PedidoProductoCreateNestedManyWithoutProductoInput
-    reseñas?: ReseñaCreateNestedManyWithoutProductoInput
+    resenas?: ResenaCreateNestedManyWithoutProductoInput
     promocion?: PromocionCreateNestedOneWithoutProductosInput
   }
 
@@ -24858,7 +24858,7 @@ export namespace Prisma {
     categorias?: ProductoCategoriaUncheckedCreateNestedManyWithoutProductoInput
     etiquetas?: ProductoEtiquetaUncheckedCreateNestedManyWithoutProductoInput
     pedidos?: PedidoProductoUncheckedCreateNestedManyWithoutProductoInput
-    reseñas?: ReseñaUncheckedCreateNestedManyWithoutProductoInput
+    resenas?: ResenaUncheckedCreateNestedManyWithoutProductoInput
   }
 
   export type ProductoCreateOrConnectWithoutImagenesInput = {
@@ -24890,7 +24890,7 @@ export namespace Prisma {
     categorias?: ProductoCategoriaUpdateManyWithoutProductoNestedInput
     etiquetas?: ProductoEtiquetaUpdateManyWithoutProductoNestedInput
     pedidos?: PedidoProductoUpdateManyWithoutProductoNestedInput
-    reseñas?: ReseñaUpdateManyWithoutProductoNestedInput
+    resenas?: ResenaUpdateManyWithoutProductoNestedInput
     promocion?: PromocionUpdateOneWithoutProductosNestedInput
   }
 
@@ -24909,7 +24909,7 @@ export namespace Prisma {
     categorias?: ProductoCategoriaUncheckedUpdateManyWithoutProductoNestedInput
     etiquetas?: ProductoEtiquetaUncheckedUpdateManyWithoutProductoNestedInput
     pedidos?: PedidoProductoUncheckedUpdateManyWithoutProductoNestedInput
-    reseñas?: ReseñaUncheckedUpdateManyWithoutProductoNestedInput
+    resenas?: ResenaUncheckedUpdateManyWithoutProductoNestedInput
   }
 
   export type ImagenCreateWithoutProductosInput = {
@@ -25028,17 +25028,17 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type ReseñaCreateWithoutProductoInput = {
+  export type ResenaCreateWithoutProductoInput = {
     valoracion: number
     comentario?: string | null
     fecha?: Date | string
     moderada?: boolean
     observacion?: string | null
-    usuario: UsuarioCreateNestedOneWithoutReseñasInput
-    reportes?: ReporteCreateNestedManyWithoutReseñaInput
+    usuario: UsuarioCreateNestedOneWithoutResenasInput
+    reportes?: ReporteCreateNestedManyWithoutResenaInput
   }
 
-  export type ReseñaUncheckedCreateWithoutProductoInput = {
+  export type ResenaUncheckedCreateWithoutProductoInput = {
     id?: number
     valoracion: number
     comentario?: string | null
@@ -25046,16 +25046,16 @@ export namespace Prisma {
     moderada?: boolean
     observacion?: string | null
     usuarioId: number
-    reportes?: ReporteUncheckedCreateNestedManyWithoutReseñaInput
+    reportes?: ReporteUncheckedCreateNestedManyWithoutResenaInput
   }
 
-  export type ReseñaCreateOrConnectWithoutProductoInput = {
-    where: ReseñaWhereUniqueInput
-    create: XOR<ReseñaCreateWithoutProductoInput, ReseñaUncheckedCreateWithoutProductoInput>
+  export type ResenaCreateOrConnectWithoutProductoInput = {
+    where: ResenaWhereUniqueInput
+    create: XOR<ResenaCreateWithoutProductoInput, ResenaUncheckedCreateWithoutProductoInput>
   }
 
-  export type ReseñaCreateManyProductoInputEnvelope = {
-    data: ReseñaCreateManyProductoInput | ReseñaCreateManyProductoInput[]
+  export type ResenaCreateManyProductoInputEnvelope = {
+    data: ResenaCreateManyProductoInput | ResenaCreateManyProductoInput[]
     skipDuplicates?: boolean
   }
 
@@ -25214,20 +25214,20 @@ export namespace Prisma {
     personalizadoId?: IntNullableFilter<"PedidoProducto"> | number | null
   }
 
-  export type ReseñaUpsertWithWhereUniqueWithoutProductoInput = {
-    where: ReseñaWhereUniqueInput
-    update: XOR<ReseñaUpdateWithoutProductoInput, ReseñaUncheckedUpdateWithoutProductoInput>
-    create: XOR<ReseñaCreateWithoutProductoInput, ReseñaUncheckedCreateWithoutProductoInput>
+  export type ResenaUpsertWithWhereUniqueWithoutProductoInput = {
+    where: ResenaWhereUniqueInput
+    update: XOR<ResenaUpdateWithoutProductoInput, ResenaUncheckedUpdateWithoutProductoInput>
+    create: XOR<ResenaCreateWithoutProductoInput, ResenaUncheckedCreateWithoutProductoInput>
   }
 
-  export type ReseñaUpdateWithWhereUniqueWithoutProductoInput = {
-    where: ReseñaWhereUniqueInput
-    data: XOR<ReseñaUpdateWithoutProductoInput, ReseñaUncheckedUpdateWithoutProductoInput>
+  export type ResenaUpdateWithWhereUniqueWithoutProductoInput = {
+    where: ResenaWhereUniqueInput
+    data: XOR<ResenaUpdateWithoutProductoInput, ResenaUncheckedUpdateWithoutProductoInput>
   }
 
-  export type ReseñaUpdateManyWithWhereWithoutProductoInput = {
-    where: ReseñaScalarWhereInput
-    data: XOR<ReseñaUpdateManyMutationInput, ReseñaUncheckedUpdateManyWithoutProductoInput>
+  export type ResenaUpdateManyWithWhereWithoutProductoInput = {
+    where: ResenaScalarWhereInput
+    data: XOR<ResenaUpdateManyMutationInput, ResenaUncheckedUpdateManyWithoutProductoInput>
   }
 
   export type PromocionUpsertWithoutProductosInput = {
@@ -25355,7 +25355,7 @@ export namespace Prisma {
     personalizado?: ProductoPersonalizadoCreateNestedManyWithoutProductoInput
     etiquetas?: ProductoEtiquetaCreateNestedManyWithoutProductoInput
     pedidos?: PedidoProductoCreateNestedManyWithoutProductoInput
-    reseñas?: ReseñaCreateNestedManyWithoutProductoInput
+    resenas?: ResenaCreateNestedManyWithoutProductoInput
     promocion?: PromocionCreateNestedOneWithoutProductosInput
   }
 
@@ -25374,7 +25374,7 @@ export namespace Prisma {
     personalizado?: ProductoPersonalizadoUncheckedCreateNestedManyWithoutProductoInput
     etiquetas?: ProductoEtiquetaUncheckedCreateNestedManyWithoutProductoInput
     pedidos?: PedidoProductoUncheckedCreateNestedManyWithoutProductoInput
-    reseñas?: ReseñaUncheckedCreateNestedManyWithoutProductoInput
+    resenas?: ResenaUncheckedCreateNestedManyWithoutProductoInput
   }
 
   export type ProductoCreateOrConnectWithoutCategoriasInput = {
@@ -25422,7 +25422,7 @@ export namespace Prisma {
     personalizado?: ProductoPersonalizadoUpdateManyWithoutProductoNestedInput
     etiquetas?: ProductoEtiquetaUpdateManyWithoutProductoNestedInput
     pedidos?: PedidoProductoUpdateManyWithoutProductoNestedInput
-    reseñas?: ReseñaUpdateManyWithoutProductoNestedInput
+    resenas?: ResenaUpdateManyWithoutProductoNestedInput
     promocion?: PromocionUpdateOneWithoutProductosNestedInput
   }
 
@@ -25441,7 +25441,7 @@ export namespace Prisma {
     personalizado?: ProductoPersonalizadoUncheckedUpdateManyWithoutProductoNestedInput
     etiquetas?: ProductoEtiquetaUncheckedUpdateManyWithoutProductoNestedInput
     pedidos?: PedidoProductoUncheckedUpdateManyWithoutProductoNestedInput
-    reseñas?: ReseñaUncheckedUpdateManyWithoutProductoNestedInput
+    resenas?: ResenaUncheckedUpdateManyWithoutProductoNestedInput
   }
 
   export type CategoriaUpsertWithoutProductosInput = {
@@ -25513,7 +25513,7 @@ export namespace Prisma {
     personalizado?: ProductoPersonalizadoCreateNestedManyWithoutProductoInput
     categorias?: ProductoCategoriaCreateNestedManyWithoutProductoInput
     pedidos?: PedidoProductoCreateNestedManyWithoutProductoInput
-    reseñas?: ReseñaCreateNestedManyWithoutProductoInput
+    resenas?: ResenaCreateNestedManyWithoutProductoInput
     promocion?: PromocionCreateNestedOneWithoutProductosInput
   }
 
@@ -25532,7 +25532,7 @@ export namespace Prisma {
     personalizado?: ProductoPersonalizadoUncheckedCreateNestedManyWithoutProductoInput
     categorias?: ProductoCategoriaUncheckedCreateNestedManyWithoutProductoInput
     pedidos?: PedidoProductoUncheckedCreateNestedManyWithoutProductoInput
-    reseñas?: ReseñaUncheckedCreateNestedManyWithoutProductoInput
+    resenas?: ResenaUncheckedCreateNestedManyWithoutProductoInput
   }
 
   export type ProductoCreateOrConnectWithoutEtiquetasInput = {
@@ -25578,7 +25578,7 @@ export namespace Prisma {
     personalizado?: ProductoPersonalizadoUpdateManyWithoutProductoNestedInput
     categorias?: ProductoCategoriaUpdateManyWithoutProductoNestedInput
     pedidos?: PedidoProductoUpdateManyWithoutProductoNestedInput
-    reseñas?: ReseñaUpdateManyWithoutProductoNestedInput
+    resenas?: ResenaUpdateManyWithoutProductoNestedInput
     promocion?: PromocionUpdateOneWithoutProductosNestedInput
   }
 
@@ -25597,7 +25597,7 @@ export namespace Prisma {
     personalizado?: ProductoPersonalizadoUncheckedUpdateManyWithoutProductoNestedInput
     categorias?: ProductoCategoriaUncheckedUpdateManyWithoutProductoNestedInput
     pedidos?: PedidoProductoUncheckedUpdateManyWithoutProductoNestedInput
-    reseñas?: ReseñaUncheckedUpdateManyWithoutProductoNestedInput
+    resenas?: ResenaUncheckedUpdateManyWithoutProductoNestedInput
   }
 
   export type EtiquetaUpsertWithoutProductosInput = {
@@ -25626,7 +25626,7 @@ export namespace Prisma {
     role?: $Enums.Role
     password: string
     ultimoLogin?: Date | string | null
-    reseñas?: ReseñaCreateNestedManyWithoutUsuarioInput
+    resenas?: ResenaCreateNestedManyWithoutUsuarioInput
     historial?: HistorialPedidosCreateNestedManyWithoutActualizadoPorInput
   }
 
@@ -25637,7 +25637,7 @@ export namespace Prisma {
     role?: $Enums.Role
     password: string
     ultimoLogin?: Date | string | null
-    reseñas?: ReseñaUncheckedCreateNestedManyWithoutUsuarioInput
+    resenas?: ResenaUncheckedCreateNestedManyWithoutUsuarioInput
     historial?: HistorialPedidosUncheckedCreateNestedManyWithoutActualizadoPorInput
   }
 
@@ -25718,7 +25718,7 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     password?: StringFieldUpdateOperationsInput | string
     ultimoLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    reseñas?: ReseñaUpdateManyWithoutUsuarioNestedInput
+    resenas?: ResenaUpdateManyWithoutUsuarioNestedInput
     historial?: HistorialPedidosUpdateManyWithoutActualizadoPorNestedInput
   }
 
@@ -25729,7 +25729,7 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     password?: StringFieldUpdateOperationsInput | string
     ultimoLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    reseñas?: ReseñaUncheckedUpdateManyWithoutUsuarioNestedInput
+    resenas?: ResenaUncheckedUpdateManyWithoutUsuarioNestedInput
     historial?: HistorialPedidosUncheckedUpdateManyWithoutActualizadoPorNestedInput
   }
 
@@ -25798,7 +25798,7 @@ export namespace Prisma {
     personalizado?: ProductoPersonalizadoCreateNestedManyWithoutProductoInput
     categorias?: ProductoCategoriaCreateNestedManyWithoutProductoInput
     etiquetas?: ProductoEtiquetaCreateNestedManyWithoutProductoInput
-    reseñas?: ReseñaCreateNestedManyWithoutProductoInput
+    resenas?: ResenaCreateNestedManyWithoutProductoInput
     promocion?: PromocionCreateNestedOneWithoutProductosInput
   }
 
@@ -25817,7 +25817,7 @@ export namespace Prisma {
     personalizado?: ProductoPersonalizadoUncheckedCreateNestedManyWithoutProductoInput
     categorias?: ProductoCategoriaUncheckedCreateNestedManyWithoutProductoInput
     etiquetas?: ProductoEtiquetaUncheckedCreateNestedManyWithoutProductoInput
-    reseñas?: ReseñaUncheckedCreateNestedManyWithoutProductoInput
+    resenas?: ResenaUncheckedCreateNestedManyWithoutProductoInput
   }
 
   export type ProductoCreateOrConnectWithoutPedidosInput = {
@@ -25903,7 +25903,7 @@ export namespace Prisma {
     personalizado?: ProductoPersonalizadoUpdateManyWithoutProductoNestedInput
     categorias?: ProductoCategoriaUpdateManyWithoutProductoNestedInput
     etiquetas?: ProductoEtiquetaUpdateManyWithoutProductoNestedInput
-    reseñas?: ReseñaUpdateManyWithoutProductoNestedInput
+    resenas?: ResenaUpdateManyWithoutProductoNestedInput
     promocion?: PromocionUpdateOneWithoutProductosNestedInput
   }
 
@@ -25922,7 +25922,7 @@ export namespace Prisma {
     personalizado?: ProductoPersonalizadoUncheckedUpdateManyWithoutProductoNestedInput
     categorias?: ProductoCategoriaUncheckedUpdateManyWithoutProductoNestedInput
     etiquetas?: ProductoEtiquetaUncheckedUpdateManyWithoutProductoNestedInput
-    reseñas?: ReseñaUncheckedUpdateManyWithoutProductoNestedInput
+    resenas?: ResenaUncheckedUpdateManyWithoutProductoNestedInput
   }
 
   export type ProductoPersonalizadoUpsertWithWhereUniqueWithoutPedidoProductoInput = {
@@ -26004,7 +26004,7 @@ export namespace Prisma {
     categorias?: ProductoCategoriaCreateNestedManyWithoutProductoInput
     etiquetas?: ProductoEtiquetaCreateNestedManyWithoutProductoInput
     pedidos?: PedidoProductoCreateNestedManyWithoutProductoInput
-    reseñas?: ReseñaCreateNestedManyWithoutProductoInput
+    resenas?: ResenaCreateNestedManyWithoutProductoInput
     promocion?: PromocionCreateNestedOneWithoutProductosInput
   }
 
@@ -26023,7 +26023,7 @@ export namespace Prisma {
     categorias?: ProductoCategoriaUncheckedCreateNestedManyWithoutProductoInput
     etiquetas?: ProductoEtiquetaUncheckedCreateNestedManyWithoutProductoInput
     pedidos?: PedidoProductoUncheckedCreateNestedManyWithoutProductoInput
-    reseñas?: ReseñaUncheckedCreateNestedManyWithoutProductoInput
+    resenas?: ResenaUncheckedCreateNestedManyWithoutProductoInput
   }
 
   export type ProductoCreateOrConnectWithoutPersonalizadoInput = {
@@ -26150,7 +26150,7 @@ export namespace Prisma {
     categorias?: ProductoCategoriaUpdateManyWithoutProductoNestedInput
     etiquetas?: ProductoEtiquetaUpdateManyWithoutProductoNestedInput
     pedidos?: PedidoProductoUpdateManyWithoutProductoNestedInput
-    reseñas?: ReseñaUpdateManyWithoutProductoNestedInput
+    resenas?: ResenaUpdateManyWithoutProductoNestedInput
     promocion?: PromocionUpdateOneWithoutProductosNestedInput
   }
 
@@ -26169,7 +26169,7 @@ export namespace Prisma {
     categorias?: ProductoCategoriaUncheckedUpdateManyWithoutProductoNestedInput
     etiquetas?: ProductoEtiquetaUncheckedUpdateManyWithoutProductoNestedInput
     pedidos?: PedidoProductoUncheckedUpdateManyWithoutProductoNestedInput
-    reseñas?: ReseñaUncheckedUpdateManyWithoutProductoNestedInput
+    resenas?: ResenaUncheckedUpdateManyWithoutProductoNestedInput
   }
 
   export type PedidoProductoUpsertWithoutPersonalizadoInput = {
@@ -26340,7 +26340,7 @@ export namespace Prisma {
     data: XOR<ProductoPersonalizadoUpdateManyMutationInput, ProductoPersonalizadoUncheckedUpdateManyWithoutColorInput>
   }
 
-  export type UsuarioCreateWithoutReseñasInput = {
+  export type UsuarioCreateWithoutResenasInput = {
     nombre: string
     correo: string
     role?: $Enums.Role
@@ -26350,7 +26350,7 @@ export namespace Prisma {
     historial?: HistorialPedidosCreateNestedManyWithoutActualizadoPorInput
   }
 
-  export type UsuarioUncheckedCreateWithoutReseñasInput = {
+  export type UsuarioUncheckedCreateWithoutResenasInput = {
     id?: number
     nombre: string
     correo: string
@@ -26361,12 +26361,12 @@ export namespace Prisma {
     historial?: HistorialPedidosUncheckedCreateNestedManyWithoutActualizadoPorInput
   }
 
-  export type UsuarioCreateOrConnectWithoutReseñasInput = {
+  export type UsuarioCreateOrConnectWithoutResenasInput = {
     where: UsuarioWhereUniqueInput
-    create: XOR<UsuarioCreateWithoutReseñasInput, UsuarioUncheckedCreateWithoutReseñasInput>
+    create: XOR<UsuarioCreateWithoutResenasInput, UsuarioUncheckedCreateWithoutResenasInput>
   }
 
-  export type ProductoCreateWithoutReseñasInput = {
+  export type ProductoCreateWithoutResenasInput = {
     nombre: string
     descripcion: string
     precio: Decimal | DecimalJsLike | number | string
@@ -26383,7 +26383,7 @@ export namespace Prisma {
     promocion?: PromocionCreateNestedOneWithoutProductosInput
   }
 
-  export type ProductoUncheckedCreateWithoutReseñasInput = {
+  export type ProductoUncheckedCreateWithoutResenasInput = {
     id?: number
     nombre: string
     descripcion: string
@@ -26401,44 +26401,44 @@ export namespace Prisma {
     pedidos?: PedidoProductoUncheckedCreateNestedManyWithoutProductoInput
   }
 
-  export type ProductoCreateOrConnectWithoutReseñasInput = {
+  export type ProductoCreateOrConnectWithoutResenasInput = {
     where: ProductoWhereUniqueInput
-    create: XOR<ProductoCreateWithoutReseñasInput, ProductoUncheckedCreateWithoutReseñasInput>
+    create: XOR<ProductoCreateWithoutResenasInput, ProductoUncheckedCreateWithoutResenasInput>
   }
 
-  export type ReporteCreateWithoutReseñaInput = {
+  export type ReporteCreateWithoutResenaInput = {
     reportadaPor?: string
     motivo: string
   }
 
-  export type ReporteUncheckedCreateWithoutReseñaInput = {
+  export type ReporteUncheckedCreateWithoutResenaInput = {
     id?: number
     reportadaPor?: string
     motivo: string
   }
 
-  export type ReporteCreateOrConnectWithoutReseñaInput = {
+  export type ReporteCreateOrConnectWithoutResenaInput = {
     where: ReporteWhereUniqueInput
-    create: XOR<ReporteCreateWithoutReseñaInput, ReporteUncheckedCreateWithoutReseñaInput>
+    create: XOR<ReporteCreateWithoutResenaInput, ReporteUncheckedCreateWithoutResenaInput>
   }
 
-  export type ReporteCreateManyReseñaInputEnvelope = {
-    data: ReporteCreateManyReseñaInput | ReporteCreateManyReseñaInput[]
+  export type ReporteCreateManyResenaInputEnvelope = {
+    data: ReporteCreateManyResenaInput | ReporteCreateManyResenaInput[]
     skipDuplicates?: boolean
   }
 
-  export type UsuarioUpsertWithoutReseñasInput = {
-    update: XOR<UsuarioUpdateWithoutReseñasInput, UsuarioUncheckedUpdateWithoutReseñasInput>
-    create: XOR<UsuarioCreateWithoutReseñasInput, UsuarioUncheckedCreateWithoutReseñasInput>
+  export type UsuarioUpsertWithoutResenasInput = {
+    update: XOR<UsuarioUpdateWithoutResenasInput, UsuarioUncheckedUpdateWithoutResenasInput>
+    create: XOR<UsuarioCreateWithoutResenasInput, UsuarioUncheckedCreateWithoutResenasInput>
     where?: UsuarioWhereInput
   }
 
-  export type UsuarioUpdateToOneWithWhereWithoutReseñasInput = {
+  export type UsuarioUpdateToOneWithWhereWithoutResenasInput = {
     where?: UsuarioWhereInput
-    data: XOR<UsuarioUpdateWithoutReseñasInput, UsuarioUncheckedUpdateWithoutReseñasInput>
+    data: XOR<UsuarioUpdateWithoutResenasInput, UsuarioUncheckedUpdateWithoutResenasInput>
   }
 
-  export type UsuarioUpdateWithoutReseñasInput = {
+  export type UsuarioUpdateWithoutResenasInput = {
     nombre?: StringFieldUpdateOperationsInput | string
     correo?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -26448,7 +26448,7 @@ export namespace Prisma {
     historial?: HistorialPedidosUpdateManyWithoutActualizadoPorNestedInput
   }
 
-  export type UsuarioUncheckedUpdateWithoutReseñasInput = {
+  export type UsuarioUncheckedUpdateWithoutResenasInput = {
     id?: IntFieldUpdateOperationsInput | number
     nombre?: StringFieldUpdateOperationsInput | string
     correo?: StringFieldUpdateOperationsInput | string
@@ -26459,18 +26459,18 @@ export namespace Prisma {
     historial?: HistorialPedidosUncheckedUpdateManyWithoutActualizadoPorNestedInput
   }
 
-  export type ProductoUpsertWithoutReseñasInput = {
-    update: XOR<ProductoUpdateWithoutReseñasInput, ProductoUncheckedUpdateWithoutReseñasInput>
-    create: XOR<ProductoCreateWithoutReseñasInput, ProductoUncheckedCreateWithoutReseñasInput>
+  export type ProductoUpsertWithoutResenasInput = {
+    update: XOR<ProductoUpdateWithoutResenasInput, ProductoUncheckedUpdateWithoutResenasInput>
+    create: XOR<ProductoCreateWithoutResenasInput, ProductoUncheckedCreateWithoutResenasInput>
     where?: ProductoWhereInput
   }
 
-  export type ProductoUpdateToOneWithWhereWithoutReseñasInput = {
+  export type ProductoUpdateToOneWithWhereWithoutResenasInput = {
     where?: ProductoWhereInput
-    data: XOR<ProductoUpdateWithoutReseñasInput, ProductoUncheckedUpdateWithoutReseñasInput>
+    data: XOR<ProductoUpdateWithoutResenasInput, ProductoUncheckedUpdateWithoutResenasInput>
   }
 
-  export type ProductoUpdateWithoutReseñasInput = {
+  export type ProductoUpdateWithoutResenasInput = {
     nombre?: StringFieldUpdateOperationsInput | string
     descripcion?: StringFieldUpdateOperationsInput | string
     precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
@@ -26487,7 +26487,7 @@ export namespace Prisma {
     promocion?: PromocionUpdateOneWithoutProductosNestedInput
   }
 
-  export type ProductoUncheckedUpdateWithoutReseñasInput = {
+  export type ProductoUncheckedUpdateWithoutResenasInput = {
     id?: IntFieldUpdateOperationsInput | number
     nombre?: StringFieldUpdateOperationsInput | string
     descripcion?: StringFieldUpdateOperationsInput | string
@@ -26505,20 +26505,20 @@ export namespace Prisma {
     pedidos?: PedidoProductoUncheckedUpdateManyWithoutProductoNestedInput
   }
 
-  export type ReporteUpsertWithWhereUniqueWithoutReseñaInput = {
+  export type ReporteUpsertWithWhereUniqueWithoutResenaInput = {
     where: ReporteWhereUniqueInput
-    update: XOR<ReporteUpdateWithoutReseñaInput, ReporteUncheckedUpdateWithoutReseñaInput>
-    create: XOR<ReporteCreateWithoutReseñaInput, ReporteUncheckedCreateWithoutReseñaInput>
+    update: XOR<ReporteUpdateWithoutResenaInput, ReporteUncheckedUpdateWithoutResenaInput>
+    create: XOR<ReporteCreateWithoutResenaInput, ReporteUncheckedCreateWithoutResenaInput>
   }
 
-  export type ReporteUpdateWithWhereUniqueWithoutReseñaInput = {
+  export type ReporteUpdateWithWhereUniqueWithoutResenaInput = {
     where: ReporteWhereUniqueInput
-    data: XOR<ReporteUpdateWithoutReseñaInput, ReporteUncheckedUpdateWithoutReseñaInput>
+    data: XOR<ReporteUpdateWithoutResenaInput, ReporteUncheckedUpdateWithoutResenaInput>
   }
 
-  export type ReporteUpdateManyWithWhereWithoutReseñaInput = {
+  export type ReporteUpdateManyWithWhereWithoutResenaInput = {
     where: ReporteScalarWhereInput
-    data: XOR<ReporteUpdateManyMutationInput, ReporteUncheckedUpdateManyWithoutReseñaInput>
+    data: XOR<ReporteUpdateManyMutationInput, ReporteUncheckedUpdateManyWithoutResenaInput>
   }
 
   export type ReporteScalarWhereInput = {
@@ -26531,17 +26531,17 @@ export namespace Prisma {
     reseñaId?: IntFilter<"Reporte"> | number
   }
 
-  export type ReseñaCreateWithoutReportesInput = {
+  export type ResenaCreateWithoutReportesInput = {
     valoracion: number
     comentario?: string | null
     fecha?: Date | string
     moderada?: boolean
     observacion?: string | null
-    usuario: UsuarioCreateNestedOneWithoutReseñasInput
-    producto: ProductoCreateNestedOneWithoutReseñasInput
+    usuario: UsuarioCreateNestedOneWithoutResenasInput
+    producto: ProductoCreateNestedOneWithoutResenasInput
   }
 
-  export type ReseñaUncheckedCreateWithoutReportesInput = {
+  export type ResenaUncheckedCreateWithoutReportesInput = {
     id?: number
     valoracion: number
     comentario?: string | null
@@ -26552,33 +26552,33 @@ export namespace Prisma {
     productoId: number
   }
 
-  export type ReseñaCreateOrConnectWithoutReportesInput = {
-    where: ReseñaWhereUniqueInput
-    create: XOR<ReseñaCreateWithoutReportesInput, ReseñaUncheckedCreateWithoutReportesInput>
+  export type ResenaCreateOrConnectWithoutReportesInput = {
+    where: ResenaWhereUniqueInput
+    create: XOR<ResenaCreateWithoutReportesInput, ResenaUncheckedCreateWithoutReportesInput>
   }
 
-  export type ReseñaUpsertWithoutReportesInput = {
-    update: XOR<ReseñaUpdateWithoutReportesInput, ReseñaUncheckedUpdateWithoutReportesInput>
-    create: XOR<ReseñaCreateWithoutReportesInput, ReseñaUncheckedCreateWithoutReportesInput>
-    where?: ReseñaWhereInput
+  export type ResenaUpsertWithoutReportesInput = {
+    update: XOR<ResenaUpdateWithoutReportesInput, ResenaUncheckedUpdateWithoutReportesInput>
+    create: XOR<ResenaCreateWithoutReportesInput, ResenaUncheckedCreateWithoutReportesInput>
+    where?: ResenaWhereInput
   }
 
-  export type ReseñaUpdateToOneWithWhereWithoutReportesInput = {
-    where?: ReseñaWhereInput
-    data: XOR<ReseñaUpdateWithoutReportesInput, ReseñaUncheckedUpdateWithoutReportesInput>
+  export type ResenaUpdateToOneWithWhereWithoutReportesInput = {
+    where?: ResenaWhereInput
+    data: XOR<ResenaUpdateWithoutReportesInput, ResenaUncheckedUpdateWithoutReportesInput>
   }
 
-  export type ReseñaUpdateWithoutReportesInput = {
+  export type ResenaUpdateWithoutReportesInput = {
     valoracion?: IntFieldUpdateOperationsInput | number
     comentario?: NullableStringFieldUpdateOperationsInput | string | null
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     moderada?: BoolFieldUpdateOperationsInput | boolean
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
-    usuario?: UsuarioUpdateOneRequiredWithoutReseñasNestedInput
-    producto?: ProductoUpdateOneRequiredWithoutReseñasNestedInput
+    usuario?: UsuarioUpdateOneRequiredWithoutResenasNestedInput
+    producto?: ProductoUpdateOneRequiredWithoutResenasNestedInput
   }
 
-  export type ReseñaUncheckedUpdateWithoutReportesInput = {
+  export type ResenaUncheckedUpdateWithoutReportesInput = {
     id?: IntFieldUpdateOperationsInput | number
     valoracion?: IntFieldUpdateOperationsInput | number
     comentario?: NullableStringFieldUpdateOperationsInput | string | null
@@ -26603,7 +26603,7 @@ export namespace Prisma {
     categorias?: ProductoCategoriaCreateNestedManyWithoutProductoInput
     etiquetas?: ProductoEtiquetaCreateNestedManyWithoutProductoInput
     pedidos?: PedidoProductoCreateNestedManyWithoutProductoInput
-    reseñas?: ReseñaCreateNestedManyWithoutProductoInput
+    resenas?: ResenaCreateNestedManyWithoutProductoInput
   }
 
   export type ProductoUncheckedCreateWithoutPromocionInput = {
@@ -26621,7 +26621,7 @@ export namespace Prisma {
     categorias?: ProductoCategoriaUncheckedCreateNestedManyWithoutProductoInput
     etiquetas?: ProductoEtiquetaUncheckedCreateNestedManyWithoutProductoInput
     pedidos?: PedidoProductoUncheckedCreateNestedManyWithoutProductoInput
-    reseñas?: ReseñaUncheckedCreateNestedManyWithoutProductoInput
+    resenas?: ResenaUncheckedCreateNestedManyWithoutProductoInput
   }
 
   export type ProductoCreateOrConnectWithoutPromocionInput = {
@@ -26719,7 +26719,7 @@ export namespace Prisma {
     password: string
     ultimoLogin?: Date | string | null
     pedidos?: PedidoCreateNestedManyWithoutUsuarioInput
-    reseñas?: ReseñaCreateNestedManyWithoutUsuarioInput
+    resenas?: ResenaCreateNestedManyWithoutUsuarioInput
   }
 
   export type UsuarioUncheckedCreateWithoutHistorialInput = {
@@ -26730,7 +26730,7 @@ export namespace Prisma {
     password: string
     ultimoLogin?: Date | string | null
     pedidos?: PedidoUncheckedCreateNestedManyWithoutUsuarioInput
-    reseñas?: ReseñaUncheckedCreateNestedManyWithoutUsuarioInput
+    resenas?: ResenaUncheckedCreateNestedManyWithoutUsuarioInput
   }
 
   export type UsuarioCreateOrConnectWithoutHistorialInput = {
@@ -26776,7 +26776,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     ultimoLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     pedidos?: PedidoUpdateManyWithoutUsuarioNestedInput
-    reseñas?: ReseñaUpdateManyWithoutUsuarioNestedInput
+    resenas?: ResenaUpdateManyWithoutUsuarioNestedInput
   }
 
   export type UsuarioUncheckedUpdateWithoutHistorialInput = {
@@ -26787,7 +26787,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     ultimoLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     pedidos?: PedidoUncheckedUpdateManyWithoutUsuarioNestedInput
-    reseñas?: ReseñaUncheckedUpdateManyWithoutUsuarioNestedInput
+    resenas?: ResenaUncheckedUpdateManyWithoutUsuarioNestedInput
   }
 
   export type PedidoUpsertWithoutHistorialInput = {
@@ -26822,7 +26822,7 @@ export namespace Prisma {
     estado?: $Enums.Estado
   }
 
-  export type ReseñaCreateManyUsuarioInput = {
+  export type ResenaCreateManyUsuarioInput = {
     id?: number
     valoracion: number
     comentario?: string | null
@@ -26860,17 +26860,17 @@ export namespace Prisma {
     estado?: EnumEstadoFieldUpdateOperationsInput | $Enums.Estado
   }
 
-  export type ReseñaUpdateWithoutUsuarioInput = {
+  export type ResenaUpdateWithoutUsuarioInput = {
     valoracion?: IntFieldUpdateOperationsInput | number
     comentario?: NullableStringFieldUpdateOperationsInput | string | null
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     moderada?: BoolFieldUpdateOperationsInput | boolean
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
-    producto?: ProductoUpdateOneRequiredWithoutReseñasNestedInput
-    reportes?: ReporteUpdateManyWithoutReseñaNestedInput
+    producto?: ProductoUpdateOneRequiredWithoutResenasNestedInput
+    reportes?: ReporteUpdateManyWithoutResenaNestedInput
   }
 
-  export type ReseñaUncheckedUpdateWithoutUsuarioInput = {
+  export type ResenaUncheckedUpdateWithoutUsuarioInput = {
     id?: IntFieldUpdateOperationsInput | number
     valoracion?: IntFieldUpdateOperationsInput | number
     comentario?: NullableStringFieldUpdateOperationsInput | string | null
@@ -26878,10 +26878,10 @@ export namespace Prisma {
     moderada?: BoolFieldUpdateOperationsInput | boolean
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
     productoId?: IntFieldUpdateOperationsInput | number
-    reportes?: ReporteUncheckedUpdateManyWithoutReseñaNestedInput
+    reportes?: ReporteUncheckedUpdateManyWithoutResenaNestedInput
   }
 
-  export type ReseñaUncheckedUpdateManyWithoutUsuarioInput = {
+  export type ResenaUncheckedUpdateManyWithoutUsuarioInput = {
     id?: IntFieldUpdateOperationsInput | number
     valoracion?: IntFieldUpdateOperationsInput | number
     comentario?: NullableStringFieldUpdateOperationsInput | string | null
@@ -26944,7 +26944,7 @@ export namespace Prisma {
     personalizadoId?: number | null
   }
 
-  export type ReseñaCreateManyProductoInput = {
+  export type ResenaCreateManyProductoInput = {
     id?: number
     valoracion: number
     comentario?: string | null
@@ -27053,17 +27053,17 @@ export namespace Prisma {
     personalizadoId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
-  export type ReseñaUpdateWithoutProductoInput = {
+  export type ResenaUpdateWithoutProductoInput = {
     valoracion?: IntFieldUpdateOperationsInput | number
     comentario?: NullableStringFieldUpdateOperationsInput | string | null
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     moderada?: BoolFieldUpdateOperationsInput | boolean
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
-    usuario?: UsuarioUpdateOneRequiredWithoutReseñasNestedInput
-    reportes?: ReporteUpdateManyWithoutReseñaNestedInput
+    usuario?: UsuarioUpdateOneRequiredWithoutResenasNestedInput
+    reportes?: ReporteUpdateManyWithoutResenaNestedInput
   }
 
-  export type ReseñaUncheckedUpdateWithoutProductoInput = {
+  export type ResenaUncheckedUpdateWithoutProductoInput = {
     id?: IntFieldUpdateOperationsInput | number
     valoracion?: IntFieldUpdateOperationsInput | number
     comentario?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27071,10 +27071,10 @@ export namespace Prisma {
     moderada?: BoolFieldUpdateOperationsInput | boolean
     observacion?: NullableStringFieldUpdateOperationsInput | string | null
     usuarioId?: IntFieldUpdateOperationsInput | number
-    reportes?: ReporteUncheckedUpdateManyWithoutReseñaNestedInput
+    reportes?: ReporteUncheckedUpdateManyWithoutResenaNestedInput
   }
 
-  export type ReseñaUncheckedUpdateManyWithoutProductoInput = {
+  export type ResenaUncheckedUpdateManyWithoutProductoInput = {
     id?: IntFieldUpdateOperationsInput | number
     valoracion?: IntFieldUpdateOperationsInput | number
     comentario?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27338,24 +27338,24 @@ export namespace Prisma {
     pedidoId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
-  export type ReporteCreateManyReseñaInput = {
+  export type ReporteCreateManyResenaInput = {
     id?: number
     reportadaPor?: string
     motivo: string
   }
 
-  export type ReporteUpdateWithoutReseñaInput = {
+  export type ReporteUpdateWithoutResenaInput = {
     reportadaPor?: StringFieldUpdateOperationsInput | string
     motivo?: StringFieldUpdateOperationsInput | string
   }
 
-  export type ReporteUncheckedUpdateWithoutReseñaInput = {
+  export type ReporteUncheckedUpdateWithoutResenaInput = {
     id?: IntFieldUpdateOperationsInput | number
     reportadaPor?: StringFieldUpdateOperationsInput | string
     motivo?: StringFieldUpdateOperationsInput | string
   }
 
-  export type ReporteUncheckedUpdateManyWithoutReseñaInput = {
+  export type ReporteUncheckedUpdateManyWithoutResenaInput = {
     id?: IntFieldUpdateOperationsInput | number
     reportadaPor?: StringFieldUpdateOperationsInput | string
     motivo?: StringFieldUpdateOperationsInput | string
@@ -27392,7 +27392,7 @@ export namespace Prisma {
     categorias?: ProductoCategoriaUpdateManyWithoutProductoNestedInput
     etiquetas?: ProductoEtiquetaUpdateManyWithoutProductoNestedInput
     pedidos?: PedidoProductoUpdateManyWithoutProductoNestedInput
-    reseñas?: ReseñaUpdateManyWithoutProductoNestedInput
+    resenas?: ResenaUpdateManyWithoutProductoNestedInput
   }
 
   export type ProductoUncheckedUpdateWithoutPromocionInput = {
@@ -27410,7 +27410,7 @@ export namespace Prisma {
     categorias?: ProductoCategoriaUncheckedUpdateManyWithoutProductoNestedInput
     etiquetas?: ProductoEtiquetaUncheckedUpdateManyWithoutProductoNestedInput
     pedidos?: PedidoProductoUncheckedUpdateManyWithoutProductoNestedInput
-    reseñas?: ReseñaUncheckedUpdateManyWithoutProductoNestedInput
+    resenas?: ResenaUncheckedUpdateManyWithoutProductoNestedInput
   }
 
   export type ProductoUncheckedUpdateManyWithoutPromocionInput = {
