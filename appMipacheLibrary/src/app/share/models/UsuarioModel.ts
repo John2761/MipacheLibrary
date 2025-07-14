@@ -1,5 +1,5 @@
 import { PedidoModel } from "./PedidoModel";
-import { RoleModel } from "./RolModel";
+import { RoleModel } from "./EnumModel";
 
 export interface UsuarioModel {
     id: number;

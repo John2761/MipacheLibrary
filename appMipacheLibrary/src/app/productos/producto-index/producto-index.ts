@@ -25,14 +25,19 @@ export class ProductoIndex {
     this.listProductos();
   }
 
+  //Listar todos los Productos del API
   listProductos() {
+  //localhost:3000/Producto
+
+  this.listProductos() {
     this.pdService.get().subscribe((respuesta: ProductoModel[]) => {
       this.datos = respuesta;
+
       this.datosOriginales = respuesta;
     });
   }
 
-  buscarPorNombre() {
+  this.buscarPorNombre() {
     const valor = this.filtroNombre.value?.trim().toLowerCase();
     if (!valor) {
       this.datos = this.datosOriginales;

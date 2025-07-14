@@ -1,8 +1,7 @@
-import { connect } from "http2";
 import { PrismaClient } from "../generated/prisma";
 import { categorias } from "./seeds/categorias";
-import { imagenes } from "./seeds/imagenes";
 import { usuarios } from "./seeds/usuarios";
+import { promociones } from "./seeds/promociones";
 
 const prisma = new PrismaClient();
 const main = async () => {
@@ -16,6 +15,11 @@ const main = async () => {
     await prisma.usuario.createMany({
       data: usuarios,
     });
+
+    //Promociones - no tiene relaciones
+    await prisma.promocion.createMany({
+      data:promociones
+    })
 
     //Productos - con relaciones incluidas
     //Productos
@@ -76,6 +80,7 @@ const main = async () => {
         },
         autor: "Stephanie Garber",
         fechaCreacion: new Date("2024-02-06"),
+        promocionId: 1,
         categorias: {
           create: [
             { categoria: { connect: { id: 4 } } },

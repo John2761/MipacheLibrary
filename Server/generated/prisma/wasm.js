@@ -240,7 +240,9 @@ exports.Prisma.PromocionScalarFieldEnum = {
   nombre: 'nombre',
   descuento: 'descuento',
   fechaInicio: 'fechaInicio',
-  fechaFin: 'fechaFin'
+  fechaFin: 'fechaFin',
+  tipoDescuento: 'tipoDescuento',
+  estadoPromo: 'estadoPromo'
 };
 
 exports.Prisma.HistorialPedidosScalarFieldEnum = {
@@ -322,6 +324,17 @@ exports.Estado = exports.$Enums.Estado = {
   PAGADO: 'PAGADO',
   EN_ENTREGA: 'EN_ENTREGA',
   COMPLETADO: 'COMPLETADO'
+};
+
+exports.TipoDescuento = exports.$Enums.TipoDescuento = {
+  PORCENTAJE: 'PORCENTAJE',
+  MONTO_FIJO: 'MONTO_FIJO'
+};
+
+exports.EstadoPromo = exports.$Enums.EstadoPromo = {
+  PENDIENTE: 'PENDIENTE',
+  APLICADA: 'APLICADA',
+  VIGENTE: 'VIGENTE'
 };
 
 exports.Prisma.ModelName = {

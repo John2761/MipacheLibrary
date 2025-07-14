@@ -1,0 +1,19 @@
+.promociones div {
+  padding: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  color: #000;
+}
+
+.vigente {
+  background-color: #FF4D4D;
+}
+
+.aplicado {
+  background-color: #D3D3D3;
+}
+
+.pendiente {
+  background-color: #27b7e7;
+}

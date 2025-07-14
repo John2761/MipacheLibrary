@@ -188,10 +188,12 @@ model Reporte{
 model Promocion {
   id                Int                 @id @default(autoincrement())
   nombre            String
-  descuento         Decimal             @db.Decimal(10, 2) //20% - 30% ....
+  descuento         Decimal             @db.Decimal(10, 2) // 10% (Precio producto x 0.10 ) o 5000.00 (Precio fijo)
   fechaInicio       DateTime            //Rango de fechas
   fechaFin          DateTime            //para las promociones
-  //Relaciones 
+  tipoDescuento     TipoDescuento       @default(PORCENTAJE)
+  estadoPromo       EstadoPromo         @default(PENDIENTE)
+  //Relaciones
   productos         Producto[]
   categorias        Categoria[]
 }
@@ -219,4 +221,15 @@ enum Estado {
   PAGADO
   EN_ENTREGA
   COMPLETADO
+}
+
+enum EstadoPromo {
+  PENDIENTE       //Por defecto
+  APLICADA
+  VIGENTE
+}
+
+enum TipoDescuento {
+  PORCENTAJE
+  MONTO_FIJO
 }
