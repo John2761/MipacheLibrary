@@ -26,10 +26,6 @@ export class ProductoIndex {
     this.listProductos();
   }
 
-
-  
-
-
   //Listar todos los Productos del API
   
 

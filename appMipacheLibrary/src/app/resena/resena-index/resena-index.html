@@ -1,0 +1,31 @@
+<div class="resena-container">
+  <h1 class="resena-titulo">Listado de Reseñas</h1>
+
+  <mat-card *ngFor="let resena of resenas" class="resena-card">
+    <mat-card-header>
+      <mat-card-title>
+        <strong>{{ resena.usuario.nombre }}</strong> &mdash; {{ resena.producto.nombre }}
+      </mat-card-title>
+      <mat-card-subtitle>
+        {{ resena.fecha | date: 'longDate' }}
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <p>{{ resena.comentario || 'Sin comentario' }}</p>
+      <div class="estrellas">
+        <mat-icon *ngFor="let star of [1,2,3,4,5]" color="accent">
+          {{ star <= resena.valoracion ? 'star' : 'star_border' }}
+        </mat-icon>
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions align="end">
+      <button mat-button color="primary" [routerLink]="['/resena', resena.id]">
+        Ver detalle
+      </button>
+    </mat-card-actions>
+  </mat-card>
+
+  <p *ngIf="resenas.length === 0" class="text-muted">No hay reseñas disponibles.</p>
+</div>
