@@ -102,7 +102,7 @@ export class ProductoController {
         objProducto.imagenes.find((img) => img.ruta === nombreEsperado)?.ruta ??
         "image-not-found.jpg";
 
-<<<<<<< HEAD
+
     // Calcular promedio de valoraciones
       const promedioValoracion = objProducto.resenas.length > 0
       ? objProducto.resenas.reduce((sum, r) => sum + r.valoracion, 0) / objProducto.resenas.length
@@ -118,26 +118,6 @@ export class ProductoController {
     next(error);
   }
 };
-=======
-      // Calcular promedio de valoraciones
-
-      const promedioValoracion =
-        objProducto.resenas.length > 0
-          ? objProducto.resenas.reduce((sum, r) => sum + r.valoracion, 0) /
-            objProducto.resenas.length
-          : null;
-
-      // Enviar respuesta estructurada
-      response.status(200).json({
-        ...objProducto,
-        imagenPrincipal,
-        promedioValoracion
-      });
-    } catch (error) {
-      next(error);
-    }
-  };
->>>>>>> 71f41fda77605125f0c4354cf526c34019d196f3
 
   search = async (request: Request, response: Response, next: NextFunction) => {
     try {
