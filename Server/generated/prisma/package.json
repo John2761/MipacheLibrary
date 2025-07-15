@@ -1,16 +1,5 @@
 {
-
-
-  "name": "prisma-client-54d0eed2014d2cfbb094440e6ff8ed4e3abafb4f518a9b9651bd73a25c395d0a",
-
-  "name": "prisma-client-31f7173a9326f8abe21e41aba8da4a483b72ee61cf48f4f68591f89b626b39a3",
-
-  "name": "prisma-client-14a96940f5e7c23e7ec4e5d14cd1a17ff32d174d0956c29b5ba65f509632fee3",
-
-
-  "name": "prisma-client-31f7173a9326f8abe21e41aba8da4a483b72ee61cf48f4f68591f89b626b39a3",
-  "name": "prisma-client-14a96940f5e7c23e7ec4e5d14cd1a17ff32d174d0956c29b5ba65f509632fee3",
-
+  "name": "prisma-client-22a3eb2684f3d0ae8983da7277f36e065bf163aef14dc3cb44a1e22af9253aff",
   "main": "index.js",
   "types": "index.d.ts",
   "browser": "index-browser.js",

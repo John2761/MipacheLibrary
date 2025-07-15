@@ -146,3 +146,151 @@ C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers
      })
 
 Unknown field `resenas` for include statement on model `Producto`. Available options are marked with ?.
+2025-07-14 21:39:15.863 error: 	John--Se produjo un error interno del servidor 
+Invalid `this.prisma.producto.findUnique()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:63:54
+
+  60 if (isNaN(idProducto)) {
+  61   return next(AppError.badRequest("El ID no es válido"));
+  62 }
+→ 63 const objProducto = await this.prisma.producto.findUnique({
+       where: {
+         id: 2
+       },
+       include: {
+         imagenes: true,
+         categorias: {
+           include: {
+             categoria: true
+           }
+         },
+         etiquetas: {
+           include: {
+             etiqueta: true
+           }
+         },
+         resenas: {
+         ~~~~~~~
+           include: {
+             usuario: true
+           }
+         },
+     ?   personalizado?: true,
+     ?   pedidos?: true,
+     ?   reseñas?: true,
+     ?   promocion?: true
+       }
+     })
+
+Unknown field `resenas` for include statement on model `Producto`. Available options are marked with ?.
+2025-07-14 21:40:54.992 error: 	John--Se produjo un error interno del servidor 
+Invalid `this.prisma.producto.findUnique()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:63:54
+
+  60 if (isNaN(idProducto)) {
+  61   return next(AppError.badRequest("El ID no es válido"));
+  62 }
+→ 63 const objProducto = await this.prisma.producto.findUnique({
+       where: {
+         id: 1
+       },
+       include: {
+         imagenes: true,
+         categorias: {
+           include: {
+             categoria: true
+           }
+         },
+         etiquetas: {
+           include: {
+             etiqueta: true
+           }
+         },
+         resenas: {
+         ~~~~~~~
+           include: {
+             usuario: true
+           }
+         },
+     ?   personalizado?: true,
+     ?   pedidos?: true,
+     ?   reseñas?: true,
+     ?   promocion?: true
+       }
+     })
+
+Unknown field `resenas` for include statement on model `Producto`. Available options are marked with ?.
+2025-07-14 21:54:47.032 error: 	John--Se produjo un error interno del servidor 
+Invalid `this.prisma.producto.findUnique()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:63:54
+
+  60 if (isNaN(idProducto)) {
+  61   return next(AppError.badRequest("El ID no es válido"));
+  62 }
+→ 63 const objProducto = await this.prisma.producto.findUnique({
+       where: {
+         id: 1
+       },
+       include: {
+         imagenes: true,
+         categorias: {
+           include: {
+             categoria: true
+           }
+         },
+         etiquetas: {
+           include: {
+             etiqueta: true
+           }
+         },
+         resenas: {
+         ~~~~~~~
+           include: {
+             usuario: true
+           }
+         },
+     ?   personalizado?: true,
+     ?   pedidos?: true,
+     ?   reseñas?: true,
+     ?   promocion?: true
+       }
+     })
+
+Unknown field `resenas` for include statement on model `Producto`. Available options are marked with ?.
+2025-07-14 21:59:52.490 error: 	John--Se produjo un error interno del servidor 
+Invalid `this.prisma.producto.findUnique()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:63:54
+
+  60 if (isNaN(idProducto)) {
+  61   return next(AppError.badRequest("El ID no es válido"));
+  62 }
+→ 63 const objProducto = await this.prisma.producto.findUnique({
+       where: {
+         id: 2
+       },
+       include: {
+         imagenes: true,
+         categorias: {
+           include: {
+             categoria: true
+           }
+         },
+         etiquetas: {
+           include: {
+             etiqueta: true
+           }
+         },
+         resenas: {
+         ~~~~~~~
+           include: {
+             usuario: true
+           }
+         },
+     ?   personalizado?: true,
+     ?   pedidos?: true,
+     ?   reseñas?: true,
+     ?   promocion?: true
+       }
+     })
+
+Unknown field `resenas` for include statement on model `Producto`. Available options are marked with ?.

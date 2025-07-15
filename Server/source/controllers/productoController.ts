@@ -96,10 +96,10 @@ get = async (request: Request, response: Response, next: NextFunction) => {
     )?.ruta ?? "image-not-found.jpg";
 
     // Calcular promedio de valoraciones
-    const promedioValoracion = objProducto.resenas.length > 0
+      const promedioValoracion = objProducto.resenas.length > 0
       ? objProducto.resenas.reduce((sum, r) => sum + r.valoracion, 0) / objProducto.resenas.length
       : null;
-
+      
     // Enviar respuesta estructurada
     response.status(200).json({
       ...objProducto,
