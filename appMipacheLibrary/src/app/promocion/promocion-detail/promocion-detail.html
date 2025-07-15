@@ -1,26 +1,23 @@
-<p *ngIf="promocion">Promoción cargada: {{ promocion.nombre }}</p>
-<p *ngIf="!promocion">No se ha cargado ninguna promoción</p>
-
-<div *ngIf="promocion">
+<div *ngIf="promocion" class="resaltado">
   <h2>{{ promocion.nombre }}</h2>
 
-  <p><strong>Tipo de promoción:</strong> {{ promocion.productos?.length ? 'Por producto' : 'Por categoría' }}</p>
-
-  <p><strong>Aplica a:</strong>
-    <span *ngIf="promocion.productos?.length">
-      <!-- {{ promocion.productos.map(p => p.nombre).join(', ') }} -->
-    </span>
-    <span *ngIf="promocion.categorias?.length">
-      <!-- {{ promocion.categorias.map(c => c.nombre).join(', ') }} -->
-    </span>
+  <p><strong>Tipo de promoción:</strong>
+     <span class="tipo-promocion">{{ promocion.productos?.length ? 'Por producto' : 'Por categoría' }}</span>
   </p>
 
+  <span *ngIf="promocion.productos?.length">
+  {{ getNombresProductos() }}
+</span>
+<span *ngIf="promocion.categorias?.length">
+  {{ getNombresCategorias() }}
+</span>
+
   <p><strong>Descuento:</strong>
-    {{ promocion.tipoDescuento === 'PORCENTAJE' ? promocion.descuento + '%' : '₡' + promocion.descuento }}
+    <span class="valor-descuento">
+      {{ promocion.tipoDescuento === 'PORCENTAJE' ? promocion.descuento + '%' : '₡' + promocion.descuento }}
+    </span>
   </p>
 
   <p><strong>Fecha de inicio:</strong> {{ promocion.fechaInicio | date:'longDate' }}</p>
   <p><strong>Fecha de fin:</strong> {{ promocion.fechaFin | date:'longDate' }}</p>
 </div>
-
- <!-- //TERMINAR DE CONFIGURAR EL DETALLE DE PROMOCION PORQUE SE MUESTRA EN BLANCO CON EL MENSAJE NO SE HA CARGADO NINGUNA PROMOCION -->

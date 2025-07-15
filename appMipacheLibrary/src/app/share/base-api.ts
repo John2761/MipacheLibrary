@@ -19,6 +19,7 @@ export class BaseAPI<T extends BaseEntity> {
   get(): Observable<T[]> {
     return this.http.get<T[]>(`${this.urlAPI}/${this.endpoint}`);
   }
+  
   getMethod(
     action: string,
     options: { [param: string]: unknown } = {}

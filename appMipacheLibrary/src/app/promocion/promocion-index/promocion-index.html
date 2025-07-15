@@ -1,7 +1,7 @@
 <div class="promociones">
   <div *ngFor="let promo of datos" [ngClass]="getEstadoClase(promo)">
     <h3>{{ promo.nombre }}</h3>
-    <p><strong>Descuento:</strong> {{ promo.descuento }} {{ promo.tipoDescuento === 'PORCENTAJE' ? '%' : 'CRC' }}</p>
+    <p><strong>Descuento:</strong> {{ promo.descuento }} {{ promo.tipoDescuento == 'PORCENTAJE' ? '%' : 'CRC' }}</p>
     <p><strong>Vigencia:</strong> {{ promo.fechaInicio | date:'shortDate' }} - {{ promo.fechaFin | date:'shortDate' }}</p>
     <p><strong>Estado:</strong> {{ getEstado(promo) }}</p>
   </div>

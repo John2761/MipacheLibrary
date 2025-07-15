@@ -5,6 +5,7 @@ import { NotificationService } from '../../share/notification-service';
 import { Router } from '@angular/router';
 import { ProductoModel } from '../../share/models/ProductoModel';
 
+
 @Component({
   selector: 'app-producto-index',
   standalone: false,
@@ -25,6 +26,11 @@ export class ProductoIndex {
     this.listProductos();
   }
 
+
+  
+
+
+  //Listar todos los Productos del API
   
 
   listProductos() {
