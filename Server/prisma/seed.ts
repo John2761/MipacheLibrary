@@ -32,8 +32,12 @@ const main = async () => {
           "donde creció con leyendas sobre inmortales, como el trágico Príncipe de Corazones.",
         precio: 11200.0,
         stock: 10,
+        imagenPrincipal: "Erase-una-vez-un-corazon-roto.jpg",
         imagenes: {
-          create: { ruta: "Erase-una-vez-un-corazon-roto.jpg" },
+          create: [
+            { ruta: "Erase-una-vez-un-corazon-roto.jpg" },
+            { ruta: "Erase-una-vez-1.jpg" },
+            ],
         },
         autor: "Stephanie Garber",
         fechaCreacion: new Date("2021-09-28"),
@@ -55,8 +59,12 @@ const main = async () => {
           "hay un encantamiento mortal. Para romperlo, Evangeline y Jacks tendrán que batallar con viejos amigos.",
         precio: 11350.0,
         stock: 10,
+        imagenPrincipal: "La-balada-de-nunca-jamas.jpg",
         imagenes: {
-          create: { ruta: "La-balada-de-nunca-jamas.jpg" },
+          create: [
+            { ruta: "La-balada-de-nunca-jamas.jpg" },
+            { ruta: "La-balada-1.jpg" },
+            ],
         },
         autor: "Stephanie Garber",
         fechaCreacion: new Date("2022-09-28"),
@@ -75,8 +83,11 @@ const main = async () => {
           "viajó al Glorioso Norte buscando su «felices para siempre» ",
         precio: 14800.0,
         stock: 10,
+        imagenPrincipal: "La-maldicion-del-amor-verdadero.jpg",
         imagenes: {
-          create: { ruta: "La-maldicion-del-amor-verdadero.jpg" },
+          create: [
+            { ruta: "La-maldicion-del-amor-verdadero.jpg" },
+            ],
         },
         autor: "Stephanie Garber",
         fechaCreacion: new Date("2024-02-06"),
@@ -122,7 +133,7 @@ const main = async () => {
     //Instancia de producto 5
     await prisma.producto.create({
       data: {
-        nombre: "De Sangre y cenizas",
+        nombre: "De sangre y cenizas",
         descripcion:
           "La historia sigue a Poppy, una joven que ha sido elegida para ser la Doncella, " +
           "una figura sagrada que debe sacrificarse para mantener a salvo a su reino",
@@ -155,8 +166,12 @@ const main = async () => {
           "sociedad de elite, carecer de poder se vuelve un crimen.",
         precio: 18000.0,
         stock: 10,
+        imagenPrincipal: "Powerless.jpg",
         imagenes: {
-          create: { ruta: "Powerless.jpg" },
+          create: [
+            { ruta: "Powerless.jpg" },
+            { ruta: "Powerless-1.jpg" },
+          ],
         },
         autor: "Lauren Roberts",
         fechaCreacion: new Date("2024-02-08"),
