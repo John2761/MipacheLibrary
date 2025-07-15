@@ -146,16 +146,26 @@ C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers
      })
 
 Unknown field `resenas` for include statement on model `Producto`. Available options are marked with ?.
+<<<<<<< HEAD
 2025-07-14 21:39:15.863 error: 	John--Se produjo un error interno del servidor 
 Invalid `this.prisma.producto.findUnique()` invocation in
 C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:63:54
+=======
+2025-07-14 21:40:26.190 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.producto.findUnique()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\productoController.ts:63:54
+>>>>>>> 71f41fda77605125f0c4354cf526c34019d196f3
 
   60 if (isNaN(idProducto)) {
   61   return next(AppError.badRequest("El ID no es válido"));
   62 }
 → 63 const objProducto = await this.prisma.producto.findUnique({
        where: {
+<<<<<<< HEAD
          id: 2
+=======
+         id: 4
+>>>>>>> 71f41fda77605125f0c4354cf526c34019d196f3
        },
        include: {
          imagenes: true,
@@ -183,9 +193,126 @@ C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoContr
      })
 
 Unknown field `resenas` for include statement on model `Producto`. Available options are marked with ?.
+<<<<<<< HEAD
 2025-07-14 21:40:54.992 error: 	John--Se produjo un error interno del servidor 
 Invalid `this.prisma.producto.findUnique()` invocation in
 C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:63:54
+=======
+2025-07-14 21:41:52.199 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.producto.findUnique()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\productoController.ts:63:54
+
+  60 if (isNaN(idProducto)) {
+  61   return next(AppError.badRequest("El ID no es válido"));
+  62 }
+→ 63 const objProducto = await this.prisma.producto.findUnique({
+       where: {
+         id: 4
+       },
+       include: {
+         imagenes: true,
+         categorias: {
+           include: {
+             categoria: true
+           }
+         },
+         etiquetas: {
+           include: {
+             etiqueta: true
+           }
+         },
+         resenas: {
+         ~~~~~~~
+           include: {
+             usuario: true
+           }
+         },
+     ?   personalizado?: true,
+     ?   pedidos?: true,
+     ?   reseñas?: true,
+     ?   promocion?: true
+       }
+     })
+
+Unknown field `resenas` for include statement on model `Producto`. Available options are marked with ?.
+2025-07-14 21:43:01.549 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.producto.findUnique()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\productoController.ts:63:54
+
+  60 if (isNaN(idProducto)) {
+  61   return next(AppError.badRequest("El ID no es válido"));
+  62 }
+→ 63 const objProducto = await this.prisma.producto.findUnique({
+       where: {
+         id: 4
+       },
+       include: {
+         imagenes: true,
+         categorias: {
+           include: {
+             categoria: true
+           }
+         },
+         etiquetas: {
+           include: {
+             etiqueta: true
+           }
+         },
+         resenas: {
+         ~~~~~~~
+           include: {
+             usuario: true
+           }
+         },
+     ?   personalizado?: true,
+     ?   pedidos?: true,
+     ?   reseñas?: true,
+     ?   promocion?: true
+       }
+     })
+
+Unknown field `resenas` for include statement on model `Producto`. Available options are marked with ?.
+2025-07-14 21:47:00.783 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.producto.findUnique()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\productoController.ts:63:54
+
+  60 if (isNaN(idProducto)) {
+  61   return next(AppError.badRequest("El ID no es válido"));
+  62 }
+→ 63 const objProducto = await this.prisma.producto.findUnique({
+       where: {
+         id: 5
+       },
+       include: {
+         imagenes: true,
+         categorias: {
+           include: {
+             categoria: true
+           }
+         },
+         etiquetas: {
+           include: {
+             etiqueta: true
+           }
+         },
+         resenas: {
+         ~~~~~~~
+           include: {
+             usuario: true
+           }
+         },
+     ?   personalizado?: true,
+     ?   pedidos?: true,
+     ?   reseñas?: true,
+     ?   promocion?: true
+       }
+     })
+
+Unknown field `resenas` for include statement on model `Producto`. Available options are marked with ?.
+2025-07-14 21:47:03.235 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.producto.findUnique()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\productoController.ts:63:54
+>>>>>>> 71f41fda77605125f0c4354cf526c34019d196f3
 
   60 if (isNaN(idProducto)) {
   61   return next(AppError.badRequest("El ID no es válido"));
@@ -220,16 +347,26 @@ C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoContr
      })
 
 Unknown field `resenas` for include statement on model `Producto`. Available options are marked with ?.
+<<<<<<< HEAD
 2025-07-14 21:54:47.032 error: 	John--Se produjo un error interno del servidor 
 Invalid `this.prisma.producto.findUnique()` invocation in
 C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:63:54
+=======
+2025-07-14 21:47:05.927 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.producto.findUnique()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\productoController.ts:63:54
+>>>>>>> 71f41fda77605125f0c4354cf526c34019d196f3
 
   60 if (isNaN(idProducto)) {
   61   return next(AppError.badRequest("El ID no es válido"));
   62 }
 → 63 const objProducto = await this.prisma.producto.findUnique({
        where: {
+<<<<<<< HEAD
          id: 1
+=======
+         id: 4
+>>>>>>> 71f41fda77605125f0c4354cf526c34019d196f3
        },
        include: {
          imagenes: true,
@@ -257,16 +394,211 @@ C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoContr
      })
 
 Unknown field `resenas` for include statement on model `Producto`. Available options are marked with ?.
+<<<<<<< HEAD
 2025-07-14 21:59:52.490 error: 	John--Se produjo un error interno del servidor 
 Invalid `this.prisma.producto.findUnique()` invocation in
 C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:63:54
+=======
+2025-07-14 21:47:34.187 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.producto.findUnique()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\productoController.ts:63:54
+>>>>>>> 71f41fda77605125f0c4354cf526c34019d196f3
 
   60 if (isNaN(idProducto)) {
   61   return next(AppError.badRequest("El ID no es válido"));
   62 }
 → 63 const objProducto = await this.prisma.producto.findUnique({
        where: {
+<<<<<<< HEAD
          id: 2
+=======
+         id: 4
+       },
+       include: {
+         imagenes: true,
+         categorias: {
+           include: {
+             categoria: true
+           }
+         },
+         etiquetas: {
+           include: {
+             etiqueta: true
+           }
+         },
+         resenas: {
+         ~~~~~~~
+           include: {
+             usuario: true
+           }
+         },
+     ?   personalizado?: true,
+     ?   pedidos?: true,
+     ?   reseñas?: true,
+     ?   promocion?: true
+       }
+     })
+
+Unknown field `resenas` for include statement on model `Producto`. Available options are marked with ?.
+2025-07-14 21:51:49.904 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.producto.findUnique()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\productoController.ts:63:54
+
+  60 if (isNaN(idProducto)) {
+  61   return next(AppError.badRequest("El ID no es válido"));
+  62 }
+→ 63 const objProducto = await this.prisma.producto.findUnique({
+       where: {
+         id: 4
+       },
+       include: {
+         imagenes: true,
+         categorias: {
+           include: {
+             categoria: true
+           }
+         },
+         etiquetas: {
+           include: {
+             etiqueta: true
+           }
+         },
+         resenas: {
+         ~~~~~~~
+           include: {
+             usuario: true
+           }
+         },
+     ?   personalizado?: true,
+     ?   pedidos?: true,
+     ?   reseñas?: true,
+     ?   promocion?: true
+       }
+     })
+
+Unknown field `resenas` for include statement on model `Producto`. Available options are marked with ?.
+2025-07-14 21:52:56.459 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.producto.findUnique()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\productoController.ts:63:54
+
+  60 if (isNaN(idProducto)) {
+  61   return next(AppError.badRequest("El ID no es válido"));
+  62 }
+→ 63 const objProducto = await this.prisma.producto.findUnique({
+       where: {
+         id: 4
+       },
+       include: {
+         imagenes: true,
+         categorias: {
+           include: {
+             categoria: true
+           }
+         },
+         etiquetas: {
+           include: {
+             etiqueta: true
+           }
+         },
+         resenas: {
+         ~~~~~~~
+           include: {
+             usuario: true
+           }
+         },
+     ?   personalizado?: true,
+     ?   pedidos?: true,
+     ?   reseñas?: true,
+     ?   promocion?: true
+       }
+     })
+
+Unknown field `resenas` for include statement on model `Producto`. Available options are marked with ?.
+2025-07-14 21:52:58.082 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.producto.findUnique()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\productoController.ts:63:54
+
+  60 if (isNaN(idProducto)) {
+  61   return next(AppError.badRequest("El ID no es válido"));
+  62 }
+→ 63 const objProducto = await this.prisma.producto.findUnique({
+       where: {
+         id: 4
+       },
+       include: {
+         imagenes: true,
+         categorias: {
+           include: {
+             categoria: true
+           }
+         },
+         etiquetas: {
+           include: {
+             etiqueta: true
+           }
+         },
+         resenas: {
+         ~~~~~~~
+           include: {
+             usuario: true
+           }
+         },
+     ?   personalizado?: true,
+     ?   pedidos?: true,
+     ?   reseñas?: true,
+     ?   promocion?: true
+       }
+     })
+
+Unknown field `resenas` for include statement on model `Producto`. Available options are marked with ?.
+2025-07-14 21:53:01.900 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.producto.findUnique()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\productoController.ts:63:54
+
+  60 if (isNaN(idProducto)) {
+  61   return next(AppError.badRequest("El ID no es válido"));
+  62 }
+→ 63 const objProducto = await this.prisma.producto.findUnique({
+       where: {
+         id: 4
+       },
+       include: {
+         imagenes: true,
+         categorias: {
+           include: {
+             categoria: true
+           }
+         },
+         etiquetas: {
+           include: {
+             etiqueta: true
+           }
+         },
+         resenas: {
+         ~~~~~~~
+           include: {
+             usuario: true
+           }
+         },
+     ?   personalizado?: true,
+     ?   pedidos?: true,
+     ?   reseñas?: true,
+     ?   promocion?: true
+       }
+     })
+
+Unknown field `resenas` for include statement on model `Producto`. Available options are marked with ?.
+2025-07-14 21:53:45.168 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.producto.findUnique()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\productoController.ts:63:54
+
+  60 if (isNaN(idProducto)) {
+  61   return next(AppError.badRequest("El ID no es válido"));
+  62 }
+→ 63 const objProducto = await this.prisma.producto.findUnique({
+       where: {
+         id: 4
+>>>>>>> 71f41fda77605125f0c4354cf526c34019d196f3
        },
        include: {
          imagenes: true,

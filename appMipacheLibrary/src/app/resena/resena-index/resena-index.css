@@ -1,0 +1,29 @@
+.resena-container {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.resena-titulo {
+  color: #3e2723;
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+
+.resena-card {
+  border-radius: 12px;
+  background-color: #fdfaf2;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.estrellas mat-icon {
+  font-size: 20px;
+  vertical-align: middle;
+}
+
+.text-muted {
+  color: #888;
+  font-style: italic;
+  text-align: center;
+}
