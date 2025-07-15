@@ -10,7 +10,7 @@ export interface PromocionModel {
     fechaFin: Date,
     tipoDescuento: TipoDescuento,
     estadoPromo: EstadoPromoModel;
-    categorias: CategoriaModel[],
-    productos: ProductoModel[],
+    productos?: { id: number; nombre: string }[];
+    categorias?: { id: number; nombre: string }[];
     
   }

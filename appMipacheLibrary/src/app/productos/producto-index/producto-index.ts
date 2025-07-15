@@ -5,6 +5,7 @@ import { NotificationService } from '../../share/notification-service';
 import { Router } from '@angular/router';
 import { ProductoModel } from '../../share/models/ProductoModel';
 
+
 @Component({
   selector: 'app-producto-index',
   standalone: false,
@@ -26,10 +27,8 @@ export class ProductoIndex {
   }
 
   //Listar todos los Productos del API
+  
   listProductos() {
-  //localhost:3000/Producto
-
-  this.listProductos() {
     this.pdService.get().subscribe((respuesta: ProductoModel[]) => {
       this.datos = respuesta;
 
@@ -37,7 +36,7 @@ export class ProductoIndex {
     });
   }
 
-  this.buscarPorNombre() {
+  buscarPorNombre() {
     const valor = this.filtroNombre.value?.trim().toLowerCase();
     if (!valor) {
       this.datos = this.datosOriginales;
