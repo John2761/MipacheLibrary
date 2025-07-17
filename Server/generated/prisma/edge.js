@@ -339,7 +339,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\John\\Desktop\\Git\\MipacheLibrary\\Server\\generated\\prisma",
+      "value": "C:\\Users\\perez\\Desktop\\Aplicaciones Web\\MipacheLibrary\\Server\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -353,7 +353,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\John\\Desktop\\Git\\MipacheLibrary\\Server\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\perez\\Desktop\\Aplicaciones Web\\MipacheLibrary\\Server\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
