@@ -1,8 +1,15 @@
-<div class="promociones">
-  <div *ngFor="let promo of datos" [ngClass]="getEstadoClase(promo)">
-    <h3>{{ promo.nombre }}</h3>
-    <p><strong>Descuento:</strong> {{ promo.descuento }} {{ promo.tipoDescuento == 'PORCENTAJE' ? '%' : 'CRC' }}</p>
-    <p><strong>Vigencia:</strong> {{ promo.fechaInicio | date:'shortDate' }} - {{ promo.fechaFin | date:'shortDate' }}</p>
-    <p><strong>Estado:</strong> {{ getEstado(promo) }}</p>
+<div class="promociones-container">
+  <h1 class="titulo-promocion">Promociones activas</h1>
+
+  <div class="promociones-horizontal">
+    <div class="promo-card" *ngFor="let promo of datos" [ngClass]="getEstadoClase(promo)">
+      <div class="promo-header">
+        <h3>{{ promo.nombre }}</h3>
+        <span class="badge-estado">{{ getEstado(promo) }}</span>
+      </div>
+      <p><strong>Descuento:</strong> {{ promo.descuento }} {{ promo.tipoDescuento === 'PORCENTAJE' ? '%' : 'CRC' }}</p>
+      <p><strong>Vigencia:</strong> {{ promo.fechaInicio | date:'shortDate' }} - {{ promo.fechaFin | date:'shortDate' }}</p>
+      <button mat-stroked-button color="primary" [routerLink]="['/promocion', promo.id]" class="btn-detalle">Ver detalle</button>
+    </div>
   </div>
 </div>

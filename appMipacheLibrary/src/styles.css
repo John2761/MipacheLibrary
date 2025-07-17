@@ -7,6 +7,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   color: white !important;
 }
 
+main {
+  flex: 1 0 auto;
+}
+
 .info {
   background-color: #2196F3 !important;
   color: white !important;
@@ -74,3 +78,4 @@ mat-card {
   border-radius: 10px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
+

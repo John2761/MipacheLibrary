@@ -1,40 +1,72 @@
-:host {
-  display: block;
-  padding: 1.5rem;
-  max-width: 600px;
-  margin: 0 auto;
-  font-family: Arial, sans-serif;
+.detalle-promocion-card {
+  background-color: #fffaf5;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+  border-left: 6px solid #6d4c41;
+  color: #3e2723;
+  width: 400px;
+  margin: 7rem auto;
 }
 
-h2 {
+.titulo-promocion {
   text-align: center;
-  color: #2c3e50;
-  margin-bottom: 1rem;
-}
-
-p {
-  font-size: 1rem;
+  font-size: 1.8rem;
   font-weight: bold;
-  margin: 0.5rem 0;
+  color: #4e342e;
+  margin-bottom: 1.5rem;
 }
 
-strong {
-  color: #34495e;
-}
-
-.valor-descuento {
-  font-weight: bold;
-  color: #e74c3c;
+.detalle-linea {
+  font-size: 1.05rem;
+  margin: 0.75rem 0;
+  display: flex;
+  gap: 0.5rem;
+  align-items: baseline;
+  flex-wrap: wrap;
 }
 
 .tipo-promocion {
-  text-transform: capitalize;
+  background-color: #fceee3;
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  color: #6d4c41;
+  font-weight: 500;
 }
 
-.resaltado {
-  background-color: #27b7e7;
-  padding: 1rem;
-  border-left: 5px solid #475f3c;
-  margin-bottom: 1rem;
-  border-radius: 10px;
+.valor-descuento {
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+.volver {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.volver button {
+  color: #6d4c41;
+  border-color: #6d4c41;
+  transition: all 0.3s ease;
+}
+
+.volver button:hover {
+  background-color: #6d4c41;
+  color: white;
+}
+
+/* Colores de fondo dinámicos para el detalle */
+.detalle-promocion-card.vigente {
+  background-color: #ffeaea;
+  border-left-color: #ff4d4d;
+}
+
+.detalle-promocion-card.aplicado {
+  background-color: #f2f2f2;
+  border-left-color: #d3d3d3;
+}
+
+.detalle-promocion-card.pendiente {
+  background-color: #e5f5fb;
+  border-left-color: #add8e6;
 }

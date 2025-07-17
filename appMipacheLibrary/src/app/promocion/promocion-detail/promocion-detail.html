@@ -1,23 +1,35 @@
-<div *ngIf="promocion" class="resaltado">
-  <h2>{{ promocion.nombre }}</h2>
+<div *ngIf="promocion" class="detalle-promocion-card" [ngClass]="getEstadoClase(promocion)">
+  <h2 class="titulo-promocion">{{ promocion.nombre }}</h2>
 
-  <p><strong>Tipo de promoción:</strong>
-     <span class="tipo-promocion">{{ promocion.productos?.length ? 'Por producto' : 'Por categoría' }}</span>
-  </p>
+  <div class="detalle-linea">
+    <strong>Tipo de promoción:</strong>
+    <span class="tipo-promocion">{{ promocion.productos?.length ? 'Por producto' : 'Por categoría' }}</span>
+  </div>
 
-  <span *ngIf="promocion.productos?.length">
-  {{ getNombresProductos() }}
-</span>
-<span *ngIf="promocion.categorias?.length">
-  {{ getNombresCategorias() }}
-</span>
+  <div class="detalle-linea" *ngIf="promocion.productos?.length">
+    <strong>Aplica a productos:</strong> {{ getNombresProductos() }}
+  </div>
 
-  <p><strong>Descuento:</strong>
+  <div class="detalle-linea" *ngIf="promocion.categorias?.length">
+    <strong>Aplica a categorías:</strong> {{ getNombresCategorias() }}
+  </div>
+
+  <div class="detalle-linea">
+    <strong>Descuento:</strong>
     <span class="valor-descuento">
       {{ promocion.tipoDescuento === 'PORCENTAJE' ? promocion.descuento + '%' : '₡' + promocion.descuento }}
     </span>
-  </p>
+  </div>
 
-  <p><strong>Fecha de inicio:</strong> {{ promocion.fechaInicio | date:'longDate' }}</p>
-  <p><strong>Fecha de fin:</strong> {{ promocion.fechaFin | date:'longDate' }}</p>
+  <div class="detalle-linea">
+    <strong>Fecha de inicio:</strong> {{ promocion.fechaInicio | date:'longDate' }}
+  </div>
+
+  <div class="detalle-linea">
+    <strong>Fecha de fin:</strong> {{ promocion.fechaFin | date:'longDate' }}
+  </div>
+
+  <div class="volver">
+    <button mat-stroked-button color="primary" routerLink="/promocion">← Volver al listado</button>
+  </div>
 </div>

@@ -41,7 +41,7 @@ html {
   }
 
   //desplegable select
-  @include mat.select-overrides((panel-background-color: rgba(0, 0, 0, 0.7)));
+  @include mat.select-overrides((panel-background-color: #ecd7c5));
 
   .bg-primary {
     background-color: #{map.get(theme.$primary-palette, 50)};

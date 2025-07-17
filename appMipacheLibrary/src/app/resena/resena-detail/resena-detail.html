@@ -1,0 +1,45 @@
+<div class="resena-detalle-container" *ngIf="resena">
+  <h1 class="detalle-titulo">Detalle de Reseña</h1>
+
+  <mat-card class="resena-detalle-card sombreado">
+    <mat-card-header>
+      <div class="cabecera-usuario">
+        <div class="avatar-inicial">
+          {{ resena.usuario?.nombre.charAt(0).toUpperCase() }}
+        </div>
+        <div>
+          <div class="nombre-usuario">{{ resena.usuario?.nombre ?? 'Anónimo' }}</div>
+          <div class="fecha-reseña">{{ resena.fecha | date: 'fullDate' }}</div>
+        </div>
+      </div>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="nombre-producto">
+        Producto reseñado: <strong>{{ resena.producto?.nombre }}</strong>
+      </div>
+
+      <div class="comentario-detalle">
+        {{ resena.comentario || 'Sin comentario' }}
+      </div>
+
+      <div class="valoracion-container">
+        <div class="estrellas">
+          <mat-icon *ngFor="let star of [1,2,3,4,5]" color="warn">
+            {{ star <= resena.valoracion ? 'star' : 'star_border' }}
+          </mat-icon>
+          <span class="puntaje">({{ resena.valoracion }}/5)</span>
+        </div>
+      </div>
+
+      <div *ngIf="resena.moderada" class="alerta-moderacion">
+        <p>🛑 <strong>Esta reseña fue moderada</strong></p>
+        <p><strong>Motivo:</strong> {{ resena.observacion || 'No especificado' }}</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <div class="volver">
+    <button mat-raised-button color="primary" routerLink="/resena" class="volver">← Volver al listado</button>
+  </div>
+</div>

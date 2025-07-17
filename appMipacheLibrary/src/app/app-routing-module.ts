@@ -7,6 +7,7 @@ import { ProductoDetail } from './productos/producto-detail/producto-detail';
 import { PromocionIndex } from './promocion/promocion-index/promocion-index';
 import { PromocionDetail } from './promocion/promocion-detail/promocion-detail';
 import { ResenaIndex } from './resena/resena-index/resena-index';
+import { ResenaDetail } from './resena/resena-detail/resena-detail';
 
 const routes: Routes = [
   { path:'inicio',component: inicio},
@@ -19,7 +20,7 @@ const routes: Routes = [
   { path:'promocion/:id',component: PromocionDetail},
   //reseñas
   { path: 'resena', component: ResenaIndex },
-  //{ path: 'resena/:id', component: ResenaDetail },
+  { path: 'resena/:id', component: ResenaDetail },
   { path:'**', component: PageNotFound}
 ];
 

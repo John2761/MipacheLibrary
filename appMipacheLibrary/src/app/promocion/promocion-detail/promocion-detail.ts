@@ -34,4 +34,20 @@ export class PromocionDetail {
   getNombresCategorias(): string {
     return this.promocion?.categorias?.map((c) => c.nombre).join(', ') || '';
   }
+
+  /* Colores de fondo dinámicos para el detalle */
+  getEstadoClase(promo: any): string {
+  const hoy = new Date();
+  const inicio = new Date(promo.fechaInicio);
+  const fin = new Date(promo.fechaFin);
+
+  if (hoy >= inicio && hoy <= fin) {
+    return 'vigente';
+  } else if (hoy < inicio) {
+    return 'pendiente';
+  } else {
+    return 'aplicado';
+  }
+}
+
 }

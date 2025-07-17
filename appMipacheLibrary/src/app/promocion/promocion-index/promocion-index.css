@@ -1,19 +1,88 @@
-.promociones div {
-  padding: 1rem;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  border-radius: 8px;
-  color: #000;
+.promociones-container {
+  padding: 2rem;
+  color: #3e2723;
+  margin: 6rem auto;
 }
 
+.titulo-promocion {
+  font-size: 1.8rem;
+  text-align: center;
+  color: #4e342e;
+  margin-bottom: 2rem;
+}
+
+/* Layout horizontal con scroll */
+.promociones-horizontal {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+.promo-card {
+  min-width: 320px;
+  flex: 0 0 auto;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  background-color: #fffaf5;
+  position: relative;
+  transition: transform 0.3s ease;
+  border-left: 6px solid transparent;
+}
+
+.promo-card:hover {
+  transform: translateY(-5px);
+}
+
+.promo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.badge-estado {
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: white;
+}
+
+/* Estados */
 .vigente {
-  background-color: #FF4D4D;
+  border-left-color: #ff4d4d;
+}
+.vigente .badge-estado {
+  background-color: #ff4d4d;
 }
 
 .aplicado {
-  background-color: #D3D3D3;
+  border-left-color: #d3d3d3;
+}
+.aplicado .badge-estado {
+  background-color: #d3d3d3;
+  color: #3a3636;
 }
 
 .pendiente {
-  background-color: #27b7e7;
+  border-left-color: #add8e6;
+}
+.pendiente .badge-estado {
+  background-color: #add8e6;
+  color: #003366;
+}
+
+/* Botón */
+.btn-detalle {
+  margin-top: 1rem;
+  border-color: #6d4c41;
+  color: #6d4c41;
+  transition: all 0.3s ease;
+}
+.btn-detalle:hover {
+  background-color: #6d4c41;
+  color: white;
 }

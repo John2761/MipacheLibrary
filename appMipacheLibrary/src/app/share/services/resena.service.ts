@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ResenaService {
-  private apiUrl = 'http://localhost:3000/api/resena';
+  private apiUrl = 'http://localhost:3000/resena';
 
   constructor(private http: HttpClient) {}
 

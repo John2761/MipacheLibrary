@@ -299,6 +299,100 @@ const main = async () => {
       },
     });
     */
+
+        // Reseñas
+    await prisma.resena.createMany({
+      data: [
+        // Producto 1
+        {
+          valoracion: 4,
+          comentario: 'Un libro mágico y envolvente.',
+          productoId: 1,
+          usuarioId: 1,
+        },
+        {
+          valoracion: 2,
+          comentario: 'Esperaba más de la historia.',
+          productoId: 1,
+          usuarioId: 2,
+          moderada: true,
+          observacion: 'Comentario poco constructivo y ambiguo',
+        },
+
+        // Producto 2
+        {
+          valoracion: 5,
+          comentario: 'Me encantó el desarrollo de los personajes.',
+          productoId: 2,
+          usuarioId: 3,
+        },
+        {
+          valoracion: 3,
+          comentario: 'Interesante pero lento al principio.',
+          productoId: 2,
+          usuarioId: 4,
+        },
+
+        // Producto 3
+        {
+          valoracion: 5,
+          comentario: 'Una conclusión perfecta para la saga.',
+          productoId: 3,
+          usuarioId: 1,
+        },
+        {
+          valoracion: 1,
+          comentario: 'No me gustó nada.',
+          productoId: 3,
+          usuarioId: 2,
+          moderada: true,
+          observacion: 'Comentario ofensivo editado por moderación',
+        },
+
+        // Producto 4
+        {
+          valoracion: 4,
+          comentario: 'Una fantasía muy bien construida.',
+          productoId: 4,
+          usuarioId: 3,
+        },
+        {
+          valoracion: 5,
+          comentario: 'Una obra maestra moderna.',
+          productoId: 4,
+          usuarioId: 4,
+        },
+
+        // Producto 5
+        {
+          valoracion: 3,
+          comentario: 'No está mal, pero no es lo mío.',
+          productoId: 5,
+          usuarioId: 1,
+        },
+        {
+          valoracion: 2,
+          comentario: 'Demasiado confuso el mundo creado.',
+          productoId: 5,
+          usuarioId: 2,
+        },
+
+        // Producto 6
+        {
+          valoracion: 4,
+          comentario: 'Buena trama y personajes fuertes.',
+          productoId: 6,
+          usuarioId: 3,
+        },
+        {
+          valoracion: 5,
+          comentario: 'Me atrapó desde el inicio hasta el final.',
+          productoId: 6,
+          usuarioId: 4,
+        },
+      ]
+    });
+
   } catch (error) {
     throw error;
   }
