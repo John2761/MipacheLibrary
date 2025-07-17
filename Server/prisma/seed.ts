@@ -2,6 +2,7 @@ import { PrismaClient } from "../generated/prisma";
 import { categorias } from "./seeds/categorias";
 import { usuarios } from "./seeds/usuarios";
 import { promociones } from "./seeds/promociones";
+import { connect } from "http2";
 
 const prisma = new PrismaClient();
 
@@ -138,6 +139,7 @@ const main = async () => {
           "La historia sigue a Poppy, una joven que ha sido elegida para ser la Doncella, " +
           "una figura sagrada que debe sacrificarse para mantener a salvo a su reino",
         precio: 16800.0,
+        promocionId: 1,
         stock: 10,
         imagenPrincipal: "De-sangre-y-cenizas.jpg",
         imagenes: {

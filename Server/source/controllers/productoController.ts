@@ -82,17 +82,21 @@ export class ProductoController {
         },
         promocion: true, // Asegura que se cargue la promoción
       }
+
     });
 
     if (!objProducto) {
       return next(AppError.notFound("No existe el producto"));
     }
 
-    // Buscar imagen principal
-    const nombreEsperado = objProducto.nombre
-      .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-      .replace(/\s+/g, "-")
-      .replace(/[^a-zA-Z0-9\-]/g, "") + ".jpg";
+      
+      // Buscar imagen principal
+      const nombreEsperado =
+        objProducto.nombre
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/\s+/g, "-")
+          .replace(/[^a-zA-Z0-9\-]/g, "") + ".jpg";
 
     const imagenPrincipal =
       objProducto.imagenes.find(img => img.ruta === nombreEsperado)?.ruta ??
