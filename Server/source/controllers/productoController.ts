@@ -89,7 +89,6 @@ export class ProductoController {
       return next(AppError.notFound("No existe el producto"));
     }
 
-      
       // Buscar imagen principal
       const nombreEsperado =
         objProducto.nombre
