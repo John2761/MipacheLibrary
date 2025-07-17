@@ -193,6 +193,7 @@ model Promocion {
   fechaInicio   DateTime //Rango de fechas
   fechaFin      DateTime //para las promociones
   tipoDescuento TipoDescuento @default(PORCENTAJE)
+  tipoPromocion TipoPromocion @default(POR_PRODUCTO)
   estadoPromo   EstadoPromo   @default(PENDIENTE)
   //Relaciones
   productos     Producto[]
@@ -231,6 +232,11 @@ enum EstadoPromo {
 }
 
 enum TipoDescuento {
+  MONTO_FIJO //Por defecto
   PORCENTAJE
-  MONTO_FIJO
+}
+
+enum TipoPromocion {
+  POR_PRODUCTO //Por defecto
+  POR_CATEGORIA
 }

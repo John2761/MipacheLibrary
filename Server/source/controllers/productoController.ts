@@ -3,7 +3,6 @@ import { AppError } from "../errors/custom.error";
 import { PrismaClient } from "../../generated/prisma";
 export class ProductoController {
   prisma = new PrismaClient();
-
   //Get All
   get = async (request: Request, response: Response, next: NextFunction) => {
     try {
@@ -18,37 +17,66 @@ export class ProductoController {
               categoria: true,
             },
           },
+          etiquetas: {
+            include: {
+              etiqueta: true,
+            },
+          },
+          resenas: {
+            include: {
+              usuario: true,
+            },
+          },
+          promocion: {
+            include: {
+              categorias: true,
+            },
+          },
         },
       });
 
-      // 🧠 Función para convertir nombre → nombre-de-archivo
       function normalizarNombre(nombre: string): string {
         return (
           nombre
             .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "") // quita tildes
-            .replace(/\s+/g, "-") // espacios a guiones
-            .replace(/[^a-zA-Z0-9\-]/g, "") + // solo letras, números, guiones
-          ".jpg"
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/\s+/g, "-")
+            .replace(/[^a-zA-Z0-9\-]/g, "") + ".jpg"
         );
       }
 
-      const productosConImagenPrincipal = productos.map((producto) => {
+      const productosConImagenYDescuento = productos.map((producto) => {
         const nombreEsperado = normalizarNombre(producto.nombre);
-        console.log(
-          `→ Producto: ${producto.nombre} → Esperado: ${nombreEsperado}`
-        );
-        const imagenPrincipal = producto.imagenes.find(
-          (img) => img.ruta === nombreEsperado
-        );
+        const imagenPrincipal =
+          producto.imagenes.find((img) => img.ruta === nombreEsperado)?.ruta ??
+          "image-not-found.jpg";
+
+        let precioDescuento: number | null = null;
+
+        if (
+          producto.promocion &&
+          producto.promocion.estadoPromo === "VIGENTE"
+        ) {
+          const descuento = Number(producto.promocion.descuento);
+          const esPorcentaje =
+            producto.promocion.tipoDescuento === "PORCENTAJE";
+
+          precioDescuento = esPorcentaje
+            ? Number(producto.precio) -
+              (Number(producto.precio) * descuento) / 100
+            : Number(producto.precio) - descuento;
+
+          precioDescuento = parseFloat(precioDescuento.toFixed(2));
+        }
 
         return {
           ...producto,
-          imagenPrincipal: imagenPrincipal?.ruta ?? "image-not-found.jpg",
+          imagenPrincipal,
+          precioDescuento,
         };
       });
 
-      response.json(productosConImagenPrincipal);
+      response.json(productosConImagenYDescuento);
     } catch (error) {
       next(error);
     }
@@ -65,6 +93,7 @@ export class ProductoController {
       if (isNaN(idProducto)) {
         return next(AppError.badRequest("El ID no es válido"));
       }
+
       const objProducto = await this.prisma.producto.findUnique({
         where: { id: idProducto },
         include: {
@@ -84,13 +113,14 @@ export class ProductoController {
               usuario: true,
             },
           },
+          promocion: true,
         },
       });
+
       if (!objProducto) {
         return next(AppError.notFound("No existe el producto"));
       }
-      
-      // Buscar imagen principal
+
       const nombreEsperado =
         objProducto.nombre
           .normalize("NFD")
@@ -102,22 +132,40 @@ export class ProductoController {
         objProducto.imagenes.find((img) => img.ruta === nombreEsperado)?.ruta ??
         "image-not-found.jpg";
 
+      const promedioValoracion =
+        objProducto.resenas.length > 0
+          ? objProducto.resenas.reduce((sum, r) => sum + r.valoracion, 0) /
+            objProducto.resenas.length
+          : null;
 
-    // Calcular promedio de valoraciones
-      const promedioValoracion = objProducto.resenas.length > 0
-      ? objProducto.resenas.reduce((sum, r) => sum + r.valoracion, 0) / objProducto.resenas.length
-      : null;
-      
-    // Enviar respuesta estructurada
-    response.status(200).json({
-      ...objProducto,
-      imagenPrincipal,
-      promedioValoracion
-    });
-  } catch (error) {
-    next(error);
-  }
-};
+      let precioDescuento: number | null = null;
+
+      if (
+        objProducto.promocion &&
+        objProducto.promocion.estadoPromo === "VIGENTE"
+      ) {
+        const descuento = Number(objProducto.promocion.descuento);
+        const esPorcentaje =
+          objProducto.promocion.tipoDescuento === "PORCENTAJE";
+
+        precioDescuento = esPorcentaje
+          ? Number(objProducto.precio) -
+            (Number(objProducto.precio) * descuento) / 100
+          : Number(objProducto.precio) - descuento;
+
+        precioDescuento = parseFloat(precioDescuento.toFixed(2));
+      }
+
+      response.status(200).json({
+        ...objProducto,
+        imagenPrincipal,
+        promedioValoracion,
+        precioDescuento,
+      });
+    } catch (error) {
+      next(error);
+    }
+  };
 
   search = async (request: Request, response: Response, next: NextFunction) => {
     try {

@@ -131,11 +131,19 @@ export type EstadoPromo = (typeof EstadoPromo)[keyof typeof EstadoPromo]
 
 
 export const TipoDescuento: {
-  PORCENTAJE: 'PORCENTAJE',
-  MONTO_FIJO: 'MONTO_FIJO'
+  MONTO_FIJO: 'MONTO_FIJO',
+  PORCENTAJE: 'PORCENTAJE'
 };
 
 export type TipoDescuento = (typeof TipoDescuento)[keyof typeof TipoDescuento]
+
+
+export const TipoPromocion: {
+  POR_PRODUCTO: 'POR_PRODUCTO',
+  POR_CATEGORIA: 'POR_CATEGORIA'
+};
+
+export type TipoPromocion = (typeof TipoPromocion)[keyof typeof TipoPromocion]
 
 }
 
@@ -154,6 +162,10 @@ export const EstadoPromo: typeof $Enums.EstadoPromo
 export type TipoDescuento = $Enums.TipoDescuento
 
 export const TipoDescuento: typeof $Enums.TipoDescuento
+
+export type TipoPromocion = $Enums.TipoPromocion
+
+export const TipoPromocion: typeof $Enums.TipoPromocion
 
 /**
  * ##  Prisma Client ʲˢ
@@ -507,8 +519,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.8.2
-   * Query Engine version: 2060c79ba17c6bb9f5823312b6f6b7f4a845738e
+   * Prisma Client JS version: 6.12.0
+   * Query Engine version: 8047c96bbd92db98a2abc7c9323ce77c02c89dbc
    */
   export type PrismaVersion = {
     client: string
@@ -17809,6 +17821,7 @@ export namespace Prisma {
     fechaInicio: Date | null
     fechaFin: Date | null
     tipoDescuento: $Enums.TipoDescuento | null
+    tipoPromocion: $Enums.TipoPromocion | null
     estadoPromo: $Enums.EstadoPromo | null
   }
 
@@ -17819,6 +17832,7 @@ export namespace Prisma {
     fechaInicio: Date | null
     fechaFin: Date | null
     tipoDescuento: $Enums.TipoDescuento | null
+    tipoPromocion: $Enums.TipoPromocion | null
     estadoPromo: $Enums.EstadoPromo | null
   }
 
@@ -17829,6 +17843,7 @@ export namespace Prisma {
     fechaInicio: number
     fechaFin: number
     tipoDescuento: number
+    tipoPromocion: number
     estadoPromo: number
     _all: number
   }
@@ -17851,6 +17866,7 @@ export namespace Prisma {
     fechaInicio?: true
     fechaFin?: true
     tipoDescuento?: true
+    tipoPromocion?: true
     estadoPromo?: true
   }
 
@@ -17861,6 +17877,7 @@ export namespace Prisma {
     fechaInicio?: true
     fechaFin?: true
     tipoDescuento?: true
+    tipoPromocion?: true
     estadoPromo?: true
   }
 
@@ -17871,6 +17888,7 @@ export namespace Prisma {
     fechaInicio?: true
     fechaFin?: true
     tipoDescuento?: true
+    tipoPromocion?: true
     estadoPromo?: true
     _all?: true
   }
@@ -17968,6 +17986,7 @@ export namespace Prisma {
     fechaInicio: Date
     fechaFin: Date
     tipoDescuento: $Enums.TipoDescuento
+    tipoPromocion: $Enums.TipoPromocion
     estadoPromo: $Enums.EstadoPromo
     _count: PromocionCountAggregateOutputType | null
     _avg: PromocionAvgAggregateOutputType | null
@@ -17997,6 +18016,7 @@ export namespace Prisma {
     fechaInicio?: boolean
     fechaFin?: boolean
     tipoDescuento?: boolean
+    tipoPromocion?: boolean
     estadoPromo?: boolean
     productos?: boolean | Promocion$productosArgs<ExtArgs>
     categorias?: boolean | Promocion$categoriasArgs<ExtArgs>
@@ -18012,10 +18032,11 @@ export namespace Prisma {
     fechaInicio?: boolean
     fechaFin?: boolean
     tipoDescuento?: boolean
+    tipoPromocion?: boolean
     estadoPromo?: boolean
   }
 
-  export type PromocionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nombre" | "descuento" | "fechaInicio" | "fechaFin" | "tipoDescuento" | "estadoPromo", ExtArgs["result"]["promocion"]>
+  export type PromocionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nombre" | "descuento" | "fechaInicio" | "fechaFin" | "tipoDescuento" | "tipoPromocion" | "estadoPromo", ExtArgs["result"]["promocion"]>
   export type PromocionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     productos?: boolean | Promocion$productosArgs<ExtArgs>
     categorias?: boolean | Promocion$categoriasArgs<ExtArgs>
@@ -18035,6 +18056,7 @@ export namespace Prisma {
       fechaInicio: Date
       fechaFin: Date
       tipoDescuento: $Enums.TipoDescuento
+      tipoPromocion: $Enums.TipoPromocion
       estadoPromo: $Enums.EstadoPromo
     }, ExtArgs["result"]["promocion"]>
     composites: {}
@@ -18413,6 +18435,7 @@ export namespace Prisma {
     readonly fechaInicio: FieldRef<"Promocion", 'DateTime'>
     readonly fechaFin: FieldRef<"Promocion", 'DateTime'>
     readonly tipoDescuento: FieldRef<"Promocion", 'TipoDescuento'>
+    readonly tipoPromocion: FieldRef<"Promocion", 'TipoPromocion'>
     readonly estadoPromo: FieldRef<"Promocion", 'EstadoPromo'>
   }
     
@@ -19979,6 +20002,7 @@ export namespace Prisma {
     fechaInicio: 'fechaInicio',
     fechaFin: 'fechaFin',
     tipoDescuento: 'tipoDescuento',
+    tipoPromocion: 'tipoPromocion',
     estadoPromo: 'estadoPromo'
   };
 
@@ -20162,6 +20186,13 @@ export namespace Prisma {
    * Reference to a field of type 'TipoDescuento'
    */
   export type EnumTipoDescuentoFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TipoDescuento'>
+    
+
+
+  /**
+   * Reference to a field of type 'TipoPromocion'
+   */
+  export type EnumTipoPromocionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TipoPromocion'>
     
 
 
@@ -21091,6 +21122,7 @@ export namespace Prisma {
     fechaInicio?: DateTimeFilter<"Promocion"> | Date | string
     fechaFin?: DateTimeFilter<"Promocion"> | Date | string
     tipoDescuento?: EnumTipoDescuentoFilter<"Promocion"> | $Enums.TipoDescuento
+    tipoPromocion?: EnumTipoPromocionFilter<"Promocion"> | $Enums.TipoPromocion
     estadoPromo?: EnumEstadoPromoFilter<"Promocion"> | $Enums.EstadoPromo
     productos?: ProductoListRelationFilter
     categorias?: CategoriaListRelationFilter
@@ -21103,6 +21135,7 @@ export namespace Prisma {
     fechaInicio?: SortOrder
     fechaFin?: SortOrder
     tipoDescuento?: SortOrder
+    tipoPromocion?: SortOrder
     estadoPromo?: SortOrder
     productos?: ProductoOrderByRelationAggregateInput
     categorias?: CategoriaOrderByRelationAggregateInput
@@ -21119,6 +21152,7 @@ export namespace Prisma {
     fechaInicio?: DateTimeFilter<"Promocion"> | Date | string
     fechaFin?: DateTimeFilter<"Promocion"> | Date | string
     tipoDescuento?: EnumTipoDescuentoFilter<"Promocion"> | $Enums.TipoDescuento
+    tipoPromocion?: EnumTipoPromocionFilter<"Promocion"> | $Enums.TipoPromocion
     estadoPromo?: EnumEstadoPromoFilter<"Promocion"> | $Enums.EstadoPromo
     productos?: ProductoListRelationFilter
     categorias?: CategoriaListRelationFilter
@@ -21131,6 +21165,7 @@ export namespace Prisma {
     fechaInicio?: SortOrder
     fechaFin?: SortOrder
     tipoDescuento?: SortOrder
+    tipoPromocion?: SortOrder
     estadoPromo?: SortOrder
     _count?: PromocionCountOrderByAggregateInput
     _avg?: PromocionAvgOrderByAggregateInput
@@ -21149,6 +21184,7 @@ export namespace Prisma {
     fechaInicio?: DateTimeWithAggregatesFilter<"Promocion"> | Date | string
     fechaFin?: DateTimeWithAggregatesFilter<"Promocion"> | Date | string
     tipoDescuento?: EnumTipoDescuentoWithAggregatesFilter<"Promocion"> | $Enums.TipoDescuento
+    tipoPromocion?: EnumTipoPromocionWithAggregatesFilter<"Promocion"> | $Enums.TipoPromocion
     estadoPromo?: EnumEstadoPromoWithAggregatesFilter<"Promocion"> | $Enums.EstadoPromo
   }
 
@@ -22043,6 +22079,7 @@ export namespace Prisma {
     fechaInicio: Date | string
     fechaFin: Date | string
     tipoDescuento?: $Enums.TipoDescuento
+    tipoPromocion?: $Enums.TipoPromocion
     estadoPromo?: $Enums.EstadoPromo
     productos?: ProductoCreateNestedManyWithoutPromocionInput
     categorias?: CategoriaCreateNestedManyWithoutPromocionInput
@@ -22055,6 +22092,7 @@ export namespace Prisma {
     fechaInicio: Date | string
     fechaFin: Date | string
     tipoDescuento?: $Enums.TipoDescuento
+    tipoPromocion?: $Enums.TipoPromocion
     estadoPromo?: $Enums.EstadoPromo
     productos?: ProductoUncheckedCreateNestedManyWithoutPromocionInput
     categorias?: CategoriaUncheckedCreateNestedManyWithoutPromocionInput
@@ -22066,6 +22104,7 @@ export namespace Prisma {
     fechaInicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaFin?: DateTimeFieldUpdateOperationsInput | Date | string
     tipoDescuento?: EnumTipoDescuentoFieldUpdateOperationsInput | $Enums.TipoDescuento
+    tipoPromocion?: EnumTipoPromocionFieldUpdateOperationsInput | $Enums.TipoPromocion
     estadoPromo?: EnumEstadoPromoFieldUpdateOperationsInput | $Enums.EstadoPromo
     productos?: ProductoUpdateManyWithoutPromocionNestedInput
     categorias?: CategoriaUpdateManyWithoutPromocionNestedInput
@@ -22078,6 +22117,7 @@ export namespace Prisma {
     fechaInicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaFin?: DateTimeFieldUpdateOperationsInput | Date | string
     tipoDescuento?: EnumTipoDescuentoFieldUpdateOperationsInput | $Enums.TipoDescuento
+    tipoPromocion?: EnumTipoPromocionFieldUpdateOperationsInput | $Enums.TipoPromocion
     estadoPromo?: EnumEstadoPromoFieldUpdateOperationsInput | $Enums.EstadoPromo
     productos?: ProductoUncheckedUpdateManyWithoutPromocionNestedInput
     categorias?: CategoriaUncheckedUpdateManyWithoutPromocionNestedInput
@@ -22090,6 +22130,7 @@ export namespace Prisma {
     fechaInicio: Date | string
     fechaFin: Date | string
     tipoDescuento?: $Enums.TipoDescuento
+    tipoPromocion?: $Enums.TipoPromocion
     estadoPromo?: $Enums.EstadoPromo
   }
 
@@ -22099,6 +22140,7 @@ export namespace Prisma {
     fechaInicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaFin?: DateTimeFieldUpdateOperationsInput | Date | string
     tipoDescuento?: EnumTipoDescuentoFieldUpdateOperationsInput | $Enums.TipoDescuento
+    tipoPromocion?: EnumTipoPromocionFieldUpdateOperationsInput | $Enums.TipoPromocion
     estadoPromo?: EnumEstadoPromoFieldUpdateOperationsInput | $Enums.EstadoPromo
   }
 
@@ -22109,6 +22151,7 @@ export namespace Prisma {
     fechaInicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaFin?: DateTimeFieldUpdateOperationsInput | Date | string
     tipoDescuento?: EnumTipoDescuentoFieldUpdateOperationsInput | $Enums.TipoDescuento
+    tipoPromocion?: EnumTipoPromocionFieldUpdateOperationsInput | $Enums.TipoPromocion
     estadoPromo?: EnumEstadoPromoFieldUpdateOperationsInput | $Enums.EstadoPromo
   }
 
@@ -23192,6 +23235,13 @@ export namespace Prisma {
     not?: NestedEnumTipoDescuentoFilter<$PrismaModel> | $Enums.TipoDescuento
   }
 
+  export type EnumTipoPromocionFilter<$PrismaModel = never> = {
+    equals?: $Enums.TipoPromocion | EnumTipoPromocionFieldRefInput<$PrismaModel>
+    in?: $Enums.TipoPromocion[]
+    notIn?: $Enums.TipoPromocion[]
+    not?: NestedEnumTipoPromocionFilter<$PrismaModel> | $Enums.TipoPromocion
+  }
+
   export type EnumEstadoPromoFilter<$PrismaModel = never> = {
     equals?: $Enums.EstadoPromo | EnumEstadoPromoFieldRefInput<$PrismaModel>
     in?: $Enums.EstadoPromo[]
@@ -23232,6 +23282,7 @@ export namespace Prisma {
     fechaInicio?: SortOrder
     fechaFin?: SortOrder
     tipoDescuento?: SortOrder
+    tipoPromocion?: SortOrder
     estadoPromo?: SortOrder
   }
 
@@ -23247,6 +23298,7 @@ export namespace Prisma {
     fechaInicio?: SortOrder
     fechaFin?: SortOrder
     tipoDescuento?: SortOrder
+    tipoPromocion?: SortOrder
     estadoPromo?: SortOrder
   }
 
@@ -23257,6 +23309,7 @@ export namespace Prisma {
     fechaInicio?: SortOrder
     fechaFin?: SortOrder
     tipoDescuento?: SortOrder
+    tipoPromocion?: SortOrder
     estadoPromo?: SortOrder
   }
 
@@ -23273,6 +23326,16 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumTipoDescuentoFilter<$PrismaModel>
     _max?: NestedEnumTipoDescuentoFilter<$PrismaModel>
+  }
+
+  export type EnumTipoPromocionWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TipoPromocion | EnumTipoPromocionFieldRefInput<$PrismaModel>
+    in?: $Enums.TipoPromocion[]
+    notIn?: $Enums.TipoPromocion[]
+    not?: NestedEnumTipoPromocionWithAggregatesFilter<$PrismaModel> | $Enums.TipoPromocion
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumTipoPromocionFilter<$PrismaModel>
+    _max?: NestedEnumTipoPromocionFilter<$PrismaModel>
   }
 
   export type EnumEstadoPromoWithAggregatesFilter<$PrismaModel = never> = {
@@ -24429,6 +24492,10 @@ export namespace Prisma {
     set?: $Enums.TipoDescuento
   }
 
+  export type EnumTipoPromocionFieldUpdateOperationsInput = {
+    set?: $Enums.TipoPromocion
+  }
+
   export type EnumEstadoPromoFieldUpdateOperationsInput = {
     set?: $Enums.EstadoPromo
   }
@@ -24806,6 +24873,13 @@ export namespace Prisma {
     not?: NestedEnumTipoDescuentoFilter<$PrismaModel> | $Enums.TipoDescuento
   }
 
+  export type NestedEnumTipoPromocionFilter<$PrismaModel = never> = {
+    equals?: $Enums.TipoPromocion | EnumTipoPromocionFieldRefInput<$PrismaModel>
+    in?: $Enums.TipoPromocion[]
+    notIn?: $Enums.TipoPromocion[]
+    not?: NestedEnumTipoPromocionFilter<$PrismaModel> | $Enums.TipoPromocion
+  }
+
   export type NestedEnumEstadoPromoFilter<$PrismaModel = never> = {
     equals?: $Enums.EstadoPromo | EnumEstadoPromoFieldRefInput<$PrismaModel>
     in?: $Enums.EstadoPromo[]
@@ -24821,6 +24895,16 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumTipoDescuentoFilter<$PrismaModel>
     _max?: NestedEnumTipoDescuentoFilter<$PrismaModel>
+  }
+
+  export type NestedEnumTipoPromocionWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TipoPromocion | EnumTipoPromocionFieldRefInput<$PrismaModel>
+    in?: $Enums.TipoPromocion[]
+    notIn?: $Enums.TipoPromocion[]
+    not?: NestedEnumTipoPromocionWithAggregatesFilter<$PrismaModel> | $Enums.TipoPromocion
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumTipoPromocionFilter<$PrismaModel>
+    _max?: NestedEnumTipoPromocionFilter<$PrismaModel>
   }
 
   export type NestedEnumEstadoPromoWithAggregatesFilter<$PrismaModel = never> = {
@@ -25234,6 +25318,7 @@ export namespace Prisma {
     fechaInicio: Date | string
     fechaFin: Date | string
     tipoDescuento?: $Enums.TipoDescuento
+    tipoPromocion?: $Enums.TipoPromocion
     estadoPromo?: $Enums.EstadoPromo
     categorias?: CategoriaCreateNestedManyWithoutPromocionInput
   }
@@ -25245,6 +25330,7 @@ export namespace Prisma {
     fechaInicio: Date | string
     fechaFin: Date | string
     tipoDescuento?: $Enums.TipoDescuento
+    tipoPromocion?: $Enums.TipoPromocion
     estadoPromo?: $Enums.EstadoPromo
     categorias?: CategoriaUncheckedCreateNestedManyWithoutPromocionInput
   }
@@ -25420,6 +25506,7 @@ export namespace Prisma {
     fechaInicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaFin?: DateTimeFieldUpdateOperationsInput | Date | string
     tipoDescuento?: EnumTipoDescuentoFieldUpdateOperationsInput | $Enums.TipoDescuento
+    tipoPromocion?: EnumTipoPromocionFieldUpdateOperationsInput | $Enums.TipoPromocion
     estadoPromo?: EnumEstadoPromoFieldUpdateOperationsInput | $Enums.EstadoPromo
     categorias?: CategoriaUpdateManyWithoutPromocionNestedInput
   }
@@ -25431,6 +25518,7 @@ export namespace Prisma {
     fechaInicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaFin?: DateTimeFieldUpdateOperationsInput | Date | string
     tipoDescuento?: EnumTipoDescuentoFieldUpdateOperationsInput | $Enums.TipoDescuento
+    tipoPromocion?: EnumTipoPromocionFieldUpdateOperationsInput | $Enums.TipoPromocion
     estadoPromo?: EnumEstadoPromoFieldUpdateOperationsInput | $Enums.EstadoPromo
     categorias?: CategoriaUncheckedUpdateManyWithoutPromocionNestedInput
   }
@@ -25459,6 +25547,7 @@ export namespace Prisma {
     fechaInicio: Date | string
     fechaFin: Date | string
     tipoDescuento?: $Enums.TipoDescuento
+    tipoPromocion?: $Enums.TipoPromocion
     estadoPromo?: $Enums.EstadoPromo
     productos?: ProductoCreateNestedManyWithoutPromocionInput
   }
@@ -25470,6 +25559,7 @@ export namespace Prisma {
     fechaInicio: Date | string
     fechaFin: Date | string
     tipoDescuento?: $Enums.TipoDescuento
+    tipoPromocion?: $Enums.TipoPromocion
     estadoPromo?: $Enums.EstadoPromo
     productos?: ProductoUncheckedCreateNestedManyWithoutPromocionInput
   }
@@ -25512,6 +25602,7 @@ export namespace Prisma {
     fechaInicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaFin?: DateTimeFieldUpdateOperationsInput | Date | string
     tipoDescuento?: EnumTipoDescuentoFieldUpdateOperationsInput | $Enums.TipoDescuento
+    tipoPromocion?: EnumTipoPromocionFieldUpdateOperationsInput | $Enums.TipoPromocion
     estadoPromo?: EnumEstadoPromoFieldUpdateOperationsInput | $Enums.EstadoPromo
     productos?: ProductoUpdateManyWithoutPromocionNestedInput
   }
@@ -25523,6 +25614,7 @@ export namespace Prisma {
     fechaInicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaFin?: DateTimeFieldUpdateOperationsInput | Date | string
     tipoDescuento?: EnumTipoDescuentoFieldUpdateOperationsInput | $Enums.TipoDescuento
+    tipoPromocion?: EnumTipoPromocionFieldUpdateOperationsInput | $Enums.TipoPromocion
     estadoPromo?: EnumEstadoPromoFieldUpdateOperationsInput | $Enums.EstadoPromo
     productos?: ProductoUncheckedUpdateManyWithoutPromocionNestedInput
   }

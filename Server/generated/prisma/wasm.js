@@ -20,12 +20,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 6.8.2
- * Query Engine version: 2060c79ba17c6bb9f5823312b6f6b7f4a845738e
+ * Prisma Client JS version: 6.12.0
+ * Query Engine version: 8047c96bbd92db98a2abc7c9323ce77c02c89dbc
  */
 Prisma.prismaVersion = {
-  client: "6.8.2",
-  engine: "2060c79ba17c6bb9f5823312b6f6b7f4a845738e"
+  client: "6.12.0",
+  engine: "8047c96bbd92db98a2abc7c9323ce77c02c89dbc"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -242,6 +242,7 @@ exports.Prisma.PromocionScalarFieldEnum = {
   fechaInicio: 'fechaInicio',
   fechaFin: 'fechaFin',
   tipoDescuento: 'tipoDescuento',
+  tipoPromocion: 'tipoPromocion',
   estadoPromo: 'estadoPromo'
 };
 
@@ -327,8 +328,13 @@ exports.Estado = exports.$Enums.Estado = {
 };
 
 exports.TipoDescuento = exports.$Enums.TipoDescuento = {
-  PORCENTAJE: 'PORCENTAJE',
-  MONTO_FIJO: 'MONTO_FIJO'
+  MONTO_FIJO: 'MONTO_FIJO',
+  PORCENTAJE: 'PORCENTAJE'
+};
+
+exports.TipoPromocion = exports.$Enums.TipoPromocion = {
+  POR_PRODUCTO: 'POR_PRODUCTO',
+  POR_CATEGORIA: 'POR_CATEGORIA'
 };
 
 exports.EstadoPromo = exports.$Enums.EstadoPromo = {

@@ -5,13 +5,13 @@ export enum RoleModel {
 
 export enum EstadoPromoModel {
   PENDIENTE = 'PENDIENTE',
-  VIGENTE = 'VIGENTE',
-  APLICADA = 'APLICADA',
+  VIGENTE   = 'VIGENTE',
+  APLICADA  = 'APLICADA',
 }
 
 export enum EstadoModel {
   EN_CARRITO = 'EN_CARRITO',
-  PAGADO = 'PAGADO',
+  PAGADO     = 'PAGADO',
   EN_ENTREGA = 'EN_ENTREGA',
   COMPLETADO = 'COMPLETADO',
 }
@@ -19,4 +19,9 @@ export enum EstadoModel {
 export enum TipoDescuento {
   PORCENTAJE = 'PORCENTAJE',
   MONTO_FIJO = 'MONTO_FIJO',
+}
+
+export enum TipoPromocion {
+  POR_CATEGORIA = 'POR_CATEGORIA',
+  POR_PRODUCTO  = 'POR_PRODUCTO',
 }

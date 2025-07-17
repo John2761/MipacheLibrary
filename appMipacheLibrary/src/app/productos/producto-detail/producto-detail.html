@@ -2,7 +2,11 @@
   <!-- Galeria de imagenes -->
   <div class="detalle-header">
     <div class="galeria">
-      <img class="imagen-principal" [src]="getImgUrl(imagenSeleccionada)" alt="Imagen principal" />
+      <img
+        class="imagen-principal"
+        [src]="getImgUrl(imagenSeleccionada)"
+        alt="Imagen principal"
+      />
       <div class="miniaturas" *ngIf="datos.imagenes?.length > 1">
         <img
           *ngFor="let img of datos.imagenes"
@@ -17,13 +21,32 @@
     <div class="info-producto">
       <h1>{{ datos.nombre }}</h1>
       <p class="autor"><strong>Autor:</strong> {{ datos.autor }}</p>
-      <p class="stock"  *ngIf="datos.stock > 0">Stock disponible</p>
-      <p class="precio">₡{{ datos.precio | number: '1.0-0' }}</p>
+      <p class="stock" *ngIf="datos.stock > 0">Stock disponible</p>
+
+      <p
+        class="precio"
+        *ngIf="datos.precioDescuento != null; else precioNormal"
+      >
+        <span class="text-decoration-line-through text-muted">
+          ₡{{ datos.precio | number: '1.0-0' }}
+        </span>
+        <span class="fw-bold ms-2" style="color: #d32f2f">
+          ₡{{ datos.precioDescuento | number: '1.0-0' }}
+        </span>
+      </p>
+
+      <ng-template #precioNormal>
+        <p class="precio fw-bold">₡{{ datos.precio | number: '1.0-0' }}</p>
+      </ng-template>
+
       <p class="valoracion">
-        Valoración: 
+        Valoración:
         <ng-container *ngIf="datos.promedioValoracion; else sinValoracion">
           <span *ngFor="let star of [1,2,3,4,5]">
-            <mat-icon color="warn">{{ star <= datos.promedioValoracion ? 'star' : 'star_border' }}</mat-icon>
+            <mat-icon color="warn"
+              >{{ star <= datos.promedioValoracion ? 'star' : 'star_border'
+              }}</mat-icon
+            >
           </span>
           ({{ datos.promedioValoracion | number: '1.1-1' }})
         </ng-container>
@@ -31,7 +54,14 @@
           <span class="text-muted">Sin valoraciones</span>
         </ng-template>
       </p>
-      <button mat-raised-button color="primary" (click)="comprar()" class="boton-compra">Agregar a la bolsa</button>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="comprar()"
+        class="boton-compra"
+      >
+        Agregar a la bolsa
+      </button>
     </div>
   </div>
 
@@ -42,26 +72,26 @@
   </section>
 
   <!-- Ficha técnica -->
-<section class="ficha">
-  <h3>Ficha técnica</h3>
-  <div class="ficha-grid">
-    <div><strong>Editorial:</strong> {{ datos.editorial || 'N/A' }}</div>
-    <div><strong>Año:</strong> {{ datos.anio || 'N/A' }}</div>
-    <div><strong>Formato:</strong> {{ datos.formato || 'N/A' }}</div>
-    <div><strong>Páginas:</strong> {{ datos.paginas || 'N/A' }}</div>
-    <div><strong>Idioma:</strong> {{ datos.idioma || 'N/A' }}</div>
-  </div>
-</section>
+  <section class="ficha">
+    <h3>Ficha técnica</h3>
+    <div class="ficha-grid">
+      <div><strong>Editorial:</strong> {{ datos.editorial || 'N/A' }}</div>
+      <div><strong>Año:</strong> {{ datos.anio || 'N/A' }}</div>
+      <div><strong>Formato:</strong> {{ datos.formato || 'N/A' }}</div>
+      <div><strong>Páginas:</strong> {{ datos.paginas || 'N/A' }}</div>
+      <div><strong>Idioma:</strong> {{ datos.idioma || 'N/A' }}</div>
+    </div>
+  </section>
 
   <!-- Categorías -->
-<section class="categorias">
-  <h3>Categorías</h3>
-  <div class="categoria-list">
-    <span class="categoria" *ngFor="let cat of datos.categorias">
-      {{ cat.categoria.descripcion }}
-    </span>
-  </div>
-</section>
+  <section class="categorias">
+    <h3>Categorías</h3>
+    <div class="categoria-list">
+      <span class="categoria" *ngFor="let cat of datos.categorias">
+        {{ cat.categoria.descripcion }}
+      </span>
+    </div>
+  </section>
 
   <!-- Reseñas -->
   <section class="reseñas">
@@ -74,7 +104,9 @@
           <p>{{ r.comentario }}</p>
           <p>
             <span *ngFor="let star of [1,2,3,4,5]">
-              <mat-icon color="accent">{{ star <= r.valoracion ? 'star' : 'star_border' }}</mat-icon>
+              <mat-icon color="accent"
+                >{{ star <= r.valoracion ? 'star' : 'star_border' }}</mat-icon
+              >
             </span>
           </p>
         </mat-card-content>
@@ -83,34 +115,43 @@
     <ng-template #sinResenas>
       <p class="text-muted">Este libro aún no tiene reseñas.</p>
     </ng-template>
-      <!-- Valoración por estrellas -->
+    <!-- Valoración por estrellas -->
     <div class="valoracion-estrellas">
       <mat-label>Valoración</mat-label>
       <div class="estrellas">
-        <mat-icon *ngFor="let star of [1, 2, 3, 4, 5]" 
-                  color="warn" 
-                  (click)="setValoracion(star)"
-                  [class.selected]="star <= valoracion">
+        <mat-icon
+          *ngFor="let star of [1, 2, 3, 4, 5]"
+          color="warn"
+          (click)="setValoracion(star)"
+          [class.selected]="star <= valoracion"
+        >
           {{ star <= valoracion ? 'star' : 'star_border' }}
         </mat-icon>
       </div>
     </div>
   </section>
 
-<!-- Comentario -->
-<section class="comentario">
-  <h3>Dejá tu comentario</h3>
-  <form [formGroup]="formComentario" (ngSubmit)="enviarComentario()">
-    <mat-form-field class="full-width">
-      <mat-label>Nombre</mat-label>
-      <input matInput formControlName="nombre" />
-    </mat-form-field>
-    
-    <mat-form-field class="full-width">
-      <mat-label>Comentario</mat-label>
-      <textarea matInput formControlName="comentario" rows="1"></textarea>
-    </mat-form-field>
-    <button mat-raised-button color="accent" type="submit" class="boton-enviar">Enviar</button>
-  </form>
-</section>
+  <!-- Comentario -->
+  <section class="comentario">
+    <h3>Dejá tu comentario</h3>
+    <form [formGroup]="formComentario" (ngSubmit)="enviarComentario()">
+      <mat-form-field class="full-width">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombre" />
+      </mat-form-field>
 
+      <mat-form-field class="full-width">
+        <mat-label>Comentario</mat-label>
+        <textarea matInput formControlName="comentario" rows="1"></textarea>
+      </mat-form-field>
+      <button
+        mat-raised-button
+        color="accent"
+        type="submit"
+        class="boton-enviar"
+      >
+        Enviar
+      </button>
+    </form>
+  </section>
+</div>

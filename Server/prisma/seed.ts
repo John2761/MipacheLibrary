@@ -1,8 +1,6 @@
 import { PrismaClient } from "../generated/prisma";
 import { categorias } from "./seeds/categorias";
 import { usuarios } from "./seeds/usuarios";
-import { promociones } from "./seeds/promociones";
-import { connect } from "http2";
 
 const prisma = new PrismaClient();
 
@@ -16,11 +14,6 @@ const main = async () => {
     //Usuarios - no tiene relaciones
     await prisma.usuario.createMany({
       data: usuarios,
-    });
-
-    //Promociones - no tiene relaciones
-    await prisma.promocion.createMany({
-      data: promociones,
     });
 
     //Productos - con relaciones incluidas
@@ -39,7 +32,7 @@ const main = async () => {
           create: [
             { ruta: "Erase-una-vez-un-corazon-roto.jpg" },
             { ruta: "Erase-una-vez-1.jpg" },
-            ],
+          ],
         },
         autor: "Stephanie Garber",
         fechaCreacion: new Date("2021-09-28"),
@@ -66,7 +59,7 @@ const main = async () => {
           create: [
             { ruta: "La-balada-de-nunca-jamas.jpg" },
             { ruta: "La-balada-1.jpg" },
-            ],
+          ],
         },
         autor: "Stephanie Garber",
         fechaCreacion: new Date("2022-09-28"),
@@ -87,9 +80,7 @@ const main = async () => {
         stock: 10,
         imagenPrincipal: "La-maldicion-del-amor-verdadero.jpg",
         imagenes: {
-          create: [
-            { ruta: "La-maldicion-del-amor-verdadero.jpg" },
-            ],
+          create: [{ ruta: "La-maldicion-del-amor-verdadero.jpg" }],
         },
         autor: "Stephanie Garber",
         fechaCreacion: new Date("2024-02-06"),
@@ -139,7 +130,6 @@ const main = async () => {
           "La historia sigue a Poppy, una joven que ha sido elegida para ser la Doncella, " +
           "una figura sagrada que debe sacrificarse para mantener a salvo a su reino",
         precio: 16800.0,
-        promocionId: 1,
         stock: 10,
         imagenPrincipal: "De-sangre-y-cenizas.jpg",
         imagenes: {
@@ -170,10 +160,7 @@ const main = async () => {
         stock: 10,
         imagenPrincipal: "Powerless.jpg",
         imagenes: {
-          create: [
-            { ruta: "Powerless.jpg" },
-            { ruta: "Powerless-1.jpg" },
-          ],
+          create: [{ ruta: "Powerless.jpg" }, { ruta: "Powerless-1.jpg" }],
         },
         autor: "Lauren Roberts",
         fechaCreacion: new Date("2024-02-08"),
@@ -205,7 +192,62 @@ const main = async () => {
       },
     });
 
-    /*
+    //PROMOCIONES 
+    await prisma.promocion.create({
+      data: {
+        nombre: "Descuento Verano",
+        descuento: 10,
+        tipoDescuento: "PORCENTAJE",
+        fechaInicio: new Date("2025-07-01T00:00:00.000Z"),
+        fechaFin: new Date("2025-07-31T00:00:00.000Z"),
+        estadoPromo: "VIGENTE",
+        tipoPromocion: "POR_CATEGORIA",
+        categorias: {
+          connect: [{ id: 9 }],
+        },
+      },
+    });
+
+    await prisma.promocion.create({
+      data: {
+        nombre: "Descuento de Julio",
+        descuento: 10,
+        tipoDescuento: "PORCENTAJE",
+        fechaInicio: new Date("2025-07-01T00:00:00.000Z"),
+        fechaFin: new Date("2025-07-31T00:00:00.000Z"),
+        estadoPromo: "VIGENTE",
+        tipoPromocion: "POR_PRODUCTO",
+        productos: {
+          connect: [{ id: 5 }],
+        },
+      },
+    }),
+      await prisma.promocion.create({
+        data: {
+          nombre: "Promo Junio",
+          descuento: 3000,
+          tipoDescuento: "MONTO_FIJO",
+          fechaInicio: "2025-06-01T00:00:00.000Z",
+          fechaFin: "2025-06-30T00:00:00.000Z",
+          estadoPromo: "APLICADA",
+          tipoPromocion: "POR_CATEGORIA",
+          categorias: {
+            connect: [{ id: 9 }],
+          },
+        },
+      }),
+      await prisma.promocion.create({
+        data: {
+          nombre: "Agosto Especial",
+          descuento: 15,
+          tipoDescuento: "PORCENTAJE",
+          fechaInicio: "2025-08-01T00:00:00.000Z",
+          fechaFin: "2025-08-15T00:00:00.000Z",
+          estadoPromo: "PENDIENTE",
+          tipoPromocion: "POR_PRODUCTO",
+        },
+      }),
+      /*
     //Pedidos - con relaciones incluidas
     //Pedidos
     await prisma.pedido.create({
@@ -312,99 +354,98 @@ const main = async () => {
     });
     */
 
-        // Reseñas
-    await prisma.resena.createMany({
-      data: [
-        // Producto 1
-        {
-          valoracion: 4,
-          comentario: 'Un libro mágico y envolvente.',
-          productoId: 1,
-          usuarioId: 1,
-        },
-        {
-          valoracion: 2,
-          comentario: 'Esperaba más de la historia.',
-          productoId: 1,
-          usuarioId: 2,
-          moderada: true,
-          observacion: 'Comentario poco constructivo y ambiguo',
-        },
+      // Reseñas
+      await prisma.resena.createMany({
+        data: [
+          // Producto 1
+          {
+            valoracion: 4,
+            comentario: "Un libro mágico y envolvente.",
+            productoId: 1,
+            usuarioId: 1,
+          },
+          {
+            valoracion: 2,
+            comentario: "Esperaba más de la historia.",
+            productoId: 1,
+            usuarioId: 2,
+            moderada: true,
+            observacion: "Comentario poco constructivo y ambiguo",
+          },
 
-        // Producto 2
-        {
-          valoracion: 5,
-          comentario: 'Me encantó el desarrollo de los personajes.',
-          productoId: 2,
-          usuarioId: 3,
-        },
-        {
-          valoracion: 3,
-          comentario: 'Interesante pero lento al principio.',
-          productoId: 2,
-          usuarioId: 4,
-        },
+          // Producto 2
+          {
+            valoracion: 5,
+            comentario: "Me encantó el desarrollo de los personajes.",
+            productoId: 2,
+            usuarioId: 3,
+          },
+          {
+            valoracion: 3,
+            comentario: "Interesante pero lento al principio.",
+            productoId: 2,
+            usuarioId: 4,
+          },
 
-        // Producto 3
-        {
-          valoracion: 5,
-          comentario: 'Una conclusión perfecta para la saga.',
-          productoId: 3,
-          usuarioId: 1,
-        },
-        {
-          valoracion: 1,
-          comentario: 'No me gustó nada.',
-          productoId: 3,
-          usuarioId: 2,
-          moderada: true,
-          observacion: 'Comentario ofensivo editado por moderación',
-        },
+          // Producto 3
+          {
+            valoracion: 5,
+            comentario: "Una conclusión perfecta para la saga.",
+            productoId: 3,
+            usuarioId: 1,
+          },
+          {
+            valoracion: 1,
+            comentario: "No me gustó nada.",
+            productoId: 3,
+            usuarioId: 2,
+            moderada: true,
+            observacion: "Comentario ofensivo editado por moderación",
+          },
 
-        // Producto 4
-        {
-          valoracion: 4,
-          comentario: 'Una fantasía muy bien construida.',
-          productoId: 4,
-          usuarioId: 3,
-        },
-        {
-          valoracion: 5,
-          comentario: 'Una obra maestra moderna.',
-          productoId: 4,
-          usuarioId: 4,
-        },
+          // Producto 4
+          {
+            valoracion: 4,
+            comentario: "Una fantasía muy bien construida.",
+            productoId: 4,
+            usuarioId: 3,
+          },
+          {
+            valoracion: 5,
+            comentario: "Una obra maestra moderna.",
+            productoId: 4,
+            usuarioId: 4,
+          },
 
-        // Producto 5
-        {
-          valoracion: 3,
-          comentario: 'No está mal, pero no es lo mío.',
-          productoId: 5,
-          usuarioId: 1,
-        },
-        {
-          valoracion: 2,
-          comentario: 'Demasiado confuso el mundo creado.',
-          productoId: 5,
-          usuarioId: 2,
-        },
+          // Producto 5
+          {
+            valoracion: 3,
+            comentario: "No está mal, pero no es lo mío.",
+            productoId: 5,
+            usuarioId: 1,
+          },
+          {
+            valoracion: 2,
+            comentario: "Demasiado confuso el mundo creado.",
+            productoId: 5,
+            usuarioId: 2,
+          },
 
-        // Producto 6
-        {
-          valoracion: 4,
-          comentario: 'Buena trama y personajes fuertes.',
-          productoId: 6,
-          usuarioId: 3,
-        },
-        {
-          valoracion: 5,
-          comentario: 'Me atrapó desde el inicio hasta el final.',
-          productoId: 6,
-          usuarioId: 4,
-        },
-      ]
-    });
-
+          // Producto 6
+          {
+            valoracion: 4,
+            comentario: "Buena trama y personajes fuertes.",
+            productoId: 6,
+            usuarioId: 3,
+          },
+          {
+            valoracion: 5,
+            comentario: "Me atrapó desde el inicio hasta el final.",
+            productoId: 6,
+            usuarioId: 4,
+          },
+        ],
+      });
   } catch (error) {
     throw error;
   }
