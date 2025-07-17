@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { AppError } from "../errors/custom.error";
 import { PrismaClient } from "../../generated/prisma";
+import { Decimal } from "@prisma/client/runtime/library";
 export class ProductoController {
   prisma = new PrismaClient();
 
@@ -56,68 +57,89 @@ export class ProductoController {
 
   //Obtener por Id
   getById = async (
-    request: Request,
-    response: Response,
-    next: NextFunction
-  ) => {
-    try {
-      let idProducto = parseInt(request.params.id);
-      if (isNaN(idProducto)) {
-        return next(AppError.badRequest("El ID no es válido"));
-      }
-      const objProducto = await this.prisma.producto.findUnique({
-        where: { id: idProducto },
-        include: {
-          imagenes: true,
-          categorias: {
-            include: {
-              categoria: true,
-            },
-          },
-          etiquetas: {
-            include: {
-              etiqueta: true,
-            },
-          },
-          resenas: {
-            include: {
-              usuario: true,
-            },
-          },
+  request: Request,
+  response: Response,
+  next: NextFunction
+) => {
+  try {
+    let idProducto = parseInt(request.params.id);
+    if (isNaN(idProducto)) {
+      return next(AppError.badRequest("El ID no es válido"));
+    }
+
+    const objProducto = await this.prisma.producto.findUnique({
+      where: { id: idProducto },
+      include: {
+        imagenes: true,
+        categorias: {
+          include: { categoria: true }
         },
-      });
-      if (!objProducto) {
-        return next(AppError.notFound("No existe el producto"));
+        etiquetas: {
+          include: { etiqueta: true }
+        },
+        resenas: {
+          include: { usuario: true }
+        },
+        promocion: true, // Asegura que se cargue la promoción
       }
+    });
 
-      // Buscar imagen principal
-      const nombreEsperado =
-        objProducto.nombre
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "")
-          .replace(/\s+/g, "-")
-          .replace(/[^a-zA-Z0-9\-]/g, "") + ".jpg";
+    if (!objProducto) {
+      return next(AppError.notFound("No existe el producto"));
+    }
 
-      const imagenPrincipal =
-        objProducto.imagenes.find((img) => img.ruta === nombreEsperado)?.ruta ??
-        "image-not-found.jpg";
+    // Buscar imagen principal
+    const nombreEsperado = objProducto.nombre
+      .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+      .replace(/\s+/g, "-")
+      .replace(/[^a-zA-Z0-9\-]/g, "") + ".jpg";
 
+    const imagenPrincipal =
+      objProducto.imagenes.find(img => img.ruta === nombreEsperado)?.ruta ??
+      "image-not-found.jpg";
 
     // Calcular promedio de valoraciones
-      const promedioValoracion = objProducto.resenas.length > 0
+    const promedioValoracion = objProducto.resenas.length > 0
       ? objProducto.resenas.reduce((sum, r) => sum + r.valoracion, 0) / objProducto.resenas.length
       : null;
-      
-    // Enviar respuesta estructurada
+
+    // Calcular precio con descuento (si aplica)
+    let precioFinal = new Decimal(objProducto.precio);
+    let tienePromocion = false;
+
+    if (objProducto.promocion) {
+      const hoy = new Date();
+      const { fechaInicio, fechaFin, tipoDescuento, descuento } = objProducto.promocion;
+
+      if (hoy >= new Date(fechaInicio) && hoy <= new Date(fechaFin)) {
+        tienePromocion = true;
+        if (tipoDescuento === 'PORCENTAJE') {
+            const descuentoDecimal = precioFinal.mul(descuento).div(100);
+            precioFinal = precioFinal.minus(descuentoDecimal);
+          } else {
+            precioFinal = precioFinal.minus(descuento);
+          }
+
+          if (precioFinal.lessThan(0)) {
+            precioFinal = new Decimal(0);
+          }
+        }
+      }
+
+    // Enviar respuesta
     response.status(200).json({
       ...objProducto,
       imagenPrincipal,
-      promedioValoracion
+      promedioValoracion,
+      precioFinal: parseFloat(precioFinal.toFixed(2)), // redondear
+      tienePromocion
     });
+
   } catch (error) {
     next(error);
   }
 };
+
 
   search = async (request: Request, response: Response, next: NextFunction) => {
     try {
