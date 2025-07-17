@@ -1,8 +1,10 @@
 import { Request, Response, NextFunction } from "express";
 import { AppError } from "../errors/custom.error";
 import { PrismaClient } from "../../generated/prisma";
+import { Decimal } from "../../generated/prisma/runtime/library";
 export class ProductoController {
   prisma = new PrismaClient();
+
   //Get All
   get = async (request: Request, response: Response, next: NextFunction) => {
     try {
@@ -68,7 +70,6 @@ export class ProductoController {
 
           precioDescuento = parseFloat(precioDescuento.toFixed(2));
         }
-
         return {
           ...producto,
           imagenPrincipal,
@@ -120,7 +121,9 @@ export class ProductoController {
       if (!objProducto) {
         return next(AppError.notFound("No existe el producto"));
       }
-
+      else {
+      try{
+      // Buscar imagen principal
       const nombreEsperado =
         objProducto.nombre
           .normalize("NFD")
@@ -149,9 +152,9 @@ export class ProductoController {
           objProducto.promocion.tipoDescuento === "PORCENTAJE";
 
         precioDescuento = esPorcentaje
-          ? Number(objProducto.precio) -
+          ?  Number(objProducto.precio) -
             (Number(objProducto.precio) * descuento) / 100
-          : Number(objProducto.precio) - descuento;
+          :  Number(objProducto.precio) - descuento;
 
         precioDescuento = parseFloat(precioDescuento.toFixed(2));
       }
@@ -166,6 +169,52 @@ export class ProductoController {
       next(error);
     }
   };
+
+    const imagenPrincipal =
+      objProducto.imagenes.find(img => img.ruta === nombreEsperado)?.ruta ??
+      "image-not-found.jpg";
+
+    // Calcular promedio de valoraciones
+    const promedioValoracion = objProducto.resenas.length > 0
+      ? objProducto.resenas.reduce((sum, r) => sum + r.valoracion, 0) / objProducto.resenas.length
+      : null;
+
+    // Calcular precio con descuento (si aplica)
+    let precioFinal = new Decimal(objProducto.precio);
+    let tienePromocion = false;
+
+    if (objProducto.promocion) {
+      const hoy = new Date();
+      const { fechaInicio, fechaFin, tipoDescuento, descuento } = objProducto.promocion;
+
+      if (hoy >= new Date(fechaInicio) && hoy <= new Date(fechaFin)) {
+        tienePromocion = true;
+        if (tipoDescuento === 'PORCENTAJE') {
+            const descuentoDecimal = precioFinal.mul(descuento).div(100);
+            precioFinal = precioFinal.minus(descuentoDecimal);
+          } else {
+            precioFinal = precioFinal.minus(descuento);
+          }
+
+          if (precioFinal.lessThan(0)) {
+            precioFinal = new Decimal(0);
+          }
+        }
+      }
+
+    // Enviar respuesta
+    response.status(200).json({
+      ...objProducto,
+      imagenPrincipal,
+      promedioValoracion,
+      precioFinal: parseFloat(precioFinal.toFixed(2)), // redondear
+      tienePromocion
+    });
+
+  } catch (error) {
+    next(error);
+  }
+};
 
   search = async (request: Request, response: Response, next: NextFunction) => {
     try {
