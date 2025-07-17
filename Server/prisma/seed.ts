@@ -4,6 +4,7 @@ import { usuarios } from "./seeds/usuarios";
 import { promociones } from "./seeds/promociones";
 
 const prisma = new PrismaClient();
+
 const main = async () => {
   try {
     //categorias - no tiene relaciones
@@ -18,8 +19,8 @@ const main = async () => {
 
     //Promociones - no tiene relaciones
     await prisma.promocion.createMany({
-      data:promociones
-    })
+      data: promociones,
+    });
 
     //Productos - con relaciones incluidas
     //Productos
@@ -91,7 +92,6 @@ const main = async () => {
         },
         autor: "Stephanie Garber",
         fechaCreacion: new Date("2024-02-06"),
-        promocionId: 1,
         categorias: {
           create: [
             { categoria: { connect: { id: 4 } } },
@@ -185,23 +185,27 @@ const main = async () => {
       },
     });
 
+    await prisma.resena.create({
+      data: {
+        valoracion: 4,
+        comentario: "BOTY",
+        usuarioId: 1,
+        productoId: 4,
+      },
+    });
+
+    await prisma.resena.create({
+      data: {
+        valoracion: 5,
+        comentario: "Me encantó este libro",
+        usuarioId: 2,
+        productoId: 5,
+      },
+    });
+
     /*
     //Pedidos - con relaciones incluidas
     //Pedidos
-    await prisma.pedido.create({
-      data: {
-        fechaPedido: new Date('2024-09-27'),
-        usuarioId: 4,
-        productos: {
-          createMany: {
-            data: [
-              { cantidad: 1, productoId: 1 },
-              { cantidad: 2, productoId: 4 },
-            ],
-          },
-        },
-      },
-    });
     await prisma.pedido.create({
       data: {
         fechaPedido: new Date('2024-09-27'),
@@ -215,6 +219,7 @@ const main = async () => {
         },
       },
     });
+
     await prisma.pedido.create({
       data: {
         fechaPedido: new Date('2024-09-27'),
@@ -230,6 +235,7 @@ const main = async () => {
         },
       },
     });
+
     await prisma.pedido.create({
       data: {
         fechaPedido: new Date('2024-09-27'),
@@ -244,6 +250,7 @@ const main = async () => {
         },
       },
     });
+
     await prisma.pedido.create({
       data: {
         fechaPedido: new Date('2024-09-27'),
@@ -257,6 +264,7 @@ const main = async () => {
         },
       },
     });
+
     await prisma.pedido.create({
       data: {
         fechaPedido: new Date('2024-09-27'),
@@ -270,6 +278,7 @@ const main = async () => {
         },
       },
     });
+
     await prisma.pedido.create({
       data: {
         fechaPedido: new Date('2024-09-27'),
@@ -284,6 +293,7 @@ const main = async () => {
         },
       },
     });
+
     await prisma.pedido.create({
       data: {
         fechaOrden: new Date('2024-09-27'),

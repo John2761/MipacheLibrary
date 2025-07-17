@@ -4,13 +4,14 @@ Proyecto de Apliaciones Web de Software libre, basado en un emprendimiento de li
 Cargar Node_modules, con el terminal en la carpeta server usando 
 npm install
 
----PRISMA---
+--- PRISMA ---
+--- PASOS PARA CAMBIAR ALGO EN LA BASE DE DATOS ---
 
 ---Borrar tablas y datos y volver a generar---
 npx prisma migrate reset
 
 ---Crea una migración y actualizar la base de datos con los cambios actuales del esquema.---
-npx prisma migrate dev --name ( Insertar nombre para la migracion, sin parentesis )
+npx prisma migrate dev --name init ( Insertar nombre para la migracion, sin parentesis )
 
 ---Correr solo el seed---
 npx prisma db seed
