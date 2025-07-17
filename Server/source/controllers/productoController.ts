@@ -22,7 +22,7 @@ export class ProductoController {
         },
       });
 
-      // 🧠 Función para convertir nombre → nombre-de-archivo
+      // Función para convertir nombre → nombre-de-archivo
       function normalizarNombre(nombre: string): string {
         return (
           nombre
@@ -129,7 +129,7 @@ export class ProductoController {
         }
       }
 
-    // Enviar respuesta
+    // Enviar respuesta API
     response.status(200).json({
       ...objProducto,
       imagenPrincipal,
@@ -142,7 +142,6 @@ export class ProductoController {
     next(error);
   }
 };
-
 
   search = async (request: Request, response: Response, next: NextFunction) => {
     try {

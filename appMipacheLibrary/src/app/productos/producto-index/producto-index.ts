@@ -27,8 +27,6 @@ export class ProductoIndex {
   }
 
   //Listar todos los Productos del API
-  
-
   listProductos() {
     this.pdService.get().subscribe((respuesta: ProductoModel[]) => {
       this.datos = respuesta;
