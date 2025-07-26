@@ -22,6 +22,23 @@
       <h1>{{ datos.nombre }}</h1>
       <p class="autor"><strong>Autor:</strong> {{ datos.autor }}</p>
       <p class="stock" *ngIf="datos.stock > 0">Stock disponible</p>
+
+      <p
+        class="precio"
+        *ngIf="datos.precioDescuento != null; else precioNormal"
+      >
+        <span class="text-decoration-line-through text-muted">
+          ₡{{ datos.precio | number: '1.0-0' }}
+        </span>
+        <span class="fw-bold ms-2" style="color: #d32f2f">
+          ₡{{ datos.precioDescuento | number: '1.0-0' }}
+        </span>
+      </p>
+
+      <ng-template #precioNormal>
+        <p class="precio fw-bold">₡{{ datos.precio | number: '1.0-0' }}</p>
+      </ng-template>
+
       <p class="precio">
         <span *ngIf="datos.tienePromocion; else sinPromo">
           <span class="precio-anterior"
@@ -35,6 +52,7 @@
           ₡{{ datos.precio | number: '1.0-0' }}
         </ng-template>
       </p>
+
       <p class="valoracion">
         Valoración:
         <ng-container *ngIf="datos.promedioValoracion; else sinValoracion">

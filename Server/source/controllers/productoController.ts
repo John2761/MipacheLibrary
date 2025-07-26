@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { AppError } from "../errors/custom.error";
 import { PrismaClient } from "../../generated/prisma";
-import { Decimal } from "@prisma/client/runtime/library";
+import { Decimal } from "../../generated/prisma/runtime/library";
 export class ProductoController {
   prisma = new PrismaClient();
 
@@ -19,6 +19,21 @@ export class ProductoController {
               categoria: true,
             },
           },
+          etiquetas: {
+            include: {
+              etiqueta: true,
+            },
+          },
+          resenas: {
+            include: {
+              usuario: true,
+            },
+          },
+          promocion: {
+            include: {
+              categorias: true,
+            },
+          },
         },
       });
 
@@ -27,29 +42,43 @@ export class ProductoController {
         return (
           nombre
             .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "") // quita tildes
-            .replace(/\s+/g, "-") // espacios a guiones
-            .replace(/[^a-zA-Z0-9\-]/g, "") + // solo letras, números, guiones
-          ".jpg"
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/\s+/g, "-")
+            .replace(/[^a-zA-Z0-9\-]/g, "") + ".jpg"
         );
       }
 
-      const productosConImagenPrincipal = productos.map((producto) => {
+      const productosConImagenYDescuento = productos.map((producto) => {
         const nombreEsperado = normalizarNombre(producto.nombre);
-        console.log(
-          `→ Producto: ${producto.nombre} → Esperado: ${nombreEsperado}`
-        );
-        const imagenPrincipal = producto.imagenes.find(
-          (img) => img.ruta === nombreEsperado
-        );
+        const imagenPrincipal =
+          producto.imagenes.find((img) => img.ruta === nombreEsperado)?.ruta ??
+          "image-not-found.jpg";
 
+        let precioDescuento: number | null = null;
+
+        if (
+          producto.promocion &&
+          producto.promocion.estadoPromo === "VIGENTE"
+        ) {
+          const descuento = Number(producto.promocion.descuento);
+          const esPorcentaje =
+            producto.promocion.tipoDescuento === "PORCENTAJE";
+
+          precioDescuento = esPorcentaje
+            ? Number(producto.precio) -
+              (Number(producto.precio) * descuento) / 100
+            : Number(producto.precio) - descuento;
+
+          precioDescuento = parseFloat(precioDescuento.toFixed(2));
+        }
         return {
           ...producto,
-          imagenPrincipal: imagenPrincipal?.ruta ?? "image-not-found.jpg",
+          imagenPrincipal,
+          precioDescuento,
         };
       });
 
-      response.json(productosConImagenPrincipal);
+      response.json(productosConImagenYDescuento);
     } catch (error) {
       next(error);
     }
@@ -58,37 +87,89 @@ export class ProductoController {
   //cambios de ultima hora
   //Obtener por Id
   getById = async (
-  request: Request,
-  response: Response,
-  next: NextFunction
-) => {
-  try {
-    let idProducto = parseInt(request.params.id);
-    if (isNaN(idProducto)) {
-      return next(AppError.badRequest("El ID no es válido"));
-    }
-
-    const objProducto = await this.prisma.producto.findUnique({
-      where: { id: idProducto },
-      include: {
-        imagenes: true,
-        categorias: {
-          include: { categoria: true }
-        },
-        etiquetas: {
-          include: { etiqueta: true }
-        },
-        resenas: {
-          include: { usuario: true }
-        },
-        promocion: true, // Asegura que se cargue la promoción
+    request: Request,
+    response: Response,
+    next: NextFunction
+  ) => {
+    try {
+      let idProducto = parseInt(request.params.id);
+      if (isNaN(idProducto)) {
+        return next(AppError.badRequest("El ID no es válido"));
       }
 
-    });
+      const objProducto = await this.prisma.producto.findUnique({
+        where: { id: idProducto },
+        include: {
+          imagenes: true,
+          categorias: {
+            include: {
+              categoria: true,
+            },
+          },
+          etiquetas: {
+            include: {
+              etiqueta: true,
+            },
+          },
+          resenas: {
+            include: {
+              usuario: true,
+            },
+          },
+          promocion: true,
+        },
+      });
 
-    if (!objProducto) {
-      return next(AppError.notFound("No existe el producto"));
-    }
+      if (!objProducto) {
+        return next(AppError.notFound("No existe el producto"));
+      } else {
+        try {
+          // Buscar imagen principal
+          const nombreEsperado =
+            objProducto.nombre
+              .normalize("NFD")
+              .replace(/[\u0300-\u036f]/g, "")
+              .replace(/\s+/g, "-")
+              .replace(/[^a-zA-Z0-9\-]/g, "") + ".jpg";
+
+          const imagenPrincipal =
+            objProducto.imagenes.find((img) => img.ruta === nombreEsperado)
+              ?.ruta ?? "image-not-found.jpg";
+
+          const promedioValoracion =
+            objProducto.resenas.length > 0
+              ? objProducto.resenas.reduce((sum, r) => sum + r.valoracion, 0) /
+                objProducto.resenas.length
+              : null;
+
+          let precioDescuento: number | null = null;
+
+          if (
+            objProducto.promocion &&
+            objProducto.promocion.estadoPromo === "VIGENTE"
+          ) {
+            const descuento = Number(objProducto.promocion.descuento);
+            const esPorcentaje =
+              objProducto.promocion.tipoDescuento === "PORCENTAJE";
+
+            precioDescuento = esPorcentaje
+              ? Number(objProducto.precio) -
+                (Number(objProducto.precio) * descuento) / 100
+              : Number(objProducto.precio) - descuento;
+
+            precioDescuento = parseFloat(precioDescuento.toFixed(2));
+          }
+
+          response.status(200).json({
+            ...objProducto,
+            imagenPrincipal,
+            promedioValoracion,
+            precioDescuento,
+          });
+        } catch (error) {
+          next(error);
+        }
+      }
 
       // Buscar imagen principal
       const nombreEsperado =
@@ -98,26 +179,29 @@ export class ProductoController {
           .replace(/\s+/g, "-")
           .replace(/[^a-zA-Z0-9\-]/g, "") + ".jpg";
 
-    const imagenPrincipal =
-      objProducto.imagenes.find(img => img.ruta === nombreEsperado)?.ruta ??
-      "image-not-found.jpg";
+      const imagenPrincipal =
+        objProducto.imagenes.find((img) => img.ruta === nombreEsperado)?.ruta ??
+        "image-not-found.jpg";
 
-    // Calcular promedio de valoraciones
-    const promedioValoracion = objProducto.resenas.length > 0
-      ? objProducto.resenas.reduce((sum, r) => sum + r.valoracion, 0) / objProducto.resenas.length
-      : null;
+      // Calcular promedio de valoraciones
+      const promedioValoracion =
+        objProducto.resenas.length > 0
+          ? objProducto.resenas.reduce((sum, r) => sum + r.valoracion, 0) /
+            objProducto.resenas.length
+          : null;
 
-    // Calcular precio con descuento (si aplica)
-    let precioFinal = new Decimal(objProducto.precio);
-    let tienePromocion = false;
+      // Calcular precio con descuento (si aplica)
+      let precioFinal = new Decimal(objProducto.precio);
+      let tienePromocion = false;
 
-    if (objProducto.promocion) {
-      const hoy = new Date();
-      const { fechaInicio, fechaFin, tipoDescuento, descuento } = objProducto.promocion;
+      if (objProducto.promocion) {
+        const hoy = new Date();
+        const { fechaInicio, fechaFin, tipoDescuento, descuento } =
+          objProducto.promocion;
 
-      if (hoy >= new Date(fechaInicio) && hoy <= new Date(fechaFin)) {
-        tienePromocion = true;
-        if (tipoDescuento === 'PORCENTAJE') {
+        if (hoy >= new Date(fechaInicio) && hoy <= new Date(fechaFin)) {
+          tienePromocion = true;
+          if (tipoDescuento === "PORCENTAJE") {
             const descuentoDecimal = precioFinal.mul(descuento).div(100);
             precioFinal = precioFinal.minus(descuentoDecimal);
           } else {
@@ -130,19 +214,18 @@ export class ProductoController {
         }
       }
 
-    // Enviar respuesta API
-    response.status(200).json({
-      ...objProducto,
-      imagenPrincipal,
-      promedioValoracion,
-      precioFinal: parseFloat(precioFinal.toFixed(2)), // redondear
-      tienePromocion
-    });
-
-  } catch (error) {
-    next(error);
-  }
-};
+      // Enviar respuesta API
+      response.status(200).json({
+        ...objProducto,
+        imagenPrincipal,
+        promedioValoracion,
+        precioFinal: parseFloat(precioFinal.toFixed(2)), // redondear
+        tienePromocion,
+      });
+    } catch (error) {
+      next(error);
+    }
+  };
 
   search = async (request: Request, response: Response, next: NextFunction) => {
     try {
