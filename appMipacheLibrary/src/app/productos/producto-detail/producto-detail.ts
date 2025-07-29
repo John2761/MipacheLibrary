@@ -15,7 +15,11 @@ export class ProductoDetail {
   imagenSeleccionada: string = '';
   formComentario: FormGroup;
   destroy$: Subject<boolean> = new Subject<boolean>();
-  valoracion: number = 0;  // Agregar la variable para almacenar la valoración
+  valoracion: number = 0; // Agregar la variable para almacenar la valoración
+  formatoEtiqueta: string = 'N/A';
+  idiomaEtiqueta: string = 'N/A';
+  usuarioId: number = 0;
+  usuarioNombre: string = '';
 
   constructor(
     private pdService: ProductoService,
@@ -24,8 +28,8 @@ export class ProductoDetail {
     private fb: FormBuilder
   ) {
     this.formComentario = this.fb.group({
-      nombre: ['', Validators.required],
-      comentario: ['', Validators.required],
+      
+      comentario: ['', [Validators.required, Validators.minLength(5)]],
     });
 
     this.activeRoute.params
@@ -44,8 +48,25 @@ export class ProductoDetail {
       .pipe(takeUntil(this.destroy$)) // Operador de RxJS para desuscribirse automáticamente
       .subscribe((data: any) => {
         this.datos = data;
+        console.log("Etiquetas:", data.etiquetas);
+        const etiquetas =
+          data.etiquetas?.map((e: any) => e.descripcion.toLowerCase()) || [];
+
+        this.formatoEtiqueta = etiquetas.find((desc: string) =>
+          desc.includes('pasta dura')
+        )
+          ? 'Pasta dura'
+          : 'N/A';
+        this.idiomaEtiqueta = etiquetas.find((desc: string) =>
+          desc.includes('español')
+        )
+          ? 'Español'
+          : 'N/A';
         this.imagenSeleccionada =
-          data.imagenPrincipal || data.imagenes?.[0]?.ruta || 'imagen-not-found-jpg';
+          data.imagenPrincipal ||
+          data.imagenes?.[0]?.ruta ||
+          'imagen-not-found-jpg';
+        // Establecer etiquetas como formato e idioma
       });
   }
 
@@ -62,26 +83,44 @@ export class ProductoDetail {
   }
 
   enviarComentario() {
-    if (this.formComentario.valid) {
-      const comentario = {
-        ...this.formComentario.value,
-        valoracion: this.valoracion,  // Incluir la valoración
-      };
-      console.log(comentario);  // Muestra el comentario junto con la valoración
+     console.log('Intentando enviar reseña'); // ← ¿aparece en consola?
+  if (this.formComentario.valid && this.valoracion > 0) {
+    const comentario = {
+      comentario: this.formComentario.value.comentario,
+      valoracion: this.valoracion,
+      usuarioId: this.usuarioId,
+      productoId: this.datos.id
+    };
+
+    this.pdService.crearResena(comentario).subscribe(() => {
+      this.obtenerProducto(this.datos.id); // Refresca reseñas y promedio
       this.formComentario.reset();
-      this.valoracion = 0;  // Reseteamos la valoración después de enviar el comentario
+      this.valoracion = 0;
+    });
+  }
+}
+
+  // Función para manejar la selección de estrellas (también para desmarcar la selección)
+  setValoracion(star: number) {
+    if (this.valoracion === star) {
+      // Si la estrella seleccionada es la misma que la actual, desmarcarla (valoración 0)
+      this.valoracion = 0;
+    } else {
+      // De lo contrario, actualizar con la nueva valoración
+      this.valoracion = star;
     }
   }
 
-  // Función para manejar la selección de estrellas (también para desmarcar la selección)
-setValoracion(star: number) {
-  if (this.valoracion === star) {
-    // Si la estrella seleccionada es la misma que la actual, desmarcarla (valoración 0)
-    this.valoracion = 0;
-  } else {
-    // De lo contrario, actualizar con la nueva valoración
-    this.valoracion = star;
-  }
+  esFormatoPastaDura(): boolean {
+  return this.datos?.etiquetas?.some(
+    (e: any) => e.descripcion?.toLowerCase().includes('pasta dura')
+  );
+}
+
+esIdiomaEspanol(): boolean {
+  return this.datos?.etiquetas?.some(
+    (e: any) => e.descripcion?.toLowerCase().includes('español')
+  );
 }
 
 
@@ -93,5 +132,10 @@ setValoracion(star: number) {
   ngOnDestroy() {
     this.destroy$.next(true); // Emite un valor para notificar a 'takeUntil'
     this.destroy$.unsubscribe(); // Completa el Subject 'destroy$' para liberar recursos
+  }
+
+  ngOnInit(){
+    this.usuarioId = 1;
+    this.usuarioNombre = 'Kisha Pérez';
   }
 }

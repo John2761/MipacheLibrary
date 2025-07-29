@@ -1,5 +1,6 @@
 import { PrismaClient } from "../generated/prisma";
 import { categorias } from "./seeds/categorias";
+import { etiquetas } from "./seeds/etiquetas";
 import { usuarios } from "./seeds/usuarios";
 
 const prisma = new PrismaClient();
@@ -16,163 +17,206 @@ const main = async () => {
       data: usuarios,
     });
 
+    //Etiquetas
+    await prisma.etiqueta.createMany({
+      data: etiquetas,
+    });
+
     //Productos - con relaciones incluidas
-    //Productos
-    await prisma.producto.create({
-      //Instancia de producto 1
-      data: {
-        nombre: "Erase una vez un corazón roto",
-        descripcion:
-          "Evangeline Fox se crio en la tienda de curiosidades de su amado padre, " +
-          "donde creció con leyendas sobre inmortales, como el trágico Príncipe de Corazones.",
-        precio: 11200.0,
-        stock: 10,
-        imagenPrincipal: "Erase-una-vez-un-corazon-roto.jpg",
-        imagenes: {
-          create: [
-            { ruta: "Erase-una-vez-un-corazon-roto.jpg" },
-            { ruta: "Erase-una-vez-1.jpg" },
-          ],
-        },
-        autor: "Stephanie Garber",
-        fechaCreacion: new Date("2021-09-28"),
-        categorias: {
-          create: [
-            { categoria: { connect: { id: 4 } } },
-            { categoria: { connect: { id: 5 } } },
-          ],
-        },
-      },
-    });
+    // Producto 1
+await prisma.producto.create({
+  data: {
+    nombre: "Erase una vez un corazón roto",
+    descripcion:
+      "Evangeline Fox se crio en la tienda de curiosidades de su amado padre, donde creció con leyendas sobre inmortales, como el trágico Príncipe de Corazones.",
+    precio: 11200.0,
+    stock: 10,
+    imagenPrincipal: "Erase-una-vez-un-corazon-roto.jpg",
+    imagenes: {
+      create: [
+        { ruta: "Erase-una-vez-un-corazon-roto.jpg" },
+        { ruta: "Erase-una-vez-1.jpg" },
+      ],
+    },
+    autor: "Stephanie Garber",
+    fechaCreacion: new Date("2021-09-28"),
+    categorias: {
+      create: [
+        { categoria: { connect: { id: 4 } } },
+        { categoria: { connect: { id: 5 } } },
+      ],
+    },
+    etiquetas: {
+      create: [
+        { etiqueta: { connect: { id: 1 } } }, // Pasta dura
+        { etiqueta: { connect: { id: 2 } } }, // Español
+        { etiqueta: { connect: { id: 3 } } }, // Ficción
+      ],
+    },
+  },
+});
 
-    //Instancia de producto 2
-    await prisma.producto.create({
-      data: {
-        nombre: "La balada de nunca jamás",
-        descripcion:
-          "Haciendo estragos en la vida de Evangeline, en lugar de un hechizo de amor, " +
-          "hay un encantamiento mortal. Para romperlo, Evangeline y Jacks tendrán que batallar con viejos amigos.",
-        precio: 11350.0,
-        stock: 10,
-        imagenPrincipal: "La-balada-de-nunca-jamas.jpg",
-        imagenes: {
-          create: [
-            { ruta: "La-balada-de-nunca-jamas.jpg" },
-            { ruta: "La-balada-1.jpg" },
-          ],
-        },
-        autor: "Stephanie Garber",
-        fechaCreacion: new Date("2022-09-28"),
-        categorias: {
-          create: [{ categoria: { connect: { id: 4 } } }],
-        },
-      },
-    });
+// Producto 2
+await prisma.producto.create({
+  data: {
+    nombre: "La balada de nunca jamás",
+    descripcion:
+      "Haciendo estragos en la vida de Evangeline, en lugar de un hechizo de amor, hay un encantamiento mortal...",
+    precio: 11350.0,
+    stock: 10,
+    imagenPrincipal: "La-balada-de-nunca-jamas.jpg",
+    imagenes: {
+      create: [
+        { ruta: "La-balada-de-nunca-jamas.jpg" },
+        { ruta: "La-balada-1.jpg" },
+      ],
+    },
+    autor: "Stephanie Garber",
+    fechaCreacion: new Date("2022-09-28"),
+    categorias: {
+      create: [{ categoria: { connect: { id: 4 } } }],
+    },
+    etiquetas: {
+      create: [
+        { etiqueta: { connect: { id: 1 } } },
+        { etiqueta: { connect: { id: 2 } } },
+        { etiqueta: { connect: { id: 4 } } }, // Literatura
+      ],
+    },
+  },
+});
 
-    //Instancia de producto 3
-    await prisma.producto.create({
-      data: {
-        nombre: "La maldición del amor verdadero",
-        descripcion:
-          "Una chica y una batalla mortal para conseguir un final feliz.Evangeline Fox" +
-          "viajó al Glorioso Norte buscando su «felices para siempre» ",
-        precio: 14800.0,
-        stock: 10,
-        imagenPrincipal: "La-maldicion-del-amor-verdadero.jpg",
-        imagenes: {
-          create: [{ ruta: "La-maldicion-del-amor-verdadero.jpg" }],
-        },
-        autor: "Stephanie Garber",
-        fechaCreacion: new Date("2024-02-06"),
-        categorias: {
-          create: [
-            { categoria: { connect: { id: 4 } } },
-            { categoria: { connect: { id: 5 } } },
-          ],
-        },
-      },
-    });
+// Producto 3
+await prisma.producto.create({
+  data: {
+    nombre: "La maldición del amor verdadero",
+    descripcion:
+      "Una chica y una batalla mortal para conseguir un final feliz...",
+    precio: 14800.0,
+    stock: 10,
+    imagenPrincipal: "La-maldicion-del-amor-verdadero.jpg",
+    imagenes: {
+      create: [{ ruta: "La-maldicion-del-amor-verdadero.jpg" }],
+    },
+    autor: "Stephanie Garber",
+    fechaCreacion: new Date("2024-02-06"),
+    categorias: {
+      create: [
+        { categoria: { connect: { id: 4 } } },
+        { categoria: { connect: { id: 5 } } },
+      ],
+    },
+    etiquetas: {
+      create: [
+        { etiqueta: { connect: { id: 1 } } },
+        { etiqueta: { connect: { id: 2 } } },
+        { etiqueta: { connect: { id: 5 } } }, // Adulto Joven
+      ],
+    },
+  },
+});
 
-    //Instancia de producto 4
-    await prisma.producto.create({
-      data: {
-        nombre: "Una corte de rosas y espinas",
-        descripcion:
-          "Cuando la cazadora de diecinueve años llamada Feyre mata a un lobo en el bosque " +
-          "una criatura misteriosa parecida a una bestia llega para cobrar su recompensa",
-        precio: 14800.0,
-        stock: 10,
-        imagenPrincipal: "Una-corte-de-rosas-y-espinas.jpg",
-        imagenes: {
-          create: [
-            { ruta: "Una-corte-de-rosas-y-espinas.jpg" },
-            { ruta: "Una-corte-1.jpg" },
-            { ruta: "Una-corte-2.jpg" },
-          ],
-        },
-        autor: "Sarah J. Maas",
-        fechaCreacion: new Date("2015-05-05"),
-        categorias: {
-          create: [
-            { categoria: { connect: { id: 4 } } },
-            { categoria: { connect: { id: 5 } } },
-            { categoria: { connect: { id: 8 } } },
-            { categoria: { connect: { id: 9 } } },
-          ],
-        },
-      },
-    });
-    //Instancia de producto 5
-    await prisma.producto.create({
-      data: {
-        nombre: "De sangre y cenizas",
-        descripcion:
-          "La historia sigue a Poppy, una joven que ha sido elegida para ser la Doncella, " +
-          "una figura sagrada que debe sacrificarse para mantener a salvo a su reino",
-        precio: 16800.0,
-        stock: 10,
-        imagenPrincipal: "De-sangre-y-cenizas.jpg",
-        imagenes: {
-          create: [
-            { ruta: "De-sangre-y-cenizas.jpg" },
-            { ruta: "De-sangre-1.jpg" },
-          ],
-        },
-        autor: "Jennifer L. Armentrout",
-        fechaCreacion: new Date("2021-10-05"),
-        categorias: {
-          create: [
-            { categoria: { connect: { id: 2 } } },
-            { categoria: { connect: { id: 4 } } },
-            { categoria: { connect: { id: 9 } } },
-          ],
-        },
-      },
-    });
-    //Instancia de producto 6
-    await prisma.producto.create({
-      data: {
-        nombre: "Powerless",
-        descripcion:
-          "Cuando el rey decreta que todos los vulgares serán eliminados para preservar su " +
-          "sociedad de elite, carecer de poder se vuelve un crimen.",
-        precio: 18000.0,
-        stock: 10,
-        imagenPrincipal: "Powerless.jpg",
-        imagenes: {
-          create: [{ ruta: "Powerless.jpg" }, { ruta: "Powerless-1.jpg" }],
-        },
-        autor: "Lauren Roberts",
-        fechaCreacion: new Date("2024-02-08"),
-        categorias: {
-          create: [
-            { categoria: { connect: { id: 2 } } },
-            { categoria: { connect: { id: 4 } } },
-            { categoria: { connect: { id: 9 } } },
-          ],
-        },
-      },
-    });
+// Producto 4
+await prisma.producto.create({
+  data: {
+    nombre: "Una corte de rosas y espinas",
+    descripcion:
+      "Cuando la cazadora de diecinueve años llamada Feyre mata a un lobo en el bosque...",
+    precio: 14800.0,
+    stock: 10,
+    imagenPrincipal: "Una-corte-de-rosas-y-espinas.jpg",
+    imagenes: {
+      create: [
+        { ruta: "Una-corte-de-rosas-y-espinas.jpg" },
+        { ruta: "Una-corte-1.jpg" },
+        { ruta: "Una-corte-2.jpg" },
+      ],
+    },
+    autor: "Sarah J. Maas",
+    fechaCreacion: new Date("2015-05-05"),
+    categorias: {
+      create: [
+        { categoria: { connect: { id: 4 } } },
+        { categoria: { connect: { id: 5 } } },
+        { categoria: { connect: { id: 8 } } },
+        { categoria: { connect: { id: 9 } } },
+      ],
+    },
+    etiquetas: {
+      create: [
+        { etiqueta: { connect: { id: 1 } } },
+        { etiqueta: { connect: { id: 2 } } },
+        { etiqueta: { connect: { id: 3 } } },
+        { etiqueta: { connect: { id: 5 } } },
+      ],
+    },
+  },
+});
+
+// Producto 5
+await prisma.producto.create({
+  data: {
+    nombre: "De sangre y cenizas",
+    descripcion:
+      "La historia sigue a Poppy, una joven que ha sido elegida para ser la Doncella...",
+    precio: 16800.0,
+    stock: 10,
+    imagenPrincipal: "De-sangre-y-cenizas.jpg",
+    imagenes: {
+      create: [
+        { ruta: "De-sangre-y-cenizas.jpg" },
+        { ruta: "De-sangre-1.jpg" },
+      ],
+    },
+    autor: "Jennifer L. Armentrout",
+    fechaCreacion: new Date("2021-10-05"),
+    categorias: {
+      create: [
+        { categoria: { connect: { id: 2 } } },
+        { categoria: { connect: { id: 4 } } },
+        { categoria: { connect: { id: 9 } } },
+      ],
+    },
+    etiquetas: {
+      create: [
+        { etiqueta: { connect: { id: 1 } } },
+        { etiqueta: { connect: { id: 2 } } },
+        { etiqueta: { connect: { id: 3 } } },
+      ],
+    },
+  },
+});
+
+// Producto 6
+await prisma.producto.create({
+  data: {
+    nombre: "Powerless",
+    descripcion:
+      "Cuando el rey decreta que todos los vulgares serán eliminados...",
+    precio: 18000.0,
+    stock: 10,
+    imagenPrincipal: "Powerless.jpg",
+    imagenes: {
+      create: [{ ruta: "Powerless.jpg" }, { ruta: "Powerless-1.jpg" }],
+    },
+    autor: "Lauren Roberts",
+    fechaCreacion: new Date("2024-02-08"),
+    categorias: {
+      create: [
+        { categoria: { connect: { id: 2 } } },
+        { categoria: { connect: { id: 4 } } },
+        { categoria: { connect: { id: 9 } } },
+      ],
+    },
+    etiquetas: {
+      create: [
+        { etiqueta: { connect: { id: 1 } } },
+        { etiqueta: { connect: { id: 2 } } },
+        { etiqueta: { connect: { id: 5 } } },
+      ],
+    },
+  },
+});
 
     await prisma.resena.create({
       data: {
