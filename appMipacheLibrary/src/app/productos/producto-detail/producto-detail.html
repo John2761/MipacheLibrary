@@ -23,31 +23,27 @@
       <p class="autor"><strong>Autor:</strong> {{ datos.autor }}</p>
       <p class="stock" *ngIf="datos.stock > 0">Stock disponible</p>
 
-      <p
-        class="precio"
-        *ngIf="datos.precioDescuento != null; else precioNormal"
-      >
-        <span class="text-decoration-line-through text-muted">
-          ₡{{ datos.precio | number: '1.0-0' }}
-        </span>
-        <span class="fw-bold ms-2" style="color: #d32f2f">
-          ₡{{ datos.precioDescuento | number: '1.0-0' }}
-        </span>
-      </p>
-
       <ng-template #precioNormal>
         <p class="precio fw-bold">₡{{ datos.precio | number: '1.0-0' }}</p>
       </ng-template>
 
+      <p class="precio">
+        <span *ngIf="datos.tienePromocion; else sinPromo">
+          <span class="precio-anterior">₡{{ datos.precio | number: '1.0-0' }}</span>
+          <span class="precio-final">₡{{ datos.precioFinal | number: '1.0-0' }}</span>
+        </span>
+        <ng-template #sinPromo>
+          ₡{{ datos.precio | number: '1.0-0' }}
+        </ng-template>
+      </p>
 
       <p class="valoracion">
         Valoración:
         <ng-container *ngIf="datos.promedioValoracion; else sinValoracion">
           <span *ngFor="let star of [1,2,3,4,5]">
-            <mat-icon color="warn"
-              >{{ star <= datos.promedioValoracion ? 'star' : 'star_border'
-              }}</mat-icon
-            >
+            <mat-icon color="warn">
+              {{ star <= datos.promedioValoracion ? 'star' : 'star_border' }}
+            </mat-icon>
           </span>
           ({{ datos.promedioValoracion | number: '1.1-1' }})
         </ng-container>
@@ -72,15 +68,15 @@
     <p>{{ datos.descripcion || 'No disponible' }}</p>
   </section>
 
-  <!-- Ficha técnica -->
   <section class="ficha">
-    <h3>Ficha técnica</h3>
-    <div class="ficha-grid">
-      <div><strong>Editorial:</strong> {{ datos.editorial || 'N/A' }}</div>
-      <div><strong>Año:</strong> {{ datos.anio || 'N/A' }}</div>
-      <div><strong>Formato:</strong> {{ datos.formato || 'N/A' }}</div>
-      <div><strong>Páginas:</strong> {{ datos.paginas || 'N/A' }}</div>
-      <div><strong>Idioma:</strong> {{ datos.idioma || 'N/A' }}</div>
+    <!-- Mostrar etiquetas visuales -->
+    <div class="etiquetas-container" *ngIf="datos.etiquetas?.length > 0">
+      <h3>Etiquetas:</h3>
+      <div class="etiquetas-list">
+        <span *ngFor="let etiqueta of datos.etiquetas" class="etiqueta-chip">
+          {{ etiqueta.descripcion }}
+        </span>
+      </div>
     </div>
   </section>
 
@@ -97,62 +93,76 @@
   <!-- Reseñas -->
   <section class="reseñas">
     <h3>Reseñas</h3>
-    <ng-container *ngIf="datos.resenas.length > 0; else sinResenas">
-      <mat-card *ngFor="let r of datos.resenas" class="reseña-card">
-        <mat-card-title>{{ r.usuario?.nombre ?? 'Anónimo' }}</mat-card-title>
-        <mat-card-subtitle>{{ r.fecha | date: 'longDate' }}</mat-card-subtitle>
-        <mat-card-content>
-          <p>{{ r.comentario }}</p>
-          <p>
-            <span *ngFor="let star of [1,2,3,4,5]">
-              <mat-icon color="accent"
-                >{{ star <= r.valoracion ? 'star' : 'star_border' }}</mat-icon
-              >
-            </span>
-          </p>
-        </mat-card-content>
-      </mat-card>
-    </ng-container>
-    <ng-template #sinResenas>
-      <p class="text-muted">Este libro aún no tiene reseñas.</p>
-    </ng-template>
-    <!-- Valoración por estrellas -->
-    <div class="valoracion-estrellas">
-      <mat-label>Valoración</mat-label>
-      <div class="estrellas">
-        <mat-icon
-          *ngFor="let star of [1, 2, 3, 4, 5]"
-          color="warn"
-          (click)="setValoracion(star)"
-          [class.selected]="star <= valoracion"
-        >
-          {{ star <= valoracion ? 'star' : 'star_border' }}
-        </mat-icon>
-      </div>
+    <div class="reseñas-grid">
+      <ng-container *ngIf="datos.resenas.length > 0; else sinResenas">
+        <mat-card *ngFor="let r of datos.resenas" class="reseña-card">
+          <mat-card-header>
+            <mat-card-title>{{ r.usuario?.nombre ?? 'Anónimo' }}</mat-card-title>
+            <mat-card-subtitle>{{ r.fecha | date: 'longDate' }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>{{ r.comentario }}</p>
+            <p>
+              <span *ngFor="let star of [1,2,3,4,5]">
+                <mat-icon color="accent">
+                  {{ star <= r.valoracion ? 'star' : 'star_border' }}
+                </mat-icon>
+              </span>
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </ng-container>
+      <ng-template #sinResenas>
+        <p class="text-muted">Este libro aún no tiene reseñas.</p>
+      </ng-template>
     </div>
   </section>
 
   <!-- Comentario -->
   <section class="comentario">
     <h3>Dejá tu comentario</h3>
-    <form [formGroup]="formComentario" (ngSubmit)="enviarComentario()">
-      <mat-form-field class="full-width">
-        <mat-label>Nombre</mat-label>
-        <input matInput formControlName="nombre" />
-      </mat-form-field>
+    <mat-card class="formulario-card">
+      <form [formGroup]="formComentario" (ngSubmit)="enviarComentario()">
+        <mat-form-field class="full-width">
+          <mat-label>Nombre</mat-label>
+          <input matInput [value]="usuarioNombre" readonly />
+        </mat-form-field>
 
-      <mat-form-field class="full-width">
-        <mat-label>Comentario</mat-label>
-        <textarea matInput formControlName="comentario" rows="1"></textarea>
-      </mat-form-field>
-      <button
-        mat-raised-button
-        color="accent"
-        type="submit"
-        class="boton-enviar"
-      >
-        Enviar
-      </button>
-    </form>
+        <mat-form-field class="full-width">
+          <mat-label>Comentario</mat-label>
+          <textarea matInput formControlName="comentario" rows="3"></textarea>
+          <mat-error *ngIf="formComentario.get('comentario')?.hasError('minlength')">
+            El comentario debe tener al menos 5 caracteres.
+          </mat-error>
+        </mat-form-field>
+
+        <div class="valoracion-estrellas">
+          <mat-label>Valoración</mat-label>
+          <div class="estrellas">
+            <mat-icon
+              *ngFor="let star of [1, 2, 3, 4, 5]"
+              color="warn"
+              (click)="setValoracion(star)"
+              [class.selected]="star <= valoracion"
+            >
+              {{ star <= valoracion ? 'star' : 'star_border' }}
+            </mat-icon>
+          </div>
+          <mat-error *ngIf="valoracion === 0 && formComentario.touched">
+            Debe seleccionar una valoración.
+          </mat-error>
+        </div>
+
+        <button
+          mat-raised-button
+          color="accent"
+          type="submit"
+          class="boton-enviar"
+          [disabled]="formComentario.invalid || valoracion === 0"
+        >
+          Enviar
+        </button>
+      </form>
+    </mat-card>
   </section>
 </div>

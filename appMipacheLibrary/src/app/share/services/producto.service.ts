@@ -8,7 +8,18 @@ import { BaseAPI } from '../base-api';
   providedIn: 'root',
 })
 export class ProductoService extends BaseAPI<ProductoModel> {
+  private httpClientLocal: HttpClient;
+
   constructor(httpClient: HttpClient) {
     super(httpClient, environment.endPointProducto);
+    this.httpClientLocal = httpClient;
   }
+
+  crearResena(body: any) {
+    const url = 'http://localhost:3000/resena'; // Ajustar si usás otro endpoint
+    return this.httpClientLocal.post(url, body);
+  }
+  
 }
+
+

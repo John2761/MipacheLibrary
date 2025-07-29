@@ -70,4 +70,46 @@ export class ResenaController {
       next(error);
     }
   };
+
+  // Actualizar estado de moderación
+updateEstado = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const id = parseInt(req.params.id);
+    const { moderada, observacion } = req.body;
+
+    if (isNaN(id)) {
+      return next(AppError.badRequest("ID inválido"));
+    }
+
+    const actualizada = await this.prisma.resena.update({
+      where: { id },
+      data: {
+        moderada,
+        observacion: observacion || null
+      }
+    });
+
+    res.json(actualizada);
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Eliminar reseña
+delete = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const id = parseInt(req.params.id);
+    if (isNaN(id)) {
+      return next(AppError.badRequest("ID inválido"));
+    }
+
+    await this.prisma.resena.delete({ where: { id } });
+
+    res.status(204).send();
+  } catch (error) {
+    next(error);
+  }
+};
+
+
 }
