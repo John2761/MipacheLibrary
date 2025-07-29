@@ -120,9 +120,55 @@ export class ProductoController {
 
       if (!objProducto) {
         return next(AppError.notFound("No existe el producto"));
+      } else {
+        try {
+          // Buscar imagen principal
+          const nombreEsperado =
+            objProducto.nombre
+              .normalize("NFD")
+              .replace(/[\u0300-\u036f]/g, "")
+              .replace(/\s+/g, "-")
+              .replace(/[^a-zA-Z0-9\-]/g, "") + ".jpg";
+
+          const imagenPrincipal =
+            objProducto.imagenes.find((img) => img.ruta === nombreEsperado)
+              ?.ruta ?? "image-not-found.jpg";
+
+          const promedioValoracion =
+            objProducto.resenas.length > 0
+              ? objProducto.resenas.reduce((sum, r) => sum + r.valoracion, 0) /
+                objProducto.resenas.length
+              : null;
+
+          let precioDescuento: number | null = null;
+
+          if (
+            objProducto.promocion &&
+            objProducto.promocion.estadoPromo === "VIGENTE"
+          ) {
+            const descuento = Number(objProducto.promocion.descuento);
+            const esPorcentaje =
+              objProducto.promocion.tipoDescuento === "PORCENTAJE";
+
+            precioDescuento = esPorcentaje
+              ? Number(objProducto.precio) -
+                (Number(objProducto.precio) * descuento) / 100
+              : Number(objProducto.precio) - descuento;
+
+            precioDescuento = parseFloat(precioDescuento.toFixed(2));
+          }
+
+          response.status(200).json({
+            ...objProducto,
+            imagenPrincipal,
+            promedioValoracion,
+            precioDescuento,
+          });
+        } catch (error) {
+          next(error);
+        }
       }
-      else {
-      try{
+
       // Buscar imagen principal
       const nombreEsperado =
         objProducto.nombre
@@ -130,66 +176,29 @@ export class ProductoController {
           .replace(/[\u0300-\u036f]/g, "")
           .replace(/\s+/g, "-")
           .replace(/[^a-zA-Z0-9\-]/g, "") + ".jpg";
-
       const imagenPrincipal =
         objProducto.imagenes.find((img) => img.ruta === nombreEsperado)?.ruta ??
         "image-not-found.jpg";
 
+      // Calcular promedio de valoraciones
       const promedioValoracion =
         objProducto.resenas.length > 0
           ? objProducto.resenas.reduce((sum, r) => sum + r.valoracion, 0) /
             objProducto.resenas.length
           : null;
 
-      let precioDescuento: number | null = null;
+      // Calcular precio con descuento (si aplica)
+      let precioFinal = new Decimal(objProducto.precio);
+      let tienePromocion = false;
 
-      if (
-        objProducto.promocion &&
-        objProducto.promocion.estadoPromo === "VIGENTE"
-      ) {
-        const descuento = Number(objProducto.promocion.descuento);
-        const esPorcentaje =
-          objProducto.promocion.tipoDescuento === "PORCENTAJE";
+      if (objProducto.promocion) {
+        const hoy = new Date();
+        const { fechaInicio, fechaFin, tipoDescuento, descuento } =
+          objProducto.promocion;
 
-        precioDescuento = esPorcentaje
-          ?  Number(objProducto.precio) -
-            (Number(objProducto.precio) * descuento) / 100
-          :  Number(objProducto.precio) - descuento;
-
-        precioDescuento = parseFloat(precioDescuento.toFixed(2));
-      }
-
-      response.status(200).json({
-        ...objProducto,
-        imagenPrincipal,
-        promedioValoracion,
-        precioDescuento,
-      });
-    } catch (error) {
-      next(error);
-    }
-  };
-
-    const imagenPrincipal =
-      objProducto.imagenes.find(img => img.ruta === nombreEsperado)?.ruta ??
-      "image-not-found.jpg";
-
-    // Calcular promedio de valoraciones
-    const promedioValoracion = objProducto.resenas.length > 0
-      ? objProducto.resenas.reduce((sum, r) => sum + r.valoracion, 0) / objProducto.resenas.length
-      : null;
-
-    // Calcular precio con descuento (si aplica)
-    let precioFinal = new Decimal(objProducto.precio);
-    let tienePromocion = false;
-
-    if (objProducto.promocion) {
-      const hoy = new Date();
-      const { fechaInicio, fechaFin, tipoDescuento, descuento } = objProducto.promocion;
-
-      if (hoy >= new Date(fechaInicio) && hoy <= new Date(fechaFin)) {
-        tienePromocion = true;
-        if (tipoDescuento === 'PORCENTAJE') {
+        if (hoy >= new Date(fechaInicio) && hoy <= new Date(fechaFin)) {
+          tienePromocion = true;
+          if (tipoDescuento === "PORCENTAJE") {
             const descuentoDecimal = precioFinal.mul(descuento).div(100);
             precioFinal = precioFinal.minus(descuentoDecimal);
           } else {
@@ -202,19 +211,18 @@ export class ProductoController {
         }
       }
 
-    // Enviar respuesta
-    response.status(200).json({
-      ...objProducto,
-      imagenPrincipal,
-      promedioValoracion,
-      precioFinal: parseFloat(precioFinal.toFixed(2)), // redondear
-      tienePromocion
-    });
-
-  } catch (error) {
-    next(error);
-  }
-};
+      // Enviar respuesta
+      response.status(200).json({
+        ...objProducto,
+        imagenPrincipal,
+        promedioValoracion,
+        precioFinal: parseFloat(precioFinal.toFixed(2)), // redondear
+        tienePromocion,
+      });
+    } catch (error) {
+      next(error);
+    }
+  };
 
   search = async (request: Request, response: Response, next: NextFunction) => {
     try {
@@ -247,16 +255,86 @@ export class ProductoController {
   //Crear
   create = async (request: Request, response: Response, next: NextFunction) => {
     try {
+      //Datos JSON
+      const body = request.body;
+
+      const nuevoproducto = await this.prisma.producto.create({
+        data: {
+          nombre: body.nombre,
+          descripcion: body.descripcion,
+          precio: body.precio,
+          imagenPrincipal: body.imagenPrincipal,
+          //Categorias:[{id:valor},{id:valor}]
+          categorias: {
+            connect: body.categorias,
+          },
+        },
+      });
+      response.status(201).json(nuevoproducto);
     } catch (error) {
       next(error);
     }
   };
 
   //Actualizar
+  //Actualizar un producto
   update = async (request: Request, response: Response, next: NextFunction) => {
     try {
+      console.log("🟢 ID recibido:", request.params.id);
+      console.log("📦 Body recibido:", request.body);
+      const body = request.body;
+      const idproducto = parseInt(request.params.id);
+      //Obtener producto anterior
+      const productoExistente = await this.prisma.producto.findUnique({
+        where: { id: idproducto },
+        include: {
+          categorias: {
+            select: {
+              categoriaId: true,
+            },
+          },
+        },
+      });
+      if (!productoExistente) {
+        response.status(404).json({ message: "El producto no existe" });
+        return;
+      }
+      // Determinar la imagen a usar (si se envía una nueva o se mantiene la existente)
+      const finalImage =
+        body.imagen !== undefined
+          ? body.imagen
+          : productoExistente.imagenPrincipal;
+      // Desconectar géneros antiguos y conectar los nuevos
+      const disconnectCategorias = productoExistente.categorias.map(
+        (categoria: { categoriaId: number }) => ({
+          productoId_categoriaId: {
+            productoId: idproducto,
+            categoriaId: categoria.categoriaId,
+          },
+        })
+      );
+      //Actualizar
+      const updateproducto = await this.prisma.producto.update({
+        where: { id: idproducto },
+        data: {
+          nombre: body.nombre,
+          descripcion: body.descripcion,
+          precio: body.precio,
+          imagenPrincipal: body.imagenPrincipal,
+          categorias: {
+            connect: body.categorias, // O connect si querés solo agregar
+          },
+        },
+      });
+      console.log(updateproducto);
+      response.json(updateproducto);
     } catch (error) {
-      next(error);
+      console.error("🔥 Error en producto.update:", error);
+      // ✅ Solo si no se ha respondido aún
+    if (!response.headersSent) {
+      next(AppError.internalServer("Error al actualizar el producto"));
+    }
+
     }
   };
 }

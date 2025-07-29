@@ -39,19 +39,6 @@
         <p class="precio fw-bold">₡{{ datos.precio | number: '1.0-0' }}</p>
       </ng-template>
 
-      <p class="precio">
-        <span *ngIf="datos.tienePromocion; else sinPromo">
-          <span class="precio-anterior"
-            >₡{{ datos.precio | number: '1.0-0' }}</span
-          >
-          <span class="precio-final"
-            >₡{{ datos.precioFinal | number: '1.0-0' }}</span
-          >
-        </span>
-        <ng-template #sinPromo>
-          ₡{{ datos.precio | number: '1.0-0' }}
-        </ng-template>
-      </p>
 
       <p class="valoracion">
         Valoración:

@@ -1,7 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ProductoDetail } from './producto-detail/producto-detail';
+import { ProductoIndex } from './producto-index/producto-index';
+import { ProductoAdmin } from './producto-admin/producto-admin';
+import { ProductoForm } from './producto-form/producto-form';
 
-const routes: Routes = [];
+const routes: Routes = [
+    //productos
+    { path:'producto',component: ProductoIndex},
+    { path:'producto/:id',component: ProductoDetail},
+    { path:'producto-admin', component: ProductoAdmin },
+    { path:'producto/create', component: ProductoForm },
+    { path:'producto/update/:id', component: ProductoForm },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

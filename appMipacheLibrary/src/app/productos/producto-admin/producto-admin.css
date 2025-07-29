@@ -11,6 +11,10 @@
   mat-card-subtitle{
     margin: 0.75em auto;
   }
+.btn-primary{
+  background-color: #c89267;
+  border-radius: 20px;
+}
 .content-row{
   line-height: 1.5em;
   vertical-align: middle;

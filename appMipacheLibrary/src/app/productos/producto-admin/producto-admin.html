@@ -1,10 +1,9 @@
-<p>producto-admin works!</p>
 <mat-card> 
   <!-- Titulo del Card -->
   <mat-card-header>
     <mat-card-title>Listado de Productos</mat-card-title>
     <mat-card-subtitle>
-      <button matMiniFab  matTooltip="Crear Producto" aria-label="Crear Producto" class="btn-primary"
+      <button matMiniFab  aria-label="Crear Producto" class="btn-primary"
         (click)="crearProducto()">
         <mat-icon>add</mat-icon>
       </button>
@@ -17,6 +16,7 @@
     <div class="mat-elevation-z8">
       <mat-table mat-table [dataSource]="dataSource" class="tabla" matSort matSortStart="desc"
         aria-label="Elements">
+        
         <!-- Columna nombre -->
         <ng-container matColumnDef="nombre">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>

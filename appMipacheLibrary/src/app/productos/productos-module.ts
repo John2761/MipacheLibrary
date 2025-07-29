@@ -24,15 +24,15 @@ import { ProductoIndex } from './producto-index/producto-index';
 import { ProductoDetail } from './producto-detail/producto-detail';
 import { ProductoAdmin } from './producto-admin/producto-admin';
 import { ProductoDiag } from './producto-diag/producto-diag';
-
+import { ProductoForm } from './producto-form/producto-form';
 
 @NgModule({
   declarations: [
     ProductoIndex,
     ProductoDetail,
     ProductoAdmin,
-    ProductoDiag
-    
+    ProductoDiag,
+    ProductoForm
   ],
   imports: [
     MatCardModule,

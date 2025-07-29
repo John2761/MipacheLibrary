@@ -8,6 +8,16 @@
     </p>
   </div>
 
+  <div class="admin-button-container">
+      <button
+        mat-raised-button
+        color="primary"
+        [routerLink]="['/producto-admin']"
+      >
+        Mantenimiento
+      </button>
+    </div>
+
   <div class="library-body">
     <!-- FILTROS LATERALES -->
     <aside class="library-filters">
@@ -30,15 +40,14 @@
         [routerLink]="['/producto', item.id]"
         style="cursor: pointer"
       >
-        
-          <img
-            mat-card-image
-            [src]="'http://localhost:3000/images/' + item.imagenPrincipal"
-            alt="Imagen de {{ item.nombre }}"
-            (error)="item.imagenPrincipal = 'image-not-found.jpg'"
-            
-          /> <!-- hacer que funcione el clic de detalle -->
-       
+        <img
+          mat-card-image
+          [src]="'http://localhost:3000/images/' + item.imagenPrincipal"
+          alt="Imagen de {{ item.nombre }}"
+          (error)="item.imagenPrincipal = 'image-not-found.jpg'"
+        />
+        <!-- hacer que funcione el clic de detalle -->
+
         <mat-card-content>
           <h3 class="card-title">{{ item.nombre }}</h3>
           <p class="card-author">{{ item.autor }}</p>
