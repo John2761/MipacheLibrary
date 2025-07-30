@@ -9,6 +9,9 @@ import { PromocionModel } from '../models/PromocionModel';
 })
 export class PromocionService extends BaseAPI<PromocionModel> {
   constructor(httpClient: HttpClient) {
-    super(httpClient, environment.endPointPromocion);
+    super(httpClient, 'promocion');
   }
+
+
+ 
 }

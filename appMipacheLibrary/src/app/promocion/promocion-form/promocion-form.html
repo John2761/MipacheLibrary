@@ -1,0 +1,89 @@
+<div class="form-container" [formGroup]="form">
+  <h2>{{ modoEdicion ? 'Editar Promoción' : 'Crear Promoción' }}</h2>
+
+  <!-- Nombre de la promoción -->
+  <mat-form-field class="full-width">
+    <mat-label>Nombre de la promoción</mat-label>
+    <input matInput formControlName="nombre" />
+    <mat-error *ngIf="form.get('nombre')?.hasError('required')">
+      El nombre es obligatorio
+    </mat-error>
+  </mat-form-field>
+
+  <!-- Tipo de promoción -->
+  <mat-form-field class="full-width">
+    <mat-label>Tipo de promoción</mat-label>
+    <mat-select formControlName="tipoPromocion">
+      <mat-option *ngFor="let key of keysTipoPromo" [value]="tipoPromocion[key]">
+        {{ tipoPromocion[key] === tipoPromocion.POR_PRODUCTO ? 'Por Producto' : 'Por Categoría' }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Aplica a: Producto o Categoría -->
+  <mat-form-field class="full-width" *ngIf="esPromoPorProducto()">
+    <mat-label>Producto</mat-label>
+    <mat-select formControlName="productos" multiple>
+      <mat-option *ngFor="let prod of productos" [value]="prod.id">
+        {{ prod.nombre }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="full-width" *ngIf="esPromoPorCategoria()">
+    <mat-label>Categoría</mat-label>
+    <mat-select formControlName="categorias" multiple>
+      <mat-option *ngFor="let cat of categorias" [value]="cat.id">
+        {{ cat.nombre }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Tipo de descuento -->
+  <mat-form-field class="full-width">
+    <mat-label>Tipo de descuento</mat-label>
+    <mat-select formControlName="tipoDescuento">
+      <mat-option *ngFor="let key of keysTipoDescuento" [value]="tipoDescuento[key]">
+        {{ tipoDescuento[key] === tipoDescuento.PORCENTAJE ? 'Porcentaje (%)' : 'Monto fijo (₡)' }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Monto del descuento -->
+  <mat-form-field class="full-width">
+    <mat-label>Valor del descuento</mat-label>
+    <input matInput type="number" formControlName="descuento" />
+    <mat-error *ngIf="form.get('descuento')?.hasError('required')">
+      El descuento es obligatorio
+    </mat-error>
+    <mat-error *ngIf="form.get('descuento')?.hasError('min')">
+      El descuento debe ser mayor a 0
+    </mat-error>
+  </mat-form-field>
+
+  <!-- Fecha de inicio -->
+  <mat-form-field class="full-width">
+    <mat-label>Fecha de inicio</mat-label>
+    <input matInput [matDatepicker]="picker1" formControlName="fechaInicio" />
+    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+    <mat-datepicker #picker1></mat-datepicker>
+  </mat-form-field>
+
+  <!-- Fecha de fin -->
+  <mat-form-field class="full-width">
+    <mat-label>Fecha de fin</mat-label>
+    <input matInput [matDatepicker]="picker2" formControlName="fechaFin" />
+    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+    <mat-datepicker #picker2></mat-datepicker>
+  </mat-form-field>
+
+  <!-- Botón guardar -->
+  <button mat-raised-button color="primary" (click)="guardar()" [disabled]="form.invalid">
+    {{ modoEdicion ? 'Actualizar' : 'Guardar' }}
+  </button>
+
+  <!-- Botón cancelar -->
+  <button mat-button color="warn" routerLink="/promocion-admin">
+    Cancelar
+  </button>
+</div>

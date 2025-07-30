@@ -7,6 +7,8 @@ export class PromocionRoutes {
     const controller = new PromocionController();
     router.get("/", controller.get);
     router.get('/:id',controller.getById) 
+    router.post('/', controller.create);
+    router.put('/:id', controller.update);
     return router;
   }
 }

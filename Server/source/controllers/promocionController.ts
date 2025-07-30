@@ -106,4 +106,77 @@ export class PromocionController {
       next(error);
     }
   };
+
+  create = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const {
+      nombre, descuento, fechaInicio, fechaFin,
+      tipoDescuento, tipoPromocion,
+      productoId, categoriaId
+    } = req.body;
+
+    // Validaciones básicas
+    const hoy = new Date();
+    if (new Date(fechaInicio) < hoy)
+      return next(AppError.badRequest("La fecha de inicio no puede ser anterior a hoy"));
+    if (new Date(fechaFin) < new Date(fechaInicio))
+      return next(AppError.badRequest("La fecha de fin no puede ser anterior a la fecha de inicio"));
+
+    const nuevaPromo = await this.prisma.promocion.create({
+      data: {
+        nombre,
+        descuento,
+        fechaInicio: new Date(fechaInicio),
+        fechaFin: new Date(fechaFin),
+        tipoDescuento,
+        tipoPromocion,
+        productos: productoId ? { connect: [{ id: productoId }] } : undefined,
+        categorias: categoriaId ? { connect: [{ id: categoriaId }] } : undefined,
+      }
+    });
+
+    res.status(201).json(nuevaPromo);
+  } catch (error) {
+    next(error);
+  }
+};
+
+update = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const id = Number(req.params.id);
+    if (isNaN(id)) return next(AppError.badRequest("ID inválido"));
+
+    const promocionExistente = await this.prisma.promocion.findUnique({ where: { id } });
+    if (!promocionExistente) return next(AppError.notFound("Promoción no encontrada"));
+
+    const hoy = new Date();
+    if (promocionExistente.fechaInicio < hoy)
+      return next(AppError.badRequest("No se puede modificar una promoción ya iniciada"));
+
+    const {
+      nombre, descuento, fechaInicio, fechaFin,
+      tipoDescuento, tipoPromocion,
+      productoId, categoriaId
+    } = req.body;
+
+    const actualizada = await this.prisma.promocion.update({
+      where: { id },
+      data: {
+        nombre,
+        descuento,
+        fechaInicio: new Date(fechaInicio),
+        fechaFin: new Date(fechaFin),
+        tipoDescuento,
+        tipoPromocion,
+        productos: productoId ? { set: [{ id: productoId }] } : { set: [] },
+        categorias: categoriaId ? { set: [{ id: categoriaId }] } : { set: [] },
+      },
+    });
+
+    res.json(actualizada);
+  } catch (error) {
+    next(error);
+  }
+};
+
 }
