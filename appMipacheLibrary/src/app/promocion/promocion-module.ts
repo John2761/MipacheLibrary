@@ -23,12 +23,17 @@ import { PromocionIndex } from './promocion-index/promocion-index';
 import { PromocionDetail } from './promocion-detail/promocion-detail';
 import { PromocionAdmin } from './promocion-admin/promocion-admin';
 
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { PromocionForm } from './promocion-form/promocion-form';
+
 
 @NgModule({
   declarations: [
     PromocionIndex,
     PromocionDetail,
-    PromocionAdmin
+    PromocionAdmin,
+    PromocionForm
   ],
   imports: [
     MatCardModule,
@@ -49,7 +54,9 @@ import { PromocionAdmin } from './promocion-admin/promocion-admin';
     MatSelectModule,
     CommonModule,
     PromocionRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDatepickerModule,     // <--- Agregalo
+    MatNativeDateModule
   ]
 })
 export class PromocionModule { }
