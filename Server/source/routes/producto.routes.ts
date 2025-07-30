@@ -5,13 +5,16 @@ export class ProductoRoutes {
   static get routes(): Router {
     const router = Router();
     const controller = new ProductoController();
+    //localhost:3000/producto
     router.get("/", controller.get);
-    //localhost:3000/videojuego/search?termino=er
-    //router.get('/search',controller.search) 
-    //localhost:3000/videojuego/6
+    //localhost:3000/producto/6
     router.get('/:id',controller.getById)  
-        
+    //Crear producto
+    router.post('/',controller.create)
+    //Actualizar producto
+    router.put('/:id', controller.update)
 
     return router;
+
   }
 }

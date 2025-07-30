@@ -86,7 +86,8 @@ export class ProductoController {
 
   //cambios de ultima hora
   //Obtener por Id
-  getById = async (
+
+getById = async (
   request: Request,
   response: Response,
   next: NextFunction
@@ -184,7 +185,6 @@ export class ProductoController {
   }
 };
 
-
   search = async (request: Request, response: Response, next: NextFunction) => {
     try {
       //Obtener los valores del query string
@@ -216,16 +216,86 @@ export class ProductoController {
   //Crear
   create = async (request: Request, response: Response, next: NextFunction) => {
     try {
+      //Datos JSON
+      const body = request.body;
+
+      const nuevoproducto = await this.prisma.producto.create({
+        data: {
+          nombre: body.nombre,
+          descripcion: body.descripcion,
+          precio: body.precio,
+          imagenPrincipal: body.imagenPrincipal,
+          //Categorias:[{id:valor},{id:valor}]
+          categorias: {
+            connect: body.categorias,
+          },
+        },
+      });
+      response.status(201).json(nuevoproducto);
     } catch (error) {
       next(error);
     }
   };
 
   //Actualizar
+  //Actualizar un producto
   update = async (request: Request, response: Response, next: NextFunction) => {
     try {
+      console.log("🟢 ID recibido:", request.params.id);
+      console.log("📦 Body recibido:", request.body);
+      const body = request.body;
+      const idproducto = parseInt(request.params.id);
+      //Obtener producto anterior
+      const productoExistente = await this.prisma.producto.findUnique({
+        where: { id: idproducto },
+        include: {
+          categorias: {
+            select: {
+              categoriaId: true,
+            },
+          },
+        },
+      });
+      if (!productoExistente) {
+        response.status(404).json({ message: "El producto no existe" });
+        return;
+      }
+      // Determinar la imagen a usar (si se envía una nueva o se mantiene la existente)
+      const finalImage =
+        body.imagen !== undefined
+          ? body.imagen
+          : productoExistente.imagenPrincipal;
+      // Desconectar géneros antiguos y conectar los nuevos
+      const disconnectCategorias = productoExistente.categorias.map(
+        (categoria: { categoriaId: number }) => ({
+          productoId_categoriaId: {
+            productoId: idproducto,
+            categoriaId: categoria.categoriaId,
+          },
+        })
+      );
+      //Actualizar
+      const updateproducto = await this.prisma.producto.update({
+        where: { id: idproducto },
+        data: {
+          nombre: body.nombre,
+          descripcion: body.descripcion,
+          precio: body.precio,
+          imagenPrincipal: body.imagenPrincipal,
+          categorias: {
+            connect: body.categorias, // O connect si querés solo agregar
+          },
+        },
+      });
+      console.log(updateproducto);
+      response.json(updateproducto);
     } catch (error) {
-      next(error);
+      console.error("🔥 Error en producto.update:", error);
+      // ✅ Solo si no se ha respondido aún
+    if (!response.headersSent) {
+      next(AppError.internalServer("Error al actualizar el producto"));
+    }
+
     }
   };
 }
