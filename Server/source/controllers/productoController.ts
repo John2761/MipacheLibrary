@@ -87,103 +87,103 @@ export class ProductoController {
   //cambios de ultima hora
   //Obtener por Id
 
-getById = async (
-  request: Request,
-  response: Response,
-  next: NextFunction
-) => {
-  try {
-    let idProducto = parseInt(request.params.id);
-    if (isNaN(idProducto)) {
-      return next(AppError.badRequest("El ID no es válido"));
-    }
+  getById = async (
+    request: Request,
+    response: Response,
+    next: NextFunction
+  ) => {
+    try {
+      let idProducto = parseInt(request.params.id);
+      if (isNaN(idProducto)) {
+        return next(AppError.badRequest("El ID no es válido"));
+      }
 
-    const objProducto = await this.prisma.producto.findUnique({
-      where: { id: idProducto },
-      include: {
-        imagenes: true,
-        categorias: {
-          include: {
-            categoria: true,
+      const objProducto = await this.prisma.producto.findUnique({
+        where: { id: idProducto },
+        include: {
+          imagenes: true,
+          categorias: {
+            include: {
+              categoria: true,
+            },
           },
-        },
-        etiquetas: {
-          include: {
-            etiqueta: true,
+          etiquetas: {
+            include: {
+              etiqueta: true,
+            },
           },
-        },
-        resenas: {
-          include: {
-            usuario: true,
+          resenas: {
+            include: {
+              usuario: true,
+            },
           },
+          promocion: true,
         },
-        promocion: true,
-      },
-    });
+      });
 
-    if (!objProducto) {
-      return next(AppError.notFound("No existe el producto"));
-    }
+      if (!objProducto) {
+        return next(AppError.notFound("No existe el producto"));
+      }
 
-    // Mapear etiquetas como arreglo plano
-    const etiquetasPlano = objProducto.etiquetas.map((e) => e.etiqueta);
+      // Mapear etiquetas como arreglo plano
+      const etiquetasPlano = objProducto.etiquetas.map((e) => e.etiqueta);
 
-    // Buscar imagen principal
-    const nombreEsperado =
-      objProducto.nombre
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .replace(/\s+/g, "-")
-        .replace(/[^a-zA-Z0-9\-]/g, "") + ".jpg";
+      // Buscar imagen principal
+      const nombreEsperado =
+        objProducto.nombre
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/\s+/g, "-")
+          .replace(/[^a-zA-Z0-9\-]/g, "") + ".jpg";
 
-    const imagenPrincipal =
-      objProducto.imagenes.find((img) => img.ruta === nombreEsperado)?.ruta ??
-      "image-not-found.jpg";
+      const imagenPrincipal =
+        objProducto.imagenes.find((img) => img.ruta === nombreEsperado)?.ruta ??
+        "image-not-found.jpg";
 
-    // Calcular promedio de valoraciones
-    const promedioValoracion =
-      objProducto.resenas.length > 0
-        ? objProducto.resenas.reduce((sum, r) => sum + r.valoracion, 0) /
-          objProducto.resenas.length
-        : null;
+      // Calcular promedio de valoraciones
+      const promedioValoracion =
+        objProducto.resenas.length > 0
+          ? objProducto.resenas.reduce((sum, r) => sum + r.valoracion, 0) /
+            objProducto.resenas.length
+          : null;
 
-    // Calcular precio con descuento (si aplica)
-    let precioFinal = new Decimal(objProducto.precio);
-    let tienePromocion = false;
+      // Calcular precio con descuento (si aplica)
+      let precioFinal = new Decimal(objProducto.precio);
+      let tienePromocion = false;
 
-    if (objProducto.promocion) {
-      const hoy = new Date();
-      const { fechaInicio, fechaFin, tipoDescuento, descuento } =
-        objProducto.promocion;
+      if (objProducto.promocion) {
+        const hoy = new Date();
+        const { fechaInicio, fechaFin, tipoDescuento, descuento } =
+          objProducto.promocion;
 
-      if (hoy >= new Date(fechaInicio) && hoy <= new Date(fechaFin)) {
-        tienePromocion = true;
-        if (tipoDescuento === "PORCENTAJE") {
-          const descuentoDecimal = precioFinal.mul(descuento).div(100);
-          precioFinal = precioFinal.minus(descuentoDecimal);
-        } else {
-          precioFinal = precioFinal.minus(descuento);
-        }
+        if (hoy >= new Date(fechaInicio) && hoy <= new Date(fechaFin)) {
+          tienePromocion = true;
+          if (tipoDescuento === "PORCENTAJE") {
+            const descuentoDecimal = precioFinal.mul(descuento).div(100);
+            precioFinal = precioFinal.minus(descuentoDecimal);
+          } else {
+            precioFinal = precioFinal.minus(descuento);
+          }
 
-        if (precioFinal.lessThan(0)) {
-          precioFinal = new Decimal(0);
+          if (precioFinal.lessThan(0)) {
+            precioFinal = new Decimal(0);
+          }
         }
       }
-    }
 
-    // Enviar respuesta estructurada
-    response.status(200).json({
-      ...objProducto,
-      etiquetas: etiquetasPlano, // ← Versión limpia de etiquetas
-      imagenPrincipal,
-      promedioValoracion,
-      precioFinal: parseFloat(precioFinal.toFixed(2)), // ← Redondeado
-      tienePromocion,
-    });
-  } catch (error) {
-    next(error);
-  }
-};
+      // Enviar respuesta estructurada
+      response.status(200).json({
+        ...objProducto,
+        etiquetas: etiquetasPlano, // ← Versión limpia de etiquetas
+        imagenPrincipal,
+        promedioValoracion,
+        precioFinal: parseFloat(precioFinal.toFixed(2)), // ← Redondeado
+        tienePromocion,
+      });
+    } catch (error) {
+      next(error);
+    }
+  };
 
   search = async (request: Request, response: Response, next: NextFunction) => {
     try {
@@ -237,7 +237,6 @@ getById = async (
     }
   };
 
-  //Actualizar
   //Actualizar un producto
   update = async (request: Request, response: Response, next: NextFunction) => {
     try {
@@ -282,20 +281,30 @@ getById = async (
           descripcion: body.descripcion,
           precio: body.precio,
           imagenPrincipal: body.imagenPrincipal,
-          categorias: {
-            connect: body.categorias, // O connect si querés solo agregar
-          },
         },
       });
+
+      // Primero, elimina relaciones existentes
+      await this.prisma.productoCategoria.deleteMany({
+        where: { productoId: idproducto },
+      });
+
+      // Luego, vuelve a crearlas con los nuevos IDs
+      await this.prisma.productoCategoria.createMany({
+        data: body.categorias.map((cat: any) => ({
+          productoId: idproducto,
+          categoriaId: cat.id,
+        })),
+      });
+
       console.log(updateproducto);
       response.json(updateproducto);
     } catch (error) {
       console.error("🔥 Error en producto.update:", error);
       // ✅ Solo si no se ha respondido aún
-    if (!response.headersSent) {
-      next(AppError.internalServer("Error al actualizar el producto"));
-    }
-
+      if (!response.headersSent) {
+        next(AppError.internalServer("Error en producto.update" + error));
+      }
     }
   };
 }

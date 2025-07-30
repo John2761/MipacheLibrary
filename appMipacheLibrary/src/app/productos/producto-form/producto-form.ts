@@ -9,6 +9,7 @@ import { ProductoModel } from '../../share/models/ProductoModel';
 import { CategoriaService } from '../../share/services/categoria.service';
 import { minWordsValidator } from '../../share/validators/min-words-validator';
 import { getFormValidationErrorMessage } from '../../share/form-validation';
+import { FileUploadService } from '../../share/services/file-upload.service';
 
 @Component({
   selector: 'app-producto-form',
@@ -44,7 +45,8 @@ export class ProductoForm implements OnInit, OnDestroy {
     private pdService: ProductoService,
     private categoriaService: CategoriaService,
     private route: ActivatedRoute,
-    private noti: NotificationService
+    private noti: NotificationService,
+    private uploadService: FileUploadService
   ) {}
 
   ngOnInit(): void {
@@ -79,10 +81,10 @@ export class ProductoForm implements OnInit, OnDestroy {
       descripcion: [null, [Validators.required, minWordsValidator(3)]],
       precio: [
         null,
-        [Validators.required, Validators.pattern(this.number2decimals)],
+        [Validators.required, Validators.pattern(/^\d+([.,]\d{1,2})?$/)],
       ],
       imagenPrincipal: [this.nameImage],
-      categorias: [null, Validators.required],
+      categorias: [[], Validators.required],
     });
   }
 
@@ -148,24 +150,25 @@ export class ProductoForm implements OnInit, OnDestroy {
         'Por favor, revise los campos marcados en rojo.',
         5000
       );
-      console.log('Formulario inválido:', this.productoForm.errors);
+      //console.log('Formulario inválido:', this.productoForm.errors);
+      console.log('Errores del formulario:');
+      Object.keys(this.productoForm.controls).forEach((key) => {
+        const controlErrors = this.productoForm.get(key)?.errors;
+        if (controlErrors) {
+          console.log(`${key}:`, controlErrors);
+        }
+      });
+
       return;
     }
 
     const formValue = this.productoForm.value;
     console.log(formValue);
 
-    /*   // Transforma los valores del formulario para que coincidan con la estructura en el API
-    const payloadcategorias = formValue.categorias
-      ? formValue.categorias.map((id: number) => ({ id }))
-      : [];
-    const payloadPlataformas = formValue.plataformas
-      ? formValue.plataformas.map((p: PlataformaproductoModel) => ({
-          anno_lanzamiento: p.anno_lanzamiento,
-          plataformaId: Number(p.plataformaId),
-        }))
-      : [];
-
+    // Transforma los valores del formulario para que coincidan con la estructura en el API
+    const payloadcategorias = (formValue.categorias || [])
+      .filter((cat: any) => cat?.id && !isNaN(Number(cat.id)))
+      .map((cat: any) => ({ id: Number(cat.id) }));
     // Verificar que precio es número
     const payloadPrecio =
       typeof formValue.precio === 'string'
@@ -184,8 +187,7 @@ export class ProductoForm implements OnInit, OnDestroy {
           this.productoForm.patchValue({
             categorias: payloadcategorias,
             precio: payloadPrecio,
-            imagen: data.fileName,
-            plataformas: payloadPlataformas,
+            imagenPrincipal: data.fileName,
           });
           console.log(this.productoForm.value);
           //Paso 2: Guardar/actualizar el producto en el API
@@ -197,23 +199,14 @@ export class ProductoForm implements OnInit, OnDestroy {
       this.productoForm.patchValue({
         categorias: payloadcategorias,
         precio: payloadPrecio,
-        imagen: this.previousImage,
-        plataformas: payloadPlataformas,
+        imagenPrincipal: this.previousImage,
       });
       //Paso 2: Guardar/actualizar el producto en el API
       this.guardarproducto();
-    } */
+    }
   }
+
   guardarproducto() {
-    const formValue = this.productoForm.value;
-
-    const payload = {
-      ...formValue,
-      categorias: formValue.categorias.map((id: number) => ({ id })), // genera objetos válidos
-      precio: +formValue.precio,
-      imagenPrincipal: this.nameImage,
-    };
-
     if (this.isCreate) {
       //Accion API create enviando toda la informacion del formulario
       this.pdService
@@ -228,29 +221,17 @@ export class ProductoForm implements OnInit, OnDestroy {
           );
         });
     } else {
-      console.log('Payload a enviar:', payload);
       //Accion API actualizar enviando toda la informacion del formulario
       this.pdService
-        .update(payload)
+        .update(this.productoForm.value)
         .pipe(takeUntil(this.destroy$))
-        .subscribe({
-          next: (data: any) => {
-            console.log('✅ Datos enviados: ', data);
-            this.noti.success(
-              'Actualizar producto',
-              `Producto actualizado: ${data.nombre}`,
-              5000,
-              '/producto-admin'
-            );
-          },
-          error: (err) => {
-            console.error('❌ Error al actualizar:', err);
-            this.noti.error(
-              'Error',
-              'Ocurrió un error al actualizar el producto',
-              5000
-            );
-          },
+        .subscribe((data: any) => {
+          this.noti.success(
+            'Actualizar producto',
+            `Producto actualizado: ${data.nombre}`,
+            5000,
+            '/producto-admin'
+          );
         });
     }
   }
@@ -261,13 +242,11 @@ export class ProductoForm implements OnInit, OnDestroy {
     // Pasamos el formulario principal y la ruta del control
     return getFormValidationErrorMessage(this.productoForm, controlPath);
   }
-
   onReset(): void {
     this.productoForm.reset();
     this.preview = '';
     this.currentFile = undefined;
     this.nameImage = 'image-not-found.jpg';
-    //Reset plataformas
   }
 
   onBack(): void {
