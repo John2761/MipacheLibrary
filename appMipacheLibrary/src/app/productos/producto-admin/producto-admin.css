@@ -26,3 +26,15 @@
 .content-row button{
   margin: 0.15em;
 }
+
+mat-mdc-paginator{
+  color: #6f7a53;
+  text-align: center;
+}
+
+mat-paginator{
+  background-color: #6f7a53;
+  font-size: 20px;
+  text-align: center;
+  letter-spacing: 3px;
+}

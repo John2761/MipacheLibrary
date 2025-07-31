@@ -7,11 +7,11 @@ import { ProductoForm } from './producto-form/producto-form';
 
 const routes: Routes = [
     //productos
-    { path:'producto',component: ProductoIndex},
-    { path:'producto/:id',component: ProductoDetail},
     { path:'producto-admin', component: ProductoAdmin },
     { path:'producto/create', component: ProductoForm },
     { path:'producto/update/:id', component: ProductoForm },
+    { path:'producto/:id',component: ProductoDetail},
+    { path:'producto',component: ProductoIndex},
 ];
 
 @NgModule({

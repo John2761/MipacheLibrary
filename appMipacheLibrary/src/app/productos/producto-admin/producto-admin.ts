@@ -60,15 +60,15 @@ export class ProductoAdmin {
     };
     const dialogRef = this.dialog.open(ProductoDiag, dialogConfig);
   }
+  crearProducto() {
+    this.router.navigate(['/producto/create']);
+  }
+
   actualizarProducto(id: number) {
-    this.router.navigate(['/producto/update', id], {
+    this.router.navigate(['../producto/update', id], {
       relativeTo: this.route,
     });
   }
 
-  crearProducto() {
-    this.router.navigate(['/producto/create'], {
-      relativeTo: this.route,
-    });
-  }
+  
 }

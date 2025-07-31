@@ -13,6 +13,7 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { HttpErrorInterceptorService } from './share/http-error-interceptor.service';
 import { ProductosModule } from './productos/productos-module';
 import { PromocionModule } from './promocion/promocion-module';
+import { ResenaModule } from './resena/resena-module';
 
 @NgModule({
   declarations: [App],
@@ -26,6 +27,7 @@ import { PromocionModule } from './promocion/promocion-module';
     PedidoModule,
     ProductosModule,
     PromocionModule,
+    ResenaModule,
     //Siempre de ultimo
     AppRoutingModule,
   ],
