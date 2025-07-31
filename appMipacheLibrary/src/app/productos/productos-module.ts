@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { ProductosRoutingModule } from './productos-routing-module';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatInputModule } from '@angular/material/input';
@@ -34,6 +33,7 @@ import { ProductoForm } from './producto-form/producto-form';
     ProductoDiag,
     ProductoForm
   ],
+  
   imports: [
     MatCardModule,
     MatIconModule,

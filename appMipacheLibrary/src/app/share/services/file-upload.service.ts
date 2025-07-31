@@ -19,7 +19,7 @@ export class FileUploadService {
     } else {
       formData.append('previousFileName', ''); // Envía un string vacío si es null/undefined
     }
-    return this.http.post<any | any[]>(`${this.baseUrl}/file/upload`,  formData);
+    return this.http.post<any | any[]>(`${this.baseUrl}/file/images`,  formData);
   }
 
   getFiles(): Observable<any> {

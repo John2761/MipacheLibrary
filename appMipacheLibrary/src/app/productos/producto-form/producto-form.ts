@@ -50,12 +50,14 @@ export class ProductoForm implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    
     //Inicializar formulario
     this.initForm();
     //Obtener lista de categorias
     this.listaCategoria();
     //Verificar si se envio un id por parametro para crear formulario para actualizar
     const idParam = this.route.snapshot.paramMap.get('id');
+
     if (idParam) {
       this.titleForm = 'Actualizar';
       this.isCreate = false;
@@ -67,8 +69,8 @@ export class ProductoForm implements OnInit, OnDestroy {
         .subscribe((data: ProductoModel) => {
           this.patchFormValues(data);
         });
+      }
     }
-  }
   /**
    * Inicializar el formulario reactivo
    */
@@ -94,7 +96,6 @@ export class ProductoForm implements OnInit, OnDestroy {
       .get()
       .pipe(takeUntil(this.destroy$))
       .subscribe((respuesta: CategoriaModel[]) => {
-        console.log('categorias cargadas:', respuesta); // <-- Agregar esto
         this.categoriasList = respuesta;
       });
   }

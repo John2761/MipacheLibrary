@@ -9,6 +9,7 @@ export class PromocionRoutes {
     router.get('/:id',controller.getById) 
     router.post('/', controller.create);
     router.put('/:id', controller.update);
+    
     return router;
   }
 }

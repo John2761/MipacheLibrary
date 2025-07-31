@@ -225,11 +225,14 @@ export class ProductoController {
           descripcion: body.descripcion,
           precio: body.precio,
           imagenPrincipal: body.imagenPrincipal,
-          //Categorias:[{id:valor},{id:valor}]
-          categorias: {
-            connect: body.categorias,
-          },
         },
+      });
+      
+      await this.prisma.productoCategoria.createMany({
+        data: body.categorias.map((cat: any) => ({
+          productoId: nuevoproducto.id,
+          categoriaId: cat.id,
+        })),
       });
       response.status(201).json(nuevoproducto);
     } catch (error) {

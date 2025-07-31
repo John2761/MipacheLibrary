@@ -13,11 +13,12 @@ import { RouterModule } from '@angular/router';
 
 import { ResenaIndex } from './resena-index/resena-index';
 import { ResenaDetail } from './resena-detail/resena-detail';
+import { ResenaRoutingModule } from './resena-routing-module';
 
 @NgModule({
   declarations: [
-    ResenaIndex
-
+    ResenaIndex,
+    ResenaDetail
   ],
   imports: [
     CommonModule,
@@ -28,7 +29,7 @@ import { ResenaDetail } from './resena-detail/resena-detail';
     MatFormFieldModule,
     MatSelectModule,
     FormsModule,
-    ResenaDetail
+    ResenaRoutingModule
   ]
 })
 export class ResenaModule { }

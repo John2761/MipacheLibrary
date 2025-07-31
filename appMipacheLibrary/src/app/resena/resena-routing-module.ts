@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { ResenaIndex } from './resena-index/resena-index';
 import { ResenaDetail } from './resena-detail/resena-detail';
 
-
 const routes: Routes = [
     //reseñas
     { path: 'resena', component: ResenaIndex },

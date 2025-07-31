@@ -1,1 +1,0 @@
-2025-07-27 23:05:43.833 error: 	perez--Se produjo un error interno del servidor Cannot destructure property 'valoracion' of 'req.body' as it is undefined.
