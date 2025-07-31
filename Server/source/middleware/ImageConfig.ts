@@ -33,7 +33,7 @@ const storage: StorageEngine = multer.diskStorage({
     }
 
     // Generar el nombre del nuevo archivo
-    const nombreProductoOriginal = request.body.nombreProducto || "producto";
+    const nombreProductoOriginal = request.body.nombre || "producto";
     const nombreBase = nombreProductoOriginal
       .trim()
       .replace(/\s+/g, "-") // Reemplaza espacios por guiones
