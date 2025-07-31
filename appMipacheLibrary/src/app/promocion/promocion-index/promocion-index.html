@@ -1,6 +1,15 @@
 <div class="promociones-container">
   <h1 class="titulo-promocion">Promociones activas</h1>
 
+    <div class="admin-button-container">
+      <button
+        mat-raised-button
+        color="primary"
+        [routerLink]="['/promocion-admin']"
+      >
+        Mantenimiento
+      </button>
+    </div>
   
   <div class="promociones-horizontal">
     <div class="promo-card" *ngFor="let promo of datos" [ngClass]="getEstadoClase(promo)">

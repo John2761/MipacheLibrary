@@ -1,40 +1,122 @@
-.header-row {
-  font-size: 1em;
-  font-weight: 600;
-  vertical-align: middle;
-  }
-  mat-card-title{
-    font-size: 1.5em;
-    font-weight: 800;
-    line-height: 1.5em;
-  }
-  mat-card-subtitle{
-    margin: 0.75em auto;
-  }
-.btn-primary{
-  background-color: #c89267;
+/* === Tarjeta contenedora === */
+mat-card {
+  background-color: white;
   border-radius: 20px;
-}
-.content-row{
-  line-height: 1.5em;
-  vertical-align: middle;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   padding: 1em;
 }
-.content-row:hover{
-  background-color: rgba(255, 255, 255, 0.2);
-}
-.content-row button{
-  margin: 0.15em;
+
+/* === Encabezado de la tarjeta === */
+mat-card-title {
+  font-size: 1.5em;
+  font-weight: 800;
+  color: #3e2d19;
 }
 
-mat-mdc-paginator{
-  color: #6f7a53;
-  text-align: center;
+mat-card-subtitle {
+  margin: 0.75em auto;
 }
 
-mat-paginator{
+/* === Botón de agregar === */
+.btn-primary {
+  background-color: #c89267;
+  color: white;
+  border-radius: 50%;
+  padding: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #a86c45;
+}
+
+/* === Tabla === */
+.mat-table {
+  width: 100%;
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: #fff8ed;
+}
+
+mat-header-row,
+mat-header-cell {
+  background-color: #c49b72 !important;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+  font-size: 1em;
+  padding: 12px;
+}
+
+mat-row,
+mat-cell {
+  font-size: 0.95em;
+  color: #3e2d19;
+  padding: 12px;
+  border-top: 1px solid #e0c3a4;
+  background-color: #fff8ed;
+}
+
+mat-row:hover {
+  background-color: #f9ebd2;
+}
+
+.header-row {
+  font-weight: 600;
+  vertical-align: middle;
+}
+
+.content-row {
+  vertical-align: middle;
+  transition: background-color 0.2s ease;
+}
+
+.content-row:hover {
+  background-color: #fdf1dc;
+}
+
+/* === Botones dentro de las filas === */
+.content-row button {
+  margin: 0 5px;
+  background-color: #f4a261;
+  color: white;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.content-row button:hover {
+  background-color: #e07b39;
+}
+
+/* === Íconos === */
+mat-icon.mat-18 {
+  font-size: 18px;
+}
+
+/* === Paginador === */
+mat-paginator {
   background-color: #6f7a53;
-  font-size: 20px;
+  color: white;
+  font-size: 16px;
   text-align: center;
-  letter-spacing: 3px;
+  padding: 12px;
+  border-radius: 0 0 10px 10px;
+  margin-top: 10px;
+}
+
+mat-paginator .mat-icon-button {
+  color: white;
+}
+
+mat-paginator .mat-select-value {
+  color: white;
+}
+
+mat-paginator .mat-option-text {
+  color: #3e2d19;
 }
