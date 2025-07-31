@@ -1,0 +1,27 @@
+.contenedor-promociones {
+  padding: 16px;
+}
+
+.cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.estado-vigente {
+  color: green;
+  font-weight: bold;
+}
+.estado-pendiente {
+  color: orange;
+  font-weight: bold;
+}
+.estado-aplicada {
+  color: gray;
+  font-weight: bold;
+}
+
+.tabla-promociones {
+  width: 100%;
+}

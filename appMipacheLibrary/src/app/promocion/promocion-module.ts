@@ -22,7 +22,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PromocionIndex } from './promocion-index/promocion-index';
 import { PromocionDetail } from './promocion-detail/promocion-detail';
 import { PromocionAdmin } from './promocion-admin/promocion-admin';
-
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { PromocionForm } from './promocion-form/promocion-form';
