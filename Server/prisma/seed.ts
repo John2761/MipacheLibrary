@@ -403,13 +403,13 @@ const main = async () => {
         {
           valoracion: 4,
           comentario: "Un libro mágico y envolvente.",
-          productoId: 1,
+          productoId: 2,
           usuarioId: 1,
         },
         {
           valoracion: 2,
           comentario: "Esperaba más de la historia.",
-          productoId: 1,
+          productoId: 2,
           usuarioId: 2,
           moderada: true,
           observacion: "Comentario poco constructivo y ambiguo",

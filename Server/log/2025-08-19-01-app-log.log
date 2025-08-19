@@ -17,3 +17,12 @@ C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\personalizado
      })
 
 Argument `precioTotal` is missing.
+2025-08-19 01:55:35.516 error: 	John--Se produjo un error interno del servidor 
+Invalid `this.prisma.producto.findMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:11:52
+
+   8 //Get All
+   9 get = async (request: Request, response: Response, next: NextFunction) => {
+  10   try {
+→ 11     const productos = await this.prisma.producto.findMany(
+The column `mipachelibrary.Usuario.direccion` does not exist in the current database.
