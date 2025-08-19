@@ -50,8 +50,9 @@
 
         <mat-card-content>
           <h3 class="card-title">{{ item.nombre }}</h3>
-          <p class="card-author">{{ item.autor }}</p>
+          <p class="card-author" *ngIf="item.autor">{{ item.autor }}</p>
           <p class="card-price">₡{{ item.precio | number: '1.0-0' }}</p>
+          <!--<p class="promo-badge" *ngIf="item.precio">¡En promoción!</p> -->
         </mat-card-content>
       </mat-card>
     </section>

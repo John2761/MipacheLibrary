@@ -2,13 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PedidoRoutingModule } from './pedido-routing-module';
+import { PedidoIndex } from './pedido-index/pedido-index';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [PedidoIndex],
+  
   imports: [
     CommonModule,
-    PedidoRoutingModule
+    PedidoRoutingModule,
+    
   ]
 })
 export class PedidoModule { }

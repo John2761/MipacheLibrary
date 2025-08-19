@@ -5,6 +5,7 @@ CREATE TABLE `Usuario` (
     `correo` VARCHAR(191) NOT NULL,
     `role` ENUM('USER', 'ADMIN') NOT NULL DEFAULT 'USER',
     `password` VARCHAR(191) NOT NULL,
+    `direccion` VARCHAR(191) NULL,
     `ultimoLogin` DATETIME(3) NULL DEFAULT CURRENT_TIMESTAMP(3),
 
     UNIQUE INDEX `Usuario_correo_key`(`correo`),
@@ -26,7 +27,7 @@ CREATE TABLE `Producto` (
     `nombre` VARCHAR(191) NOT NULL,
     `descripcion` VARCHAR(500) NOT NULL,
     `precio` DECIMAL(10, 2) NOT NULL,
-    `stock` INTEGER NOT NULL DEFAULT 0,
+    `stock` INTEGER NOT NULL DEFAULT 1,
     `imagenPrincipal` VARCHAR(191) NOT NULL DEFAULT '',
     `autor` VARCHAR(191) NULL,
     `fechaCreacion` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),

@@ -20,7 +20,7 @@
     <!-- Informacion principal -->
     <div class="info-producto">
       <h1>{{ datos.nombre }}</h1>
-      <p class="autor"><strong>Autor:</strong> {{ datos.autor }}</p>
+      <p class="autor" *ngIf="datos.autor"><strong>Autor:</strong> {{ datos.autor }}</p>
       <p class="stock" *ngIf="datos.stock > 0">Stock disponible</p>
 
       <ng-template #precioNormal>
