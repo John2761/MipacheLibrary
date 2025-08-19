@@ -519,8 +519,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.8.2
-   * Query Engine version: 2060c79ba17c6bb9f5823312b6f6b7f4a845738e
+   * Prisma Client JS version: 6.12.0
+   * Query Engine version: 8047c96bbd92db98a2abc7c9323ce77c02c89dbc
    */
   export type PrismaVersion = {
     client: string
@@ -4734,6 +4734,7 @@ export namespace Prisma {
     autor: string | null
     fechaCreacion: Date | null
     fechaActualizacion: Date | null
+    esPersonalizado: boolean | null
     promocionId: number | null
   }
 
@@ -4747,6 +4748,7 @@ export namespace Prisma {
     autor: string | null
     fechaCreacion: Date | null
     fechaActualizacion: Date | null
+    esPersonalizado: boolean | null
     promocionId: number | null
   }
 
@@ -4760,6 +4762,7 @@ export namespace Prisma {
     autor: number
     fechaCreacion: number
     fechaActualizacion: number
+    esPersonalizado: number
     promocionId: number
     _all: number
   }
@@ -4789,6 +4792,7 @@ export namespace Prisma {
     autor?: true
     fechaCreacion?: true
     fechaActualizacion?: true
+    esPersonalizado?: true
     promocionId?: true
   }
 
@@ -4802,6 +4806,7 @@ export namespace Prisma {
     autor?: true
     fechaCreacion?: true
     fechaActualizacion?: true
+    esPersonalizado?: true
     promocionId?: true
   }
 
@@ -4815,6 +4820,7 @@ export namespace Prisma {
     autor?: true
     fechaCreacion?: true
     fechaActualizacion?: true
+    esPersonalizado?: true
     promocionId?: true
     _all?: true
   }
@@ -4915,6 +4921,7 @@ export namespace Prisma {
     autor: string | null
     fechaCreacion: Date
     fechaActualizacion: Date | null
+    esPersonalizado: boolean
     promocionId: number | null
     _count: ProductoCountAggregateOutputType | null
     _avg: ProductoAvgAggregateOutputType | null
@@ -4947,6 +4954,7 @@ export namespace Prisma {
     autor?: boolean
     fechaCreacion?: boolean
     fechaActualizacion?: boolean
+    esPersonalizado?: boolean
     promocionId?: boolean
     imagenes?: boolean | Producto$imagenesArgs<ExtArgs>
     personalizado?: boolean | Producto$personalizadoArgs<ExtArgs>
@@ -4970,10 +4978,11 @@ export namespace Prisma {
     autor?: boolean
     fechaCreacion?: boolean
     fechaActualizacion?: boolean
+    esPersonalizado?: boolean
     promocionId?: boolean
   }
 
-  export type ProductoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nombre" | "descripcion" | "precio" | "stock" | "imagenPrincipal" | "autor" | "fechaCreacion" | "fechaActualizacion" | "promocionId", ExtArgs["result"]["producto"]>
+  export type ProductoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nombre" | "descripcion" | "precio" | "stock" | "imagenPrincipal" | "autor" | "fechaCreacion" | "fechaActualizacion" | "esPersonalizado" | "promocionId", ExtArgs["result"]["producto"]>
   export type ProductoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     imagenes?: boolean | Producto$imagenesArgs<ExtArgs>
     personalizado?: boolean | Producto$personalizadoArgs<ExtArgs>
@@ -5006,6 +5015,7 @@ export namespace Prisma {
       autor: string | null
       fechaCreacion: Date
       fechaActualizacion: Date | null
+      esPersonalizado: boolean
       promocionId: number | null
     }, ExtArgs["result"]["producto"]>
     composites: {}
@@ -5392,6 +5402,7 @@ export namespace Prisma {
     readonly autor: FieldRef<"Producto", 'String'>
     readonly fechaCreacion: FieldRef<"Producto", 'DateTime'>
     readonly fechaActualizacion: FieldRef<"Producto", 'DateTime'>
+    readonly esPersonalizado: FieldRef<"Producto", 'Boolean'>
     readonly promocionId: FieldRef<"Producto", 'Int'>
   }
     
@@ -14836,21 +14847,18 @@ export namespace Prisma {
 
   export type PrecioColorMinAggregateOutputType = {
     id: number | null
-    hexa: string | null
     nombre: string | null
     precio: Decimal | null
   }
 
   export type PrecioColorMaxAggregateOutputType = {
     id: number | null
-    hexa: string | null
     nombre: string | null
     precio: Decimal | null
   }
 
   export type PrecioColorCountAggregateOutputType = {
     id: number
-    hexa: number
     nombre: number
     precio: number
     _all: number
@@ -14869,21 +14877,18 @@ export namespace Prisma {
 
   export type PrecioColorMinAggregateInputType = {
     id?: true
-    hexa?: true
     nombre?: true
     precio?: true
   }
 
   export type PrecioColorMaxAggregateInputType = {
     id?: true
-    hexa?: true
     nombre?: true
     precio?: true
   }
 
   export type PrecioColorCountAggregateInputType = {
     id?: true
-    hexa?: true
     nombre?: true
     precio?: true
     _all?: true
@@ -14977,7 +14982,6 @@ export namespace Prisma {
 
   export type PrecioColorGroupByOutputType = {
     id: number
-    hexa: string
     nombre: string
     precio: Decimal
     _count: PrecioColorCountAggregateOutputType | null
@@ -15003,7 +15007,6 @@ export namespace Prisma {
 
   export type PrecioColorSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    hexa?: boolean
     nombre?: boolean
     precio?: boolean
     personalizado?: boolean | PrecioColor$personalizadoArgs<ExtArgs>
@@ -15014,12 +15017,11 @@ export namespace Prisma {
 
   export type PrecioColorSelectScalar = {
     id?: boolean
-    hexa?: boolean
     nombre?: boolean
     precio?: boolean
   }
 
-  export type PrecioColorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "hexa" | "nombre" | "precio", ExtArgs["result"]["precioColor"]>
+  export type PrecioColorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nombre" | "precio", ExtArgs["result"]["precioColor"]>
   export type PrecioColorInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     personalizado?: boolean | PrecioColor$personalizadoArgs<ExtArgs>
     _count?: boolean | PrecioColorCountOutputTypeDefaultArgs<ExtArgs>
@@ -15032,7 +15034,6 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      hexa: string
       nombre: string
       precio: Prisma.Decimal
     }, ExtArgs["result"]["precioColor"]>
@@ -15406,7 +15407,6 @@ export namespace Prisma {
    */
   interface PrecioColorFieldRefs {
     readonly id: FieldRef<"PrecioColor", 'Int'>
-    readonly hexa: FieldRef<"PrecioColor", 'String'>
     readonly nombre: FieldRef<"PrecioColor", 'String'>
     readonly precio: FieldRef<"PrecioColor", 'Decimal'>
   }
@@ -19866,6 +19866,7 @@ export namespace Prisma {
     autor: 'autor',
     fechaCreacion: 'fechaCreacion',
     fechaActualizacion: 'fechaActualizacion',
+    esPersonalizado: 'esPersonalizado',
     promocionId: 'promocionId'
   };
 
@@ -19963,7 +19964,6 @@ export namespace Prisma {
 
   export const PrecioColorScalarFieldEnum: {
     id: 'id',
-    hexa: 'hexa',
     nombre: 'nombre',
     precio: 'precio'
   };
@@ -20091,7 +20091,6 @@ export namespace Prisma {
 
 
   export const PrecioColorOrderByRelevanceFieldEnum: {
-    hexa: 'hexa',
     nombre: 'nombre'
   };
 
@@ -20162,6 +20161,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
    * Reference to a field of type 'Estado'
    */
   export type EnumEstadoFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Estado'>
@@ -20172,13 +20178,6 @@ export namespace Prisma {
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
-    
-
-
-  /**
-   * Reference to a field of type 'Boolean'
-   */
-  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
@@ -20336,6 +20335,7 @@ export namespace Prisma {
     autor?: StringNullableFilter<"Producto"> | string | null
     fechaCreacion?: DateTimeFilter<"Producto"> | Date | string
     fechaActualizacion?: DateTimeNullableFilter<"Producto"> | Date | string | null
+    esPersonalizado?: BoolFilter<"Producto"> | boolean
     promocionId?: IntNullableFilter<"Producto"> | number | null
     imagenes?: ImagenListRelationFilter
     personalizado?: ProductoPersonalizadoListRelationFilter
@@ -20356,6 +20356,7 @@ export namespace Prisma {
     autor?: SortOrderInput | SortOrder
     fechaCreacion?: SortOrder
     fechaActualizacion?: SortOrderInput | SortOrder
+    esPersonalizado?: SortOrder
     promocionId?: SortOrderInput | SortOrder
     imagenes?: ImagenOrderByRelationAggregateInput
     personalizado?: ProductoPersonalizadoOrderByRelationAggregateInput
@@ -20380,6 +20381,7 @@ export namespace Prisma {
     autor?: StringNullableFilter<"Producto"> | string | null
     fechaCreacion?: DateTimeFilter<"Producto"> | Date | string
     fechaActualizacion?: DateTimeNullableFilter<"Producto"> | Date | string | null
+    esPersonalizado?: BoolFilter<"Producto"> | boolean
     promocionId?: IntNullableFilter<"Producto"> | number | null
     imagenes?: ImagenListRelationFilter
     personalizado?: ProductoPersonalizadoListRelationFilter
@@ -20400,6 +20402,7 @@ export namespace Prisma {
     autor?: SortOrderInput | SortOrder
     fechaCreacion?: SortOrder
     fechaActualizacion?: SortOrderInput | SortOrder
+    esPersonalizado?: SortOrder
     promocionId?: SortOrderInput | SortOrder
     _count?: ProductoCountOrderByAggregateInput
     _avg?: ProductoAvgOrderByAggregateInput
@@ -20421,6 +20424,7 @@ export namespace Prisma {
     autor?: StringNullableWithAggregatesFilter<"Producto"> | string | null
     fechaCreacion?: DateTimeWithAggregatesFilter<"Producto"> | Date | string
     fechaActualizacion?: DateTimeNullableWithAggregatesFilter<"Producto"> | Date | string | null
+    esPersonalizado?: BoolWithAggregatesFilter<"Producto"> | boolean
     promocionId?: IntNullableWithAggregatesFilter<"Producto"> | number | null
   }
 
@@ -20932,7 +20936,6 @@ export namespace Prisma {
     OR?: PrecioColorWhereInput[]
     NOT?: PrecioColorWhereInput | PrecioColorWhereInput[]
     id?: IntFilter<"PrecioColor"> | number
-    hexa?: StringFilter<"PrecioColor"> | string
     nombre?: StringFilter<"PrecioColor"> | string
     precio?: DecimalFilter<"PrecioColor"> | Decimal | DecimalJsLike | number | string
     personalizado?: ProductoPersonalizadoListRelationFilter
@@ -20940,7 +20943,6 @@ export namespace Prisma {
 
   export type PrecioColorOrderByWithRelationInput = {
     id?: SortOrder
-    hexa?: SortOrder
     nombre?: SortOrder
     precio?: SortOrder
     personalizado?: ProductoPersonalizadoOrderByRelationAggregateInput
@@ -20952,7 +20954,6 @@ export namespace Prisma {
     AND?: PrecioColorWhereInput | PrecioColorWhereInput[]
     OR?: PrecioColorWhereInput[]
     NOT?: PrecioColorWhereInput | PrecioColorWhereInput[]
-    hexa?: StringFilter<"PrecioColor"> | string
     nombre?: StringFilter<"PrecioColor"> | string
     precio?: DecimalFilter<"PrecioColor"> | Decimal | DecimalJsLike | number | string
     personalizado?: ProductoPersonalizadoListRelationFilter
@@ -20960,7 +20961,6 @@ export namespace Prisma {
 
   export type PrecioColorOrderByWithAggregationInput = {
     id?: SortOrder
-    hexa?: SortOrder
     nombre?: SortOrder
     precio?: SortOrder
     _count?: PrecioColorCountOrderByAggregateInput
@@ -20975,7 +20975,6 @@ export namespace Prisma {
     OR?: PrecioColorScalarWhereWithAggregatesInput[]
     NOT?: PrecioColorScalarWhereWithAggregatesInput | PrecioColorScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"PrecioColor"> | number
-    hexa?: StringWithAggregatesFilter<"PrecioColor"> | string
     nombre?: StringWithAggregatesFilter<"PrecioColor"> | string
     precio?: DecimalWithAggregatesFilter<"PrecioColor"> | Decimal | DecimalJsLike | number | string
   }
@@ -21367,6 +21366,7 @@ export namespace Prisma {
     autor?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
+    esPersonalizado?: boolean
     imagenes?: ImagenCreateNestedManyWithoutProductosInput
     personalizado?: ProductoPersonalizadoCreateNestedManyWithoutProductoInput
     categorias?: ProductoCategoriaCreateNestedManyWithoutProductoInput
@@ -21386,6 +21386,7 @@ export namespace Prisma {
     autor?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
+    esPersonalizado?: boolean
     promocionId?: number | null
     imagenes?: ImagenUncheckedCreateNestedManyWithoutProductosInput
     personalizado?: ProductoPersonalizadoUncheckedCreateNestedManyWithoutProductoInput
@@ -21404,6 +21405,7 @@ export namespace Prisma {
     autor?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    esPersonalizado?: BoolFieldUpdateOperationsInput | boolean
     imagenes?: ImagenUpdateManyWithoutProductosNestedInput
     personalizado?: ProductoPersonalizadoUpdateManyWithoutProductoNestedInput
     categorias?: ProductoCategoriaUpdateManyWithoutProductoNestedInput
@@ -21423,6 +21425,7 @@ export namespace Prisma {
     autor?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    esPersonalizado?: BoolFieldUpdateOperationsInput | boolean
     promocionId?: NullableIntFieldUpdateOperationsInput | number | null
     imagenes?: ImagenUncheckedUpdateManyWithoutProductosNestedInput
     personalizado?: ProductoPersonalizadoUncheckedUpdateManyWithoutProductoNestedInput
@@ -21442,6 +21445,7 @@ export namespace Prisma {
     autor?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
+    esPersonalizado?: boolean
     promocionId?: number | null
   }
 
@@ -21454,6 +21458,7 @@ export namespace Prisma {
     autor?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    esPersonalizado?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ProductoUncheckedUpdateManyInput = {
@@ -21466,6 +21471,7 @@ export namespace Prisma {
     autor?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    esPersonalizado?: BoolFieldUpdateOperationsInput | boolean
     promocionId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
@@ -21753,7 +21759,7 @@ export namespace Prisma {
     color: PrecioColorCreateNestedOneWithoutPersonalizadoInput
     material: PrecioMaterialCreateNestedOneWithoutPersonalizadoInput
     tamanno: PrecioTamannoCreateNestedOneWithoutPersonalizadoInput
-    producto: ProductoCreateNestedOneWithoutPersonalizadoInput
+    producto?: ProductoCreateNestedOneWithoutPersonalizadoInput
     pedidoProducto?: PedidoProductoCreateNestedOneWithoutPersonalizadoInput
   }
 
@@ -21764,7 +21770,7 @@ export namespace Prisma {
     colorId: number
     materialId: number
     tamannoId: number
-    productoId: number
+    productoId?: number
     pedidoId?: number | null
   }
 
@@ -21796,7 +21802,7 @@ export namespace Prisma {
     colorId: number
     materialId: number
     tamannoId: number
-    productoId: number
+    productoId?: number
     pedidoId?: number | null
   }
 
@@ -21903,7 +21909,6 @@ export namespace Prisma {
   }
 
   export type PrecioColorCreateInput = {
-    hexa: string
     nombre: string
     precio: Decimal | DecimalJsLike | number | string
     personalizado?: ProductoPersonalizadoCreateNestedManyWithoutColorInput
@@ -21911,14 +21916,12 @@ export namespace Prisma {
 
   export type PrecioColorUncheckedCreateInput = {
     id?: number
-    hexa: string
     nombre: string
     precio: Decimal | DecimalJsLike | number | string
     personalizado?: ProductoPersonalizadoUncheckedCreateNestedManyWithoutColorInput
   }
 
   export type PrecioColorUpdateInput = {
-    hexa?: StringFieldUpdateOperationsInput | string
     nombre?: StringFieldUpdateOperationsInput | string
     precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     personalizado?: ProductoPersonalizadoUpdateManyWithoutColorNestedInput
@@ -21926,7 +21929,6 @@ export namespace Prisma {
 
   export type PrecioColorUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    hexa?: StringFieldUpdateOperationsInput | string
     nombre?: StringFieldUpdateOperationsInput | string
     precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     personalizado?: ProductoPersonalizadoUncheckedUpdateManyWithoutColorNestedInput
@@ -21934,20 +21936,17 @@ export namespace Prisma {
 
   export type PrecioColorCreateManyInput = {
     id?: number
-    hexa: string
     nombre: string
     precio: Decimal | DecimalJsLike | number | string
   }
 
   export type PrecioColorUpdateManyMutationInput = {
-    hexa?: StringFieldUpdateOperationsInput | string
     nombre?: StringFieldUpdateOperationsInput | string
     precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
   }
 
   export type PrecioColorUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    hexa?: StringFieldUpdateOperationsInput | string
     nombre?: StringFieldUpdateOperationsInput | string
     precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
   }
@@ -22487,6 +22486,11 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type ImagenListRelationFilter = {
     every?: ImagenWhereInput
     some?: ImagenWhereInput
@@ -22558,6 +22562,7 @@ export namespace Prisma {
     autor?: SortOrder
     fechaCreacion?: SortOrder
     fechaActualizacion?: SortOrder
+    esPersonalizado?: SortOrder
     promocionId?: SortOrder
   }
 
@@ -22578,6 +22583,7 @@ export namespace Prisma {
     autor?: SortOrder
     fechaCreacion?: SortOrder
     fechaActualizacion?: SortOrder
+    esPersonalizado?: SortOrder
     promocionId?: SortOrder
   }
 
@@ -22591,6 +22597,7 @@ export namespace Prisma {
     autor?: SortOrder
     fechaCreacion?: SortOrder
     fechaActualizacion?: SortOrder
+    esPersonalizado?: SortOrder
     promocionId?: SortOrder
   }
 
@@ -22647,6 +22654,14 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type CategoriaOrderByRelevanceInput = {
@@ -22932,11 +22947,6 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
-  export type BoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
   export type PrecioColorScalarRelationFilter = {
     is?: PrecioColorWhereInput
     isNot?: PrecioColorWhereInput
@@ -23008,14 +23018,6 @@ export namespace Prisma {
     tamannoId?: SortOrder
     productoId?: SortOrder
     pedidoId?: SortOrder
-  }
-
-  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type PrecioMaterialOrderByRelevanceInput = {
@@ -23094,7 +23096,6 @@ export namespace Prisma {
 
   export type PrecioColorCountOrderByAggregateInput = {
     id?: SortOrder
-    hexa?: SortOrder
     nombre?: SortOrder
     precio?: SortOrder
   }
@@ -23106,14 +23107,12 @@ export namespace Prisma {
 
   export type PrecioColorMaxOrderByAggregateInput = {
     id?: SortOrder
-    hexa?: SortOrder
     nombre?: SortOrder
     precio?: SortOrder
   }
 
   export type PrecioColorMinOrderByAggregateInput = {
     id?: SortOrder
-    hexa?: SortOrder
     nombre?: SortOrder
     precio?: SortOrder
   }
@@ -23660,6 +23659,10 @@ export namespace Prisma {
     set?: Date | string
   }
 
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
   export type ImagenUpdateManyWithoutProductosNestedInput = {
     create?: XOR<ImagenCreateWithoutProductosInput, ImagenUncheckedCreateWithoutProductosInput> | ImagenCreateWithoutProductosInput[] | ImagenUncheckedCreateWithoutProductosInput[]
     connectOrCreate?: ImagenCreateOrConnectWithoutProductosInput | ImagenCreateOrConnectWithoutProductosInput[]
@@ -24202,10 +24205,6 @@ export namespace Prisma {
     create?: XOR<PedidoProductoCreateWithoutPersonalizadoInput, PedidoProductoUncheckedCreateWithoutPersonalizadoInput>
     connectOrCreate?: PedidoProductoCreateOrConnectWithoutPersonalizadoInput
     connect?: PedidoProductoWhereUniqueInput
-  }
-
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
   }
 
   export type PrecioColorUpdateOneRequiredWithoutPersonalizadoNestedInput = {
@@ -24772,6 +24771,11 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     in?: Decimal[] | DecimalJsLike[] | number[] | string[]
@@ -24820,6 +24824,14 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type NestedEnumEstadoFilter<$PrismaModel = never> = {
     equals?: $Enums.Estado | EnumEstadoFieldRefInput<$PrismaModel>
     in?: $Enums.Estado[]
@@ -24851,19 +24863,6 @@ export namespace Prisma {
     _sum?: NestedFloatFilter<$PrismaModel>
     _min?: NestedFloatFilter<$PrismaModel>
     _max?: NestedFloatFilter<$PrismaModel>
-  }
-
-  export type NestedBoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
-  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type NestedEnumTipoDescuentoFilter<$PrismaModel = never> = {
@@ -25088,6 +25087,7 @@ export namespace Prisma {
     autor?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
+    esPersonalizado?: boolean
     personalizado?: ProductoPersonalizadoCreateNestedManyWithoutProductoInput
     categorias?: ProductoCategoriaCreateNestedManyWithoutProductoInput
     etiquetas?: ProductoEtiquetaCreateNestedManyWithoutProductoInput
@@ -25106,6 +25106,7 @@ export namespace Prisma {
     autor?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
+    esPersonalizado?: boolean
     promocionId?: number | null
     personalizado?: ProductoPersonalizadoUncheckedCreateNestedManyWithoutProductoInput
     categorias?: ProductoCategoriaUncheckedCreateNestedManyWithoutProductoInput
@@ -25139,6 +25140,7 @@ export namespace Prisma {
     autor?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    esPersonalizado?: BoolFieldUpdateOperationsInput | boolean
     personalizado?: ProductoPersonalizadoUpdateManyWithoutProductoNestedInput
     categorias?: ProductoCategoriaUpdateManyWithoutProductoNestedInput
     etiquetas?: ProductoEtiquetaUpdateManyWithoutProductoNestedInput
@@ -25157,6 +25159,7 @@ export namespace Prisma {
     autor?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    esPersonalizado?: BoolFieldUpdateOperationsInput | boolean
     promocionId?: NullableIntFieldUpdateOperationsInput | number | null
     personalizado?: ProductoPersonalizadoUncheckedUpdateManyWithoutProductoNestedInput
     categorias?: ProductoCategoriaUncheckedUpdateManyWithoutProductoNestedInput
@@ -25628,6 +25631,7 @@ export namespace Prisma {
     autor?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
+    esPersonalizado?: boolean
     imagenes?: ImagenCreateNestedManyWithoutProductosInput
     personalizado?: ProductoPersonalizadoCreateNestedManyWithoutProductoInput
     etiquetas?: ProductoEtiquetaCreateNestedManyWithoutProductoInput
@@ -25646,6 +25650,7 @@ export namespace Prisma {
     autor?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
+    esPersonalizado?: boolean
     promocionId?: number | null
     imagenes?: ImagenUncheckedCreateNestedManyWithoutProductosInput
     personalizado?: ProductoPersonalizadoUncheckedCreateNestedManyWithoutProductoInput
@@ -25695,6 +25700,7 @@ export namespace Prisma {
     autor?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    esPersonalizado?: BoolFieldUpdateOperationsInput | boolean
     imagenes?: ImagenUpdateManyWithoutProductosNestedInput
     personalizado?: ProductoPersonalizadoUpdateManyWithoutProductoNestedInput
     etiquetas?: ProductoEtiquetaUpdateManyWithoutProductoNestedInput
@@ -25713,6 +25719,7 @@ export namespace Prisma {
     autor?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    esPersonalizado?: BoolFieldUpdateOperationsInput | boolean
     promocionId?: NullableIntFieldUpdateOperationsInput | number | null
     imagenes?: ImagenUncheckedUpdateManyWithoutProductosNestedInput
     personalizado?: ProductoPersonalizadoUncheckedUpdateManyWithoutProductoNestedInput
@@ -25786,6 +25793,7 @@ export namespace Prisma {
     autor?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
+    esPersonalizado?: boolean
     imagenes?: ImagenCreateNestedManyWithoutProductosInput
     personalizado?: ProductoPersonalizadoCreateNestedManyWithoutProductoInput
     categorias?: ProductoCategoriaCreateNestedManyWithoutProductoInput
@@ -25804,6 +25812,7 @@ export namespace Prisma {
     autor?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
+    esPersonalizado?: boolean
     promocionId?: number | null
     imagenes?: ImagenUncheckedCreateNestedManyWithoutProductosInput
     personalizado?: ProductoPersonalizadoUncheckedCreateNestedManyWithoutProductoInput
@@ -25851,6 +25860,7 @@ export namespace Prisma {
     autor?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    esPersonalizado?: BoolFieldUpdateOperationsInput | boolean
     imagenes?: ImagenUpdateManyWithoutProductosNestedInput
     personalizado?: ProductoPersonalizadoUpdateManyWithoutProductoNestedInput
     categorias?: ProductoCategoriaUpdateManyWithoutProductoNestedInput
@@ -25869,6 +25879,7 @@ export namespace Prisma {
     autor?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    esPersonalizado?: BoolFieldUpdateOperationsInput | boolean
     promocionId?: NullableIntFieldUpdateOperationsInput | number | null
     imagenes?: ImagenUncheckedUpdateManyWithoutProductosNestedInput
     personalizado?: ProductoPersonalizadoUncheckedUpdateManyWithoutProductoNestedInput
@@ -26071,6 +26082,7 @@ export namespace Prisma {
     autor?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
+    esPersonalizado?: boolean
     imagenes?: ImagenCreateNestedManyWithoutProductosInput
     personalizado?: ProductoPersonalizadoCreateNestedManyWithoutProductoInput
     categorias?: ProductoCategoriaCreateNestedManyWithoutProductoInput
@@ -26089,6 +26101,7 @@ export namespace Prisma {
     autor?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
+    esPersonalizado?: boolean
     promocionId?: number | null
     imagenes?: ImagenUncheckedCreateNestedManyWithoutProductosInput
     personalizado?: ProductoPersonalizadoUncheckedCreateNestedManyWithoutProductoInput
@@ -26108,7 +26121,7 @@ export namespace Prisma {
     color: PrecioColorCreateNestedOneWithoutPersonalizadoInput
     material: PrecioMaterialCreateNestedOneWithoutPersonalizadoInput
     tamanno: PrecioTamannoCreateNestedOneWithoutPersonalizadoInput
-    producto: ProductoCreateNestedOneWithoutPersonalizadoInput
+    producto?: ProductoCreateNestedOneWithoutPersonalizadoInput
   }
 
   export type ProductoPersonalizadoUncheckedCreateWithoutPedidoProductoInput = {
@@ -26176,6 +26189,7 @@ export namespace Prisma {
     autor?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    esPersonalizado?: BoolFieldUpdateOperationsInput | boolean
     imagenes?: ImagenUpdateManyWithoutProductosNestedInput
     personalizado?: ProductoPersonalizadoUpdateManyWithoutProductoNestedInput
     categorias?: ProductoCategoriaUpdateManyWithoutProductoNestedInput
@@ -26194,6 +26208,7 @@ export namespace Prisma {
     autor?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    esPersonalizado?: BoolFieldUpdateOperationsInput | boolean
     promocionId?: NullableIntFieldUpdateOperationsInput | number | null
     imagenes?: ImagenUncheckedUpdateManyWithoutProductosNestedInput
     personalizado?: ProductoPersonalizadoUncheckedUpdateManyWithoutProductoNestedInput
@@ -26219,14 +26234,12 @@ export namespace Prisma {
   }
 
   export type PrecioColorCreateWithoutPersonalizadoInput = {
-    hexa: string
     nombre: string
     precio: Decimal | DecimalJsLike | number | string
   }
 
   export type PrecioColorUncheckedCreateWithoutPersonalizadoInput = {
     id?: number
-    hexa: string
     nombre: string
     precio: Decimal | DecimalJsLike | number | string
   }
@@ -26277,6 +26290,7 @@ export namespace Prisma {
     autor?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
+    esPersonalizado?: boolean
     imagenes?: ImagenCreateNestedManyWithoutProductosInput
     categorias?: ProductoCategoriaCreateNestedManyWithoutProductoInput
     etiquetas?: ProductoEtiquetaCreateNestedManyWithoutProductoInput
@@ -26295,6 +26309,7 @@ export namespace Prisma {
     autor?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
+    esPersonalizado?: boolean
     promocionId?: number | null
     imagenes?: ImagenUncheckedCreateNestedManyWithoutProductosInput
     categorias?: ProductoCategoriaUncheckedCreateNestedManyWithoutProductoInput
@@ -26347,14 +26362,12 @@ export namespace Prisma {
   }
 
   export type PrecioColorUpdateWithoutPersonalizadoInput = {
-    hexa?: StringFieldUpdateOperationsInput | string
     nombre?: StringFieldUpdateOperationsInput | string
     precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
   }
 
   export type PrecioColorUncheckedUpdateWithoutPersonalizadoInput = {
     id?: IntFieldUpdateOperationsInput | number
-    hexa?: StringFieldUpdateOperationsInput | string
     nombre?: StringFieldUpdateOperationsInput | string
     precio?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
   }
@@ -26423,6 +26436,7 @@ export namespace Prisma {
     autor?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    esPersonalizado?: BoolFieldUpdateOperationsInput | boolean
     imagenes?: ImagenUpdateManyWithoutProductosNestedInput
     categorias?: ProductoCategoriaUpdateManyWithoutProductoNestedInput
     etiquetas?: ProductoEtiquetaUpdateManyWithoutProductoNestedInput
@@ -26441,6 +26455,7 @@ export namespace Prisma {
     autor?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    esPersonalizado?: BoolFieldUpdateOperationsInput | boolean
     promocionId?: NullableIntFieldUpdateOperationsInput | number | null
     imagenes?: ImagenUncheckedUpdateManyWithoutProductosNestedInput
     categorias?: ProductoCategoriaUncheckedUpdateManyWithoutProductoNestedInput
@@ -26487,7 +26502,7 @@ export namespace Prisma {
     precioTotal: Decimal | DecimalJsLike | number | string
     color: PrecioColorCreateNestedOneWithoutPersonalizadoInput
     tamanno: PrecioTamannoCreateNestedOneWithoutPersonalizadoInput
-    producto: ProductoCreateNestedOneWithoutPersonalizadoInput
+    producto?: ProductoCreateNestedOneWithoutPersonalizadoInput
     pedidoProducto?: PedidoProductoCreateNestedOneWithoutPersonalizadoInput
   }
 
@@ -26497,7 +26512,7 @@ export namespace Prisma {
     precioTotal: Decimal | DecimalJsLike | number | string
     colorId: number
     tamannoId: number
-    productoId: number
+    productoId?: number
     pedidoId?: number | null
   }
 
@@ -26532,7 +26547,7 @@ export namespace Prisma {
     precioTotal: Decimal | DecimalJsLike | number | string
     color: PrecioColorCreateNestedOneWithoutPersonalizadoInput
     material: PrecioMaterialCreateNestedOneWithoutPersonalizadoInput
-    producto: ProductoCreateNestedOneWithoutPersonalizadoInput
+    producto?: ProductoCreateNestedOneWithoutPersonalizadoInput
     pedidoProducto?: PedidoProductoCreateNestedOneWithoutPersonalizadoInput
   }
 
@@ -26542,7 +26557,7 @@ export namespace Prisma {
     precioTotal: Decimal | DecimalJsLike | number | string
     colorId: number
     materialId: number
-    productoId: number
+    productoId?: number
     pedidoId?: number | null
   }
 
@@ -26577,7 +26592,7 @@ export namespace Prisma {
     precioTotal: Decimal | DecimalJsLike | number | string
     material: PrecioMaterialCreateNestedOneWithoutPersonalizadoInput
     tamanno: PrecioTamannoCreateNestedOneWithoutPersonalizadoInput
-    producto: ProductoCreateNestedOneWithoutPersonalizadoInput
+    producto?: ProductoCreateNestedOneWithoutPersonalizadoInput
     pedidoProducto?: PedidoProductoCreateNestedOneWithoutPersonalizadoInput
   }
 
@@ -26587,7 +26602,7 @@ export namespace Prisma {
     precioTotal: Decimal | DecimalJsLike | number | string
     materialId: number
     tamannoId: number
-    productoId: number
+    productoId?: number
     pedidoId?: number | null
   }
 
@@ -26652,6 +26667,7 @@ export namespace Prisma {
     autor?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
+    esPersonalizado?: boolean
     imagenes?: ImagenCreateNestedManyWithoutProductosInput
     personalizado?: ProductoPersonalizadoCreateNestedManyWithoutProductoInput
     categorias?: ProductoCategoriaCreateNestedManyWithoutProductoInput
@@ -26670,6 +26686,7 @@ export namespace Prisma {
     autor?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
+    esPersonalizado?: boolean
     promocionId?: number | null
     imagenes?: ImagenUncheckedCreateNestedManyWithoutProductosInput
     personalizado?: ProductoPersonalizadoUncheckedCreateNestedManyWithoutProductoInput
@@ -26756,6 +26773,7 @@ export namespace Prisma {
     autor?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    esPersonalizado?: BoolFieldUpdateOperationsInput | boolean
     imagenes?: ImagenUpdateManyWithoutProductosNestedInput
     personalizado?: ProductoPersonalizadoUpdateManyWithoutProductoNestedInput
     categorias?: ProductoCategoriaUpdateManyWithoutProductoNestedInput
@@ -26774,6 +26792,7 @@ export namespace Prisma {
     autor?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    esPersonalizado?: BoolFieldUpdateOperationsInput | boolean
     promocionId?: NullableIntFieldUpdateOperationsInput | number | null
     imagenes?: ImagenUncheckedUpdateManyWithoutProductosNestedInput
     personalizado?: ProductoPersonalizadoUncheckedUpdateManyWithoutProductoNestedInput
@@ -26875,6 +26894,7 @@ export namespace Prisma {
     autor?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
+    esPersonalizado?: boolean
     imagenes?: ImagenCreateNestedManyWithoutProductosInput
     personalizado?: ProductoPersonalizadoCreateNestedManyWithoutProductoInput
     categorias?: ProductoCategoriaCreateNestedManyWithoutProductoInput
@@ -26893,6 +26913,7 @@ export namespace Prisma {
     autor?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
+    esPersonalizado?: boolean
     imagenes?: ImagenUncheckedCreateNestedManyWithoutProductosInput
     personalizado?: ProductoPersonalizadoUncheckedCreateNestedManyWithoutProductoInput
     categorias?: ProductoCategoriaUncheckedCreateNestedManyWithoutProductoInput
@@ -26961,6 +26982,7 @@ export namespace Prisma {
     autor?: StringNullableFilter<"Producto"> | string | null
     fechaCreacion?: DateTimeFilter<"Producto"> | Date | string
     fechaActualizacion?: DateTimeNullableFilter<"Producto"> | Date | string | null
+    esPersonalizado?: BoolFilter<"Producto"> | boolean
     promocionId?: IntNullableFilter<"Producto"> | number | null
   }
 
@@ -27504,7 +27526,7 @@ export namespace Prisma {
     precioTotal: Decimal | DecimalJsLike | number | string
     colorId: number
     tamannoId: number
-    productoId: number
+    productoId?: number
     pedidoId?: number | null
   }
 
@@ -27543,7 +27565,7 @@ export namespace Prisma {
     precioTotal: Decimal | DecimalJsLike | number | string
     colorId: number
     materialId: number
-    productoId: number
+    productoId?: number
     pedidoId?: number | null
   }
 
@@ -27582,7 +27604,7 @@ export namespace Prisma {
     precioTotal: Decimal | DecimalJsLike | number | string
     materialId: number
     tamannoId: number
-    productoId: number
+    productoId?: number
     pedidoId?: number | null
   }
 
@@ -27648,6 +27670,7 @@ export namespace Prisma {
     autor?: string | null
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
+    esPersonalizado?: boolean
   }
 
   export type CategoriaCreateManyPromocionInput = {
@@ -27664,6 +27687,7 @@ export namespace Prisma {
     autor?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    esPersonalizado?: BoolFieldUpdateOperationsInput | boolean
     imagenes?: ImagenUpdateManyWithoutProductosNestedInput
     personalizado?: ProductoPersonalizadoUpdateManyWithoutProductoNestedInput
     categorias?: ProductoCategoriaUpdateManyWithoutProductoNestedInput
@@ -27682,6 +27706,7 @@ export namespace Prisma {
     autor?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    esPersonalizado?: BoolFieldUpdateOperationsInput | boolean
     imagenes?: ImagenUncheckedUpdateManyWithoutProductosNestedInput
     personalizado?: ProductoPersonalizadoUncheckedUpdateManyWithoutProductoNestedInput
     categorias?: ProductoCategoriaUncheckedUpdateManyWithoutProductoNestedInput
@@ -27700,6 +27725,7 @@ export namespace Prisma {
     autor?: NullableStringFieldUpdateOperationsInput | string | null
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    esPersonalizado?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type CategoriaUpdateWithoutPromocionInput = {

@@ -35,11 +35,12 @@ model Producto {
   nombre             String
   descripcion        String                  @db.VarChar(500)
   precio             Decimal                 @db.Decimal(10, 2)
-  stock              Int                     @default(0) //En inventario
+  stock              Int                     @default(1) //En inventario
   imagenPrincipal    String                  @default("")
   autor              String?
   fechaCreacion      DateTime                @default(now())
   fechaActualizacion DateTime?               @default(now()) @updatedAt
+  esPersonalizado    Boolean                 @default(false)
   //Relaciones
   imagenes           Imagen[]
   personalizado      ProductoPersonalizado[]
@@ -125,7 +126,7 @@ model ProductoPersonalizado {
   precioTotal Decimal @db.Decimal(10, 2)
 
   // Relaciones
-  colorId    Int //llamar al HEX del color
+  colorId    Int
   color      PrecioColor    @relation(fields: [colorId], references: [id])
   materialId Int
   material   PrecioMaterial @relation(fields: [materialId], references: [id])
@@ -133,7 +134,7 @@ model ProductoPersonalizado {
   tamanno    PrecioTamanno  @relation(fields: [tamannoId], references: [id])
 
   //Relacion para integrar en la tabla intermmedia de PedidoProducto
-  productoId     Int
+  productoId     Int             @default(1)
   producto       Producto        @relation(fields: [productoId], references: [id])
   pedidoId       Int?
   pedidoProducto PedidoProducto? @relation(fields: [pedidoId, productoId], references: [pedidoId, productoId])
@@ -155,7 +156,6 @@ model PrecioTamanno {
 
 model PrecioColor {
   id            Int                     @id @default(autoincrement())
-  hexa          String
   nombre        String //Para la UI
   precio        Decimal                 @db.Decimal(10, 2)
   personalizado ProductoPersonalizado[]

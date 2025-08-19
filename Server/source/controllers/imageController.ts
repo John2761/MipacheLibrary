@@ -13,7 +13,6 @@ export class ImageController {
     next: NextFunction
   ) => {
     try {
-           
       //Subir la imagen
       await uploadFile(request, response);
       if (!request.file) {
@@ -45,7 +44,6 @@ export class ImageController {
     next: NextFunction
   ): void => {
     try {
-     
       fs.readdir(directoryPath, (err, files) => {
         if (err) {
           response.status(500).send({

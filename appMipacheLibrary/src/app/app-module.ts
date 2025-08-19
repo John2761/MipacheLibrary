@@ -14,6 +14,7 @@ import { HttpErrorInterceptorService } from './share/http-error-interceptor.serv
 import { ProductosModule } from './productos/productos-module';
 import { PromocionModule } from './promocion/promocion-module';
 import { ResenaModule } from './resena/resena-module';
+import { PersonalizadosModule } from './personalizado/personalizado-module';
 
 @NgModule({
   declarations: [App],
@@ -26,6 +27,7 @@ import { ResenaModule } from './resena/resena-module';
     UsuarioModule,
     PedidoModule,
     ProductosModule,
+    PersonalizadosModule,
     PromocionModule,
     ResenaModule,
     //Siempre de ultimo

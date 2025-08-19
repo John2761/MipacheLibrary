@@ -1,0 +1,71 @@
+<form class="perso-wrapper" [formGroup]="personalizadoForm" (ngSubmit)="submitpersonalizado()">
+  <mat-card class="perso-card">
+    <div class="perso-grid">
+      
+      <!-- IMAGEN -->
+      <div class="perso-left">
+        <div class="img-frame">
+          <img
+            [src]="'/images/Bolsa-personalizada.jpg'"
+            alt="Vista previa del producto personalizado"
+            class="img-preview"
+          />
+        </div>
+      </div>
+
+      <!-- FORM CONTROLS -->
+      <div class="perso-right">
+        <!-- COLOR -->
+        <div class="section">
+          <h3>Color</h3>
+          <mat-form-field appearance="outline" class="full">
+            <mat-select formControlName="colorId" placeholder="Selecciona un color">
+              <mat-option *ngFor="let c of coloresList" [value]="c.id">
+                <span class="color-box" [ngStyle]="{'background': c.nombre}"></span>
+                {{ c.nombre }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="errorHandling('colorId')">{{ errorHandling('colorId') }}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- TAMAÑO -->
+        <div class="section">
+          <h3>Tamaño</h3>
+          <mat-form-field appearance="outline" class="full">
+            <mat-select formControlName="tamannoId" placeholder="Selecciona un tamaño">
+              <mat-option *ngFor="let t of tamannosList" [value]="t.id">
+                <span class="color-box" [ngStyle]="{'background': t.nombre}"></span>
+                {{ t.nombre }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="errorHandling('tamannoId')">{{ errorHandling('tamannoId') }}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- MATERIAL -->
+        <div class="section">
+          <h3>Material</h3>
+          <mat-form-field appearance="outline" class="full">
+            <mat-select formControlName="materialId" placeholder="Selecciona un material">
+              <mat-option *ngFor="let m of materialesList" [value]="m.id">
+                <span class="color-box" [ngStyle]="{'background': m.nombre}"></span>
+                {{ m.nombre }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="errorHandling('materialId')">{{ errorHandling('materialId') }}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- BOTONES -->
+        <div class="actions">
+          <button mat-raised-button color="primary" class="cta" type="submit">
+            Agregar al carrito
+          </button>
+          <button mat-stroked-button type="button" (click)="onReset()">Limpiar</button>
+        </div>
+
+      </div>
+    </div>
+  </mat-card>
+</form>
