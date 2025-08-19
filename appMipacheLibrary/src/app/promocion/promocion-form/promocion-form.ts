@@ -6,6 +6,7 @@ import { ProductoService } from '../../share/services/producto.service';
 import { CategoriaService } from '../../share/services/categoria.service';
 import { PromocionModel } from '../../share/models/PromocionModel';
 import { TipoPromocion, TipoDescuento } from '../../share/models/EnumModel';
+import { NotificationService } from '../../share/notification-service';
 
 @Component({
   selector: 'app-promocion-form',
@@ -32,7 +33,8 @@ export class PromocionForm implements OnInit {
     private router: Router,
     private promocionService: PromocionService,
     private productoService: ProductoService,
-    private categoriaService: CategoriaService
+    private categoriaService: CategoriaService,
+    private noti: NotificationService,
   ) {}
 
   ngOnInit(): void {
@@ -70,19 +72,38 @@ export class PromocionForm implements OnInit {
   guardar() {
     if (this.form.invalid) return;
 
+    try{
     const promo: PromocionModel = {
       ...this.form.value,
       id: this.idPromo || 0,
     };
-
     if (this.modoEdicion) {
       this.promocionService.update(promo).subscribe(() => {
-        this.router.navigate(['/promocion-admin']);
+        this.noti.success(
+            'Crear promocion',
+            `Promocion creada: ${promo.nombre}`,
+            5000,
+            '/promocion-admin'
+          );
       });
     } else {
       this.promocionService.create(promo).subscribe(() => {
-        this.router.navigate(['/promocion-admin']);
+        this.noti.success(
+            'Actualizar promocion',
+            `Promocion Actualizada: ${promo.nombre}`,
+            5000,
+            '/promocion-admin'
+          );
       });
+    }}catch (error){
+      if(this.form.invalid){
+      this.noti.error(
+            'Actualizar promocion',
+            `No se ha podido actualizar la promocion:` + error,
+            5000,
+            '/promocion-admin'
+          );
+        }
     }
   }
 
