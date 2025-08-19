@@ -15,6 +15,7 @@ model Usuario {
   correo      String             @unique
   role        Role               @default(USER)
   password    String
+  direccion   String?
   ultimoLogin DateTime?          @default(now())
   //Relaciones 
   pedidos     Pedido[]

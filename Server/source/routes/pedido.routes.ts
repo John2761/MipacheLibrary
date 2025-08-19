@@ -6,6 +6,9 @@ export class PedidoRoutes {
     const router = Router();
     const controller = new PedidoController();
     router.get("/", controller.get);
+    router.get("/:id", controller.getById);
+    router.post("/", controller.create);
+    router.put("/:id", controller.update);
     return router;
   }
 }

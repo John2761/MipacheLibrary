@@ -1,0 +1,24 @@
+<div class="pedido-container">
+  <h2>Listado de Pedidos</h2>
+
+  <table *ngIf="pedidos.length > 0">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Cliente</th>
+        <th>Estado</th>
+        <th>Fecha</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pedido of pedidos">
+        <td>{{ pedido?.id ?? 'Sin ID' }}</td>
+        <td>{{ pedido?.cliente }}</td>
+        <td>{{ pedido?.estado }}</td>
+        <td>{{ pedido?.fecha | date: 'dd/MM/yyyy' }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="pedidos.length === 0">No hay pedidos registrados.</p>
+</div>

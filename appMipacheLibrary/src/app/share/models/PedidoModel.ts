@@ -1,10 +1,12 @@
+import { EstadoModel } from "./EnumModel";
 import { PedidoProductoModel } from "./PedidoProductoModel";
 import { UsuarioModel } from "./UsuarioModel";
 
 export interface PedidoModel {
     id: number;
-    fechaPedido: Date;
-    usuarioId: number;
-    usuario: UsuarioModel;
-    videojuegos: PedidoProductoModel[];
+    fecha: Date;
+    cliente: string;
+    estado: string
+    productos: number;
+    
   }
