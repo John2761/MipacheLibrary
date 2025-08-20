@@ -62,3 +62,30 @@ p {
   text-align: center;
   font-style: italic;
 }
+
+.acciones {
+  text-align: right;
+  margin-bottom: 1.5rem;
+}
+
+.btn-registrar {
+  background-color: #6d4c41; /* Café */
+  color: #fffaf0;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-registrar:hover {
+  background-color: #5d4037;
+  transform: translateY(-2px);
+}
+
+.btn-registrar:active {
+  background-color: #4e342e;
+  transform: translateY(0);
+}

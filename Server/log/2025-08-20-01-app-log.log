@@ -1,0 +1,72 @@
+2025-08-20 01:30:04.595 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.producto.findMany()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\productoController.ts:11:52
+
+   8 //Get All
+   9 get = async (request: Request, response: Response, next: NextFunction) => {
+  10   try {
+→ 11     const productos = await this.prisma.producto.findMany(
+The column `mipachelibrary.Producto.esPersonalizado` does not exist in the current database.
+2025-08-20 01:30:06.660 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.resena.findMany()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\resenaController.ts:11:46
+
+   8 // Obtener todas las reseñas
+   9 getAll = async (req: Request, res: Response, next: NextFunction) => {
+  10   try {
+→ 11     const lista = await this.prisma.resena.findMany(
+The column `mipachelibrary.Producto.esPersonalizado` does not exist in the current database.
+2025-08-20 01:30:48.640 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.producto.findMany()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\productoController.ts:11:52
+
+   8 //Get All
+   9 get = async (request: Request, response: Response, next: NextFunction) => {
+  10   try {
+→ 11     const productos = await this.prisma.producto.findMany(
+The column `mipachelibrary.Producto.esPersonalizado` does not exist in the current database.
+2025-08-20 01:30:51.752 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.resena.findMany()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\resenaController.ts:11:46
+
+   8 // Obtener todas las reseñas
+   9 getAll = async (req: Request, res: Response, next: NextFunction) => {
+  10   try {
+→ 11     const lista = await this.prisma.resena.findMany(
+The column `mipachelibrary.Producto.esPersonalizado` does not exist in the current database.
+2025-08-20 01:31:02.690 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.producto.findMany()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\productoController.ts:11:52
+
+   8 //Get All
+   9 get = async (request: Request, response: Response, next: NextFunction) => {
+  10   try {
+→ 11     const productos = await this.prisma.producto.findMany(
+The column `mipachelibrary.Producto.esPersonalizado` does not exist in the current database.
+2025-08-20 01:31:29.077 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.producto.findMany()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\productoController.ts:11:52
+
+   8 //Get All
+   9 get = async (request: Request, response: Response, next: NextFunction) => {
+  10   try {
+→ 11     const productos = await this.prisma.producto.findMany(
+The column `mipachelibrary.Producto.esPersonalizado` does not exist in the current database.
+2025-08-20 01:36:24.263 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.producto.findMany()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\productoController.ts:11:52
+
+   8 //Get All
+   9 get = async (request: Request, response: Response, next: NextFunction) => {
+  10   try {
+→ 11     const productos = await this.prisma.producto.findMany(
+The column `mipachelibrary.Producto.esPersonalizado` does not exist in the current database.
+2025-08-20 01:37:27.247 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.producto.findMany()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\productoController.ts:11:52
+
+   8 //Get All
+   9 get = async (request: Request, response: Response, next: NextFunction) => {
+  10   try {
+→ 11     const productos = await this.prisma.producto.findMany(
+The column `mipachelibrary.Producto.esPersonalizado` does not exist in the current database.

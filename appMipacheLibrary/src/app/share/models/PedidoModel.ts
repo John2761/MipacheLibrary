@@ -1,12 +1,13 @@
-import { EstadoModel } from "./EnumModel";
+
 import { PedidoProductoModel } from "./PedidoProductoModel";
-import { UsuarioModel } from "./UsuarioModel";
+import { PersonalizadoModel } from "./PersonalizadoModel";
+
 
 export interface PedidoModel {
     id: number;
     fecha: Date;
     cliente: string;
     estado: string
-    productos: number;
-    
+    productos: PedidoProductoModel[]; // ← productos normales
+    productosPersonalizados: PersonalizadoModel[]; // ← productos personalizados
   }

@@ -1,12 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
+import { PedidoModel } from '../models/PedidoModel';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PedidoService {
   private baseUrl = 'http://localhost:3000/pedido'; // Ajustá según backend
+  private totalCantidadSubject = new BehaviorSubject<number>(0);
+  totalCantidad$ = this.totalCantidadSubject.asObservable();
 
   constructor(private http: HttpClient) {}
 
@@ -19,7 +22,7 @@ export class PedidoService {
   }
 
   crearPedido(pedido: any): Observable<any> {
-    return this.http.post<any>(this.baseUrl, pedido);
+    return this.http.post<any>(`${this.baseUrl}`, pedido);
   }
 
   actualizarPedido(id: number, data: any): Observable<any> {
@@ -27,15 +30,14 @@ export class PedidoService {
   }
 
   // pedido.service.ts (fragmento)
-  getPedidoCantidadTotal(): Observable<number> {
-    return this.http
-      .get<any[]>('http://localhost:3000/pedido')
-      .pipe(
-        map((pedidos: any[]) =>
-          pedidos.reduce(
-            (total:number, pedido: any) =>
-              total + pedido.productos.reduce((sum: number, p: any) => sum + p.cantidad, 0),0)
-        )
-      );
+  actualizarCantidadPedido(pedido: PedidoModel) {
+    let total = 0;
+    pedido.productos?.forEach((p) => {
+      total += p.cantidad;
+    });
+    pedido.productosPersonalizados?.forEach((p) => {
+      total += p.cantidad;
+    });
+    this.totalCantidadSubject.next(total);
   }
 }

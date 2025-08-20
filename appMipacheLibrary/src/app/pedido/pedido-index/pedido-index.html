@@ -1,6 +1,13 @@
 <div class="pedido-container">
   <h2>Listado de Pedidos</h2>
 
+  <!-- Botón para ir al formulario de registro -->
+  <div class="acciones">
+    <button [routerLink]="['/pedido/create']" class="btn-registrar">
+      Registrar nuevo pedido
+    </button>
+  </div>
+
   <table *ngIf="pedidos.length > 0">
     <thead>
       <tr>

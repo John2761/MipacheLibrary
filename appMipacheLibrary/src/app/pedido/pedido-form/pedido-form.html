@@ -1,0 +1,85 @@
+<div class="pedido-form-container">
+  <form [formGroup]="pedidoForm" (ngSubmit)="submitPedido()">
+    <h2>Formulario de Pedido</h2>
+
+    <div class="form-group">
+      <label>Fecha:</label>
+      <p>{{ pedidoForm.get('fecha')?.value | date: 'dd/MM/yyyy' }}</p>
+    </div>
+
+    <div class="form-group">
+      <label>Usuario:</label>
+      <p>{{ pedidoForm.get('usuario')?.value }}</p>
+    </div>
+
+    <div class="form-group">
+      <label>Dirección:</label>
+      <input formControlName="direccion" />
+    </div>
+
+    <h3>Agregar Productos</h3>
+    <div *ngIf="productosDisponibles.length > 0; else cargando" class="productos-lista">
+      <button
+        *ngFor="let p of productosDisponibles"
+        type="button"
+        class="btn-producto"
+        (click)="agregarProducto()">
+        {{ p.nombre }}
+      </button>
+    </div>
+    <ng-template #cargando>
+      <p>Cargando productos...</p>
+    </ng-template>
+
+    <div formArrayName="productos">
+      <div
+        *ngFor="let p of productos.controls; let i = index"
+        [formGroupName]="i"
+        class="producto-item">
+        <p>{{ p.get('nombre')?.value }}</p>
+        <label>Cantidad:</label>
+        <input type="number" formControlName="cantidad" (change)="actualizarResumen()" />
+        <label>Subtotal: ₡{{ (p.get('precio')?.value || 0) * (p.get('cantidad')?.value || 0) }}</label>
+        <button type="button" class="btn-eliminar" (click)="eliminarProducto(i)">Eliminar</button>
+      </div>
+    </div>
+
+    <h3>Resumen</h3>
+    <div class="resumen-box">
+      <p>Subtotal: ₡{{ resumen.subtotal }}</p>
+      <p>Impuesto: ₡{{ resumen.impuesto }}</p>
+      <p>Total: ₡{{ resumen.total }}</p>
+    </div>
+
+    <h3>Método de Pago</h3>
+    <div class="form-group">
+      <select formControlName="tipoPago">
+        <option value="TARJETA">Tarjeta</option>
+        <option value="EFECTIVO">Efectivo</option>
+      </select>
+    </div>
+
+    <div *ngIf="pedidoForm.get('tipoPago')?.value === 'TARJETA'" formGroupName="pago">
+      <div formGroupName="tarjeta">
+        <label>Número:</label>
+        <input formControlName="numero" />
+        <label>Vencimiento:</label>
+        <input formControlName="vencimiento" />
+        <label>CVV:</label>
+        <input formControlName="cvv" />
+        <label>Nombre:</label>
+        <input formControlName="nombre" />
+      </div>
+    </div>
+
+    <div *ngIf="pedidoForm.get('tipoPago')?.value === 'EFECTIVO'" formGroupName="pago">
+      <div formGroupName="efectivo">
+        <label>Monto recibido:</label>
+        <input formControlName="montoRecibido" />
+        <p *ngIf="vuelto >= 0" class="vuelto-text">Vuelto: ₡{{ vuelto }}</p>
+      </div>
+    </div>
+
+    <button type="submit" class="btn-confirmar">Confirmar Pedido</button>
+  </form>
+</div>
