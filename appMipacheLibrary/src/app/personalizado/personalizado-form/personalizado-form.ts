@@ -4,11 +4,18 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NotificationService } from '../../share/notification-service';
 import { getFormValidationErrorMessage } from '../../share/form-validation';
-import { PrecioColorModel, PrecioMaterialModel, PrecioTamannoModel } from '../../share/models/PreciosModel';
+import {
+  PrecioColorModel,
+  PrecioMaterialModel,
+  PrecioTamannoModel,
+} from '../../share/models/PreciosModel';
 import { PersonalizadoService } from '../../share/services/personalizado.service';
 import { PrecioColorService } from '../../share/services/precioColor.service';
 import { PrecioMaterialService } from '../../share/services/precioMaterial.service';
 import { PrecioTamannoService } from '../../share/services/precioTamanno.service';
+import { map, startWith } from 'rxjs/operators';
+import { ProductoService } from '../../share/services/producto.service';
+import { ProductoModel } from '../../share/models/ProductoModel';
 
 @Component({
   selector: 'app-personalizado-form',
@@ -19,6 +26,11 @@ import { PrecioTamannoService } from '../../share/services/precioTamanno.service
 export class PersonalizadoForm implements OnInit, OnDestroy {
   //Clean rxjs
   private destroy$ = new Subject<boolean>();
+
+  private readonly BASE_ID = 1;
+  productoBase?: ProductoModel;
+  precioBase = 0;
+  total = 0;
 
   titleForm: string = 'Crear';
   idpersonalizado: number | null = null;
@@ -47,6 +59,7 @@ export class PersonalizadoForm implements OnInit, OnDestroy {
     private precioColorService: PrecioColorService,
     private precioTamannoService: PrecioTamannoService,
     private precioMaterialService: PrecioMaterialService,
+    private productoService: ProductoService,
     private route: ActivatedRoute,
     private noti: NotificationService
   ) {}
@@ -55,24 +68,74 @@ export class PersonalizadoForm implements OnInit, OnDestroy {
     //Inicializar formulario
     this.initForm();
 
-    //Obtener lista de categorias
-    this.listaMateriales();
-    this.listaTamannos();
-    this.listaColores();
+    this.cargarListas();
+    this.cargarProductoBase();
+    this.configurarRecalculoPrecio();
+
+    this.cargarProductoBase();
+    this.configurarRecalculoPrecio();
+  }
+
+  private configurarRecalculoPrecio(): void {
+    this.personalizadoForm.valueChanges
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(() => this.recalcularTotal());
+  }
+
+  private cargarProductoBase(): void {
+    this.productoService
+      .getById(this.BASE_ID)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((p) => {
+        this.productoBase = p;
+
+        // Prisma Decimal suele llegar como string => asegurar número
+        const raw = (p as any)?.precio;
+        this.precioBase =
+          typeof raw === 'string' ? parseFloat(raw) : Number(raw || 0);
+
+        // si quieres mostrar imagen base:
+        const img =
+          (p as any)?.imagenPrincipal || (p as any)?.imagenes?.[0]?.ruta;
+        if (img) this.preview = `assets/images/${img}`;
+
+        this.recalcularTotal(); // forzar 1er cálculo con base cargada
+      });
+  }
+
+  public getPrecio(
+    list: { id: number; precio: number | string }[],
+    id: number | null
+  ): number {
+    if (!id) return 0;
+    const raw = list.find((x) => x.id === id)?.precio ?? 0;
+    return typeof raw === 'string' ? parseFloat(raw) : Number(raw);
+  }
+
+  private recalcularTotal(): void {
+    const v = this.personalizadoForm.value;
+    const pColor = this.getPrecio(this.coloresList, v.colorId);
+    const pTamanno = this.getPrecio(this.tamannosList, v.tamannoId);
+    const pMaterial = this.getPrecio(this.materialesList, v.materialId);
+    this.total = this.precioBase + pColor + pTamanno + pMaterial;
   }
   /**
    * Inicializar el formulario reactivo
    */
-
   private initForm(): void {
     this.personalizadoForm = this.fb.group({
-      id: [null], 
-      // solo con selector
+      id: [null],
+      productoId: [this.BASE_ID, Validators.required],
       colorId: [null, Validators.required],
       tamannoId: [null, Validators.required],
       materialId: [null, Validators.required],
-
     });
+  }
+
+  private cargarListas() {
+    this.listaMateriales();
+    this.listaTamannos();
+    this.listaColores();
   }
 
   //Listar todos los Materiales
@@ -106,48 +169,36 @@ export class PersonalizadoForm implements OnInit, OnDestroy {
   }
 
   submitpersonalizado(): void {
-    this.personalizadoForm.markAllAsTouched(); // Marcar todos los controles como touched para mostrar mensajes de validación
-    if (this.personalizadoForm.invalid) {
-      this.noti.error(
-        'Formulario Inválido',
-        'Por favor, revise los campos marcados en rojo.',
-        5000
-      );
-      //console.log('Formulario inválido:', this.personalizadoForm.errors);
-      console.log('Errores del formulario:');
-      Object.keys(this.personalizadoForm.controls).forEach((key) => {
-        const controlErrors = this.personalizadoForm.get(key)?.errors;
-        if (controlErrors) {
-          console.log(`${key}:`, controlErrors);
-        }
-      });
+    this.personalizadoForm.markAllAsTouched();
+    if (this.personalizadoForm.invalid || this.total <= 0) {
+      this.noti.error('Formulario Inválido', 'Revisa las selecciones.');
       return;
     }
 
-    const formValue = this.personalizadoForm.value;
-    console.log(formValue);
+    const v = this.personalizadoForm.value;
+    const payload = {
+      id: v.id,
+      logo: v.logo,
+      productoId: v.productoId,
+      colorId: v.colorId,
+      tamannoId: v.tamannoId,
+      materialId: v.materialId,
+      precioTotal: this.total,
+    };
 
-    // Transforma los valores del formulario para que coincidan con la estructura en el API
-    const payloadcolores = (formValue.Materiales || [])
-      .filter((mat: any) => mat?.id && !isNaN(Number(mat.id)))
-      .map((mat: any) => ({ id: Number(mat.id) }));
+    console.log("Formulario recibido: " + payload)
 
-    const payloadtamannos = (formValue.Materiales || [])
-      .filter((mat: any) => mat?.id && !isNaN(Number(mat.id)))
-      .map((mat: any) => ({ id: Number(mat.id) }));
-
-    const payloadmateriales = (formValue.Materiales || [])
-      .filter((mat: any) => mat?.id && !isNaN(Number(mat.id)))
-      .map((mat: any) => ({ id: Number(mat.id) }));
-
-    // Verificar que precio es número
-    const payloadPrecio =
-      typeof formValue.precio === 'string'
-        ? parseFloat(formValue.precio)
-        : formValue.precio;
-
-    //Paso 2: Guardar/actualizar el personalizado en el API
-    this.guardarpersonalizado();
+    this.personalizadoService
+      .create(payload)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((data: any) => {
+        this.noti.success(
+          'Personalizado',
+          'Agregado al carrito',
+          5000,
+          '/carrito'
+        );
+      });
   }
 
   guardarpersonalizado() {

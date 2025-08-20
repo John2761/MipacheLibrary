@@ -44,7 +44,7 @@ const main = async () => {
     descripcion:
       "Empaca tus libros y llevalos donde quieras siempre ordenados con nuestra bolsa para libros completamente personalizable /n" + 
       "lleva tu saga favorita contigo o tus libros pendientes para que puedas seguir desde donde lo dejaste sin tener que esperar",
-    precio: 11200.0,
+    precio: 6500.0,
     stock: 10,
     imagenPrincipal: "Bolsa-personalizada.jpg",
     imagenes: {

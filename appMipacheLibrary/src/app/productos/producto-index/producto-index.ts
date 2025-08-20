@@ -30,8 +30,8 @@ export class ProductoIndex {
   listProductos() {
     this.pdService.get().subscribe((respuesta: ProductoModel[]) => {
       this.datos = respuesta;
-
       this.datosOriginales = respuesta;
+      console.log(this.datos)
     });
   }
 

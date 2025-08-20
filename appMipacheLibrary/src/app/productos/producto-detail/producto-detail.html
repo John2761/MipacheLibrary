@@ -7,20 +7,21 @@
         [src]="getImgUrl(imagenSeleccionada)"
         alt="Imagen principal"
       />
-      <div class="miniaturas" *ngIf="datos.imagenes?.length > 1">
+      <div class="miniaturas" *ngIf="datos.imagenes?.length > 0">
         <img
           *ngFor="let img of datos.imagenes"
           [src]="getImgUrl(img.ruta)"
           [class.seleccionada]="img.ruta === imagenSeleccionada"
-          (click)="cambiarImagen(img.ruta)"
-        />
+          (click)="cambiarImagen(img.ruta)"/>
       </div>
     </div>
 
     <!-- Informacion principal -->
     <div class="info-producto">
       <h1>{{ datos.nombre }}</h1>
-      <p class="autor" *ngIf="datos.autor"><strong>Autor:</strong> {{ datos.autor }}</p>
+      <p class="autor" *ngIf="datos.autor">
+        <strong>Autor:</strong> {{ datos.autor }}
+      </p>
       <p class="stock" *ngIf="datos.stock > 0">Stock disponible</p>
 
       <ng-template #precioNormal>
@@ -29,8 +30,12 @@
 
       <p class="precio">
         <span *ngIf="datos.tienePromocion; else sinPromo">
-          <span class="precio-anterior">₡{{ datos.precio | number: '1.0-0' }}</span>
-          <span class="precio-final">₡{{ datos.precioFinal | number: '1.0-0' }}</span>
+          <span class="precio-anterior"
+            >₡{{ datos.precio | number: '1.0-0' }}</span
+          >
+          <span class="precio-final"
+            >₡{{ datos.precioFinal | number: '1.0-0' }}</span
+          >
         </span>
         <ng-template #sinPromo>
           ₡{{ datos.precio | number: '1.0-0' }}
@@ -51,13 +56,15 @@
           <span class="text-muted">Sin valoraciones</span>
         </ng-template>
       </p>
+      <!-- Botón de agregar -->
       <button
         mat-raised-button
         color="primary"
-        (click)="comprar()"
+        (click)="accionPrincipal()"
         class="boton-compra"
+        [disabled]="!datos.esPersonalizado && datos.stock === 0"
       >
-        Agregar a la bolsa
+        {{ datos.esPersonalizado ? 'Personalizar' : 'Agregar a la bolsa' }}
       </button>
     </div>
   </div>
@@ -97,8 +104,12 @@
       <ng-container *ngIf="datos.resenas.length > 0; else sinResenas">
         <mat-card *ngFor="let r of datos.resenas" class="reseña-card">
           <mat-card-header>
-            <mat-card-title>{{ r.usuario?.nombre ?? 'Anónimo' }}</mat-card-title>
-            <mat-card-subtitle>{{ r.fecha | date: 'longDate' }}</mat-card-subtitle>
+            <mat-card-title
+              >{{ r.usuario?.nombre ?? 'Anónimo' }}</mat-card-title
+            >
+            <mat-card-subtitle
+              >{{ r.fecha | date: 'longDate' }}</mat-card-subtitle
+            >
           </mat-card-header>
           <mat-card-content>
             <p>{{ r.comentario }}</p>
@@ -113,7 +124,7 @@
         </mat-card>
       </ng-container>
       <ng-template #sinResenas>
-        <p class="text-muted">Este libro aún no tiene reseñas.</p>
+        <p class="text-muted">Este producto aún no tiene reseñas.</p>
       </ng-template>
     </div>
   </section>
@@ -131,7 +142,9 @@
         <mat-form-field class="full-width">
           <mat-label>Comentario</mat-label>
           <textarea matInput formControlName="comentario" rows="3"></textarea>
-          <mat-error *ngIf="formComentario.get('comentario')?.hasError('minlength')">
+          <mat-error
+            *ngIf="formComentario.get('comentario')?.hasError('minlength')"
+          >
             El comentario debe tener al menos 5 caracteres.
           </mat-error>
         </mat-form-field>

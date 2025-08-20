@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
 import { ProductoService } from '../../share/services/producto.service';
 
+
 @Component({
   selector: 'app-producto-detail',
   standalone: false,
@@ -48,7 +49,7 @@ export class ProductoDetail {
       .pipe(takeUntil(this.destroy$)) // Operador de RxJS para desuscribirse automáticamente
       .subscribe((data: any) => {
         this.datos = data;
-        console.log("Etiquetas:", data.etiquetas);
+        console.log("Producto:", data);
         const etiquetas =
           data.etiquetas?.map((e: any) => e.descripcion.toLowerCase()) || [];
 
@@ -66,8 +67,19 @@ export class ProductoDetail {
           data.imagenPrincipal ||
           data.imagenes?.[0]?.ruta ||
           'imagen-not-found-jpg';
-        // Establecer etiquetas como formato e idioma
       });
+  }
+
+    accionPrincipal(): void {
+    if (this.datos?.esPersonalizado) {
+      // Opción A
+      this.router.navigate(['/personalizado/create']);
+
+      // Opción B (si prefieres usar el id del producto actual):
+      // this.router.navigate(['/personalizado', this.datos.id]);
+    } else {
+      this.comprar(); // tu lógica existente de "Agregar a la bolsa"
+    }
   }
 
   getImgUrl(nombre: string): string {
