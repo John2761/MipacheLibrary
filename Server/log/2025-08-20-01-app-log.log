@@ -70,3 +70,275 @@ C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers
   10   try {
 → 11     const productos = await this.prisma.producto.findMany(
 The column `mipachelibrary.Producto.esPersonalizado` does not exist in the current database.
+2025-08-20 01:56:51.364 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.productoPersonalizado.create()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\personalizadoController.ts:27:74
+
+  24 //Datos JSON
+  25 const body = request.body;
+  26 
+→ 27 const nuevoPersonalizado = await this.prisma.productoPersonalizado.create({
+       data: {
+         logo: undefined,
+         color: undefined,
+         tamanno: undefined,
+         material: undefined,
+         producto: undefined,
+     +   precioTotal: Decimal
+       }
+     })
+
+Argument `precioTotal` is missing.
+2025-08-20 01:56:52.415 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.productoPersonalizado.create()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\personalizadoController.ts:27:74
+
+  24 //Datos JSON
+  25 const body = request.body;
+  26 
+→ 27 const nuevoPersonalizado = await this.prisma.productoPersonalizado.create({
+       data: {
+         logo: undefined,
+         color: undefined,
+         tamanno: undefined,
+         material: undefined,
+         producto: undefined,
+     +   precioTotal: Decimal
+       }
+     })
+
+Argument `precioTotal` is missing.
+2025-08-20 01:56:52.604 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.productoPersonalizado.create()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\personalizadoController.ts:27:74
+
+  24 //Datos JSON
+  25 const body = request.body;
+  26 
+→ 27 const nuevoPersonalizado = await this.prisma.productoPersonalizado.create({
+       data: {
+         logo: undefined,
+         color: undefined,
+         tamanno: undefined,
+         material: undefined,
+         producto: undefined,
+     +   precioTotal: Decimal
+       }
+     })
+
+Argument `precioTotal` is missing.
+2025-08-20 01:56:52.798 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.productoPersonalizado.create()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\personalizadoController.ts:27:74
+
+  24 //Datos JSON
+  25 const body = request.body;
+  26 
+→ 27 const nuevoPersonalizado = await this.prisma.productoPersonalizado.create({
+       data: {
+         logo: undefined,
+         color: undefined,
+         tamanno: undefined,
+         material: undefined,
+         producto: undefined,
+     +   precioTotal: Decimal
+       }
+     })
+
+Argument `precioTotal` is missing.
+2025-08-20 01:56:52.972 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.productoPersonalizado.create()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\personalizadoController.ts:27:74
+
+  24 //Datos JSON
+  25 const body = request.body;
+  26 
+→ 27 const nuevoPersonalizado = await this.prisma.productoPersonalizado.create({
+       data: {
+         logo: undefined,
+         color: undefined,
+         tamanno: undefined,
+         material: undefined,
+         producto: undefined,
+     +   precioTotal: Decimal
+       }
+     })
+
+Argument `precioTotal` is missing.
+2025-08-20 01:56:53.149 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.productoPersonalizado.create()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\personalizadoController.ts:27:74
+
+  24 //Datos JSON
+  25 const body = request.body;
+  26 
+→ 27 const nuevoPersonalizado = await this.prisma.productoPersonalizado.create({
+       data: {
+         logo: undefined,
+         color: undefined,
+         tamanno: undefined,
+         material: undefined,
+         producto: undefined,
+     +   precioTotal: Decimal
+       }
+     })
+
+Argument `precioTotal` is missing.
+2025-08-20 01:56:53.356 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.productoPersonalizado.create()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\personalizadoController.ts:27:74
+
+  24 //Datos JSON
+  25 const body = request.body;
+  26 
+→ 27 const nuevoPersonalizado = await this.prisma.productoPersonalizado.create({
+       data: {
+         logo: undefined,
+         color: undefined,
+         tamanno: undefined,
+         material: undefined,
+         producto: undefined,
+     +   precioTotal: Decimal
+       }
+     })
+
+Argument `precioTotal` is missing.
+2025-08-20 01:56:53.548 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.productoPersonalizado.create()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\personalizadoController.ts:27:74
+
+  24 //Datos JSON
+  25 const body = request.body;
+  26 
+→ 27 const nuevoPersonalizado = await this.prisma.productoPersonalizado.create({
+       data: {
+         logo: undefined,
+         color: undefined,
+         tamanno: undefined,
+         material: undefined,
+         producto: undefined,
+     +   precioTotal: Decimal
+       }
+     })
+
+Argument `precioTotal` is missing.
+2025-08-20 01:56:53.711 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.productoPersonalizado.create()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\personalizadoController.ts:27:74
+
+  24 //Datos JSON
+  25 const body = request.body;
+  26 
+→ 27 const nuevoPersonalizado = await this.prisma.productoPersonalizado.create({
+       data: {
+         logo: undefined,
+         color: undefined,
+         tamanno: undefined,
+         material: undefined,
+         producto: undefined,
+     +   precioTotal: Decimal
+       }
+     })
+
+Argument `precioTotal` is missing.
+2025-08-20 01:56:53.899 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.productoPersonalizado.create()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\personalizadoController.ts:27:74
+
+  24 //Datos JSON
+  25 const body = request.body;
+  26 
+→ 27 const nuevoPersonalizado = await this.prisma.productoPersonalizado.create({
+       data: {
+         logo: undefined,
+         color: undefined,
+         tamanno: undefined,
+         material: undefined,
+         producto: undefined,
+     +   precioTotal: Decimal
+       }
+     })
+
+Argument `precioTotal` is missing.
+2025-08-20 01:56:55.135 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.productoPersonalizado.create()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\personalizadoController.ts:27:74
+
+  24 //Datos JSON
+  25 const body = request.body;
+  26 
+→ 27 const nuevoPersonalizado = await this.prisma.productoPersonalizado.create({
+       data: {
+         logo: undefined,
+         color: undefined,
+         tamanno: undefined,
+         material: undefined,
+         producto: undefined,
+     +   precioTotal: Decimal
+       }
+     })
+
+Argument `precioTotal` is missing.
+2025-08-20 01:56:55.314 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.productoPersonalizado.create()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\personalizadoController.ts:27:74
+
+  24 //Datos JSON
+  25 const body = request.body;
+  26 
+→ 27 const nuevoPersonalizado = await this.prisma.productoPersonalizado.create({
+       data: {
+         logo: undefined,
+         color: undefined,
+         tamanno: undefined,
+         material: undefined,
+         producto: undefined,
+     +   precioTotal: Decimal
+       }
+     })
+
+Argument `precioTotal` is missing.
+2025-08-20 01:56:55.487 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.productoPersonalizado.create()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\personalizadoController.ts:27:74
+
+  24 //Datos JSON
+  25 const body = request.body;
+  26 
+→ 27 const nuevoPersonalizado = await this.prisma.productoPersonalizado.create({
+       data: {
+         logo: undefined,
+         color: undefined,
+         tamanno: undefined,
+         material: undefined,
+         producto: undefined,
+     +   precioTotal: Decimal
+       }
+     })
+
+Argument `precioTotal` is missing.
+2025-08-20 01:56:55.651 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.productoPersonalizado.create()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\personalizadoController.ts:27:74
+
+  24 //Datos JSON
+  25 const body = request.body;
+  26 
+→ 27 const nuevoPersonalizado = await this.prisma.productoPersonalizado.create({
+       data: {
+         logo: undefined,
+         color: undefined,
+         tamanno: undefined,
+         material: undefined,
+         producto: undefined,
+     +   precioTotal: Decimal
+       }
+     })
+
+Argument `precioTotal` is missing.
+2025-08-20 01:57:48.431 error: 	perez--Datos incompletos para crear el pedido Datos incompletos para crear el pedido
+2025-08-20 01:57:49.547 error: 	perez--Datos incompletos para crear el pedido Datos incompletos para crear el pedido
+2025-08-20 01:57:49.851 error: 	perez--Datos incompletos para crear el pedido Datos incompletos para crear el pedido
+2025-08-20 01:57:50.027 error: 	perez--Datos incompletos para crear el pedido Datos incompletos para crear el pedido
+2025-08-20 01:57:50.223 error: 	perez--Datos incompletos para crear el pedido Datos incompletos para crear el pedido
+2025-08-20 01:57:50.399 error: 	perez--Datos incompletos para crear el pedido Datos incompletos para crear el pedido
