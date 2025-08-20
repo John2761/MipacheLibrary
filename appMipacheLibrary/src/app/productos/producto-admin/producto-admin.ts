@@ -61,6 +61,7 @@ export class ProductoAdmin {
     };
     const dialogRef = this.dialog.open(ProductoDiag, dialogConfig);
   }
+  
   crearProducto() {
     this.router.navigate(['/producto/create']);
   }

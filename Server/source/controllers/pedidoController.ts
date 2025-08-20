@@ -7,253 +7,259 @@ export class PedidoController {
   //Get All
   get = async (request: Request, response: Response, next: NextFunction) => {
     try {
-    const pedidos = await this.prisma.pedido.findMany({
-      include: {
-        usuario: true,
-        productos: true,
-      },
-      orderBy: {
-        fechaPedido: 'desc',
-      },
-    });
-
-    const pedidosFormateados = pedidos.map((pedido) => ({
-      id: pedido.id,
-      fecha: pedido.fechaPedido,
-      estado: pedido.estado,
-      cliente: pedido.usuario.nombre,
-      cantidadProductos: pedido.productos.length,
-    }));
-
-    response.status(200).json(pedidosFormateados);
-  } catch (error) {
-    next(error);
-  }
-};
-
-  // Obtener por ID
-getById = async (
-  request: Request,
-  response: Response,
-  next: NextFunction
-) => {
-  try {
-    const idPedido = parseInt(request.params.id);
-    if (isNaN(idPedido)) {
-      return next(AppError.badRequest("ID inválido"));
-    }
-
-    const pedido = await this.prisma.pedido.findUnique({
-      where: { id: idPedido },
-      include: {
-        usuario: {
-          select: {
-            nombre: true,
-            // Si luego agregás 'direccion' al modelo, la podés incluir aquí
-          },
+      const pedidos = await this.prisma.pedido.findMany({
+        include: {
+          usuario: true,
+          productos: true,
         },
-        productos: {
-          include: {
-            producto: {
-              select: {
-                nombre: true,
-                descripcion: true,
-                precio: true,
-              },
-            },
-            personalizado: {
-              include: {
-                color: {
-                  select: { nombre: true },
-                },
-                material: {
-                  select: { nombre: true },
-                },
-                tamanno: {
-                  select: { nombre: true },
-                },
-              },
-            },
-          },
+        orderBy: {
+          fechaPedido: "desc",
         },
-      },
-    });
+      });
 
-    if (!pedido) {
-      return next(AppError.notFound("Pedido no encontrado"));
-    }
-
-    // Calcular totales
-    const subtotal = pedido.productos.reduce(
-      (sum, p) => sum + Number(p.subtotal),
-      0
-    );
-    const impuestos = pedido.productos.reduce(
-      (sum, p) => sum + Number(p.total) - Number(p.subtotal),
-      0
-    );
-    const total = pedido.productos.reduce(
-      (sum, p) => sum + Number(p.total),
-      0
-    );
-
-    // Respuesta estructurada
-    response.status(200).json({
-      pedido: {
+      const pedidosFormateados = pedidos.map((pedido) => ({
         id: pedido.id,
         fecha: pedido.fechaPedido,
         estado: pedido.estado,
-      },
-      cliente: {
-        nombre: pedido.usuario.nombre,
-        direccion: "No registrada", // temporal, si luego agregás este campo al modelo se reemplaza
-      },
-      productos: pedido.productos.map((p) => ({
-        nombre: p.producto.nombre,
-        descripcion: p.producto.descripcion,
-        cantidad: p.cantidad,
-        precioUnitario: Number(p.precioUnitario),
-        subtotal: Number(p.subtotal),
-        total: Number(p.total),
-        personalizados: p.personalizado.map((perso) => ({
-          logo: perso.logo ? "A color" : "Blanco y negro",
-          color: perso.color.nombre,
-          material: perso.material.nombre,
-          tamanno: perso.tamanno.nombre,
-          precioTotal: Number(perso.precioTotal),
-        })),
-      })),
-      resumen: {
-        subtotal,
-        impuestos,
-        total,
-      },
-      metodoPago: "Tarjeta de crédito/débito", // Cambiar según tu lógica real
-    });
-  } catch (error) {
-    next(error);
-  }
-};
+        cliente: pedido.usuario.nombre,
+        cantidadProductos: pedido.productos.length,
+      }));
 
-
-  //Crear
-  create = async (request: Request, response: Response, next: NextFunction) => {
-    try {
-    const { usuarioId, productos, estado } = request.body;
-
-    if (!usuarioId || !Array.isArray(productos) || productos.length === 0) {
-      return next(AppError.badRequest("Datos incompletos para crear el pedido"));
+      response.status(200).json(pedidosFormateados);
+    } catch (error) {
+      next(error);
     }
+  };
 
-    const nuevoPedido = await this.prisma.pedido.create({
-      data: {
-        usuarioId,
-        estado,
-        productos: {
-          create: productos.map((p: any) => ({
-            productoId: p.productoId,
-            cantidad: p.cantidad,
-            precioUnitario: p.precioUnitario,
-            subtotal: p.subtotal,
-            impuestos: p.impuestos,
-            total: p.total,
-            personalizado: p.personalizados && p.personalizados.length > 0? {
-              create: p.personalizados.map((perso: any) => ({
-                logo: perso.logo,
-                precioTotal: perso.precioTotal,
-                colorId: perso.colorId,
-                materialId: perso.materialId,
-                tamannoId: perso.tamannoId,
-              })),
-            }
-            : undefined,
-          })),
-        },
-      },
+  // Obtener por ID
+  // Obtener por ID (versión alineada a PedidoProducto)
+  // PedidoController.ts
+  getById = async (req: Request, res: Response, next: NextFunction) => {
+    const IVA_RATE = 0.13;
+    const round2 = (n: number) => Math.round(n * 100) / 100;
+
+     try {
+    const id = Number(req.params.id);
+    if (isNaN(id)) return next(AppError.badRequest("ID inválido"));
+
+    const pedido = await this.prisma.pedido.findUnique({
+      where: { id },
       include: {
+        usuario: { select: { nombre: true } },
         productos: {
           include: {
-            producto: true,
-            personalizado: {
-              include: {
-                color: true,
-                material: true,
-                tamanno: true,
+            producto: { select: { nombre: true, descripcion: true } },
+            personalizado: { include: { color: true, material: true, tamanno: true } }
+          }
+        }
+      }
+    });
+    if (!pedido) return next(AppError.notFound("Pedido no encontrado"));
+
+    const lineas = pedido.productos.map((l) => {
+      const cantidad = l.cantidad;
+
+      // 1) BRUTO de la línea (preferimos tomarlo del total guardado; si no, lo calculamos)
+      const totalBrutoLinea = l.total
+        ? round2(Number(l.total))
+        : round2(Number(l.precioUnitario) * cantidad +
+                 (l.personalizado ?? []).reduce((s, p) => s + Number(p.precioTotal || 0), 0));
+
+      // 2) NETO de la línea (una sola división y redondeo al final)
+      const subtotalNetoLinea = round2(totalBrutoLinea / (1 + IVA_RATE));
+
+      // 3) IVA de la línea como diferencia
+      const ivaLinea = round2(totalBrutoLinea - subtotalNetoLinea);
+
+      // 4) Precio Unitario NETO sólo para mostrar (no para calcular)
+      const unitarioNetoMostrar = round2(subtotalNetoLinea / cantidad);
+
+      return {
+        nombre: l.producto.nombre,
+        descripcion: l.producto.descripcion,
+        cantidad,
+        precioUnitario: unitarioNetoMostrar, // mostrado como "sin IVA"
+        subtotal: subtotalNetoLinea,          // neto de la línea
+        impuestos: ivaLinea,                  // monto de IVA
+        total: totalBrutoLinea,               // bruto de la línea
+        personalizados: (l.personalizado ?? []).map((p) => ({
+          logo: p.logo ? "A color" : "Blanco y negro",
+          color: p.color.nombre,
+          material: p.material.nombre,
+          tamanno: p.tamanno.nombre,
+          precioTotal: Number(p.precioTotal),
+        })),
+      };
+    });
+
+    // Totales coherentes (suma de líneas ya redondeadas)
+    const subtotal = round2(lineas.reduce((s, x) => s + x.subtotal, 0));
+    const impuestos = round2(lineas.reduce((s, x) => s + x.impuestos, 0));
+    const total = round2(lineas.reduce((s, x) => s + x.total, 0));
+
+    res.status(200).json({
+      pedido: { id: pedido.id, fecha: pedido.fechaPedido, estado: pedido.estado },
+      cliente: { nombre: pedido.usuario.nombre, direccion: "No registrada" },
+      productos: lineas,
+      resumen: { subtotal, impuestos, total },
+      metodoPago: "Tarjeta de crédito/débito",
+    });
+    } catch (err) {
+      next(err);
+    }
+  };
+
+  //Crear
+  // PedidoController.ts
+  create = async (req: Request, res: Response, next: NextFunction) => {
+    const IVA_RATE = 0.13;
+    const round2 = (n: number) => Math.round(n * 100) / 100;
+
+    const netFromGross = (gross: number) => round2(gross / (1 + IVA_RATE)); // precio sin IVA
+    const taxFromGross = (gross: number) => round2(gross - netFromGross(gross)); // impuestos incluidos en un precio bruto
+
+    try {
+      const { usuarioId, productos, estado } = req.body;
+      if (!usuarioId || !Array.isArray(productos) || productos.length === 0) {
+        return next(
+          AppError.badRequest("Datos incompletos para crear el pedido")
+        );
+      }
+
+      const nuevoPedido = await this.prisma.pedido.create({
+        data: {
+          usuarioId,
+          estado,
+          productos: {
+            create: productos.map((p: any) => {
+              const cantidad = Number(p.cantidad);
+
+              // p.precioUnitario puede venir BRUTO (con IVA) desde el front
+              const precioUnitarioBruto = Number(p.precioUnitario);
+              const precioUnitarioNeto = netFromGross(precioUnitarioBruto); // << usamos neto para factura
+
+              const montoPerso = Array.isArray(p.personalizados)
+                ? p.personalizados.reduce(
+                    (s: number, it: any) => s + Number(it.precioTotal || 0),
+                    0
+                  )
+                : 0;
+
+              const subtotal = round2(
+                precioUnitarioNeto * cantidad + montoPerso
+              );
+              const impuestos = round2(subtotal * IVA_RATE);
+              const total = round2(subtotal + impuestos);
+
+              return {
+                productoId: p.productoId,
+                cantidad,
+                // Guardamos el unitario NETO para que el detail muestre “precio - impuestos”
+                precioUnitario: precioUnitarioNeto,
+                subtotal,
+                impuestos, // MONTO
+                total,
+                personalizado: p.personalizados?.length
+                  ? {
+                      create: p.personalizados.map((perso: any) => ({
+                        logo: perso.logo,
+                        precioTotal: Number(perso.precioTotal),
+                        colorId: perso.colorId,
+                        materialId: perso.materialId,
+                        tamannoId: perso.tamannoId,
+                      })),
+                    }
+                  : undefined,
+              };
+            }),
+          },
+        },
+        include: {
+          productos: {
+            include: {
+              producto: true,
+              personalizado: {
+                include: { color: true, material: true, tamanno: true },
               },
             },
           },
+          usuario: true,
         },
-        usuario: true,
-      },
-    });
+      });
 
-    response.status(201).json(nuevoPedido);
-  } catch (error) {
-    next(error);
-  }
-};
+      res.status(201).json(nuevoPedido);
+    } catch (error) {
+      next(error);
+    }
+  };
 
   //Actualizar
-update = async (request: Request, response: Response, next: NextFunction) => {
-  try {
-    const idPedido = parseInt(request.params.id);
-    const { estado, actualizadoPorId } = request.body;
+  update = async (request: Request, response: Response, next: NextFunction) => {
+    try {
+      const idPedido = parseInt(request.params.id);
+      const { estado, actualizadoPorId } = request.body;
 
-    // Validaciones básicas
-    if (isNaN(idPedido)) {
-      return next(AppError.badRequest("ID de pedido inválido"));
+      // Validaciones básicas
+      if (isNaN(idPedido)) {
+        return next(AppError.badRequest("ID de pedido inválido"));
+      }
+
+      const estadosValidos = [
+        "EN_CARRITO",
+        "PAGADO",
+        "EN_ENTREGA",
+        "COMPLETADO",
+      ];
+      if (!estado || !estadosValidos.includes(estado)) {
+        return next(AppError.badRequest("Estado inválido"));
+      }
+
+      if (!actualizadoPorId || isNaN(actualizadoPorId)) {
+        return next(
+          AppError.badRequest("ID del usuario que actualiza es inválido")
+        );
+      }
+
+      // Verificar que el pedido exista
+      const pedidoExistente = await this.prisma.pedido.findUnique({
+        where: { id: idPedido },
+      });
+
+      if (!pedidoExistente) {
+        return next(AppError.notFound("Pedido no encontrado"));
+      }
+
+      // Verificar que el usuario exista
+      const usuario = await this.prisma.usuario.findUnique({
+        where: { id: actualizadoPorId },
+      });
+
+      if (!usuario) {
+        return next(AppError.notFound("Usuario que actualiza no encontrado"));
+      }
+
+      // 1. Actualizar el estado del pedido
+      const pedidoActualizado = await this.prisma.pedido.update({
+        where: { id: idPedido },
+        data: { estado },
+      });
+
+      // 2. Registrar el cambio en el historial
+      await this.prisma.historialPedidos.create({
+        data: {
+          estado,
+          pedidoId: idPedido,
+          actualizadoPorId,
+        },
+      });
+
+      // 3. Responder al cliente
+      response.status(200).json({
+        mensaje: "Estado del pedido actualizado y registrado en historial",
+        pedido: pedidoActualizado,
+      });
+    } catch (error) {
+      next(error);
     }
-
-    const estadosValidos = ["EN_CARRITO", "PAGADO", "EN_ENTREGA", "COMPLETADO"];
-    if (!estado || !estadosValidos.includes(estado)) {
-      return next(AppError.badRequest("Estado inválido"));
-    }
-
-    if (!actualizadoPorId || isNaN(actualizadoPorId)) {
-      return next(AppError.badRequest("ID del usuario que actualiza es inválido"));
-    }
-
-    // Verificar que el pedido exista
-    const pedidoExistente = await this.prisma.pedido.findUnique({
-      where: { id: idPedido },
-    });
-
-    if (!pedidoExistente) {
-      return next(AppError.notFound("Pedido no encontrado"));
-    }
-
-    // Verificar que el usuario exista
-    const usuario = await this.prisma.usuario.findUnique({
-      where: { id: actualizadoPorId },
-    });
-
-    if (!usuario) {
-      return next(AppError.notFound("Usuario que actualiza no encontrado"));
-    }
-
-    // 1. Actualizar el estado del pedido
-    const pedidoActualizado = await this.prisma.pedido.update({
-      where: { id: idPedido },
-      data: { estado },
-    });
-
-    // 2. Registrar el cambio en el historial
-    await this.prisma.historialPedidos.create({
-      data: {
-        estado,
-        pedidoId: idPedido,
-        actualizadoPorId,
-      },
-    });
-
-    // 3. Responder al cliente
-    response.status(200).json({
-      mensaje: "Estado del pedido actualizado y registrado en historial",
-      pedido: pedidoActualizado,
-    });
-  } catch (error) {
-    next(error);
-  }
-};
-
+  };
 }

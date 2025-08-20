@@ -1,0 +1,58 @@
+<div class="factura-container" *ngIf="pedido as d">
+  <mat-card class="encabezado">
+    <h2>Factura #{{ d.pedido.id }}
+      <span class="badge-estado">{{ d.pedido.estado }}</span>
+    </h2>
+    <p><strong>Fecha:</strong> {{ d.pedido.fecha | date:'mediumDate' }}</p>
+    <p><strong>Cliente:</strong> {{ d.cliente.nombre }}</p>
+    <p><strong>Dirección:</strong> {{ d.cliente.direccion }}</p>
+  </mat-card>
+
+  <mat-card class="detalle">
+    <h3>Detalle de Productos</h3>
+    <table class="tabla-detalle">
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Cant.</th>
+          <th>Precio Unit. (Sin I.V.A)</th>
+          <th>Subtotal</th>
+          <th>I.V.A (13%)</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of d.productos">
+          <td data-label="Producto">
+            <strong>{{ p.nombre }}</strong>
+            <p class="desc">{{ p.descripcion }}</p>
+
+            <div *ngIf="p.personalizados?.length" class="personalizado">
+              <em>Personalización:</em>
+              <ul>
+                <li *ngFor="let perso of p.personalizados">
+                  {{ perso.color }} · {{ perso.material }} · {{ perso.tamanno }} · {{ perso.logo }}
+                  → ₡{{ perso.precioTotal | number:'1.2-2' }}
+                </li>
+              </ul>
+            </div>
+          </td>
+
+          <td data-label="Cant.">{{ p.cantidad }}</td>
+          <td data-label="Precio Unit.">₡{{ p.precioUnitario | number:'1.2-2' }}</td>
+          <td data-label="Subtotal">₡{{ p.subtotal | number:'1.2-2' }}</td>
+          <td data-label="Impuestos">₡{{ p.impuestos | number:'1.2-2' }}</td>
+          <td data-label="Total">₡{{ p.total | number:'1.2-2' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </mat-card>
+
+  <mat-card class="resumen">
+    <h3>Resumen</h3>
+    <p><strong>Subtotal</strong> <span>₡{{ d.resumen.subtotal | number:'1.2-2' }}</span></p>
+    <p><strong>Impuestos</strong> <span>₡{{ d.resumen.impuestos | number:'1.2-2' }}</span></p>
+    <p class="total"><strong>Total</strong> <span>₡{{ d.resumen.total | number:'1.2-2' }}</span></p>
+    <p><strong>Método de Pago</strong> <span>{{ d.metodoPago }}</span></p>
+  </mat-card>
+</div>

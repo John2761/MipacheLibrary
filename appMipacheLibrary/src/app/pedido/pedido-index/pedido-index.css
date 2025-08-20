@@ -8,8 +8,6 @@
   min-height: calc(100vh - 160px); /* altura mínima para que no toque el footer */
 }
 
-
-
 h2 {
   margin-bottom: 1.5rem;
   color: #3e2723;
