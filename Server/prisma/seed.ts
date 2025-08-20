@@ -1,6 +1,7 @@
 import { PrismaClient } from "../generated/prisma";
 import { categorias } from "./seeds/categorias";
 import { etiquetas } from "./seeds/etiquetas";
+import { PrecioColor, PrecioMaterial, PrecioTamanno } from "./seeds/precios";
 import { usuarios } from "./seeds/usuarios";
 
 const prisma = new PrismaClient();
@@ -10,6 +11,19 @@ const main = async () => {
     //categorias - no tiene relaciones
     await prisma.categoria.createMany({
       data: categorias,
+    });
+
+    //PrecioColor - no tiene relaciones
+    await prisma.precioColor.createMany({
+      data: PrecioColor,
+    });
+    //PrecioMaterial - no tiene relaciones
+    await prisma.precioMaterial.createMany({
+      data: PrecioMaterial,
+    });
+    //PrecioTamanno - no tiene relaciones
+    await prisma.precioTamanno.createMany({
+      data: PrecioTamanno,
     });
 
     //Usuarios - no tiene relaciones
@@ -23,6 +37,25 @@ const main = async () => {
     });
 
     //Productos - con relaciones incluidas
+    //PRODUCTO PERSONALIZADO
+    await prisma.producto.create({
+  data: {
+    nombre: "Bolsa para libros (Personalizable)",
+    descripcion:
+      "Empaca tus libros y llevalos donde quieras siempre ordenados con nuestra bolsa para libros completamente personalizable /n" + 
+      "lleva tu saga favorita contigo o tus libros pendientes para que puedas seguir desde donde lo dejaste sin tener que esperar",
+    precio: 6500.0,
+    stock: 10,
+    imagenPrincipal: "Bolsa-personalizada.jpg",
+    imagenes: {
+      create: [
+        { ruta: "Bolsa-personalizada.jpg" },
+      ],
+    },
+    esPersonalizado: true,
+  },
+});
+
     // Producto 1
     await prisma.producto.create({
       data: {
@@ -370,13 +403,13 @@ const main = async () => {
         {
           valoracion: 4,
           comentario: "Un libro mágico y envolvente.",
-          productoId: 1,
+          productoId: 2,
           usuarioId: 1,
         },
         {
           valoracion: 2,
           comentario: "Esperaba más de la historia.",
-          productoId: 1,
+          productoId: 2,
           usuarioId: 2,
           moderada: true,
           observacion: "Comentario poco constructivo y ambiguo",

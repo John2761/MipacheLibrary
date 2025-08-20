@@ -1,0 +1,125 @@
+/* Layout base */
+.perso-wrapper {
+  display: block;
+  padding: 16px;
+  background: #efe2c9;
+}
+.perso-card {
+  padding: 24px;
+  background: #475f3c;
+  border-color: 5px solid #c89267;
+  border-radius: 14px;
+}
+
+.perso-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 32px;
+}
+
+.img-frame {
+  border: 2px solid #cba87a;
+  border-radius: 16px;
+  padding: 12px;
+  max-width: 520px;
+  aspect-ratio: 4/3;
+  background: #f8f0d5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-preview {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 8px;
+}
+
+.section {
+  margin-bottom: 16px;
+}
+.section h3 {
+  margin: 0 0 8px;
+  color: #3a2f1f;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+.full {
+  width: 100%;
+}
+/* Swatch para Color (solo para el selector de color) */
+.color-box {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 8px;
+  border: 5px solid #475f3c;
+  vertical-align: middle;
+}
+
+/* Botones */
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+.cta {
+  background: #2f4f3a !important;
+  color: #fdfdfd !important;
+  letter-spacing: 1px;
+  border-radius: 16px;
+  padding: 10px 20px;
+  font-weight: 600;
+  box-shadow: 0 4px 12px #2f4f3a33;
+}
+.cta:hover {
+  filter: brightness(1.05);
+}
+
+/* --------------------------- */
+/*    Angular Material (MDC)   */
+/* --------------------------- */
+/* Bordes del outline */
+.mdc-notched-outline__leading,
+.mdc-notched-outline__notch,
+.mdc-notched-outline__trailing {
+  border-color: #c8a97e !important;
+}
+
+/* Label flotante y placeholder */
+.mdc-floating-label {
+  color: #7a5c3a !important;
+  opacity: 1 !important;
+}
+.mdc-text-field__input {
+  color: #2f2a22 !important;
+}
+.mdc-text-field__input::placeholder {
+  color: #a27e56 !important;
+  opacity: 1;
+}
+
+/* Icono flecha del select */
+.mat-mdc-select-arrow {
+  color: #7a5c3a !important;
+}
+
+/* Panel del select y opciones */
+.mat-mdc-select-panel {
+  background: #d38e0d !important;
+  color: #2f2a22 !important;
+  border: 2px solid #d6b68a;
+}
+
+.mat-mdc-option {
+  color: #2f2a22 !important;
+}
+
+.mat-mdc-option:hover {
+  background: #c48416 !important;
+}
+
+.mat-mdc-option.mdc-list-item--selected {
+  background: #ca8b15 !important;
+}

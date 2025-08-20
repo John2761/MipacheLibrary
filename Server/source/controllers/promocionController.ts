@@ -1,7 +1,6 @@
 import { Prisma, PrismaClient } from "../../generated/prisma";
 import { Request, Response, NextFunction } from "express";
 import { AppError } from "../errors/custom.error";
-import { Decimal } from "../../generated/prisma/runtime/library";
 
 export class PromocionController {
   prisma = new PrismaClient();

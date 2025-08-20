@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -24,5 +24,18 @@ export class PedidoService {
 
   actualizarPedido(id: number, data: any): Observable<any> {
     return this.http.put<any>(`${this.baseUrl}/${id}`, data);
+  }
+
+  // pedido.service.ts (fragmento)
+  getPedidoCantidadTotal(): Observable<number> {
+    return this.http
+      .get<any[]>('http://localhost:3000/pedido')
+      .pipe(
+        map((pedidos: any[]) =>
+          pedidos.reduce(
+            (total:number, pedido: any) =>
+              total + pedido.productos.reduce((sum: number, p: any) => sum + p.cantidad, 0),0)
+        )
+      );
   }
 }

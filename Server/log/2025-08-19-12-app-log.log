@@ -1,0 +1,38 @@
+2025-08-19 12:01:47.477 error: 	John--Se produjo un error interno del servidor 
+Invalid `this.prisma.productoPersonalizado.create()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\personalizadoController.ts:27:74
+
+  24 //Datos JSON
+  25 const body = request.body;
+  26 
+→ 27 const nuevoPersonalizado = await this.prisma.productoPersonalizado.create({
+       data: {
+         logo: undefined,
+         color: undefined,
+         tamanno: undefined,
+         material: undefined,
+         producto: undefined,
+     +   precioTotal: Decimal
+       }
+     })
+
+Argument `precioTotal` is missing.
+2025-08-19 12:03:21.059 error: 	John--Se produjo un error interno del servidor 
+Invalid `this.prisma.productoPersonalizado.create()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\personalizadoController.ts:27:74
+
+  24 //Datos JSON
+  25 const body = request.body;
+  26 
+→ 27 const nuevoPersonalizado = await this.prisma.productoPersonalizado.create({
+       data: {
+         logo: undefined,
+         color: undefined,
+         tamanno: undefined,
+         material: undefined,
+         producto: undefined,
+     +   precioTotal: Decimal
+       }
+     })
+
+Argument `precioTotal` is missing.

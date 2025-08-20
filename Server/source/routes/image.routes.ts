@@ -7,7 +7,7 @@ export class ImageRoutes {
         const router= Router()
         const controller=new ImageController()
         
-        router.post("/images", controller.upload);
+        router.post("/", controller.upload);
         router.get("/files", controller.getListFiles);
         router.get("/files/:name", controller.download);
         return router

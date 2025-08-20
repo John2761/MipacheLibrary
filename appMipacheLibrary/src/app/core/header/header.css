@@ -47,3 +47,12 @@ nav a {
   margin-right: 15px;
   border-radius: 35%;
 }
+
+.badge {
+  background-color: #475f3c;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  margin-left: 6px;
+}

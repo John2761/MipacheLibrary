@@ -32,6 +32,7 @@ CREATE TABLE `Producto` (
     `autor` VARCHAR(191) NULL,
     `fechaCreacion` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `fechaActualizacion` DATETIME(3) NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `esPersonalizado` BOOLEAN NOT NULL DEFAULT false,
     `promocionId` INTEGER NULL,
 
     PRIMARY KEY (`id`)
@@ -102,7 +103,7 @@ CREATE TABLE `ProductoPersonalizado` (
     `colorId` INTEGER NOT NULL,
     `materialId` INTEGER NOT NULL,
     `tamannoId` INTEGER NOT NULL,
-    `productoId` INTEGER NOT NULL,
+    `productoId` INTEGER NOT NULL DEFAULT 1,
     `pedidoId` INTEGER NULL,
 
     PRIMARY KEY (`id`)
@@ -129,7 +130,6 @@ CREATE TABLE `PrecioTamanno` (
 -- CreateTable
 CREATE TABLE `PrecioColor` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `hexa` VARCHAR(191) NOT NULL,
     `nombre` VARCHAR(191) NOT NULL,
     `precio` DECIMAL(10, 2) NOT NULL,
 

@@ -29,6 +29,7 @@ export class ProductoAdmin {
     private router: Router,
     private route: ActivatedRoute
   ) {}
+  
   ngOnInit() {
     //Label paginator
     this.paginator._intl.itemsPerPageLabel = 'Items';

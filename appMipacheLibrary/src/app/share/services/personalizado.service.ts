@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BaseAPI } from '../base-api';
-import { PromocionModel } from '../models/PromocionModel';
+import { PersonalizadoModel } from '../models/PersonalizadoModel';
 
 @Injectable({
   providedIn: 'root',
 })
-export class PromocionService extends BaseAPI<PromocionModel> {
+export class PersonalizadoService extends BaseAPI<PersonalizadoModel> {
   constructor(httpClient: HttpClient) {
-    super(httpClient, 'promocion');
+    super(httpClient, 'personalizado');
   } 
 }
