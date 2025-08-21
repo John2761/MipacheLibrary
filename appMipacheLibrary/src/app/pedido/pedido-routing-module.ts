@@ -9,8 +9,9 @@ import { PedidoForm } from './pedido-form/pedido-form';
 
 const routes: Routes = [
   { path: 'pedido', component: PedidoIndex },
-  { path: 'pedido/:id', component: PedidoDetail },
   { path: 'pedido/create', component: PedidoForm },
+  { path: 'pedido/:id', component: PedidoDetail },
+  
 
 ];
 

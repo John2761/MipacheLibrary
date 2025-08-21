@@ -2,84 +2,109 @@
   <form [formGroup]="pedidoForm" (ngSubmit)="submitPedido()">
     <h2>Formulario de Pedido</h2>
 
+    <!-- Fecha -->
     <div class="form-group">
       <label>Fecha:</label>
       <p>{{ pedidoForm.get('fecha')?.value | date: 'dd/MM/yyyy' }}</p>
     </div>
 
+    <!-- Usuario info -->
     <div class="form-group">
       <label>Usuario:</label>
-      <p>{{ pedidoForm.get('usuario')?.value }}</p>
+      <p><strong>{{ usuarioSeleccionado?.nombre }}</strong></p>
+      <p><strong>Correo:</strong> {{ usuarioSeleccionado?.correo }}</p>
     </div>
 
+    <!-- Dirección -->
     <div class="form-group">
-      <label>Dirección:</label>
-      <input formControlName="direccion" />
+      <label>Dirección de envío:</label>
+      <input formControlName="direccion" placeholder="Dirección del cliente" />
     </div>
 
+    <!-- Estado -->
+    <div class="form-group">
+      <label>Estado:</label>
+      <p>{{ pedidoForm.get('estado')?.value }}</p>
+    </div>
+
+    <!-- Agregar productos -->
     <h3>Agregar Productos</h3>
     <div *ngIf="productosDisponibles.length > 0; else cargando" class="productos-lista">
       <button
         *ngFor="let p of productosDisponibles"
         type="button"
         class="btn-producto"
-        (click)="agregarProducto()">
-        {{ p.nombre }}
+        (click)="agregarProducto(p)">
+        {{ p.nombre }} - ₡{{ p.precio }}
       </button>
     </div>
     <ng-template #cargando>
       <p>Cargando productos...</p>
     </ng-template>
 
+    <!-- Lista de productos -->
     <div formArrayName="productos">
       <div
         *ngFor="let p of productos.controls; let i = index"
         [formGroupName]="i"
         class="producto-item">
-        <p>{{ p.get('nombre')?.value }}</p>
+
+        <p><strong>{{ p.get('nombre')?.value }}</strong></p>
+
         <label>Cantidad:</label>
-        <input type="number" formControlName="cantidad" (change)="actualizarResumen()" />
-        <label>Subtotal: ₡{{ (p.get('precio')?.value || 0) * (p.get('cantidad')?.value || 0) }}</label>
+        <input type="number" formControlName="cantidad" min="1" (input)="actualizarTotales()" />
+
+        <p>Precio Unitario: ₡{{ p.get('precio')?.value }}</p>
+        <p>Subtotal: ₡{{ p.get('subtotal')?.value }}</p>
+
         <button type="button" class="btn-eliminar" (click)="eliminarProducto(i)">Eliminar</button>
       </div>
     </div>
 
+    <!-- Resumen de costos -->
     <h3>Resumen</h3>
     <div class="resumen-box">
       <p>Subtotal: ₡{{ resumen.subtotal }}</p>
-      <p>Impuesto: ₡{{ resumen.impuesto }}</p>
-      <p>Total: ₡{{ resumen.total }}</p>
+      <p>Impuesto (13%): ₡{{ resumen.impuesto }}</p>
+      <p><strong>Total: ₡{{ resumen.total }}</strong></p>
     </div>
 
+    <!-- Selección tipo de pago -->
     <h3>Método de Pago</h3>
     <div class="form-group">
       <select formControlName="tipoPago">
+        <option value="">-- Selecciona un método --</option>
         <option value="TARJETA">Tarjeta</option>
         <option value="EFECTIVO">Efectivo</option>
       </select>
     </div>
 
+    <!-- Formulario tarjeta -->
     <div *ngIf="pedidoForm.get('tipoPago')?.value === 'TARJETA'" formGroupName="pago">
-      <div formGroupName="tarjeta">
-        <label>Número:</label>
+      <div formGroupName="tarjeta" class="form-group">
+        <label>Número de tarjeta:</label>
         <input formControlName="numero" />
         <label>Vencimiento:</label>
         <input formControlName="vencimiento" />
         <label>CVV:</label>
         <input formControlName="cvv" />
-        <label>Nombre:</label>
+        <label>Nombre del titular:</label>
         <input formControlName="nombre" />
       </div>
     </div>
 
+    <!-- Formulario efectivo -->
     <div *ngIf="pedidoForm.get('tipoPago')?.value === 'EFECTIVO'" formGroupName="pago">
-      <div formGroupName="efectivo">
+      <div formGroupName="efectivo" class="form-group">
         <label>Monto recibido:</label>
         <input formControlName="montoRecibido" />
         <p *ngIf="vuelto >= 0" class="vuelto-text">Vuelto: ₡{{ vuelto }}</p>
       </div>
     </div>
 
-    <button type="submit" class="btn-confirmar">Confirmar Pedido</button>
+    <!-- Confirmación -->
+    <button type="submit" class="btn-confirmar" [disabled]="pedidoForm.invalid || resumen.total <= 0">
+      Confirmar Pedido
+    </button>
   </form>
 </div>
