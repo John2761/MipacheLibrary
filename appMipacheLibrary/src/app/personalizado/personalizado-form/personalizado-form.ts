@@ -184,6 +184,7 @@ export class PersonalizadoForm implements OnInit, OnDestroy {
       tamannoId: v.tamannoId,
       materialId: v.materialId,
       precioTotal: this.total,
+
       cantidad: v.cantidad || 1,
       total: v.total || v.precioTotal,
     };

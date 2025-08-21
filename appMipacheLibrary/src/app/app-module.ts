@@ -15,6 +15,7 @@ import { ProductosModule } from './productos/productos-module';
 import { PromocionModule } from './promocion/promocion-module';
 import { ResenaModule } from './resena/resena-module';
 import { PersonalizadosModule } from './personalizado/personalizado-module';
+
 import { PedidoModule } from './pedido/pedido-module';
 
 @NgModule({

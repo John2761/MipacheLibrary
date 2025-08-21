@@ -1,6 +1,8 @@
 
+
 import { PedidoProductoModel } from "./PedidoProductoModel";
 import { PersonalizadoModel } from "./PersonalizadoModel";
+
 
 
 export interface PedidoModel {
@@ -8,6 +10,9 @@ export interface PedidoModel {
     fecha: Date;
     cliente: string;
     estado: string
+
     productos: PedidoProductoModel[]; // ← productos normales
     productosPersonalizados: PersonalizadoModel[]; // ← productos personalizados
+
+
   }
