@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { PedidoService } from '../../share/services/pedido.service';
 import { PedidoModel } from '../../share/models/PedidoModel';
 import { ProductoService } from '../../share/services/producto.service';
- // Simula usuario autenticado
 
 @Component({
   selector: 'app-pedido-form',
@@ -14,24 +13,31 @@ import { ProductoService } from '../../share/services/producto.service';
 export class PedidoForm implements OnInit {
   pedidoForm!: FormGroup;
   productosDisponibles: any[] = [];
-  usuarioActual: any;
+  usuarioSeleccionado: any;
   resumen = { subtotal: 0, impuesto: 0, total: 0 };
   impuestoRate = 0.13;
 
   constructor(
     private fb: FormBuilder,
     private pedidoService: PedidoService,
-    private productoService: ProductoService,
-
+    private productoService: ProductoService
   ) {}
 
   ngOnInit(): void {
-    
+    // Simula usuario autenticado
+    const usuarioAutenticado = {
+      id: 1,
+      nombre: 'Juan Pérez',
+      correo: 'juan@mail.com',
+      direccion: 'San José, Costa Rica'
+    };
+
+    this.usuarioSeleccionado = usuarioAutenticado;
 
     this.pedidoForm = this.fb.group({
       fecha: [new Date()],
-      usuario: [{ value: 'Usuario Ejemplo', disabled: true }],
-      direccionEnvio: ['', Validators.required],
+      usuarioId: [usuarioAutenticado.id],
+      direccion: [usuarioAutenticado.direccion, Validators.required],
       estado: [{ value: 'EN_CARRITO', disabled: true }],
       productos: this.fb.array([]),
       personalizados: this.fb.array([]),
@@ -61,12 +67,13 @@ export class PedidoForm implements OnInit {
     return this.pedidoForm.get('personalizados') as FormArray;
   }
 
-  agregarProducto() {
+  agregarProducto(p: any): void {
     const grupo = this.fb.group({
-      productoId: [null, Validators.required],
+      nombre: [p.nombre],
+      productoId: [p.id],
       cantidad: [1, [Validators.required, Validators.min(1)]],
-      precioUnitario: [0],
-      subtotal: [{ value: 0, disabled: true }]
+      precio: [p.precio],
+      subtotal: [{ value: p.precio, disabled: true }]
     });
     this.productos.push(grupo);
     this.actualizarTotales();
@@ -77,34 +84,10 @@ export class PedidoForm implements OnInit {
     this.actualizarTotales();
   }
 
-  agregarPersonalizado() {
-    const grupo = this.fb.group({
-      productoId: [null, Validators.required],
-      colorId: [null],
-      tamannoId: [null],
-      materialId: [null],
-      precioTotal: [0],
-      cantidad: [1, [Validators.required, Validators.min(1)]],
-      subtotal: [{ value: 0, disabled: true }]
-    });
-    this.personalizados.push(grupo);
-    this.actualizarTotales();
-  }
-
-  eliminarPersonalizado(index: number): void {
-    this.personalizados.removeAt(index);
-    this.actualizarTotales();
-  }
-
   onChanges(): void {
     this.productos.valueChanges.subscribe(() => this.actualizarTotales());
-    this.personalizados.valueChanges.subscribe(() => this.actualizarTotales());
     this.pedidoForm.get('tipoPago')?.valueChanges.subscribe(() => this.actualizarTotales());
   }
-
-  actualizarResumen(): void {
-  // Lógica futura
-}
 
   actualizarTotales(): void {
     const productos = this.productos.controls;
@@ -114,7 +97,7 @@ export class PedidoForm implements OnInit {
 
     productos.forEach(ctrl => {
       const cantidad = ctrl.get('cantidad')?.value || 0;
-      const precio = ctrl.get('precioUnitario')?.value || 0;
+      const precio = ctrl.get('precio')?.value || 0;
       const sub = cantidad * precio;
       ctrl.get('subtotal')?.setValue(sub, { emitEvent: false });
       subtotal += sub;
@@ -131,7 +114,11 @@ export class PedidoForm implements OnInit {
     const impuesto = subtotal * this.impuestoRate;
     const total = subtotal + impuesto;
 
-    this.resumen = { subtotal, impuesto, total };
+    this.resumen = {
+      subtotal: Number(subtotal.toFixed(2)),
+      impuesto: Number(impuesto.toFixed(2)),
+      total: Number(total.toFixed(2))
+    };
   }
 
   get vuelto(): number {
