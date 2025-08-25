@@ -40,5 +40,4 @@ export class PersonalizadoController {
       next(error);
     }
   };
-
 }

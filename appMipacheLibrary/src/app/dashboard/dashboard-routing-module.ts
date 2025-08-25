@@ -1,15 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AcercaDe } from './acerca-de/acerca-de';
+import { Dashboard } from './dashboard-index/dashboard-index';
+import { AdminGuard } from '../share/guards/admin.guard';
 
 const routes: Routes = [
-  {path:'acerca-de', component: AcercaDe}
-
+    { path:'dashboard', component: Dashboard},
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-
-export class HomeRoutingModule { }
+export class DashboardRoutingModule { }

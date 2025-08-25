@@ -71,9 +71,6 @@ export class PersonalizadoForm implements OnInit, OnDestroy {
     this.cargarListas();
     this.cargarProductoBase();
     this.configurarRecalculoPrecio();
-
-    this.cargarProductoBase();
-    this.configurarRecalculoPrecio();
   }
 
   private configurarRecalculoPrecio(): void {

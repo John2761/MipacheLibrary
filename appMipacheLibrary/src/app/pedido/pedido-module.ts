@@ -20,10 +20,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatBadgeModule } from '@angular/material/badge';
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-
 import { PedidoForm } from './pedido-form/pedido-form';
 import { PedidoDetail } from './pedido-detail/pedido-detail';
 
@@ -54,8 +51,6 @@ import { PedidoDetail } from './pedido-detail/pedido-detail';
     MatFormFieldModule,
     ReactiveFormsModule,
     PedidoRoutingModule,
-
-    
     FormsModule,
     PedidoRoutingModule
   ]

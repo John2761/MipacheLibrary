@@ -17,6 +17,7 @@ import { ResenaModule } from './resena/resena-module';
 import { PersonalizadosModule } from './personalizado/personalizado-module';
 
 import { PedidoModule } from './pedido/pedido-module';
+import { DashboardModule } from './dashboard/dashboard-module';
 
 @NgModule({
   declarations: [App],
@@ -32,6 +33,7 @@ import { PedidoModule } from './pedido/pedido-module';
     PersonalizadosModule,
     PromocionModule,
     ResenaModule,
+    DashboardModule,
     //Siempre de ultimo
     AppRoutingModule,
   ],
