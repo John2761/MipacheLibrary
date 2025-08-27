@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import passport from "passport";
+import passport from "../config/passport";
 import { Role } from "../../generated/prisma";
 
 /* Middleware para proteger ruta y validar token JWT
@@ -10,6 +10,7 @@ export const authenticateJWT = passport.authenticate("jwt", { session: false });
 
 // Middleware para permitir solo ciertos roles
 export const authorizeRoles = (...roles: Role[]) => {
+  
   return (req: Request, res: Response, next: NextFunction): void => {
     //Extrae al usuario de req.user, que fue previamente agregado por el middleware authenticateJWT
     const user = req.user as { role: Role };
@@ -19,9 +20,7 @@ export const authorizeRoles = (...roles: Role[]) => {
         success: false,
         message: "Acceso denegado: rol no autorizado",
       });
-      return;
     }
-
     next(); 
   };
 };

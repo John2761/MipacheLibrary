@@ -86,7 +86,7 @@ export class AuthenticationService {
     localStorage.removeItem(this.tokenKey);
     this.tokenUser.set(null);
     this.usuario.set(null);
-    this.pedidoService.resetearContador();
+    //this.pedidoService.resetearContador();
     this.router.navigate(['/login']);
   }
 }
