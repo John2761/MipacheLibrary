@@ -8,7 +8,7 @@ import { ShareModule } from './share/share-module';
 import { HomeModule } from './home/home-module';
 import { UsuarioModule } from './usuario/usuario-module';
 
-import { HTTP_INTERCEPTORS, provideHttpClient } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { HttpErrorInterceptorService } from './share/http-error-interceptor.service';
 import { ProductosModule } from './productos/productos-module';
@@ -17,6 +17,7 @@ import { ResenaModule } from './resena/resena-module';
 import { PersonalizadosModule } from './personalizado/personalizado-module';
 
 import { PedidoModule } from './pedido/pedido-module';
+import { HttpAuthInterceptorService } from './share/http-auth-interceptor.service';
 
 @NgModule({
   declarations: [App],
@@ -37,11 +38,16 @@ import { PedidoModule } from './pedido/pedido-module';
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideHttpClient(),
-    provideAnimations(),
+    provideHttpClient(withInterceptorsFromDi()),
+    //provideAnimations(),
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpErrorInterceptorService,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpAuthInterceptorService,
       multi: true,
     },
   ],
