@@ -9,7 +9,7 @@ import { HomeModule } from './home/home-module';
 import { UsuarioModule } from './usuario/usuario-module';
 
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
-import { provideAnimations } from '@angular/platform-browser/animations';
+
 import { HttpErrorInterceptorService } from './share/http-error-interceptor.service';
 import { ProductosModule } from './productos/productos-module';
 import { PromocionModule } from './promocion/promocion-module';
@@ -19,8 +19,9 @@ import { PersonalizadosModule } from './personalizado/personalizado-module';
 import { PedidoModule } from './pedido/pedido-module';
 
 import { HttpAuthInterceptorService } from './share/http-auth-interceptor.service';
-
 import { DashboardModule } from './dashboard/dashboard-module';
+
+
 
 
 @NgModule({

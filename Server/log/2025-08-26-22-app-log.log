@@ -1,0 +1,78 @@
+2025-08-26 22:06:53.533 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.resena.findMany()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\resenaController.ts:11:46
+
+   8 // Obtener todas las reseñas
+   9 getAll = async (req: Request, res: Response, next: NextFunction) => {
+  10   try {
+→ 11     const lista = await this.prisma.resena.findMany(
+Can't reach database server at `localhost:3306`
+
+Please make sure your database server is running at `localhost:3306`.
+2025-08-26 22:06:55.464 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.pedido.findMany()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\pedidoController.ts:10:48
+
+   7 //Get All
+   8 get = async (request: Request, response: Response, next: NextFunction) => {
+   9   try {
+→ 10     const pedidos = await this.prisma.pedido.findMany(
+Can't reach database server at `localhost:3306`
+
+Please make sure your database server is running at `localhost:3306`.
+2025-08-26 22:06:57.653 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.producto.findMany()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\productoController.ts:11:52
+
+   8 //Get All
+   9 get = async (request: Request, response: Response, next: NextFunction) => {
+  10   try {
+→ 11     const productos = await this.prisma.producto.findMany(
+Can't reach database server at `localhost:3306`
+
+Please make sure your database server is running at `localhost:3306`.
+2025-08-26 22:07:10.411 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.pedido.findMany()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\pedidoController.ts:10:48
+
+   7 //Get All
+   8 get = async (request: Request, response: Response, next: NextFunction) => {
+   9   try {
+→ 10     const pedidos = await this.prisma.pedido.findMany(
+Can't reach database server at `localhost:3306`
+
+Please make sure your database server is running at `localhost:3306`.
+2025-08-26 22:07:11.584 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.resena.findMany()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\resenaController.ts:11:46
+
+   8 // Obtener todas las reseñas
+   9 getAll = async (req: Request, res: Response, next: NextFunction) => {
+  10   try {
+→ 11     const lista = await this.prisma.resena.findMany(
+Can't reach database server at `localhost:3306`
+
+Please make sure your database server is running at `localhost:3306`.
+2025-08-26 22:07:12.839 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.producto.findMany()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\productoController.ts:11:52
+
+   8 //Get All
+   9 get = async (request: Request, response: Response, next: NextFunction) => {
+  10   try {
+→ 11     const productos = await this.prisma.producto.findMany(
+Can't reach database server at `localhost:3306`
+
+Please make sure your database server is running at `localhost:3306`.
+2025-08-26 22:08:28.310 error: 	perez--Se produjo un error interno del servidor 
+Invalid `this.prisma.pedido.findMany()` invocation in
+C:\Users\perez\Desktop\Aplicaciones Web\MipacheLibrary\Server\source\controllers\pedidoController.ts:10:48
+
+   7 //Get All
+   8 get = async (request: Request, response: Response, next: NextFunction) => {
+   9   try {
+→ 10     const pedidos = await this.prisma.pedido.findMany(
+Can't reach database server at `localhost:3306`
+
+Please make sure your database server is running at `localhost:3306`.
+2025-08-26 22:10:16.799 error: 	perez--Se produjo un error interno del servidor Unknown authentication strategy "local"

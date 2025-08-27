@@ -1,15 +1,20 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { PedidoModel } from '../models/PedidoModel';
+import { PedidoDetailModel } from '../models/PedidoDetailModel';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PedidoService {
   private baseUrl = 'http://localhost:3000/pedido'; // Cambiar si es necesario
-  private totalCantidadSubject = new BehaviorSubject<number>(0);
-  totalCantidad$ = this.totalCantidadSubject.asObservable();
+  private _cantidadTotal = signal<number>(0);
+  totalCantidadSignal = this._cantidadTotal;
+
+  actualizarCantidad(nuevaCantidad: number){
+    this._cantidadTotal.set(nuevaCantidad);
+  }
 
   constructor(private http: HttpClient) {}
 
@@ -19,8 +24,8 @@ export class PedidoService {
   }
 
   // Obtener pedido por ID
-  getPedidoById(id: number): Observable<PedidoModel> {
-    return this.http.get<PedidoModel>(`${this.baseUrl}/${id}`);
+  getPedidoById(id: number): Observable<PedidoDetailModel> {
+    return this.http.get<PedidoDetailModel>(`${this.baseUrl}/${id}`);
   }
 
   // Crear un pedido nuevo
@@ -77,11 +82,11 @@ export class PedidoService {
     pedido.productosPersonalizados?.forEach((p) => {
       total += p.cantidad;
     });
-    this.totalCantidadSubject.next(total);
+    this._cantidadTotal.set(total);
   }
 
   // Reset manual del contador
   resetearContador() {
-    this.totalCantidadSubject.next(0);
+    this._cantidadTotal.set(0);
   }
 }

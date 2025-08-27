@@ -27,12 +27,43 @@
 
     <a routerLink="/pedido" routerLinkActive="activo">
       <mat-icon>shopping_cart</mat-icon>
-      Pedidos ({{ cantidadTotal }})
+      Pedidos ({{ cantidadTotal() }})
     </a>
 
     <a routerLink="/about" routerLinkActive="activo">
       <mat-icon>info</mat-icon>
       Acerca de
     </a>
+
+    <!-- Menú de administrador -->
+    <button mat-button [matMenuTriggerFor]="menu2" *ngIf="isAdmin()">
+      <mat-icon>admin_panel_settings</mat-icon>
+      Admin
+    </button>
+    <mat-menu #menu2="matMenu">
+      <button mat-menu-item [routerLink]="'/videojuego-admin'" routerLinkActive="active-link">
+        Videojuegos
+      </button>
+    </mat-menu>
+
+    <!-- Menú de usuario -->
+    <span class="small-text">{{ currentUser()?.correo }}</span>
+    <button mat-icon-button [matMenuTriggerFor]="menu3">
+      <mat-icon>person</mat-icon>
+    </button>
+    <mat-menu #menu3="matMenu">
+      <ng-container *ngIf="!isAuthenticated(); else logoutBlock">
+        <button mat-menu-item (click)="login()">
+          <mat-icon>person_add</mat-icon>
+          <span>Login</span>
+        </button>
+      </ng-container>
+      <ng-template #logoutBlock>
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>person_remove</mat-icon>
+          <span>Logout</span>
+        </button>
+      </ng-template>
+    </mat-menu>
   </nav>
 </header>

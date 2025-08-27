@@ -1,0 +1,89 @@
+<form [formGroup]="formCreate" novalidate>
+  <mat-card class="card-content">
+    <mat-card-header>
+      <mat-card-title class="title">Crear Usuario </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Nombre</mat-label>
+            <input matInput type="text" placeholder="Nombre usuario" formControlName="nombre" />
+            @if (errorHandling('nombre')) {
+            <mat-error>
+              {{errorHandling('nombre')}}
+            </mat-error>
+            }
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Correo</mat-label>
+            <input matInput type="text" placeholder="Correo Electrónico" formControlName="correo" />
+            @if (errorHandling('correo')) {
+            <mat-error>
+              {{errorHandling('correo')}}
+            </mat-error>
+            }
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password usuario"
+              formControlName="password" />
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            @if (errorHandling('password')) {
+            <mat-error>
+              {{errorHandling('password')}}
+            </mat-error>
+            }
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Confirmar Password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" placeholder="Confirmar Password usuario"
+              formControlName="confirmpassword" />
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <!-- Mostrar mensaje error de comparación de password -->
+           
+          </mat-form-field>
+          @if(formCreate.hasError('passwordsMismatch') && formCreate.touched){
+            <mat-error>
+              Las contraseñas no coinciden.
+            </mat-error>
+            }
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Rol</mat-label>
+            <mat-select placeholder="Rol" formControlName="role">
+              <mat-option *ngFor="let r of roles" [value]="r.id">
+                {{ r.nombre }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button matButton="outlined" class="btn-secondary" (click)="submitForm()">Registrar</button>
+      <button matButton="outlined" class="btn-tertiary" type="reset" (click)="onReset()">Cancelar</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
