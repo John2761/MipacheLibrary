@@ -6,7 +6,7 @@ import { NotificationService } from '../../share/notification-service';
 import { AuthenticationService } from '../../share/authentication.service';
 
 @Component({
-  selector: 'app-usuario-login',
+  selector: 'app-user-login',
   standalone: false,
   templateUrl: './usuario-login.html',
   styleUrl: './usuario-login.css'

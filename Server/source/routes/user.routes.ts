@@ -10,6 +10,8 @@ export class UserRoutes {
     router.post("/login", controller.login);
     router.post("/register", controller.register);
     router.get("/profile", authenticateJWT, controller.userAuth);
+    router.use(authenticateJWT);
+
     return router;
   }
 }

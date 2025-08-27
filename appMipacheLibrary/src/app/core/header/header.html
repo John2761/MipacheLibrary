@@ -38,16 +38,16 @@
     <!-- Menú de administrador -->
     <button mat-button [matMenuTriggerFor]="menu2" *ngIf="isAdmin()">
       <mat-icon>admin_panel_settings</mat-icon>
-      Admin
+      Administrador
     </button>
     <mat-menu #menu2="matMenu">
-      <button mat-menu-item [routerLink]="'/videojuego-admin'" routerLinkActive="active-link">
-        Videojuegos
+      <button mat-menu-item [routerLink]="'/pedido-admin'" routerLinkActive="active-link">
+        Pedidos
       </button>
     </mat-menu>
 
     <!-- Menú de usuario -->
-    <span class="small-text">{{ currentUser()?.correo }}</span>
+    <span class="small-text">{{ currentUser()?.nombre }}</span>
     <button mat-icon-button [matMenuTriggerFor]="menu3">
       <mat-icon>person</mat-icon>
     </button>
