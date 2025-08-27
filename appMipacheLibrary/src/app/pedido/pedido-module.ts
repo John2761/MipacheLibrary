@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { PedidoRoutingModule } from './pedido-routing-module';
-import { PedidoIndex } from './pedido-index/pedido-index';
+import { PedidoAdmin } from './pedido-admin/pedido-admin';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -23,12 +22,15 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PedidoForm } from './pedido-form/pedido-form';
 import { PedidoDetail } from './pedido-detail/pedido-detail';
+import { pedidoIndex } from './pedido-index/pedido-index';
 
 
 @NgModule({
-
-  declarations: [PedidoIndex, PedidoForm, PedidoDetail],
-  
+  declarations: [
+    PedidoAdmin, 
+    PedidoForm, 
+    PedidoDetail, 
+    pedidoIndex],
   
   imports: [
     CommonModule,
@@ -50,7 +52,6 @@ import { PedidoDetail } from './pedido-detail/pedido-detail';
     MatSelectModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    PedidoRoutingModule,
     FormsModule,
     PedidoRoutingModule
   ]

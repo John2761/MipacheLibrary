@@ -1,37 +1,134 @@
-<div class="pedido-container">
-  <h2>Listado de Pedidos</h2>
+<mat-card class="box">
+  <mat-card-title><h3>Orden de Compra</h3></mat-card-title>
+  <mat-card-subtitle>Fecha: {{ fecha | date: 'dd/MM/yyyy' }}</mat-card-subtitle>
+</mat-card>
 
-  <!-- Botón para ir al formulario de registro -->
-  <div class="acciones">
-    <button [routerLink]="['/pedido/create']" class="btn-registrar">
-      Registrar nuevo pedido
-    </button>
+<div class="cart-grid">
+  <!-- IZQUIERDA: LISTA -->
+  <div class="cart-left">
+    <mat-card class="box cart-list">
+      <mat-card-content>
+        <mat-table [dataSource]="dataSource" class="table-orden">
+          <!-- PRODUCTO (con imagen + nombre) -->
+          <ng-container matColumnDef="producto">
+            <mat-header-cell *matHeaderCellDef> Producto </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <div class="product-cell">
+                <img
+                  class="product-thumb"
+                  [src]="buildImgUrl(element.producto.imagenPrincipal || element.producto.imagenes?.[0]?.ruta)"
+                  (error)="onImgError($event)"
+                  alt="{{ element.producto.nombre }}"
+                />
+                <span class="name">{{ element.producto.nombre }}</span>
+              </div>
+            </mat-cell>
+            <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+          </ng-container>
+
+          <!-- PRECIO -->
+          <ng-container matColumnDef="precio">
+            <mat-header-cell *matHeaderCellDef>
+              Precio unitario
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ (element.producto.precio - element.producto.precio * .13) |
+              currency:'CRC':'symbol-narrow' }}
+            </mat-cell>
+            <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="impuestos">
+            <mat-header-cell *matHeaderCellDef> I.V.A (13%) </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ (element.producto.precio * 0.13) |
+              currency:'CRC':'symbol-narrow' }}
+            </mat-cell>
+            <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+          </ng-container>
+
+          <!-- CANTIDAD -->
+          <ng-container matColumnDef="cantidad">
+            <mat-header-cell *matHeaderCellDef> Cantidad </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <div class="cantidad-container">
+                <button
+                  mat-mini-fab
+                  class="mini"
+                  (click)="aumentarCantidad(element)"
+                >
+                  <mat-icon>add</mat-icon>
+                </button>
+                <div class="cantidad-box">{{ element.cantidad }}</div>
+                <button
+                  mat-mini-fab
+                  class="mini"
+                  (click)="disminuirCantidad(element)"
+                >
+                  <mat-icon>remove</mat-icon>
+                </button>
+              </div>
+            </mat-cell>
+            <mat-footer-cell *matFooterCellDef class="footer-total"
+              >Total</mat-footer-cell
+            >
+          </ng-container>
+
+          <!-- SUBTOTAL -->
+          <ng-container matColumnDef="subtotal">
+            <mat-header-cell *matHeaderCellDef> Subtotal</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ (element.subtotal - element.subtotal *.13) |
+              currency:'CRC':'symbol-narrow' }}
+            </mat-cell>
+            <mat-footer-cell *matFooterCellDef class="footer-total">
+              {{ totalCompra() | currency:'CRC':'symbol-narrow' }}
+            </mat-footer-cell>
+          </ng-container>
+
+          <!-- ACCIONES -->
+          <ng-container matColumnDef="acciones">
+            <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+            <mat-cell *matCellDef="let element" class="acc-cell">
+              <button
+                mat-icon-button
+                (click)="eliminarItem(element.producto.id)"
+                aria-label="Eliminar"
+              >
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-cell>
+            <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+          <mat-footer-row *matFooterRowDef="displayedColumns"></mat-footer-row>
+        </mat-table>
+      </mat-card-content>
+    </mat-card>
   </div>
 
-  <table *ngIf="pedidos.length > 0">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Cliente</th>
-        <th>Estado</th>
-        <th>Fecha</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let pedido of pedidos">
-        <td>{{ pedido?.id ?? 'Sin ID' }}</td>
-        <td>{{ pedido?.cliente }}</td>
-        <td>{{ pedido?.estado }}</td>
-        <td>{{ pedido?.fecha | date: 'dd/MM/yyyy' }}</td>
-        <button matMiniFab 
-            aria-label="Detalle pedido" class="btn-primary"
-              (click)="detallePedido(pedido.id)">
-              <mat-icon class="mat-18">info</mat-icon>
-        </button>
-      </tr>
-    </tbody>
-  </table>
-
-  <p *ngIf="pedidos.length === 0">No hay pedidos registrados.</p>
+  <!-- DERECHA: TOTALES -->
+  <aside class="summary-card">
+    <h3>Totales del carrito</h3>
+    <div class="summary-line">
+      <span>Subtotal</span>
+      <span
+        >{{ totalCompra() - totalCompra() * 0.13 |
+        currency:'CRC':'symbol-narrow' }}</span
+      >
+    </div>
+    <div class="summary-line"><span>Envío</span><span>—</span></div>
+    <hr />
+    <div class="summary-total">
+      <span>Total (con i.v.a)</span>
+      <span>{{ totalCompra() | currency:'CRC':'symbol-narrow' }}</span>
+    </div>
+    <button mat-raised-button class="btn-cta" (click)="abrirPago()">
+      Proceder al pago
+      <mat-icon>shopping_bag</mat-icon>
+    </button>
+    <small class="summary-note">* Impuestos incluidos</small>
+  </aside>
 </div>

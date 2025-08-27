@@ -12,7 +12,8 @@
           *ngFor="let img of datos.imagenes"
           [src]="getImgUrl(img.ruta)"
           [class.seleccionada]="img.ruta === imagenSeleccionada"
-          (click)="cambiarImagen(img.ruta)"/>
+          (click)="cambiarImagen(img.ruta)"
+        />
       </div>
     </div>
 
@@ -60,10 +61,11 @@
       <button
         mat-raised-button
         color="primary"
-        (click)="accionPrincipal()"
+        (click)="accionPrincipal(datos)"
         class="boton-compra"
         [disabled]="!datos.esPersonalizado && datos.stock === 0"
       >
+      <mat-icon>shopping_bag</mat-icon>
         {{ datos.esPersonalizado ? 'Personalizar' : 'Agregar a la bolsa' }}
       </button>
     </div>

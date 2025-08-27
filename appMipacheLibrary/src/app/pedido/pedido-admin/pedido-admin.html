@@ -1,0 +1,34 @@
+<div class="container">
+  <mat-card>
+    <mat-card-header>
+      <h1 class="mat-h1">Pedidos</h1>
+    </mat-card-header>
+  </mat-card>
+
+  <div class="orders-flex-container">
+    @for(item of pedidos; track item.id){
+    <mat-card class="dashboard-card">
+      <mat-card-header class="dashboard-card-header">
+        <mat-card-title> Pedido # {{ item.id }} </mat-card-title>
+        <button
+          matMiniFab
+          aria-label="Detalle pedido"
+          class="btn-primary"
+          (click)="detallePedido(item.id)"
+        >
+          <mat-icon class="mat-18">info</mat-icon>
+        </button>
+      </mat-card-header>
+      <mat-card-content class="dashboard-card-content">
+        <p class="price">{{ item.fecha | date: 'dd/MM/yyyy' }}</p>
+        <p><b>Nombre usuario: </b> {{ item.cliente }}</p>
+        <p class="estado">
+          <span class="chip e-{{ (item.estado || '').toLowerCase() }}">
+            {{ item.estado }}
+          </span>
+        </p>
+      </mat-card-content>
+    </mat-card>
+    }
+  </div>
+</div>

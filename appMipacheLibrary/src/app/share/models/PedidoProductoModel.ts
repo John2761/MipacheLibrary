@@ -6,6 +6,7 @@ export interface PedidoProductoModel {
   pedido: PedidoModel;
   pedidoId: number;
   producto: ProductoModel;
+  productoId: number;
   cantidad: number;
   precio: number;
   updatedAt: Date;

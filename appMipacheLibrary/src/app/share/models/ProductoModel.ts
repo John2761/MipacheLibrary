@@ -12,4 +12,5 @@ export interface ProductoModel {
     updatedAt: Date;
     categorias: CategoriaModel[];
     pedidos: PedidoProductoModel[];
+    activo?: boolean;
   }

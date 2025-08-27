@@ -1,7 +1,22 @@
-.body-container {
-display: flex;
-justify-content: center;
-align-items: center;
-color: #f6e7c8;
-width: 100%;
+/* igual que ya tienes */
+html, body { height: 100%; margin: 0; }
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
+
+/* ESTE es el hijo directo que debe crecer */
+.body-container {
+  flex: 1;                  /* <- clave */
+  display: flex;            /* para que main pueda estirarse dentro */
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;                  /* el área del router-outlet ocupa el espacio */
+}
+
+/* Asegúrate de que el footer NO esté fixed */
+app-footer, footer { position: static; }

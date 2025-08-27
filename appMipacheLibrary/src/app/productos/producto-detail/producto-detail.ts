@@ -3,7 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
 import { ProductoService } from '../../share/services/producto.service';
-
+import { ProductoModel } from '../../share/models/ProductoModel';
+import { CartService } from '../../share/cart.service';
+import { NotificationService } from '../../share/notification-service';
 
 @Component({
   selector: 'app-producto-detail',
@@ -23,13 +25,14 @@ export class ProductoDetail {
   usuarioNombre: string = '';
 
   constructor(
+    private cartService: CartService,
     private pdService: ProductoService,
+    private noti: NotificationService,
     private router: Router,
     private activeRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {
     this.formComentario = this.fb.group({
-      
       comentario: ['', [Validators.required, Validators.minLength(5)]],
     });
 
@@ -49,7 +52,7 @@ export class ProductoDetail {
       .pipe(takeUntil(this.destroy$)) // Operador de RxJS para desuscribirse automáticamente
       .subscribe((data: any) => {
         this.datos = data;
-        console.log("Producto:", data);
+        console.log('Producto:', data);
         const etiquetas =
           data.etiquetas?.map((e: any) => e.descripcion.toLowerCase()) || [];
 
@@ -70,15 +73,13 @@ export class ProductoDetail {
       });
   }
 
-    accionPrincipal(): void {
+  accionPrincipal(producto: ProductoModel): void {
     if (this.datos?.esPersonalizado) {
-      // Opción A
+      // Ir al producto personalizado si se puede personalizar
       this.router.navigate(['/personalizado/create']);
-
-      // Opción B (si prefieres usar el id del producto actual):
-      // this.router.navigate(['/personalizado', this.datos.id]);
-    } else {
-      this.comprar(); // tu lógica existente de "Agregar a la bolsa"
+      //Sino agregar el producto al carrito
+       } else {
+         this.comprar(producto); // tu lógica existente de "Agregar a la bolsa"
     }
   }
 
@@ -90,27 +91,33 @@ export class ProductoDetail {
     this.imagenSeleccionada = nombre;
   }
 
-  comprar() {
-    alert(`Libro "${this.datos.nombre}" agregado al carrito.`);
+  comprar(producto: ProductoModel) {
+    console.log(producto);
+    this.noti.success(
+      'Compra',
+      'Videojuego comprado: ' + producto.nombre,
+      5000
+    );
+    this.cartService.addToCart(producto);
   }
 
   enviarComentario() {
-     console.log('Intentando enviar reseña'); // ← ¿aparece en consola?
-  if (this.formComentario.valid && this.valoracion > 0) {
-    const comentario = {
-      comentario: this.formComentario.value.comentario,
-      valoracion: this.valoracion,
-      usuarioId: this.usuarioId,
-      productoId: this.datos.id
-    };
+    console.log('Intentando enviar reseña'); // ← ¿aparece en consola?
+    if (this.formComentario.valid && this.valoracion > 0) {
+      const comentario = {
+        comentario: this.formComentario.value.comentario,
+        valoracion: this.valoracion,
+        usuarioId: this.usuarioId,
+        productoId: this.datos.id,
+      };
 
-    this.pdService.crearResena(comentario).subscribe(() => {
-      this.obtenerProducto(this.datos.id); // Refresca reseñas y promedio
-      this.formComentario.reset();
-      this.valoracion = 0;
-    });
+      this.pdService.crearResena(comentario).subscribe(() => {
+        this.obtenerProducto(this.datos.id); // Refresca reseñas y promedio
+        this.formComentario.reset();
+        this.valoracion = 0;
+      });
+    }
   }
-}
 
   // Función para manejar la selección de estrellas (también para desmarcar la selección)
   setValoracion(star: number) {
@@ -124,17 +131,16 @@ export class ProductoDetail {
   }
 
   esFormatoPastaDura(): boolean {
-  return this.datos?.etiquetas?.some(
-    (e: any) => e.descripcion?.toLowerCase().includes('pasta dura')
-  );
-}
+    return this.datos?.etiquetas?.some((e: any) =>
+      e.descripcion?.toLowerCase().includes('pasta dura')
+    );
+  }
 
-esIdiomaEspanol(): boolean {
-  return this.datos?.etiquetas?.some(
-    (e: any) => e.descripcion?.toLowerCase().includes('español')
-  );
-}
-
+  esIdiomaEspanol(): boolean {
+    return this.datos?.etiquetas?.some((e: any) =>
+      e.descripcion?.toLowerCase().includes('español')
+    );
+  }
 
   goBack(): void {
     this.router.navigate(['/producto/']);
@@ -146,7 +152,7 @@ esIdiomaEspanol(): boolean {
     this.destroy$.unsubscribe(); // Completa el Subject 'destroy$' para liberar recursos
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.usuarioId = 1;
     this.usuarioNombre = 'Kisha Pérez';
   }

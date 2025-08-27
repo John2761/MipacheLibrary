@@ -11,6 +11,7 @@ export enum EstadoPromoModel {
 
 export enum EstadoModel {
   EN_CARRITO = 'EN_CARRITO',
+  PAGO_PENDIENTE  = 'PAGO_PENDIENTE',
   PAGADO     = 'PAGADO',
   EN_ENTREGA = 'EN_ENTREGA',
   COMPLETADO = 'COMPLETADO',

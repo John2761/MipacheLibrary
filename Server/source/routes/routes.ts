@@ -25,7 +25,7 @@ export class AppRoutes {
     router.use("/precioColor", precioColorRoutes);
     router.use("/precioMaterial", precioMaterialRoutes);
     router.use("/precioTamanno", precioTamannoRoutes);
-    router.use("/dashboard",  dashboardRoutes.routes); /* isAdmin, */
+    router.use("/dashboard",  dashboardRoutes.routes);
 
     return router;
   }

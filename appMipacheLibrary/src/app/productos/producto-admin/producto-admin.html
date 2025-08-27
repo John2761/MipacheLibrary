@@ -1,22 +1,31 @@
-<mat-card> 
+<mat-card>
   <!-- Titulo del Card -->
   <mat-card-header>
     <mat-card-title>Listado de Productos</mat-card-title>
     <mat-card-subtitle>
-      <button matMiniFab  aria-label="Crear Producto" class="btn-primary"
-        (click)="crearProducto()">
+      <button
+        matMiniFab
+        aria-label="Crear Producto"
+        class="btn-primary"
+        (click)="crearProducto()"
+      >
         <mat-icon>add</mat-icon>
       </button>
     </mat-card-subtitle>
   </mat-card-header>
-  
+
   <mat-card-content>
     <hr />
     <!-- Table -->
     <div class="mat-elevation-z8">
-      <mat-table mat-table [dataSource]="dataSource" class="tabla" matSort matSortStart="desc"
-        aria-label="Elements">
-        
+      <mat-table
+        mat-table
+        [dataSource]="dataSource"
+        class="tabla"
+        matSort
+        matSortStart="desc"
+        aria-label="Elements"
+      >
         <!-- Columna nombre -->
         <ng-container matColumnDef="nombre">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
@@ -31,31 +40,51 @@
 
         <ng-container matColumnDef="acciones">
           <th mat-header-cell *matHeaderCellDef>Opciones</th>
-          <td mat-cell *matCellDef="let row">
-            <button matIconButton 
-            matTooltip="Actualizar Producto" 
-            aria-label="Actualizar Producto" class="btn-primary"
-            (click)="actualizarProducto(row.id)">
-              <mat-icon class="mat-18">edit</mat-icon>
+          <td mat-cell *matCellDef="let p">
+            <!-- Editar (tu botón actual) -->
+            <button
+              mat-mini-fab
+              color="primary"
+              (click)="actualizarProducto(p.id)"
+              matTooltip="Editar"
+            >
+              <mat-icon>edit</mat-icon>
             </button>
-            <button matMiniFab 
-            matTooltip="Detalle Producto" 
-            aria-label="Detalle Producto" class="btn-primary"
-              (click)="detalleProducto(row.id)">
-              <mat-icon class="mat-18">info</mat-icon>
+
+            <!-- Dar de baja / Reactivar -->
+            <button
+              mat-mini-fab
+              [color]="p.activo ? 'warn' : 'accent'"
+              (click)="toggleActivo(p)"
+              [matTooltip]="p.activo ? 'Dar de baja' : 'Reactivar'"
+            >
+              <mat-icon
+                >{{ p.activo ? 'visibility_off' : 'visibility' }}</mat-icon
+              >
             </button>
           </td>
         </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" class="header-row bg-tertiary"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns" class="content-row"></tr>
+        <tr
+          mat-header-row
+          *matHeaderRowDef="displayedColumns; sticky: true"
+          class="header-row bg-tertiary"
+        ></tr>
+        <tr
+          mat-row
+          *matRowDef="let row; columns: displayedColumns"
+          class="content-row"
+        ></tr>
       </mat-table>
 
-      <mat-paginator #paginator [length]="dataSource.data.length" [pageIndex]="0" [pageSize]="5"
-        [pageSizeOptions]="[3, 5, 10]" 
-        >
+      <mat-paginator
+        #paginator
+        [length]="dataSource.data.length"
+        [pageIndex]="0"
+        [pageSize]="5"
+        [pageSizeOptions]="[3, 5, 10]"
+      >
       </mat-paginator>
     </div>
-
   </mat-card-content>
 </mat-card>

@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PedidoIndex } from './pedido-index/pedido-index';
+import { PedidoAdmin } from './pedido-admin/pedido-admin';
 import { PedidoDetail } from './pedido-detail/pedido-detail';
 import { PedidoForm } from './pedido-form/pedido-form';
+import { pedidoIndex } from './pedido-index/pedido-index';
 
 const routes: Routes = [
-  { path: 'pedido', component: PedidoIndex },
+  { path: 'pedido-admin', component: PedidoAdmin },
+  { path: 'pedido', component: pedidoIndex },
+  { path: 'pedido/:id', component: PedidoDetail },
   { path: 'pedido/create', component: PedidoForm },
-  { path: 'pedido/:id', component: PedidoDetail },
-  
-
-  { path: 'pedido/:id', component: PedidoDetail },
 ];
 
 @NgModule({

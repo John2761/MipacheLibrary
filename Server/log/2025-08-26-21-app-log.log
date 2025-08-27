@@ -1,0 +1,23 @@
+2025-08-26 21:07:55.278 error: 	John--Se produjo un error interno del servidor 
+Invalid `this.prisma.productoPersonalizado.create()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\personalizadoController.ts:27:74
+
+  24 //Datos JSON
+  25 const body = request.body;
+  26 
+→ 27 const nuevoPersonalizado = await this.prisma.productoPersonalizado.create({
+       data: {
+         logo: undefined,
+         color: undefined,
+         tamanno: undefined,
+         material: undefined,
+         producto: undefined,
+     +   precioTotal: Decimal
+       }
+     })
+
+Argument `precioTotal` is missing.
+2025-08-26 21:10:35.088 error: 	John--Datos incompletos para crear el pedido Datos incompletos para crear el pedido
+2025-08-26 21:12:44.242 error: 	John--Datos incompletos para crear el pedido Datos incompletos para crear el pedido
+2025-08-26 21:12:55.384 error: 	John--Datos incompletos para crear el pedido Datos incompletos para crear el pedido
+2025-08-26 21:13:00.645 error: 	John--Datos incompletos para crear el pedido Datos incompletos para crear el pedido

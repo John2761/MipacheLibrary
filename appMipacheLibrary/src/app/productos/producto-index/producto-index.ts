@@ -5,7 +5,6 @@ import { NotificationService } from '../../share/notification-service';
 import { Router } from '@angular/router';
 import { ProductoModel } from '../../share/models/ProductoModel';
 
-
 @Component({
   selector: 'app-producto-index',
   standalone: false,
@@ -15,7 +14,6 @@ import { ProductoModel } from '../../share/models/ProductoModel';
 export class ProductoIndex {
   datos: ProductoModel[] = [];
   datosOriginales: ProductoModel[] = [];
-
   filtroNombre = new FormControl('');
 
   constructor(
@@ -29,9 +27,9 @@ export class ProductoIndex {
   //Listar todos los Productos del API
   listProductos() {
     this.pdService.get().subscribe((respuesta: ProductoModel[]) => {
-      this.datos = respuesta;
+      this.datos = respuesta.filter((p) => p.activo !== false);
       this.datosOriginales = respuesta;
-      console.log(this.datos)
+      console.log(this.datos);
     });
   }
 
@@ -40,7 +38,7 @@ export class ProductoIndex {
     if (!valor) {
       this.datos = this.datosOriginales;
     } else {
-      this.datos = this.datosOriginales.filter(p =>
+      this.datos = this.datosOriginales.filter((p) =>
         p.nombre.toLowerCase().includes(valor)
       );
     }

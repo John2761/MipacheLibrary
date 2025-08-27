@@ -7,7 +7,6 @@ import { CoreModule } from './core/core-module';
 import { ShareModule } from './share/share-module';
 import { HomeModule } from './home/home-module';
 import { UsuarioModule } from './usuario/usuario-module';
-
 import { HTTP_INTERCEPTORS, provideHttpClient } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { HttpErrorInterceptorService } from './share/http-error-interceptor.service';
@@ -15,7 +14,6 @@ import { ProductosModule } from './productos/productos-module';
 import { PromocionModule } from './promocion/promocion-module';
 import { ResenaModule } from './resena/resena-module';
 import { PersonalizadosModule } from './personalizado/personalizado-module';
-
 import { PedidoModule } from './pedido/pedido-module';
 import { DashboardModule } from './dashboard/dashboard-module';
 

@@ -2,31 +2,37 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable } from 'rxjs';
 import { PedidoModel } from '../models/PedidoModel';
+import { environment } from '../../../environments/environment.development';
+import { BaseAPI } from '../base-api';
 
 @Injectable({
   providedIn: 'root',
 })
-export class PedidoService {
-  private baseUrl = 'http://localhost:3000/pedido'; // Ajustá según backend
+export class PedidoService extends BaseAPI<PedidoModel>{
+
   private totalCantidadSubject = new BehaviorSubject<number>(0);
   totalCantidad$ = this.totalCantidadSubject.asObservable();
 
-  constructor(private http: HttpClient) {}
+constructor(httpClient: HttpClient) { 
+        super(
+          httpClient,
+          environment.endPointPedido);
+      }
 
   getPedidos(): Observable<any[]> {
-    return this.http.get<any[]>(this.baseUrl);
+    return this.get();
   }
 
   getPedidoById(id: number): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/${id}`);
+    return this.getById(id);
   }
 
   crearPedido(pedido: any): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}`, pedido);
+    return this.create(pedido);
   }
 
-  actualizarPedido(id: number, data: any): Observable<any> {
-    return this.http.put<any>(`${this.baseUrl}/${id}`, data);
+  actualizarPedido(data: any): Observable<any> {
+    return this.update(data);
   }
 
   // pedido.service.ts (fragmento)

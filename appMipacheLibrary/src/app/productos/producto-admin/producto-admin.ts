@@ -21,15 +21,15 @@ export class ProductoAdmin {
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['nombre', 'precio', 'acciones'];
-  
+
   readonly dialog = inject(MatDialog);
 
   constructor(
-    private vjService: ProductoService,
+    private pdService: ProductoService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
-  
+
   ngOnInit() {
     //Label paginator
     this.paginator._intl.itemsPerPageLabel = 'Items';
@@ -44,12 +44,25 @@ export class ProductoAdmin {
     this.dataSource.sort = this.sort;
     this.listProductos();
   }
+
+  toggleActivo(p: ProductoModel) {
+    const payload: ProductoModel = { ...p, activo: !p.activo }; // invertimos el booleano
+    this.pdService.update(payload).subscribe({
+      next: (update) => {
+        p.activo = update?.activo ?? !p.activo; // refleja el cambio en la tabla
+        // refresca dataSource para que Angular Material repinte
+        this.dataSource.data = [...this.dataSource.data];
+      },
+      error: (err) => console.error('No se pudo cambiar estado', err),
+    });
+  }
+
   //Listar todos los Productos del API
   listProductos() {
     //localhost:3000/Producto
-    this.vjService.get().subscribe((respuesta: ProductoModel[]) => {
+    this.pdService.get().subscribe((respuesta: ProductoModel[]) => {
       console.log(respuesta);
-       this.dataSource.data = respuesta;
+      this.dataSource.data = respuesta;
     });
   }
   detalleProducto(id: number) {
@@ -61,7 +74,7 @@ export class ProductoAdmin {
     };
     const dialogRef = this.dialog.open(ProductoDiag, dialogConfig);
   }
-  
+
   crearProducto() {
     this.router.navigate(['/producto/create']);
   }
@@ -71,6 +84,4 @@ export class ProductoAdmin {
       relativeTo: this.route,
     });
   }
-
-  
 }

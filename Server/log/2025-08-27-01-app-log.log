@@ -1,0 +1,1040 @@
+2025-08-27 01:01:15.915 error: 	John--Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 6,
+            categoriaId: undefined
+          },
+          {
+            productoId: 6,
+            categoriaId: undefined
+          },
+          {
+            productoId: 6,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing. Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 6,
+            categoriaId: undefined
+          },
+          {
+            productoId: 6,
+            categoriaId: undefined
+          },
+          {
+            productoId: 6,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing.
+2025-08-27 01:01:17.329 error: 	John--Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 6,
+            categoriaId: undefined
+          },
+          {
+            productoId: 6,
+            categoriaId: undefined
+          },
+          {
+            productoId: 6,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing. Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 6,
+            categoriaId: undefined
+          },
+          {
+            productoId: 6,
+            categoriaId: undefined
+          },
+          {
+            productoId: 6,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing.
+2025-08-27 01:01:18.322 error: 	John--Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 2,
+            categoriaId: undefined
+          },
+          {
+            productoId: 2,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing. Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 2,
+            categoriaId: undefined
+          },
+          {
+            productoId: 2,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing.
+2025-08-27 01:01:20.323 error: 	John--Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 6,
+            categoriaId: undefined
+          },
+          {
+            productoId: 6,
+            categoriaId: undefined
+          },
+          {
+            productoId: 6,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing. Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 6,
+            categoriaId: undefined
+          },
+          {
+            productoId: 6,
+            categoriaId: undefined
+          },
+          {
+            productoId: 6,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing.
+2025-08-27 01:01:20.681 error: 	John--Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 6,
+            categoriaId: undefined
+          },
+          {
+            productoId: 6,
+            categoriaId: undefined
+          },
+          {
+            productoId: 6,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing. Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 6,
+            categoriaId: undefined
+          },
+          {
+            productoId: 6,
+            categoriaId: undefined
+          },
+          {
+            productoId: 6,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing.
+2025-08-27 01:01:21.175 error: 	John--Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 6,
+            categoriaId: undefined
+          },
+          {
+            productoId: 6,
+            categoriaId: undefined
+          },
+          {
+            productoId: 6,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing. Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 6,
+            categoriaId: undefined
+          },
+          {
+            productoId: 6,
+            categoriaId: undefined
+          },
+          {
+            productoId: 6,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing.
+2025-08-27 01:01:24.294 error: 	John--Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 6,
+            categoriaId: undefined
+          },
+          {
+            productoId: 6,
+            categoriaId: undefined
+          },
+          {
+            productoId: 6,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing. Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 6,
+            categoriaId: undefined
+          },
+          {
+            productoId: 6,
+            categoriaId: undefined
+          },
+          {
+            productoId: 6,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing.
+2025-08-27 01:10:46.806 error: 	John--Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 3,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing. Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 3,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing.
+2025-08-27 01:10:47.220 error: 	John--Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 4,
+            categoriaId: undefined
+          },
+          {
+            productoId: 4,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing. Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 4,
+            categoriaId: undefined
+          },
+          {
+            productoId: 4,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing.
+2025-08-27 01:10:48.039 error: 	John--Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 3,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing. Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 3,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing.
+2025-08-27 01:10:48.192 error: 	John--Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 3,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing. Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 3,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing.
+2025-08-27 01:10:48.345 error: 	John--Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 3,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing. Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 3,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing.
+2025-08-27 01:10:48.844 error: 	John--Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 4,
+            categoriaId: undefined
+          },
+          {
+            productoId: 4,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing. Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 4,
+            categoriaId: undefined
+          },
+          {
+            productoId: 4,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing.
+2025-08-27 01:10:49.006 error: 	John--Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 4,
+            categoriaId: undefined
+          },
+          {
+            productoId: 4,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing. Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 4,
+            categoriaId: undefined
+          },
+          {
+            productoId: 4,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing.
+2025-08-27 01:10:52.638 error: 	John--Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 5,
+            categoriaId: undefined
+          },
+          {
+            productoId: 5,
+            categoriaId: undefined
+          },
+          {
+            productoId: 5,
+            categoriaId: undefined
+          },
+          {
+            productoId: 5,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing. Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 5,
+            categoriaId: undefined
+          },
+          {
+            productoId: 5,
+            categoriaId: undefined
+          },
+          {
+            productoId: 5,
+            categoriaId: undefined
+          },
+          {
+            productoId: 5,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing.
+2025-08-27 01:10:53.177 error: 	John--Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 7,
+            categoriaId: undefined
+          },
+          {
+            productoId: 7,
+            categoriaId: undefined
+          },
+          {
+            productoId: 7,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing. Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 7,
+            categoriaId: undefined
+          },
+          {
+            productoId: 7,
+            categoriaId: undefined
+          },
+          {
+            productoId: 7,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing.
+2025-08-27 01:10:53.652 error: 	John--Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 4,
+            categoriaId: undefined
+          },
+          {
+            productoId: 4,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing. Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 4,
+            categoriaId: undefined
+          },
+          {
+            productoId: 4,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing.
+2025-08-27 01:10:54.089 error: 	John--Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 3,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing. Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 3,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing.
+2025-08-27 01:10:57.073 error: 	John--Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 3,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing. Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 3,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing.
+2025-08-27 01:10:57.624 error: 	John--Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 4,
+            categoriaId: undefined
+          },
+          {
+            productoId: 4,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing. Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 4,
+            categoriaId: undefined
+          },
+          {
+            productoId: 4,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing.
+2025-08-27 01:10:58.086 error: 	John--Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 7,
+            categoriaId: undefined
+          },
+          {
+            productoId: 7,
+            categoriaId: undefined
+          },
+          {
+            productoId: 7,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing. Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 7,
+            categoriaId: undefined
+          },
+          {
+            productoId: 7,
+            categoriaId: undefined
+          },
+          {
+            productoId: 7,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing.
+2025-08-27 01:10:58.533 error: 	John--Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 5,
+            categoriaId: undefined
+          },
+          {
+            productoId: 5,
+            categoriaId: undefined
+          },
+          {
+            productoId: 5,
+            categoriaId: undefined
+          },
+          {
+            productoId: 5,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing. Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 5,
+            categoriaId: undefined
+          },
+          {
+            productoId: 5,
+            categoriaId: undefined
+          },
+          {
+            productoId: 5,
+            categoriaId: undefined
+          },
+          {
+            productoId: 5,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing.
+2025-08-27 01:10:58.839 error: 	John--Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 5,
+            categoriaId: undefined
+          },
+          {
+            productoId: 5,
+            categoriaId: undefined
+          },
+          {
+            productoId: 5,
+            categoriaId: undefined
+          },
+          {
+            productoId: 5,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing. Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 5,
+            categoriaId: undefined
+          },
+          {
+            productoId: 5,
+            categoriaId: undefined
+          },
+          {
+            productoId: 5,
+            categoriaId: undefined
+          },
+          {
+            productoId: 5,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing.
+2025-08-27 01:10:59.496 error: 	John--Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 3,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing. Error en producto.updatePrismaClientValidationError: 
+Invalid `this.prisma.productoCategoria.createMany()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\controllers\productoController.ts:294:43
+
+  291 });
+  292 
+  293 // Luego, vuelve a crearlas con los nuevos IDs
+→ 294 await this.prisma.productoCategoria.createMany({
+        data: [
+          {
+            productoId: 3,
+            categoriaId: undefined
+          }
+        ]
+      })
+
+Argument `categoriaId` is missing.

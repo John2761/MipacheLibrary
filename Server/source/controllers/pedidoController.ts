@@ -45,7 +45,7 @@ export class PedidoController {
     const pedido = await this.prisma.pedido.findUnique({
       where: { id },
       include: {
-        usuario: { select: { nombre: true } },
+        usuario: { select: { nombre: true, correo: true } },
         productos: {
           include: {
             producto: { select: { nombre: true, descripcion: true } },
@@ -117,7 +117,6 @@ export class PedidoController {
     const round2 = (n: number) => Math.round(n * 100) / 100;
 
     const netFromGross = (gross: number) => round2(gross / (1 + IVA_RATE)); // precio sin IVA
-    const taxFromGross = (gross: number) => round2(gross - netFromGross(gross)); // impuestos incluidos en un precio bruto
 
     try {
       const { usuarioId, productos, estado } = req.body;
@@ -211,6 +210,7 @@ export class PedidoController {
         "EN_ENTREGA",
         "COMPLETADO",
       ];
+      
       if (!estado || !estadosValidos.includes(estado)) {
         return next(AppError.badRequest("Estado inválido"));
       }
