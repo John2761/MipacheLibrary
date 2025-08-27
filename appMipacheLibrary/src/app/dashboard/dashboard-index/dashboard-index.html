@@ -1,0 +1,67 @@
+<div class="dash-grid">
+  
+  <mat-card>
+    <mat-card-title>Ventas por día (últ. 60)</mat-card-title>
+    <ngx-charts-bar-vertical
+      [view]="view"
+      [results]="ventasDiaData"
+      [xAxis]="true"
+      [yAxis]="true"
+      [showDataLabel]="true"
+    >
+    </ngx-charts-bar-vertical>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-title>Ventas por mes (año actual)</mat-card-title>
+    <ngx-charts-bar-vertical
+      [view]="view"
+      [results]="ventasMesData"
+      [xAxis]="true"
+      [yAxis]="true"
+      [showDataLabel]="true"
+    >
+    </ngx-charts-bar-vertical>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-title>Pedidos por estado</mat-card-title>
+    <ngx-charts-pie-chart
+      [view]="view"
+      [results]="estadoData"
+      [legend]="true"
+      [labels]="true"
+    >
+    </ngx-charts-pie-chart>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-title>Top 3 productos</mat-card-title>
+    <div class="top-list" *ngIf="top3?.length">
+      <div class="item" *ngFor="let t of top3">
+        <img *ngIf="t.imagenPrincipal" [src]="t.imagenPrincipal" alt="" />
+        <div>
+          <div class="nombre">{{ t.nombre }}</div>
+          <div class="cantidad">Vendidos: {{ t.cantidadVendida }}</div>
+          <div class="precio" *ngIf="t.precio">
+            ₡ {{ t.precio | number:'1.0-0' }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-title>Últimas 3 reseñas</mat-card-title>
+    <div class="resenas" *ngIf="resenas?.length">
+      <div class="resena" *ngFor="let r of resenas">
+        <div class="producto">{{ r.producto.nombre }}</div>
+        <div class="meta">
+          {{ r.usuario.nombre }} — {{ r.fecha | date:'shortDate' }}
+        </div>
+        <div class="stars">★ {{ r.valoracion }}</div>
+        <p class="comentario">{{ r.comentario }}</p>
+      </div>
+    </div>
+  </mat-card>
+</div>

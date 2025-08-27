@@ -9,7 +9,11 @@ import { PersonalizadoRoutes } from "./personalizado.routes";
 import precioColorRoutes from "./precioColor.routes";
 import precioMaterialRoutes from "./precioMaterial.routes";
 import precioTamannoRoutes from "./precioTamanno.routes";
+
 import { UserRoutes } from "./user.routes";
+
+import { dashboardRoutes } from "./dashboard.routes";
+
 
 export class AppRoutes {
   static get routes(): Router {
@@ -25,7 +29,12 @@ export class AppRoutes {
     router.use("/precioColor", precioColorRoutes);
     router.use("/precioMaterial", precioMaterialRoutes);
     router.use("/precioTamanno", precioTamannoRoutes);
+
     router.use("/usuario", UserRoutes.routes);
+
+    router.use("/dashboard",  dashboardRoutes.routes); /* isAdmin, */
+
+
     return router;
   }
 }

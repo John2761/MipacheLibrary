@@ -54,12 +54,13 @@ export class PedidoController {
         }
       }
     });
+
     if (!pedido) return next(AppError.notFound("Pedido no encontrado"));
 
-    const lineas = pedido.productos.map((l) => {
+      const lineas = pedido.productos.map((l) => {
       const cantidad = l.cantidad;
 
-      // 1) BRUTO de la línea (preferimos tomarlo del total guardado; si no, lo calculamos)
+      // 1) BRUTO de la línea (preferimos tomarlo del total guardado)
       const totalBrutoLinea = l.total
         ? round2(Number(l.total))
         : round2(Number(l.precioUnitario) * cantidad +
@@ -78,9 +79,9 @@ export class PedidoController {
         nombre: l.producto.nombre,
         descripcion: l.producto.descripcion,
         cantidad,
-        precioUnitario: unitarioNetoMostrar, // mostrado como "sin IVA"
+        precioUnitario: unitarioNetoMostrar,  // mostrado como "sin IVA" de cada producto
         subtotal: subtotalNetoLinea,          // neto de la línea
-        impuestos: ivaLinea,                  // monto de IVA
+        impuestos: ivaLinea,                  // monto total de IVA
         total: totalBrutoLinea,               // bruto de la línea
         personalizados: (l.personalizado ?? []).map((p) => ({
           logo: p.logo ? "A color" : "Blanco y negro",
@@ -92,7 +93,7 @@ export class PedidoController {
       };
     });
 
-    // Totales coherentes (suma de líneas ya redondeadas)
+    // Suma de líneas ya redondeadas
     const subtotal = round2(lineas.reduce((s, x) => s + x.subtotal, 0));
     const impuestos = round2(lineas.reduce((s, x) => s + x.impuestos, 0));
     const total = round2(lineas.reduce((s, x) => s + x.total, 0));

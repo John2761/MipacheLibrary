@@ -17,7 +17,11 @@ import { ResenaModule } from './resena/resena-module';
 import { PersonalizadosModule } from './personalizado/personalizado-module';
 
 import { PedidoModule } from './pedido/pedido-module';
+
 import { HttpAuthInterceptorService } from './share/http-auth-interceptor.service';
+
+import { DashboardModule } from './dashboard/dashboard-module';
+
 
 @NgModule({
   declarations: [App],
@@ -33,6 +37,7 @@ import { HttpAuthInterceptorService } from './share/http-auth-interceptor.servic
     PersonalizadosModule,
     PromocionModule,
     ResenaModule,
+    DashboardModule,
     //Siempre de ultimo
     AppRoutingModule,
   ],

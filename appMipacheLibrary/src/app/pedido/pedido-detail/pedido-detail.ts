@@ -18,6 +18,7 @@ export class PedidoDetail {
     private pedidoService: PedidoService
   ) {
     const id = Number(this.route.snapshot.paramMap.get('id'));
+    
     this.pedidoService.getPedidoById(id).subscribe({
       next: (data: PedidoDetailModel) => this.pedido = data
     });

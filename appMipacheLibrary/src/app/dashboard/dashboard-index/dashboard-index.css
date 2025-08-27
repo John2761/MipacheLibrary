@@ -1,0 +1,82 @@
+/* ===== TEST visible: si ves este borde, el CSS está cargando ===== */
+mat-card { outline: 2px dashed #b84008; }
+
+/* ===== Paleta / layout ===== */
+:root{
+  --bg:#f1e2c9;             /* crema */
+  --card:#fffdf7;           /* más claro para contraste */
+  --ink:#3e2f2b;            /* marrón libro */
+  --muted:#6b5f58;
+  --accent:#355d3d;         /* verde header */
+  --star:#ffb300;
+  --shadow:0 10px 24px rgba(0,0,0,.08);
+  --radius:18px;
+  --divider:rgba(0,0,0,.08);
+}
+
+:host{ display:block; background:var(--bg); min-height:100vh; }
+
+.dash-grid{
+  max-width:1200px;
+  margin:24px auto;
+  padding:0 16px;
+  display:grid;
+  grid-template-columns:repeat(12,minmax(0,1fr));
+  gap:18px;
+}
+
+.dash-grid > mat-card{ grid-column:span 6; }       /* 2 columnas */
+@media (min-width:1400px){ .dash-grid > mat-card{ grid-column:span 4; } } /* 3 col */
+@media (max-width:800px){ .dash-grid > mat-card{ grid-column:1 / -1; } }  /* 1 col */
+
+/* Tarjeta */
+mat-card{
+  background:var(--card);
+  color:var(--ink);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:16px 18px;
+}
+mat-card-title{
+  font-weight:800;
+  font-size:1.05rem;
+  margin-bottom:10px;
+  color:var(--ink);
+}
+
+/* Charts */
+ngx-charts-bar-vertical,
+ngx-charts-pie-chart{ display:block; width:100%; }
+.chart{ height:280px; }
+
+/* Etiquetas/leyendas en ngx-charts (con encapsulación None no necesitas ng-deep) */
+.ngx-charts text{ fill:var(--ink) !important; opacity:.9; font-size:12px; }
+.ngx-charts .gridline-path{ stroke-opacity:.25; }
+
+/* Top 3 */
+.top-list{ display:grid; gap:12px; }
+.top-list .item{
+  display:flex; gap:12px; align-items:center;
+  padding:8px 0; border-bottom:1px dashed var(--divider);
+}
+.top-list .item:last-child{ border-bottom:none; }
+.top-list .item img{
+  width:64px; height:64px; object-fit:cover;
+  border-radius:12px; background:#f3f4f6;
+}
+.top-list .nombre{ font-weight:700; }
+.top-list .cantidad{ color:var(--muted); font-size:.9rem; }
+.top-list .precio{ color:var(--accent); font-weight:700; }
+
+/* Reseñas */
+.resenas{ display:grid; gap:12px; }
+.resena{
+  background:rgba(53,93,61,.06);
+  border-left:3px solid var(--accent);
+  border-radius:12px;
+  padding:10px 12px;
+}
+.resena .producto{ font-weight:700; }
+.resena .meta{ color:var(--muted); font-size:.85rem; margin:2px 0 6px; }
+.resena .stars{ color:var(--star); font-weight:800; margin-bottom:6px; }
+.resena .comentario{ margin:0; line-height:1.35; }
