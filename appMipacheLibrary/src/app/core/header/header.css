@@ -1,58 +1,54 @@
-:root {
-  --beige: #f1e9d9;
-  --verde-oliva: #6f7a53;
-  --marron: #c89267;
-  --gris: #5e5e5e;
-  --crema: #f6e7c8;
-  --verde-bosque: #475f3c;
-}
-
-body {
-  margin: 0;
-  font-family: 'Merriweather', sans-serif;
-  background-color: #f1e9d9;
-  color: #5e5e5e;
-}
-
+/* Fondo verde oscuro para todo el header */
 header {
-  background-color: #475f3c;
-  padding: 20px;
+  background-color: #43583d;
   color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 10px 20px;
+  font-family: 'Playfair Display', sans-serif;
 }
 
-header h1 {
-  margin: 0;
-  font-family: 'Merriweather', serif;
-  font-size: 28px;
-}
-
-nav a {
-  margin: 0 15px;
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-}
-
+/* Contenedor de logo + título */
 .logo-container {
   display: flex;
   align-items: center;
-  border-image: round;
 }
 
 .logo-container img {
-  height: 50px;
-  margin-right: 15px;
-  border-radius: 35%;
+  height: 40px;
+  margin-right: 12px;
 }
 
-.badge {
-  background-color: #475f3c;
-  color: white;
-  padding: 4px 8px;
-  border-radius: 12px;
-  font-size: 0.8rem;
-  margin-left: 6px;
+.logo-container .logo-title {
+  margin: 0;
+  font-size: 1.5rem;
+  color: white !important; /* 👈 asegúrate de forzar blanco */
+}
+
+/* Navegación horizontal */
+nav {
+  display: flex;
+  align-items: center;
+}
+
+/* Links del nav */
+nav a {
+  color: white !important;  /* 👈 fuerza color blanco aunque haya estilos de Angular Material */
+  text-decoration: none;
+  margin: 0 12px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Íconos dentro del nav */
+nav .material-icons {
+  font-size: 20px;
+  color: white !important; /* 👈 fuerza blanco en íconos */
 }

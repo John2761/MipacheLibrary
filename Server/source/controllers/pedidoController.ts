@@ -263,4 +263,113 @@ export class PedidoController {
       next(error);
     }
   };
+
+  // Obtener el carrito activo por usuario
+getCartByUser = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+  const usuarioId = Number(req.params.usuarioId);
+  if (isNaN(usuarioId)) return next(AppError.badRequest("ID de usuario inválido"));
+
+  try {
+    const pedido = await this.prisma.pedido.findFirst({
+      where: {
+        usuarioId,
+        estado: "EN_CARRITO"
+      },
+      include: {
+        productos: {
+          include: {
+            producto: true,
+            personalizado: {
+              include: {
+                color: true,
+                material: true,
+                tamanno: true
+              }
+            }
+          }
+        }
+      }
+    });
+
+    if (!pedido) res.status(404).json({ mensaje: "No hay carrito activo para este usuario" });
+    res.status(200).json(pedido);
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Agregar producto al carrito existente
+addProductToCart = async (req: Request, res: Response, next: NextFunction) => {
+  const pedidoId = Number(req.params.id);
+  const { productoId, cantidad, precioUnitario, personalizados } = req.body;
+
+  try {
+    const productoAgregado = await this.prisma.pedidoProducto.create({
+      data: {
+        pedidoId,
+        productoId,
+        cantidad,
+        precioUnitario,
+        subtotal: cantidad * precioUnitario,
+        impuestos: (cantidad * precioUnitario) * 0.13,
+        total: (cantidad * precioUnitario) * 1.13,
+        personalizado: personalizados?.length
+          ? {
+              create: personalizados.map((perso: any) => ({
+                logo: perso.logo,
+                precioTotal: Number(perso.precioTotal),
+                colorId: perso.colorId,
+                materialId: perso.materialId,
+                tamannoId: perso.tamannoId,
+              }))
+            }
+          : undefined
+      },
+      include: {
+        producto: true,
+        personalizado: {
+          include: { color: true, material: true, tamanno: true }
+        }
+      }
+    });
+
+    res.status(201).json(productoAgregado);
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Eliminar un producto del carrito
+removeProductFromCart = async (req: Request, res: Response, next: NextFunction) => {
+  const pedidoId = Number(req.params.id);
+  const productoId = Number(req.params.productoId);
+
+  try {
+    await this.prisma.pedidoProducto.deleteMany({
+      where: {
+        pedidoId,
+        productoId
+      }
+    });
+
+    res.status(200).json({ mensaje: "Producto eliminado del carrito" });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Eliminar pedido completo (carrito)
+deletePedido = async (req: Request, res: Response, next: NextFunction) => {
+  const id = Number(req.params.id);
+
+  try {
+    // Eliminar productos personalizados primero (si hay)
+    await this.prisma.pedidoProducto.deleteMany({ where: { pedidoId: id } });
+    await this.prisma.pedido.delete({ where: { id } });
+
+    res.status(200).json({ mensaje: "Pedido (carrito) eliminado correctamente" });
+  } catch (error) {
+    next(error);
+  }
+};
 }

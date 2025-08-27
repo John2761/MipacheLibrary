@@ -3,7 +3,7 @@ import { RoleModel } from "./EnumModel";
 
 export interface UsuarioModel {
     id: number;
-    email: string;
+    correo: string;
     nombre?: string;
     role: RoleModel;
     password: string;

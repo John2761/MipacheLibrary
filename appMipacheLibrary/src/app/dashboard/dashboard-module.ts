@@ -18,8 +18,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { Dashboard } from './dashboard-index/dashboard-index';
-import { NgxChartsModule } from '@swimlane/ngx-charts'; 
 import { DashboardRoutingModule } from './dashboard-routing-module';
 
 @NgModule({

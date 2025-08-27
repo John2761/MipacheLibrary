@@ -4,5 +4,7 @@ export const environment = {
     endPointCategoria: 'categoria',
     endPointPromocion: 'promocion',
     endPointPedido: 'pedido',
-    imageBaseUrl: 'http://localhost:3000/images/' 
+    imageBaseUrl: 'http://localhost:3000/images/',
+    endPointRol: 'rol',
+
 };

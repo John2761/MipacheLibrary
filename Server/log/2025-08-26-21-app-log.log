@@ -21,3 +21,5 @@ Argument `precioTotal` is missing.
 2025-08-26 21:12:44.242 error: 	John--Datos incompletos para crear el pedido Datos incompletos para crear el pedido
 2025-08-26 21:12:55.384 error: 	John--Datos incompletos para crear el pedido Datos incompletos para crear el pedido
 2025-08-26 21:13:00.645 error: 	John--Datos incompletos para crear el pedido Datos incompletos para crear el pedido
+2025-08-26 21:17:23.555 error: 	perez--Se produjo un error interno del servidor Unknown authentication strategy "local"
+

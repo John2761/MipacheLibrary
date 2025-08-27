@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable } from 'rxjs';
+import { Injectable, signal } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { PedidoModel } from '../models/PedidoModel';
 import { environment } from '../../../environments/environment.development';
 import { BaseAPI } from '../base-api';
@@ -8,10 +8,8 @@ import { BaseAPI } from '../base-api';
 @Injectable({
   providedIn: 'root',
 })
-export class PedidoService extends BaseAPI<PedidoModel>{
 
-  private totalCantidadSubject = new BehaviorSubject<number>(0);
-  totalCantidad$ = this.totalCantidadSubject.asObservable();
+export class PedidoService extends BaseAPI<PedidoModel>{
 
 constructor(httpClient: HttpClient) { 
         super(
@@ -34,16 +32,14 @@ constructor(httpClient: HttpClient) {
   actualizarPedido(data: any): Observable<any> {
     return this.update(data);
   }
+  
+  // // Obtener el pedido en estado CARRITO del usuario
+  // obtenerCarritoUsuario(usuarioId: number): Observable<PedidoModel> {
+  //   return this.http.get<PedidoModel>(`${this.baseUrl}/carrito/${usuarioId}`);
+  // }
+  // // Reset manual del contador
+  // resetearContador() {
+  //   this._cantidadTotal.set(0);
+  // }
 
-  // pedido.service.ts (fragmento)
-  actualizarCantidadPedido(pedido: PedidoModel) {
-    let total = 0;
-    pedido.productos?.forEach((p) => {
-      total += p.cantidad;
-    });
-    pedido.productosPersonalizados?.forEach((p) => {
-      total += p.cantidad;
-    });
-    this.totalCantidadSubject.next(total);
-  }
 }
