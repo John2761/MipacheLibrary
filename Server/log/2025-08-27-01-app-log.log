@@ -1,3 +1,5 @@
 2025-08-27 01:04:41.799 error: 	perez--Se produjo un error interno del servidor Unknown authentication strategy "jwt"
 2025-08-27 01:04:48.203 error: 	perez--Se produjo un error interno del servidor Unknown authentication strategy "jwt"
 2025-08-27 01:04:57.717 error: 	perez--Se produjo un error interno del servidor Unknown authentication strategy "jwt"
+2025-08-27 01:13:45.426 error: 	perez--Se produjo un error interno del servidor Unknown authentication strategy "local"
+2025-08-27 01:15:42.260 error: 	perez--Se produjo un error interno del servidor Unknown authentication strategy "local"
