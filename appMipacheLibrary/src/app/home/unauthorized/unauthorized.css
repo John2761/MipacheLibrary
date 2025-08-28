@@ -1,0 +1,93 @@
+/* Paleta coherente con tu app */
+:root{
+  --bg: #fdf1dc;
+  --ink: #3e2d19;
+  --muted: #7c6148;
+  --brand: #7aa35b;     /* verde header cards */
+  --accent: #f4a261;    /* naranja iconos/badge */
+  --surface: #fff8ed;   /* fondo tabla */
+  --card: #ffffff;
+  --line: #e0c3a4;
+}
+
+/* ====== Layout principal ====== */
+.unauth{
+  display: grid;
+  grid-template-columns: 480px 1fr;
+  gap: 40px;
+  align-items: center;
+  padding: 40px 48px;
+  margin: 24px 32px;
+  background: var(--bg);
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,.08);
+}
+
+/* Tarjeta de ilustración */
+.unauth__card{
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  box-shadow: 0 8px 18px rgba(0,0,0,.06);
+  padding: 18px;
+}
+
+.unauth__img{
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+}
+
+/* Columna de contenido */
+.unauth__content{
+  padding-right: 16px;
+}
+
+.unauth__badge{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  font-weight: 800;
+  color: #f88e04;
+  background: linear-gradient(135deg, var(--brand), #6a944f);
+  border-radius: 999px;
+  box-shadow: 0 4px 10px rgba(122,163,91,.25);
+}
+
+.unauth__title{
+  margin: 14px 0 6px;
+  font-size: clamp(28px, 3.2vw, 40px);
+  line-height: 1.15;
+  color: var(--ink);
+  font-weight: 900;
+}
+
+.unauth__subtitle{
+  margin: 0 0 22px;
+  font-size: clamp(16px, 1.6vw, 20px);
+  color: var(--muted);
+}
+
+/* Acciones */
+.unauth__actions{
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.unauth__actions .mat-mdc-button-base mat-icon{
+  margin-right: 6px;
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 980px){
+  .unauth{
+    grid-template-columns: 1fr;
+    padding: 28px 22px;
+    margin: 18px;
+  }
+  .unauth__card{ order: 1; }
+  .unauth__content{ order: 2; padding-right: 0; }
+}

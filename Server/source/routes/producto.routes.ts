@@ -21,7 +21,8 @@ export class ProductoRoutes {
     router.post('/',controller.create)
     //Actualizar producto
     router.put('/:id', controller.update)
-
+    // PATCH parcial
+    router.patch('/:id/activo', controller.setActivo); 
     return router;
 
   }

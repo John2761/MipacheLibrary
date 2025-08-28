@@ -1,95 +1,91 @@
-/* ===== Paleta base ===== */
-:root{
-  --brand: #d86e0b;
-  --ink: #1f2937;
-  --muted: #6b7280;
-  --line: #e5e7eb;
-  --row-alt: #fafafa;
+
+.admin-list {
+  padding: 30px;
+  margin: 50px;
+  background-color: #fdf1dc;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,.08);
+  font-family: 'Segoe UI', sans-serif;
 }
 
-/* ===== Contenedor / tarjeta ===== */
-:host { display:block; }
-mat-card{
-  background:#fff;
-  border:1px solid var(--line);
-  border-radius:16px;
-  box-shadow:0 10px 24px rgba(17,24,39,.06), 0 4px 10px rgba(17,24,39,.04);
-  padding:16px 20px;
+.admin-list__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 25px;
+  padding: 10px 20px;
+  background-color: #7aa35b;
+  border-radius: 15px;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
-mat-card-title{ font-size:1.35rem; font-weight:800; color:var(--ink); }
-mat-card-subtitle{ margin:.25rem 0 0; color:var(--muted); }
+
+.mat-sort-header-container{
+  align-content: center;
+}
+/* Ícono del botón + (scopeado al contenedor) */
+.admin-list button[matMiniFab] mat-icon {
+  background-color: #f4a261;
+  border-radius: 50%;
+  padding: 5px;
+  color: #fff;
+  font-size: 20px;
+  align-items: center;
+}
 
 /* ===== Tabla ===== */
-.mat-table{
-  width:100%;
-  background:#fff;
-  border:1px solid var(--line);
-  border-radius:14px;
-  overflow:hidden;
+.tabla-admin {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff8ed;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0,0,0,.05);
+}
+.tabla-admin th {
+  background-color: #c49b72;
+  color: #fff;
+  text-align: center;
+  padding: 12px;
+}
+.tabla-admin td {
+  padding: 12px;
+  text-align: center;
+  border-top: 1px solid #e0c3a4;
+  color: #3e2d19;
 }
 
-/* Encabezado */
-mat-header-row{
-  background:#fff;
-  position: sticky; top: 0; z-index: 1;    /* pegajoso al hacer scroll */
-  border-bottom:2px solid var(--line);
+/* ===== Chips de estado ===== */
+.chip {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-weight: bold;
 }
-mat-header-cell{
-  color:var(--muted);
-  font-weight:800;
-  text-transform:uppercase;
-  letter-spacing:.3px;
-  padding:14px 16px;
-}
-
-/* Filas */
-mat-row{ background:#fff; }
-mat-row:nth-child(even){ background:var(--row-alt); }
-mat-row:hover{ background:#fff8ef; }       /* hover suave */
-mat-cell{
-  color:var(--ink);
-  padding:14px 16px;
-  border-bottom:1px solid #f3f4f6;
-  vertical-align: middle;
-}
-
-/* Columna opciones: agrupa botones */
-mat-cell .actions{
-  display:flex; gap:8px; align-items:center;
-}
+.chip--success { color:#388e3c; background:#e8f5e9; }
+.chip--muted   { color:#757575; background:#eeeeee; }
 
 /* ===== Botones de acción ===== */
-.actions .mat-mdc-mini-fab{
-  --mdc-fab-container-shape: 999px;
-  --mdc-fab-icon-color:#fff;
-  box-shadow:none;
-  width:36px; height:36px; min-height:36px;
+.acciones button[mat-icon-button] mat-icon {
+  background-color: #f4a261;
+  border-radius: 50%;
+  padding: 5px;
+  color: #fff;
 }
-/* Editar */
-.actions .btn-edit{ --mdc-fab-container-color:#3b82f6; }
-/* Alta/Baja (visibilidad) */
-.actions .btn-toggle.on{  --mdc-fab-container-color:#ef4444; }  /* dar de baja */
-.actions .btn-toggle.off{ --mdc-fab-container-color:#10b981; }  /* reactivar */
-.actions .mat-mdc-mini-fab:hover{ filter:brightness(.97) saturate(1.05); }
 
-/* Chip de estado (opcional) */
-.chip{ padding:2px 8px; border-radius:999px; font-size:.75rem; font-weight:700; background:#e8fff2; color:#0f8f4d; margin-right:6px;}
-.chip.off{ background:#fff0f0; color:#c62828;}
-
-/* ===== Paginador (limpio, sin barra verde) ===== */
-mat-paginator{
-  background:#fff;
-  color:var(--ink);
-  border:1px solid var(--line);
+/* ===== Paginador (opcional a juego) ===== */
+.producto-paginator {
+  background:#fff8ed;
+  color:#3e2d19;
+  border:1px solid #e0c3a4;
   border-radius:12px;
   padding:8px 10px;
   margin-top:12px;
 }
-.mat-mdc-paginator-icon{ color:var(--muted); }
-.mat-mdc-select-value, .mat-mdc-paginator-range-label{ color:var(--muted); }
 
-/* ===== Responsivo ===== */
-@media (max-width: 720px){
-  mat-header-cell, mat-cell{ padding:10px 12px; }
-  .actions .mat-mdc-mini-fab{ width:32px; height:32px; min-height:32px; }
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .admin-list { margin: 20px; padding: 20px; }
+  .admin-list__header { padding: 8px 14px; }
 }

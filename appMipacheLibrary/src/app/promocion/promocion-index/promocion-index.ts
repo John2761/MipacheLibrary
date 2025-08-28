@@ -1,26 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, computed, inject, OnInit } from '@angular/core';
 import { PromocionService } from '../../share/services/promocion.service';
 import { PromocionModel } from '../../share/models/PromocionModel';
-
-
+import { AuthenticationService } from '../../share/authentication.service'
 
 @Component({
   selector: 'app-promocion-index',
   standalone: false,
   templateUrl: './promocion-index.html',
-  styleUrls: ['./promocion-index.css']
+  styleUrls: ['./promocion-index.css'],
 })
 export class PromocionIndex {
   //datos del API
   datos: any;
 
-  constructor(
-    private promocionService: PromocionService
-  ) {
+  private authService = inject(AuthenticationService);
+  isAuthenticated = this.authService.isAuthenticatedSignal;
+  currentUser = this.authService.currentUserSignal;
+
+  public isAdmin = computed(() => {
+    const user = this.authService.currentUserSignal();
+    return user?.role?.toString() === 'ADMIN';
+  });
+
+  constructor(private promocionService: PromocionService) {
     this.listProductos();
   }
 
- listProductos() {
+  listProductos() {
     //localhost:3000/Producto
     this.promocionService.get().subscribe((respuesta: PromocionModel[]) => {
       console.log(respuesta);

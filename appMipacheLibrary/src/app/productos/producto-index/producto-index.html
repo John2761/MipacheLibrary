@@ -8,11 +8,11 @@
     </p>
   </div>
 
-  <div class="admin-button-container">
+  <div class="admin-button-container" >
       <button
         mat-raised-button
         color="primary"
-        [routerLink]="['/producto-admin']">
+        [routerLink]="['/producto-admin']" *ngIf="isAdmin()">
         Mantenimiento
       </button>
     </div>

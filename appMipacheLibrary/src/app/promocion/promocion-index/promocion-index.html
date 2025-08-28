@@ -5,8 +5,7 @@
       <button
         mat-raised-button
         color="primary"
-        [routerLink]="['/promocion-admin']"
-      >
+        [routerLink]="['/promocion-admin']" *ngIf="isAdmin()">
         Mantenimiento
       </button>
     </div>

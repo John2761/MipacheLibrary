@@ -4746,6 +4746,7 @@ export namespace Prisma {
     fechaCreacion: Date | null
     fechaActualizacion: Date | null
     esPersonalizado: boolean | null
+    activo: boolean | null
     promocionId: number | null
   }
 
@@ -4760,6 +4761,7 @@ export namespace Prisma {
     fechaCreacion: Date | null
     fechaActualizacion: Date | null
     esPersonalizado: boolean | null
+    activo: boolean | null
     promocionId: number | null
   }
 
@@ -4774,6 +4776,7 @@ export namespace Prisma {
     fechaCreacion: number
     fechaActualizacion: number
     esPersonalizado: number
+    activo: number
     promocionId: number
     _all: number
   }
@@ -4804,6 +4807,7 @@ export namespace Prisma {
     fechaCreacion?: true
     fechaActualizacion?: true
     esPersonalizado?: true
+    activo?: true
     promocionId?: true
   }
 
@@ -4818,6 +4822,7 @@ export namespace Prisma {
     fechaCreacion?: true
     fechaActualizacion?: true
     esPersonalizado?: true
+    activo?: true
     promocionId?: true
   }
 
@@ -4832,6 +4837,7 @@ export namespace Prisma {
     fechaCreacion?: true
     fechaActualizacion?: true
     esPersonalizado?: true
+    activo?: true
     promocionId?: true
     _all?: true
   }
@@ -4933,6 +4939,7 @@ export namespace Prisma {
     fechaCreacion: Date
     fechaActualizacion: Date | null
     esPersonalizado: boolean
+    activo: boolean
     promocionId: number | null
     _count: ProductoCountAggregateOutputType | null
     _avg: ProductoAvgAggregateOutputType | null
@@ -4966,6 +4973,7 @@ export namespace Prisma {
     fechaCreacion?: boolean
     fechaActualizacion?: boolean
     esPersonalizado?: boolean
+    activo?: boolean
     promocionId?: boolean
     imagenes?: boolean | Producto$imagenesArgs<ExtArgs>
     personalizado?: boolean | Producto$personalizadoArgs<ExtArgs>
@@ -4990,10 +4998,11 @@ export namespace Prisma {
     fechaCreacion?: boolean
     fechaActualizacion?: boolean
     esPersonalizado?: boolean
+    activo?: boolean
     promocionId?: boolean
   }
 
-  export type ProductoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nombre" | "descripcion" | "precio" | "stock" | "imagenPrincipal" | "autor" | "fechaCreacion" | "fechaActualizacion" | "esPersonalizado" | "promocionId", ExtArgs["result"]["producto"]>
+  export type ProductoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nombre" | "descripcion" | "precio" | "stock" | "imagenPrincipal" | "autor" | "fechaCreacion" | "fechaActualizacion" | "esPersonalizado" | "activo" | "promocionId", ExtArgs["result"]["producto"]>
   export type ProductoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     imagenes?: boolean | Producto$imagenesArgs<ExtArgs>
     personalizado?: boolean | Producto$personalizadoArgs<ExtArgs>
@@ -5027,6 +5036,7 @@ export namespace Prisma {
       fechaCreacion: Date
       fechaActualizacion: Date | null
       esPersonalizado: boolean
+      activo: boolean
       promocionId: number | null
     }, ExtArgs["result"]["producto"]>
     composites: {}
@@ -5414,6 +5424,7 @@ export namespace Prisma {
     readonly fechaCreacion: FieldRef<"Producto", 'DateTime'>
     readonly fechaActualizacion: FieldRef<"Producto", 'DateTime'>
     readonly esPersonalizado: FieldRef<"Producto", 'Boolean'>
+    readonly activo: FieldRef<"Producto", 'Boolean'>
     readonly promocionId: FieldRef<"Producto", 'Int'>
   }
     
@@ -19879,6 +19890,7 @@ export namespace Prisma {
     fechaCreacion: 'fechaCreacion',
     fechaActualizacion: 'fechaActualizacion',
     esPersonalizado: 'esPersonalizado',
+    activo: 'activo',
     promocionId: 'promocionId'
   };
 
@@ -20354,6 +20366,7 @@ export namespace Prisma {
     fechaCreacion?: DateTimeFilter<"Producto"> | Date | string
     fechaActualizacion?: DateTimeNullableFilter<"Producto"> | Date | string | null
     esPersonalizado?: BoolFilter<"Producto"> | boolean
+    activo?: BoolFilter<"Producto"> | boolean
     promocionId?: IntNullableFilter<"Producto"> | number | null
     imagenes?: ImagenListRelationFilter
     personalizado?: ProductoPersonalizadoListRelationFilter
@@ -20375,6 +20388,7 @@ export namespace Prisma {
     fechaCreacion?: SortOrder
     fechaActualizacion?: SortOrderInput | SortOrder
     esPersonalizado?: SortOrder
+    activo?: SortOrder
     promocionId?: SortOrderInput | SortOrder
     imagenes?: ImagenOrderByRelationAggregateInput
     personalizado?: ProductoPersonalizadoOrderByRelationAggregateInput
@@ -20400,6 +20414,7 @@ export namespace Prisma {
     fechaCreacion?: DateTimeFilter<"Producto"> | Date | string
     fechaActualizacion?: DateTimeNullableFilter<"Producto"> | Date | string | null
     esPersonalizado?: BoolFilter<"Producto"> | boolean
+    activo?: BoolFilter<"Producto"> | boolean
     promocionId?: IntNullableFilter<"Producto"> | number | null
     imagenes?: ImagenListRelationFilter
     personalizado?: ProductoPersonalizadoListRelationFilter
@@ -20421,6 +20436,7 @@ export namespace Prisma {
     fechaCreacion?: SortOrder
     fechaActualizacion?: SortOrderInput | SortOrder
     esPersonalizado?: SortOrder
+    activo?: SortOrder
     promocionId?: SortOrderInput | SortOrder
     _count?: ProductoCountOrderByAggregateInput
     _avg?: ProductoAvgOrderByAggregateInput
@@ -20443,6 +20459,7 @@ export namespace Prisma {
     fechaCreacion?: DateTimeWithAggregatesFilter<"Producto"> | Date | string
     fechaActualizacion?: DateTimeNullableWithAggregatesFilter<"Producto"> | Date | string | null
     esPersonalizado?: BoolWithAggregatesFilter<"Producto"> | boolean
+    activo?: BoolWithAggregatesFilter<"Producto"> | boolean
     promocionId?: IntNullableWithAggregatesFilter<"Producto"> | number | null
   }
 
@@ -21392,6 +21409,7 @@ export namespace Prisma {
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
     esPersonalizado?: boolean
+    activo?: boolean
     imagenes?: ImagenCreateNestedManyWithoutProductosInput
     personalizado?: ProductoPersonalizadoCreateNestedManyWithoutProductoInput
     categorias?: ProductoCategoriaCreateNestedManyWithoutProductoInput
@@ -21412,6 +21430,7 @@ export namespace Prisma {
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
     esPersonalizado?: boolean
+    activo?: boolean
     promocionId?: number | null
     imagenes?: ImagenUncheckedCreateNestedManyWithoutProductosInput
     personalizado?: ProductoPersonalizadoUncheckedCreateNestedManyWithoutProductoInput
@@ -21431,6 +21450,7 @@ export namespace Prisma {
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     esPersonalizado?: BoolFieldUpdateOperationsInput | boolean
+    activo?: BoolFieldUpdateOperationsInput | boolean
     imagenes?: ImagenUpdateManyWithoutProductosNestedInput
     personalizado?: ProductoPersonalizadoUpdateManyWithoutProductoNestedInput
     categorias?: ProductoCategoriaUpdateManyWithoutProductoNestedInput
@@ -21451,6 +21471,7 @@ export namespace Prisma {
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     esPersonalizado?: BoolFieldUpdateOperationsInput | boolean
+    activo?: BoolFieldUpdateOperationsInput | boolean
     promocionId?: NullableIntFieldUpdateOperationsInput | number | null
     imagenes?: ImagenUncheckedUpdateManyWithoutProductosNestedInput
     personalizado?: ProductoPersonalizadoUncheckedUpdateManyWithoutProductoNestedInput
@@ -21471,6 +21492,7 @@ export namespace Prisma {
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
     esPersonalizado?: boolean
+    activo?: boolean
     promocionId?: number | null
   }
 
@@ -21484,6 +21506,7 @@ export namespace Prisma {
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     esPersonalizado?: BoolFieldUpdateOperationsInput | boolean
+    activo?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ProductoUncheckedUpdateManyInput = {
@@ -21497,6 +21520,7 @@ export namespace Prisma {
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     esPersonalizado?: BoolFieldUpdateOperationsInput | boolean
+    activo?: BoolFieldUpdateOperationsInput | boolean
     promocionId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
@@ -22609,6 +22633,7 @@ export namespace Prisma {
     fechaCreacion?: SortOrder
     fechaActualizacion?: SortOrder
     esPersonalizado?: SortOrder
+    activo?: SortOrder
     promocionId?: SortOrder
   }
 
@@ -22630,6 +22655,7 @@ export namespace Prisma {
     fechaCreacion?: SortOrder
     fechaActualizacion?: SortOrder
     esPersonalizado?: SortOrder
+    activo?: SortOrder
     promocionId?: SortOrder
   }
 
@@ -22644,6 +22670,7 @@ export namespace Prisma {
     fechaCreacion?: SortOrder
     fechaActualizacion?: SortOrder
     esPersonalizado?: SortOrder
+    activo?: SortOrder
     promocionId?: SortOrder
   }
 
@@ -25116,6 +25143,7 @@ export namespace Prisma {
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
     esPersonalizado?: boolean
+    activo?: boolean
     personalizado?: ProductoPersonalizadoCreateNestedManyWithoutProductoInput
     categorias?: ProductoCategoriaCreateNestedManyWithoutProductoInput
     etiquetas?: ProductoEtiquetaCreateNestedManyWithoutProductoInput
@@ -25135,6 +25163,7 @@ export namespace Prisma {
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
     esPersonalizado?: boolean
+    activo?: boolean
     promocionId?: number | null
     personalizado?: ProductoPersonalizadoUncheckedCreateNestedManyWithoutProductoInput
     categorias?: ProductoCategoriaUncheckedCreateNestedManyWithoutProductoInput
@@ -25169,6 +25198,7 @@ export namespace Prisma {
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     esPersonalizado?: BoolFieldUpdateOperationsInput | boolean
+    activo?: BoolFieldUpdateOperationsInput | boolean
     personalizado?: ProductoPersonalizadoUpdateManyWithoutProductoNestedInput
     categorias?: ProductoCategoriaUpdateManyWithoutProductoNestedInput
     etiquetas?: ProductoEtiquetaUpdateManyWithoutProductoNestedInput
@@ -25188,6 +25218,7 @@ export namespace Prisma {
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     esPersonalizado?: BoolFieldUpdateOperationsInput | boolean
+    activo?: BoolFieldUpdateOperationsInput | boolean
     promocionId?: NullableIntFieldUpdateOperationsInput | number | null
     personalizado?: ProductoPersonalizadoUncheckedUpdateManyWithoutProductoNestedInput
     categorias?: ProductoCategoriaUncheckedUpdateManyWithoutProductoNestedInput
@@ -25660,6 +25691,7 @@ export namespace Prisma {
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
     esPersonalizado?: boolean
+    activo?: boolean
     imagenes?: ImagenCreateNestedManyWithoutProductosInput
     personalizado?: ProductoPersonalizadoCreateNestedManyWithoutProductoInput
     etiquetas?: ProductoEtiquetaCreateNestedManyWithoutProductoInput
@@ -25679,6 +25711,7 @@ export namespace Prisma {
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
     esPersonalizado?: boolean
+    activo?: boolean
     promocionId?: number | null
     imagenes?: ImagenUncheckedCreateNestedManyWithoutProductosInput
     personalizado?: ProductoPersonalizadoUncheckedCreateNestedManyWithoutProductoInput
@@ -25729,6 +25762,7 @@ export namespace Prisma {
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     esPersonalizado?: BoolFieldUpdateOperationsInput | boolean
+    activo?: BoolFieldUpdateOperationsInput | boolean
     imagenes?: ImagenUpdateManyWithoutProductosNestedInput
     personalizado?: ProductoPersonalizadoUpdateManyWithoutProductoNestedInput
     etiquetas?: ProductoEtiquetaUpdateManyWithoutProductoNestedInput
@@ -25748,6 +25782,7 @@ export namespace Prisma {
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     esPersonalizado?: BoolFieldUpdateOperationsInput | boolean
+    activo?: BoolFieldUpdateOperationsInput | boolean
     promocionId?: NullableIntFieldUpdateOperationsInput | number | null
     imagenes?: ImagenUncheckedUpdateManyWithoutProductosNestedInput
     personalizado?: ProductoPersonalizadoUncheckedUpdateManyWithoutProductoNestedInput
@@ -25822,6 +25857,7 @@ export namespace Prisma {
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
     esPersonalizado?: boolean
+    activo?: boolean
     imagenes?: ImagenCreateNestedManyWithoutProductosInput
     personalizado?: ProductoPersonalizadoCreateNestedManyWithoutProductoInput
     categorias?: ProductoCategoriaCreateNestedManyWithoutProductoInput
@@ -25841,6 +25877,7 @@ export namespace Prisma {
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
     esPersonalizado?: boolean
+    activo?: boolean
     promocionId?: number | null
     imagenes?: ImagenUncheckedCreateNestedManyWithoutProductosInput
     personalizado?: ProductoPersonalizadoUncheckedCreateNestedManyWithoutProductoInput
@@ -25889,6 +25926,7 @@ export namespace Prisma {
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     esPersonalizado?: BoolFieldUpdateOperationsInput | boolean
+    activo?: BoolFieldUpdateOperationsInput | boolean
     imagenes?: ImagenUpdateManyWithoutProductosNestedInput
     personalizado?: ProductoPersonalizadoUpdateManyWithoutProductoNestedInput
     categorias?: ProductoCategoriaUpdateManyWithoutProductoNestedInput
@@ -25908,6 +25946,7 @@ export namespace Prisma {
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     esPersonalizado?: BoolFieldUpdateOperationsInput | boolean
+    activo?: BoolFieldUpdateOperationsInput | boolean
     promocionId?: NullableIntFieldUpdateOperationsInput | number | null
     imagenes?: ImagenUncheckedUpdateManyWithoutProductosNestedInput
     personalizado?: ProductoPersonalizadoUncheckedUpdateManyWithoutProductoNestedInput
@@ -26115,6 +26154,7 @@ export namespace Prisma {
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
     esPersonalizado?: boolean
+    activo?: boolean
     imagenes?: ImagenCreateNestedManyWithoutProductosInput
     personalizado?: ProductoPersonalizadoCreateNestedManyWithoutProductoInput
     categorias?: ProductoCategoriaCreateNestedManyWithoutProductoInput
@@ -26134,6 +26174,7 @@ export namespace Prisma {
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
     esPersonalizado?: boolean
+    activo?: boolean
     promocionId?: number | null
     imagenes?: ImagenUncheckedCreateNestedManyWithoutProductosInput
     personalizado?: ProductoPersonalizadoUncheckedCreateNestedManyWithoutProductoInput
@@ -26222,6 +26263,7 @@ export namespace Prisma {
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     esPersonalizado?: BoolFieldUpdateOperationsInput | boolean
+    activo?: BoolFieldUpdateOperationsInput | boolean
     imagenes?: ImagenUpdateManyWithoutProductosNestedInput
     personalizado?: ProductoPersonalizadoUpdateManyWithoutProductoNestedInput
     categorias?: ProductoCategoriaUpdateManyWithoutProductoNestedInput
@@ -26241,6 +26283,7 @@ export namespace Prisma {
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     esPersonalizado?: BoolFieldUpdateOperationsInput | boolean
+    activo?: BoolFieldUpdateOperationsInput | boolean
     promocionId?: NullableIntFieldUpdateOperationsInput | number | null
     imagenes?: ImagenUncheckedUpdateManyWithoutProductosNestedInput
     personalizado?: ProductoPersonalizadoUncheckedUpdateManyWithoutProductoNestedInput
@@ -26323,6 +26366,7 @@ export namespace Prisma {
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
     esPersonalizado?: boolean
+    activo?: boolean
     imagenes?: ImagenCreateNestedManyWithoutProductosInput
     categorias?: ProductoCategoriaCreateNestedManyWithoutProductoInput
     etiquetas?: ProductoEtiquetaCreateNestedManyWithoutProductoInput
@@ -26342,6 +26386,7 @@ export namespace Prisma {
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
     esPersonalizado?: boolean
+    activo?: boolean
     promocionId?: number | null
     imagenes?: ImagenUncheckedCreateNestedManyWithoutProductosInput
     categorias?: ProductoCategoriaUncheckedCreateNestedManyWithoutProductoInput
@@ -26469,6 +26514,7 @@ export namespace Prisma {
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     esPersonalizado?: BoolFieldUpdateOperationsInput | boolean
+    activo?: BoolFieldUpdateOperationsInput | boolean
     imagenes?: ImagenUpdateManyWithoutProductosNestedInput
     categorias?: ProductoCategoriaUpdateManyWithoutProductoNestedInput
     etiquetas?: ProductoEtiquetaUpdateManyWithoutProductoNestedInput
@@ -26488,6 +26534,7 @@ export namespace Prisma {
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     esPersonalizado?: BoolFieldUpdateOperationsInput | boolean
+    activo?: BoolFieldUpdateOperationsInput | boolean
     promocionId?: NullableIntFieldUpdateOperationsInput | number | null
     imagenes?: ImagenUncheckedUpdateManyWithoutProductosNestedInput
     categorias?: ProductoCategoriaUncheckedUpdateManyWithoutProductoNestedInput
@@ -26702,6 +26749,7 @@ export namespace Prisma {
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
     esPersonalizado?: boolean
+    activo?: boolean
     imagenes?: ImagenCreateNestedManyWithoutProductosInput
     personalizado?: ProductoPersonalizadoCreateNestedManyWithoutProductoInput
     categorias?: ProductoCategoriaCreateNestedManyWithoutProductoInput
@@ -26721,6 +26769,7 @@ export namespace Prisma {
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
     esPersonalizado?: boolean
+    activo?: boolean
     promocionId?: number | null
     imagenes?: ImagenUncheckedCreateNestedManyWithoutProductosInput
     personalizado?: ProductoPersonalizadoUncheckedCreateNestedManyWithoutProductoInput
@@ -26810,6 +26859,7 @@ export namespace Prisma {
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     esPersonalizado?: BoolFieldUpdateOperationsInput | boolean
+    activo?: BoolFieldUpdateOperationsInput | boolean
     imagenes?: ImagenUpdateManyWithoutProductosNestedInput
     personalizado?: ProductoPersonalizadoUpdateManyWithoutProductoNestedInput
     categorias?: ProductoCategoriaUpdateManyWithoutProductoNestedInput
@@ -26829,6 +26879,7 @@ export namespace Prisma {
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     esPersonalizado?: BoolFieldUpdateOperationsInput | boolean
+    activo?: BoolFieldUpdateOperationsInput | boolean
     promocionId?: NullableIntFieldUpdateOperationsInput | number | null
     imagenes?: ImagenUncheckedUpdateManyWithoutProductosNestedInput
     personalizado?: ProductoPersonalizadoUncheckedUpdateManyWithoutProductoNestedInput
@@ -26931,6 +26982,7 @@ export namespace Prisma {
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
     esPersonalizado?: boolean
+    activo?: boolean
     imagenes?: ImagenCreateNestedManyWithoutProductosInput
     personalizado?: ProductoPersonalizadoCreateNestedManyWithoutProductoInput
     categorias?: ProductoCategoriaCreateNestedManyWithoutProductoInput
@@ -26950,6 +27002,7 @@ export namespace Prisma {
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
     esPersonalizado?: boolean
+    activo?: boolean
     imagenes?: ImagenUncheckedCreateNestedManyWithoutProductosInput
     personalizado?: ProductoPersonalizadoUncheckedCreateNestedManyWithoutProductoInput
     categorias?: ProductoCategoriaUncheckedCreateNestedManyWithoutProductoInput
@@ -27019,6 +27072,7 @@ export namespace Prisma {
     fechaCreacion?: DateTimeFilter<"Producto"> | Date | string
     fechaActualizacion?: DateTimeNullableFilter<"Producto"> | Date | string | null
     esPersonalizado?: BoolFilter<"Producto"> | boolean
+    activo?: BoolFilter<"Producto"> | boolean
     promocionId?: IntNullableFilter<"Producto"> | number | null
   }
 
@@ -27711,6 +27765,7 @@ export namespace Prisma {
     fechaCreacion?: Date | string
     fechaActualizacion?: Date | string | null
     esPersonalizado?: boolean
+    activo?: boolean
   }
 
   export type CategoriaCreateManyPromocionInput = {
@@ -27728,6 +27783,7 @@ export namespace Prisma {
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     esPersonalizado?: BoolFieldUpdateOperationsInput | boolean
+    activo?: BoolFieldUpdateOperationsInput | boolean
     imagenes?: ImagenUpdateManyWithoutProductosNestedInput
     personalizado?: ProductoPersonalizadoUpdateManyWithoutProductoNestedInput
     categorias?: ProductoCategoriaUpdateManyWithoutProductoNestedInput
@@ -27747,6 +27803,7 @@ export namespace Prisma {
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     esPersonalizado?: BoolFieldUpdateOperationsInput | boolean
+    activo?: BoolFieldUpdateOperationsInput | boolean
     imagenes?: ImagenUncheckedUpdateManyWithoutProductosNestedInput
     personalizado?: ProductoPersonalizadoUncheckedUpdateManyWithoutProductoNestedInput
     categorias?: ProductoCategoriaUncheckedUpdateManyWithoutProductoNestedInput
@@ -27766,6 +27823,7 @@ export namespace Prisma {
     fechaCreacion?: DateTimeFieldUpdateOperationsInput | Date | string
     fechaActualizacion?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     esPersonalizado?: BoolFieldUpdateOperationsInput | boolean
+    activo?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type CategoriaUpdateWithoutPromocionInput = {

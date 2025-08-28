@@ -1,35 +1,57 @@
-mat-form-field.mat-form-field {
-    font-size: 16px;
-  }
-  .full-width {
-    width: 100%;
-  }
-  .title {
-    font-weight: bold;
-    font-size: 1.2em;
-    padding: 0.5em;
-  }
-  .card-content {
-    min-width: 600px;
-    margin: 20px auto;
-  }
-  
-  .mat-radio-button {
-    display: block;
-    margin: 5px 0;
-  }
-  
-  .row {
-    display: flex;
-    flex-direction: row;
-  }
-  
-  .col {
-    flex: 1;
-    margin-right: 20px;
-  }
-  
-  .col:last-child {
-    margin-right: 0;
-  }
-  
+:root{
+  --bg:#fdf1dc; --ink:#3e2d19; --muted:#7c6148;
+  --brand:#7aa35b; --accent:#f4a261; --line:#e0c3a4; --surface:#fff8ed;
+}
+
+/* Centro en pantalla */
+.login-wrapper{
+  min-height:calc(100vh - 100px);
+  display:grid; place-items:center;
+  padding:24px; background:var(--bg);
+}
+
+/* Card ancho y horizontal */
+.login-card{
+  display:grid;
+  grid-template-columns: 320px minmax(380px, 1fr);
+  max-width: 880px; width:100%;
+  background:#fff; border:1px solid var(--line);
+  border-radius:20px; overflow:hidden;
+  box-shadow:0 10px 24px rgba(0,0,0,.06), 0 4px 10px rgba(0,0,0,.04);
+}
+
+/* Columna left (branding) */
+.login-side{
+  background:linear-gradient(135deg, var(--brand), #6a944f);
+  color:#fff; padding:28px 24px;
+  display:flex; flex-direction:column; gap:10px;
+  justify-content:center; align-items:flex-start;
+}
+.login-logo{ width:56px; height:56px; border-radius:12px; background:#ffffff22; }
+.login-side h2{ margin:6px 0 0; font-weight:900; }
+.login-side p{ margin:0; opacity:.9; }
+
+/* Columna right (form) */
+.login-main{
+  background:var(--surface);
+  padding:24px 24px 18px;
+  display:grid; gap:14px; align-content:start;
+}
+.login-title{
+  margin:0 0 6px; font-size:1.4rem; font-weight:900; color:var(--ink);
+}
+.full{ width:100%; }
+mat-form-field.mat-form-field{ font-size:16px; }
+.mat-mdc-form-field-icon-suffix .mat-icon{ color:var(--muted); }
+
+/* Acciones alineadas */
+.actions{
+  display:flex; justify-content:space-between; gap:12px; margin-top:4px;
+}
+.actions .mat-mdc-button-base mat-icon{ margin-right:6px; }
+
+/* Responsivo: apila en una columna */
+@media (max-width: 840px){
+  .login-card{ grid-template-columns: 1fr; max-width: 520px; }
+  .login-side{ align-items:center; text-align:center; }
+}

@@ -17,10 +17,10 @@ import { ProductoDiag } from '../producto-diag/producto-diag';
 export class ProductoAdmin {
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  dataSource = new MatTableDataSource<any>();
+  dataSource = new MatTableDataSource<ProductoModel>(); // tipa tu datasource
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['nombre', 'precio', 'acciones'];
+  displayedColumns = ['nombre', 'precio', 'estado', 'acciones'];
 
   readonly dialog = inject(MatDialog);
 
@@ -46,12 +46,15 @@ export class ProductoAdmin {
   }
 
   toggleActivo(p: ProductoModel) {
-    const payload: ProductoModel = { ...p, activo: !p.activo }; // invertimos el booleano
-    this.pdService.update(payload).subscribe({
-      next: (update) => {
-        p.activo = update?.activo ?? !p.activo; // refleja el cambio en la tabla
-        // refresca dataSource para que Angular Material repinte
-        this.dataSource.data = [...this.dataSource.data];
+    const activoNuevo = !p.activo;
+
+    this.pdService.updateParcial(p.id, { activo: activoNuevo }).subscribe({
+      next: (resp) => {
+        p.activo = resp?.activo ?? activoNuevo;
+        this.dataSource.data = this.dataSource.data.map((x) =>
+          x.id === p.id ? { ...x, activo: p.activo } : x
+        );
+        console.log('Estado actualizado:', p);
       },
       error: (err) => console.error('No se pudo cambiar estado', err),
     });

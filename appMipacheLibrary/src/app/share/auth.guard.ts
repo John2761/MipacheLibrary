@@ -27,7 +27,7 @@ export const authGuard: CanActivateFn = (
     // Si no está autenticado, redirigir y notificar
     const message = 'Usuario No autenticado';
     noti.warning('Autorización', 'Acceso Denegado', 3000);
-    return router.createUrlTree(['/usuario/login']); // Redirige explícitamente
+    return router.createUrlTree(['/unauthorized']); // Redirige explícitamente
   }
 
   // 2. Si está autenticado, verificar roles si la ruta lo requiere
@@ -46,7 +46,7 @@ export const authGuard: CanActivateFn = (
     // Si hay roles definidos para la ruta y el usuario no tiene uno de ellos
     const message = 'Usuario Sin permisos para acceder a esta sección.';
     noti.warning('Acceso Restringido', message, 3000);
-    return router.createUrlTree(['/usuario/login']);
+    return router.createUrlTree(['/unauthorized']);
   }
 
   // 4. Si pasa todas las comprobaciones, permitir el acceso

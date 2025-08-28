@@ -1,0 +1,35 @@
+<div class="unauth">
+  <div class="unauth__card">
+    <img
+      class="unauth__img"
+      src="/images/Unauthorized.png"
+      alt="Acceso no autorizado: puerta con candado y panda"
+      loading="lazy"
+    />
+  </div>
+
+  <div class="unauth__content">
+    <span class="unauth__badge">
+      <mat-icon fontIcon="lock"></mat-icon>
+      403
+    </span>
+
+    <h1 class="unauth__title">Acceso no autorizado</h1>
+    <p class="unauth__subtitle">
+      No tienes permisos para ver esta página.
+    </p>
+
+    <div class="unauth__actions">
+      <button mat-flat-button color="primary" (click)="irInicio()">
+        <mat-icon fontIcon="arrow_back"></mat-icon>
+        Regresar
+      </button>
+
+      <!-- Opcional: acción secundaria -->
+      <button mat-stroked-button (click)="irLogin()">
+        <mat-icon fontIcon="login"></mat-icon>
+        Iniciar sesión con otra cuenta
+      </button>
+    </div>
+  </div>
+</div>

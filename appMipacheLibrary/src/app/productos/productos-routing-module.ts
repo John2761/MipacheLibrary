@@ -7,19 +7,32 @@ import { ProductoForm } from './producto-form/producto-form';
 import { authGuard } from '../share/auth.guard';
 
 const routes: Routes = [
-    //productos
-    { path:'producto-admin', component: ProductoAdmin,
-      canActivate:[authGuard],
-      data: {roles: ['ADMIN']}
-     },
-    { path:'producto/create', component: ProductoForm },
-    { path:'producto/update/:id', component: ProductoForm },
-    { path:'producto/:id',component: ProductoDetail},
-    { path:'producto',component: ProductoIndex},
+  //productos
+  {
+    path: 'producto-admin',
+    component: ProductoAdmin,
+    canActivate: [authGuard],
+    data: { roles: ['ADMIN'] },
+  },
+  {
+    path: 'producto/create',
+    component: ProductoForm,
+    canActivate: [authGuard],
+    data: { roles: ['ADMIN'] },
+  },
+  {
+    path: 'producto/update/:id',
+    component: ProductoForm,
+    canActivate: [authGuard],
+    data: { roles: ['ADMIN'] },
+  },
+  
+  { path: 'producto/:id', component: ProductoDetail },
+  { path: 'producto', component: ProductoIndex },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class ProductosRoutingModule { }
+export class ProductosRoutingModule {}

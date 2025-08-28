@@ -147,6 +147,7 @@ exports.Prisma.ProductoScalarFieldEnum = {
   fechaCreacion: 'fechaCreacion',
   fechaActualizacion: 'fechaActualizacion',
   esPersonalizado: 'esPersonalizado',
+  activo: 'activo',
   promocionId: 'promocionId'
 };
 
