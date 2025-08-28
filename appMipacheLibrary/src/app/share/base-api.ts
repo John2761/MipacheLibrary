@@ -13,16 +13,15 @@ export class BaseAPI<T extends BaseEntity> {
   urlAPI: string = environment.apiURL;
 
   constructor(
-    private http: HttpClient,
+    public http: HttpClient,
     @Inject(String) private endpoint: string
   ) {}
+
   get(): Observable<T[]> {
     return this.http.get<T[]>(`${this.urlAPI}/${this.endpoint}`);
   }
-  
-  getMethod(
-    action: string,
-    options: { [param: string]: unknown } = {}
+    
+  getMethod( action: string, options: { [param: string]: unknown } = {}
   ): Observable<T | T[]> {
     return this.http.get<T[]>(
       `${this.urlAPI}/${this.endpoint}/${action}`,

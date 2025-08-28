@@ -2,31 +2,72 @@ import { Injectable, computed, effect, signal } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment.development';
-
 import { UsuarioModel } from './models/UsuarioModel';
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { PedidoService } from './services/pedido.service';
+
+export type Rol = 'ADMIN' | 'CLIENTE';
+
+export interface SessionUser {
+  id: number; // clienteId / usuarioId
+  email: string;
+  role: Rol;
+  token: string;
+}
 
 @Injectable({
   providedIn: 'root',
 })
+
 export class AuthenticationService {
+  private _user$ = new BehaviorSubject<SessionUser | null>(this.restore());
+  user$ = this._user$.asObservable();
   private apiUrl = environment.apiURL;
   private tokenKey = 'currentUser';
 
   // Signals
   tokenUser = signal<string | null>(localStorage.getItem(this.tokenKey));
   authenticated = computed(() => !!this.tokenUser());
-  usuario = signal<UsuarioModel | null>(null);
+  public usuario = signal<UsuarioModel | null>(null);
 
-  constructor(
-    private http: HttpClient,
-    private router: Router,
-    private pedidoService: PedidoService
-  ) {
+  constructor(private http: HttpClient, private router: Router) {
     if (this.tokenUser()) {
       this.getUserProfile().subscribe();
+    }
+  }
+
+  get user(): SessionUser | null {
+    return this._user$.value;
+  }
+
+  setSession(token: string) {
+    const payload = this.decode(token);
+    const u: SessionUser = {
+      id: Number(payload.sub), // asumiendo sub = id
+      email: payload.email,
+      role: payload.role as Rol,
+      token,
+    };
+    localStorage.setItem('auth', JSON.stringify(u));
+    this._user$.next(u);
+  }
+
+  clearSession() {
+    localStorage.removeItem('auth');
+    this._user$.next(null);
+  }
+
+  private restore(): SessionUser | null {
+    const raw = localStorage.getItem('auth');
+    return raw ? (JSON.parse(raw) as SessionUser) : null;
+  }
+
+  private decode(token: string): any {
+    try {
+      const base64 = token.split('.')[1];
+      return JSON.parse(atob(base64));
+    } catch {
+      return {};
     }
   }
 
@@ -69,6 +110,8 @@ export class AuthenticationService {
         })
       );
   }
+
+  //TERMINAR EL PEDIDO SEGÚN USUARIO, REVISAR CHAT
 
   // Obtener perfil desde backend del usuario
   getUserProfile(): Observable<UsuarioModel | null> {

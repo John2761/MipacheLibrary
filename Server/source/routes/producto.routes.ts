@@ -10,20 +10,14 @@ export class ProductoRoutes {
     //localhost:3000/producto
     router.get("/", controller.get);
     //localhost:3000/producto/6
-    //router.get('/:id',controller.getById)
-    
-    router.get('/:id',
-      authenticateJWT,
-      authorizeRoles(Role.ADMIN),
-      controller.getById
-    );
+    router.get("/:id", controller.getById);
     //Crear producto
-    router.post('/',controller.create)
+    router.post("/", controller.create);
     //Actualizar producto
-    router.put('/:id', controller.update)
+    router.put("/:id", controller.update);
     // PATCH parcial
-    router.patch('/:id/activo', controller.setActivo); 
+    router.patch("/:id/activo", controller.setActivo);
     return router;
-
+    
   }
 }

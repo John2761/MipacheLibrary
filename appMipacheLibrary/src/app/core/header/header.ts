@@ -19,6 +19,11 @@ export class Header  {
     return user?.role?.toString() === 'ADMIN';
   });
 
+    public isUser= computed(() => {
+    const user = this.authService.currentUserSignal();
+    return user?.role?.toString() === 'USER';
+  });
+
   // Métodos
   login() {
     this.router.navigate(['usuario/login']);

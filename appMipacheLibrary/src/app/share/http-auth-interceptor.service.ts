@@ -14,6 +14,7 @@ export class HttpAuthInterceptorService implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const token = localStorage.getItem(this.tokenKey)
+    
     if (token) {
       // Clona la solicitud y añade el encabezado de autorización
       request = request.clone({
@@ -25,4 +26,6 @@ export class HttpAuthInterceptorService implements HttpInterceptor {
 
     return next.handle(request);
   }
+  
+
 }

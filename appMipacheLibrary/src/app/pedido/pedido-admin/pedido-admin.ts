@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { PedidoService } from '../../share/services/pedido.service';
 import { PedidoModel } from '../../share/models/PedidoModel';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../../share/authentication.service';
 
 @Component({
   selector: 'app-pedido',
@@ -18,12 +19,10 @@ export class PedidoAdmin {
   }
 
   listPedidos() {
-    this.pedidoService
-    .getPedidos()
-    .subscribe((respuesta: PedidoModel[]) => {
-      console.log(respuesta);
-      this.pedidos = respuesta;
-    });
+      this.pedidoService.get().subscribe((respuesta: PedidoModel[]) => {
+        this.pedidos = respuesta;
+        console.log(this.pedidos)
+    })
   }
 
   detallePedido(id: number) {

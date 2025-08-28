@@ -1,0 +1,42 @@
+2025-08-28 15:55:46.558 error: 	John--Se produjo un error interno del servidor 
+Invalid `prisma.usuario.findUnique()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\config\passport.ts:58:36
+
+  55 // auth strategy (ej. passport-jwt)
+  56 passport.use(new JwtStrategy(jwtOptions, async (payload, done) => {
+  57   try {
+→ 58     const u = await prisma.usuario.findUnique({
+           where: {
+         +   id: Int
+           }
+         })
+
+Argument `id` is missing.
+2025-08-28 15:56:18.708 error: 	John--Se produjo un error interno del servidor 
+Invalid `prisma.usuario.findUnique()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\config\passport.ts:58:36
+
+  55 // auth strategy (ej. passport-jwt)
+  56 passport.use(new JwtStrategy(jwtOptions, async (payload, done) => {
+  57   try {
+→ 58     const u = await prisma.usuario.findUnique({
+           where: {
+         +   id: Int
+           }
+         })
+
+Argument `id` is missing.
+2025-08-28 15:57:17.151 error: 	John--Se produjo un error interno del servidor 
+Invalid `prisma.usuario.findUnique()` invocation in
+C:\Users\John\Desktop\Git\MipacheLibrary\Server\source\config\passport.ts:44:36
+
+  41 // auth strategy (ej. passport-jwt)
+  42 passport.use(new JwtStrategy(jwtOptions, async (payload, done) => {
+  43   try {
+→ 44     const u = await prisma.usuario.findUnique({
+           where: {
+         +   id: Int
+           }
+         })
+
+Argument `id` is missing.

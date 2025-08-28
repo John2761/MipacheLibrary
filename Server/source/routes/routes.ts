@@ -31,7 +31,7 @@ export class AppRoutes {
     router.use("/precioTamanno", precioTamannoRoutes);
     router.use("/dashboard",  dashboardRoutes.routes);
     router.use("/usuario", UserRoutes.routes);
-
+    
     return router;
   }
 }
