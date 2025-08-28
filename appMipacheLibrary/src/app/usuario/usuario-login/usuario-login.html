@@ -1,40 +1,59 @@
 <div class="login-wrapper">
-  <form [formGroup]="formulario" novalidate class="login-form">
-    <mat-card class="login-card">
+  <mat-card class="login-card mat-elevation-z8">
+    <!-- Lado izquierdo -->
+    <div class="login-left">
+      <img src="/images/logo.jpg" alt="Logo" class="logo" />
+      <h2>Mipache Library</h2>
+      <p>Bienvenido al sistema de gestión de libros, pedidos y reseñas.</p>
+    </div>
 
-      <!-- Columna izquierda: branding -->
-      <div class="login-side">
-        <img src="/images/logo.jpg" alt="Mipache Library" class="login-logo" />
-        <h2>¡Bienvenida/o!</h2>
-        <p>Ingresa tus credenciales para continuar.</p>
-      </div>
+    <!-- Formulario derecho -->
+    <div class="login-right">
+      <h1>Iniciar sesión</h1>
 
-      <!-- Columna derecha: formulario -->
-      <div class="login-main">
-        <h1 class="login-title">Login Usuario</h1>
-
-        <mat-form-field class="full" appearance="outline">
+      <form [formGroup]="formulario" novalidate>
+        <mat-form-field appearance="outline" class="form-field">
           <mat-label>Correo</mat-label>
-          <input matInput type="email" placeholder="correo@dominio.com" formControlName="correo" />
-          @if (errorHandling('correo')) { <mat-error>{{ errorHandling('correo') }}</mat-error> }
+          <input
+            matInput
+            formControlName="correo"
+            placeholder="ejemplo@correo.com"
+          />
+          <mat-error *ngIf="errorHandling('correo')"
+            >{{ errorHandling('correo') }}</mat-error
+          >
         </mat-form-field>
 
-        <mat-form-field class="full" appearance="outline">
-          <mat-label>Password</mat-label>
-          <input matInput [type]="hide ? 'password' : 'text'" placeholder="••••••••" formControlName="password" />
-          <button mat-icon-button type="button" matSuffix (click)="hide = !hide">
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Contraseña</mat-label>
+          <input
+            matInput
+            [type]="hide ? 'password' : 'text'"
+            formControlName="password"
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            type="button"
+            (click)="hide = !hide"
+          >
             <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
           </button>
-          @if (errorHandling('password')) { <mat-error>{{ errorHandling('password') }}</mat-error> }
+          <mat-error *ngIf="errorHandling('password')"
+            >{{ errorHandling('password') }}</mat-error
+          >
         </mat-form-field>
 
-        <div class="actions">
-          <button mat-flat-button color="primary" (click)="submitForm()">
-            <mat-icon fontIcon="login"></mat-icon> Login
+        <div class="button-group">
+          <button mat-stroked-button class="btn-form" (click)="submitForm()">
+            <mat-icon>login</mat-icon> Ingresar
           </button>
-          <button mat-stroked-button type="reset" (click)="onReset()">Cancelar</button>
+
+          <a mat-stroked-button class="btn-form" routerLink="/usuario/registrar">
+            <mat-icon>person_add</mat-icon> Registrarse
+          </a>
         </div>
-      </div>
-    </mat-card>
-  </form>
+      </form>
+    </div>
+  </mat-card>
 </div>

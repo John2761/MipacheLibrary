@@ -13,6 +13,8 @@ export class RolService extends BaseAPI<RoleModel> {
     constructor(httpClient: HttpClient) { 
         super(
           httpClient,
-          environment.endPointRol);
+          `${environment.apiURL}/${environment.endPointRol}`);
       }
+
+      
 }

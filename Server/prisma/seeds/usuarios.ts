@@ -20,11 +20,13 @@ export const usuarios = [
     nombre: "Ericka Ovares Sandoval",
     correo: "cliente1@prueba.com",
     password: "$2b$10$1BaQqXuZYNLDAC42PY5fN.ufSOKjApmjkaZrQUYf7ms71PaS1mASO",
+    role: Role.USER
   },
   //Usuario 4
   {
     nombre: "Angélica Gonzalez Madrigal",
     correo: "cliente2@prueba.com",
     password: "$2b$10$1BaQqXuZYNLDAC42PY5fN.ufSOKjApmjkaZrQUYf7ms71PaS1mASO",
+    role: Role.USER
   },
 ];

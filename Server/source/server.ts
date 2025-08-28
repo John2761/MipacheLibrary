@@ -5,6 +5,7 @@ import cors from 'cors';
 import path from 'path'
 import { ErrorMiddleware } from './middleware/error.middleware';
 import { AppRoutes } from './routes/routes';
+import { RolRoutes } from './routes/rol.routes';
 
 const rootDir = __dirname;
 
@@ -32,6 +33,7 @@ app.use(AppRoutes.routes)
 
 //Gestión de errores middleware
 app.use(ErrorMiddleware.handleError);
+app.use('/roles', RolRoutes.routes);
 
 //Acceso a las imágenes
 app.use('/images', express.static(

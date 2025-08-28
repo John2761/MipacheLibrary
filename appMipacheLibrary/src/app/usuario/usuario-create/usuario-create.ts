@@ -1,4 +1,4 @@
-import { Component, computed } from '@angular/core';
+import { Component, computed, OnInit, Signal } from '@angular/core';
 import { NotificationService } from '../../share/notification-service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -16,30 +16,39 @@ import { AuthenticationService } from '../../share/authentication.service';
   templateUrl: './usuario-create.html',
   styleUrl: './usuario-create.css',
 })
-export class UsuarioCreate {
+export class UsuarioCreate implements OnInit {
   hide = true;
   usuario: any;
-  roles: any;
+  roles: RoleModel[]= [];
   formCreate!: FormGroup;
   destroy$: Subject<boolean> = new Subject<boolean>();
+
+  currentUser?: Signal<any>;
+  isAdmin?: Signal<boolean>;
 
   constructor(
     public fb: FormBuilder,
     private router: Router,
     private rolService: RolService,
-    private noti: NotificationService
+    private noti: NotificationService,
+    private authService: AuthenticationService
   ) {
     this.reactiveForm();
   }
 
-  authService?: AuthenticationService;
-  currentUser = this.authService?.currentUserSignal;
-  //Solo administrador
-  public isAdmin = computed(() => {
-    const user = this.authService?.currentUserSignal();
+  
+  
+
+  ngOnInit(): void {
+    this.getRoles(); // Cargar roles cuando el componente inicia
+    this.currentUser = this.authService.currentUserSignal;
+    this.isAdmin = computed(() => {
+    const user = this.authService.currentUserSignal();
     // Retorna true solo si el usuario e
     return user?.role.valueOf() == 'ADMIN';
   });
+
+  }
 
   reactiveForm() {
     this.formCreate = this.fb.group(
@@ -52,9 +61,9 @@ export class UsuarioCreate {
       },
       { validators: passwordsMatchValidator }
     );
-    this.getRoles();
+
   }
-  ngOnInit(): void {}
+
   submitForm() {
     this.formCreate.markAllAsTouched();
     //Validación
@@ -69,8 +78,13 @@ export class UsuarioCreate {
     this.formCreate.reset();
   }
   getRoles() {
-    this.rolService.get().subscribe((respuesta: RoleModel[]) => {
-      this.roles = respuesta;
+    this.rolService.get().subscribe({
+      next: (roles) => {
+      this.roles = roles;
+    },
+    error: (err) => {
+      this.noti.error('Error', 'No se pudieron cargar los roles');
+    }
     });
   }
   /**

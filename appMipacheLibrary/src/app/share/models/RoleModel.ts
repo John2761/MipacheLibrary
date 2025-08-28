@@ -1,4 +1,4 @@
 export interface  RoleModel {
     id: number;
-    nombre: string
+    nombre: string;
   }
