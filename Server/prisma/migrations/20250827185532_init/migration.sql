@@ -33,6 +33,7 @@ CREATE TABLE `Producto` (
     `fechaCreacion` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `fechaActualizacion` DATETIME(3) NULL DEFAULT CURRENT_TIMESTAMP(3),
     `esPersonalizado` BOOLEAN NOT NULL DEFAULT false,
+    `activo` BOOLEAN NOT NULL DEFAULT true,
     `promocionId` INTEGER NULL,
 
     PRIMARY KEY (`id`)

@@ -19,7 +19,9 @@ export class ProductoService extends BaseAPI<ProductoModel> {
     const url = 'http://localhost:3000/resena'; // Ajustar si usás otro endpoint
     return this.httpClientLocal.post(url, body);
   }
-  
+  // producto.service.ts
+  updateParcial(id: number, data: Partial<ProductoModel>) {
+    const url = 'http://localhost:3000/producto'; // P mayúscula si así es tu API
+    return this.httpClientLocal.patch<ProductoModel>(`${url}/${id}/activo`,data);
+  }
 }
-
-

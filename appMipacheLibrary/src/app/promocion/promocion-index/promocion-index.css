@@ -14,11 +14,12 @@
 .admin-button-container{
   background-color: #c89267;
   color: black;
-  width: 12%;
+  width: 8.5%;
   font-weight: bold;
   font-size: 20px;
   border-radius: 20px;
-  margin-left: 20px;
+  margin-left: 10px;
+  margin-bottom: 15px;
 }
 
 /* Layout horizontal con scroll */

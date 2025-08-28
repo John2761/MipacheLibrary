@@ -95,7 +95,6 @@ export class ProductoController {
       if (isNaN(idProducto)) {
         return next(AppError.badRequest("El ID no es válido"));
       }
-
       const objProducto = await this.prisma.producto.findUnique({
         where: { id: idProducto },
         include: {
@@ -237,6 +236,21 @@ export class ProductoController {
       next(error);
     }
   };
+
+  setActivo = async (request: Request, response: Response, next: NextFunction) => {
+  try {
+    const id = Number(request.params.id);
+    const { activo } = request.body; // true/false
+
+    const producto = await this.prisma.producto.update({
+      where: { id },
+      data: { activo: Boolean(activo) },
+      select: { id: true, activo: true },
+    });
+
+    response.json(producto);
+  } catch (e) { next(e); }
+};
 
   //Actualizar un producto
   update = async (request: Request, response: Response, next: NextFunction) => {

@@ -42,6 +42,7 @@ model Producto {
   fechaCreacion      DateTime                @default(now())
   fechaActualizacion DateTime?               @default(now()) @updatedAt
   esPersonalizado    Boolean                 @default(false)
+  activo             Boolean                 @default(true)
   //Relaciones
   imagenes           Imagen[]
   personalizado      ProductoPersonalizado[]

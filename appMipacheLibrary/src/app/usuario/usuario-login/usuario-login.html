@@ -1,43 +1,40 @@
-<form [formGroup]="formulario"  novalidate>
-  <mat-card class="card-content">
-    <mat-card-header>
-      <mat-card-title class="title">Login Usuario </mat-card-title>
-    </mat-card-header> 
-    <mat-card-content>
-      <div class="row">
-        <div class="col">
-          <mat-form-field class="full-width">
-            <mat-label>Correo</mat-label>
-            <input matInput type="text" placeholder="Correo electrónico" formControlName="correo" />
-            @if (errorHandling('correo')) {
-              <mat-error>
-                {{errorHandling('correo')}}
-              </mat-error>
-            }
-          </mat-form-field>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <mat-form-field class="full-width">
-          <mat-label>Password</mat-label>
-          <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password usuario" formControlName="password" />
-          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-          </button>
-          @if (errorHandling('password')) {
-            <mat-error>
-              {{errorHandling('password')}}
-            </mat-error>
-          }
-        </mat-form-field>
-        </div>
-      </div>
-    </mat-card-content>
-    <mat-card-actions>
-      <button matButton="outlined" class="btn-secondary" (click)="submitForm()">Login</button>
-      <button matButton="outlined" class="btn-tertiary" type="reset" (click)="onReset()">Cancelar</button>
-    </mat-card-actions>
-  </mat-card>
-  </form>
+<div class="login-wrapper">
+  <form [formGroup]="formulario" novalidate class="login-form">
+    <mat-card class="login-card">
 
+      <!-- Columna izquierda: branding -->
+      <div class="login-side">
+        <img src="/images/logo.jpg" alt="Mipache Library" class="login-logo" />
+        <h2>¡Bienvenida/o!</h2>
+        <p>Ingresa tus credenciales para continuar.</p>
+      </div>
+
+      <!-- Columna derecha: formulario -->
+      <div class="login-main">
+        <h1 class="login-title">Login Usuario</h1>
+
+        <mat-form-field class="full" appearance="outline">
+          <mat-label>Correo</mat-label>
+          <input matInput type="email" placeholder="correo@dominio.com" formControlName="correo" />
+          @if (errorHandling('correo')) { <mat-error>{{ errorHandling('correo') }}</mat-error> }
+        </mat-form-field>
+
+        <mat-form-field class="full" appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" placeholder="••••••••" formControlName="password" />
+          <button mat-icon-button type="button" matSuffix (click)="hide = !hide">
+            <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+          @if (errorHandling('password')) { <mat-error>{{ errorHandling('password') }}</mat-error> }
+        </mat-form-field>
+
+        <div class="actions">
+          <button mat-flat-button color="primary" (click)="submitForm()">
+            <mat-icon fontIcon="login"></mat-icon> Login
+          </button>
+          <button mat-stroked-button type="reset" (click)="onReset()">Cancelar</button>
+        </div>
+      </div>
+    </mat-card>
+  </form>
+</div>
