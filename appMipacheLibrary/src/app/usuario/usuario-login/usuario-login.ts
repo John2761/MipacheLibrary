@@ -73,4 +73,10 @@ export class UsuarioLogin {
     // Pasamos el formulario principal y la ruta del control
     return getFormValidationErrorMessage(this.formulario, controlPath);
   }
+
+
+irARegistro() {
+  this.router.navigate(['usuario/registrar']);
+}
+
 }

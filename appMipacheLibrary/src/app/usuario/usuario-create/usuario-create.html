@@ -1,89 +1,83 @@
 <form [formGroup]="formCreate" novalidate>
   <mat-card class="card-content">
     <mat-card-header>
-      <mat-card-title class="title">Crear Usuario </mat-card-title>
+      <mat-card-title class="title">Crear Usuario</mat-card-title>
     </mat-card-header>
     <mat-card-content>
+      <!-- Nombre -->
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
             <mat-label>Nombre</mat-label>
-            <input matInput type="text" placeholder="Nombre usuario" formControlName="nombre" />
+            <input matInput placeholder="Nombre usuario" formControlName="nombre" />
             @if (errorHandling('nombre')) {
-            <mat-error>
-              {{errorHandling('nombre')}}
-            </mat-error>
+              <mat-error>{{ errorHandling('nombre') }}</mat-error>
             }
           </mat-form-field>
         </div>
       </div>
+
+      <!-- Correo -->
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
             <mat-label>Correo</mat-label>
-            <input matInput type="text" placeholder="Correo Electrónico" formControlName="correo" />
-            @if (errorHandling('correo')) {
-            <mat-error>
-              {{errorHandling('correo')}}
-            </mat-error>
+            <input matInput placeholder="Correo electrónico" formControlName="email" />
+            @if (errorHandling('email')) {
+              <mat-error>{{ errorHandling('email') }}</mat-error>
             }
           </mat-form-field>
         </div>
       </div>
+
+      <!-- Password -->
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
             <mat-label>Password</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password usuario"
-              formControlName="password" />
-            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-              [attr.aria-pressed]="hide">
-              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password" formControlName="password" />
+            <button mat-icon-button matSuffix (click)="hide = !hide">
+              <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
             </button>
             @if (errorHandling('password')) {
-            <mat-error>
-              {{errorHandling('password')}}
-            </mat-error>
+              <mat-error>{{ errorHandling('password') }}</mat-error>
             }
           </mat-form-field>
         </div>
       </div>
+
+      <!-- Confirmar Password -->
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
             <mat-label>Confirmar Password</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'" placeholder="Confirmar Password usuario"
-              formControlName="confirmpassword" />
-            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-              [attr.aria-pressed]="hide">
-              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <input matInput [type]="hide ? 'password' : 'text'" placeholder="Confirmar Password" formControlName="confirmpassword" />
+            <button mat-icon-button matSuffix (click)="hide = !hide">
+              <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
             </button>
-            <!-- Mostrar mensaje error de comparación de password -->
-           
           </mat-form-field>
-          @if(formCreate.hasError('passwordsMismatch') && formCreate.touched){
-            <mat-error>
-              Las contraseñas no coinciden.
-            </mat-error>
-            }
+          @if (formCreate.hasError('passwordsMismatch') && formCreate.touched) {
+            <mat-error>Las contraseñas no coinciden.</mat-error>
+          }
         </div>
       </div>
+
+      <!-- Rol -->
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
             <mat-label>Rol</mat-label>
-            <mat-select placeholder="Rol" formControlName="role">
-              <mat-option *ngFor="let r of roles" [value]="r.id">
-                {{ r.nombre }}
-              </mat-option>
+            <mat-select placeholder="Seleccionar rol" formControlName="role">
+              <mat-option *ngFor="let r of roles" [value]="r.id">{{ r.nombre }}</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
       </div>
+
     </mat-card-content>
     <mat-card-actions>
-      <button matButton="outlined" class="btn-secondary" (click)="submitForm()">Registrar</button>
-      <button matButton="outlined" class="btn-tertiary" type="reset" (click)="onReset()">Cancelar</button>
+      <button mat-stroked-button class="btn-secondary" (click)="submitForm()">Registrar</button>
+      <button mat-stroked-button class="btn-tertiary" type="reset" (click)="onReset()">Cancelar</button>
     </mat-card-actions>
   </mat-card>
 </form>

@@ -10,8 +10,8 @@ const routes: Routes = [
   {
     path: 'usuario/registrar',
     component: UsuarioCreate,
-    canActivate: [authGuard],
-    data: { roles: ['ADMIN'] },
+    //canActivate: [authGuard],
+    //data: { roles: ['ADMIN'] },
   },
   { path: 'usuario/login', component: UsuarioLogin },
 ];
